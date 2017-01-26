@@ -1,1 +1,11 @@
 ptsrc/lib/pt
+ptsrc/bin/
+ptsrc/cmd/ptc
+ptsrc/coderlinux/coder.out
+ptsrc/coderlinux/coder.sst
+ptsrc/ptam/ptam.out
+ptsrc/ptam/ptam.sst
+ptsrc/ptruntimelinux/ptruntime.o
+ptsrc/semantic/semantic.out
+ptsrc/semantic/semantic.sst
+
