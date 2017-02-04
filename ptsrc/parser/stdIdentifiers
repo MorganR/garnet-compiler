@@ -23,6 +23,7 @@ type
 if
 case
 while
+% Add garnet keywords below
 using
 val
 def
