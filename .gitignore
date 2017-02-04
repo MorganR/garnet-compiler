@@ -1,4 +1,4 @@
-ptsrc/lib/pt
+ptsrc/lib/pt/*
 ptsrc/bin/
 ptsrc/cmd/ptc
 ptsrc/coderlinux/coder.out
