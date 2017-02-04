@@ -17,12 +17,6 @@ Input :
 	lLetter 
 	firstCharClass = lLetter 
 	lDigit
-	lPercent        '%' % Added inputs
-	lHash		'#' %
-	lExclamation	'!' %
-	lQuestion	'?' %
-	lDollar		'$' %
-	
 	lPlus		'+'
 	lMinus		'-'
 	lStar		'*'
@@ -31,7 +25,7 @@ Input :
 	lDot		'.'
 	lComma		','
 	lSemicolon	';'
-	lQuote          
+	lQuote
 	lLeftAngle	'<'
 	lRightAngle	'>'
 	lLeftParen	'('
@@ -78,7 +72,6 @@ Output :
 	pCase
 	pWhile
 	pRepeat
-	
 	lastKeywordToken = pRepeat
 
 	% Scanner tokens -
@@ -114,14 +107,7 @@ Output :
 	pRightParen
 	pLeftBracket
 	pRightBracket
-	pPercent         % Added outputs
-	pHash		 %
-	pExclamation	 %
-	pQuestion	 %
-	pDollar		 %
-	
 	pDotDot
-	
 	lastSyntaxToken = pDotDot;
 
 Error :
@@ -157,16 +143,6 @@ Scan :
 	    | lNewLine:
 		.pNewLine
 	    | lTab:
-	    | '%':
-		.pPercent
- 	    | '#':
-		.pHash
-	    | '!':
-		.pExclamation
-	    | '?':
-		.pQuestion
-	    | '$':
-		.pDollar
 	    | ';':
 		.pSemicolon
 	    | '(':

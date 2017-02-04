@@ -27,14 +27,8 @@
 	lNewLine = 21;
 	lTab = 22;
 	lNewPage = 23;
-	lEndFile = 29;
-	lastCharClass = 29;
-	lPercent = 24; % Added inputs
-	lHash	= 25;	 %
-	lExclamation = 26; %
-	lQuestion = 27;	 %
-	lDollar	= 28;	 %
-	
+	lEndFile = 24;
+	lastCharClass = 24;
 
 	{ Output Tokens }
 	pDiv = 0;
@@ -88,14 +82,8 @@
 	pRightParen = 44;
 	pLeftBracket = 45;
 	pRightBracket = 46;
-	pDotDot = 52;
-	lastSyntaxToken = 52;
-	pPercent = 47; % Added inputs
-	pHash	= 48;	 %
-	pExclamation = 49; %
-	pQuestion = 50;	 %
-	pDollar	= 51;	 %
-
+	pDotDot = 47;
+	lastSyntaxToken = 47;
 
 	{ Input/Output Tokens }
 
