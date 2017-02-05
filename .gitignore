@@ -11,3 +11,4 @@ ptsrc/semantic/semantic.sst
 ptsrc/parser/*.def
 ptsrc/parser/*.out
 ptsrc/parser/*.sst
+ptsrc/parser/scan.def.diffs
