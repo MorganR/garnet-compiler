@@ -38,8 +38,6 @@ Input :
 	lRightParen	')'
 	lLeftBracket	'['
 	lRightBracket	']'
-	lLeftBrace	'{'
-	lRightBrace	'}'
 	lBlank
 	lIllegal
 	lNewLine
@@ -156,7 +154,8 @@ Scan :
 	    | lNewLine:
 		.pNewLine
 	    | '%':
-		.pPercent
+		@Comment
+		%.pPercent
  	    | '#':
 		.pHash
 	    | '!':
@@ -173,12 +172,7 @@ Scan :
 	    | ';':
 		.pSemicolon
 	    | '(':
-		[
-		    | '*':
-			@AlternateComment
-		    | *:
-			.pLeftParen
-		]
+		.pLeftParen
 	    | ')':
 		.pRightParen
 	    | '[':
@@ -233,8 +227,6 @@ Scan :
 		    | *:
 			.pGreater
 		]
-	    | '{':
-		@Comment
 	    | '*':
 		.pStar
 	    | lEndFile:
@@ -295,33 +287,13 @@ Comment :
 	% Discard the contents of a comment
 
 	{[
-	    | '}':
-		>
 	    | lNewLine:
 		.pNewLine
-	    | lEndFile:		% comment must be closed before EOF
-		#eCommentEOF
+		>
+	    | lEndFile:
 		.pEndFile
 		>
 	    | *:	% comment may contain any other character
-		?
-	]};
-
-AlternateComment :
-	{[
-	    | '*':
-		[
-		    | ')':
-			>
-		    | *:
-		]
-	    | lNewLine:
-		.pNewLine
-	    | lEndFile:
-		#eCommentEOF
-		.pEndFile
-		>
-	    | *:
 		?
 	]};
 
