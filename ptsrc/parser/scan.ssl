@@ -111,14 +111,11 @@ Output :
 	pRightParen
 	pLeftBracket
 	pRightBracket
-	pPercent         % Added outputs
-	pHash		 %
+	pHash		 %	Added Syntax Tokens
 	pNot	 %
 	pQuestion	 %
 	pDollar		 %
-	
 	pDotDot
-	
 	lastSyntaxToken = pDotDot;
 
 Error :
@@ -155,7 +152,6 @@ Scan :
 		.pNewLine
 	    | '%':
 		@Comment
-		%.pPercent
  	    | '#':
 		.pHash
 	    | '!':
