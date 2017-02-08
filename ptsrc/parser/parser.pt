@@ -52,37 +52,41 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	lLetter = 0;
 	firstCharClass = 0;
 	lDigit = 1;
-	lPlus = 2;
-	lMinus = 3;
-	lStar = 4;
-	lColon = 5;
-	lEquals = 6;
-	lDot = 7;
-	lComma = 8;
-	lSemicolon = 9;
-	lQuote = 10;
-	lLeftAngle = 11;
-	lRightAngle = 12;
-	lLeftParen = 13;
-	lRightParen = 14;
-	lLeftBracket = 15;
-	lRightBracket = 16;
-	lLeftBrace = 17;
-	lRightBrace = 18;
-	lBlank = 19;
-	lIllegal = 20;
-	lNewLine = 21;
-	lTab = 22;
-	lNewPage = 23;
-	lEndFile = 24;
-	lastCharClass = 24;
+	lPercent = 2;
+	lHash = 3;
+	lExclamation = 4;
+	lQuestion = 5;
+	lDollar = 6;
+	lPlus = 7;
+	lMinus = 8;
+	lStar = 9;
+	lColon = 10;
+	lEquals = 11;
+	lDot = 12;
+	lComma = 13;
+	lSemicolon = 14;
+	lQuote = 15;
+	lLeftAngle = 16;
+	lRightAngle = 17;
+	lLeftParen = 18;
+	lRightParen = 19;
+	lLeftBracket = 20;
+	lRightBracket = 21;
+	lLeftBrace = 22;
+	lRightBrace = 23;
+	lBlank = 24;
+	lIllegal = 25;
+	lNewLine = 26;
+	lTab = 27;
+	lNewPage = 28;
+	lEndFile = 29;
+	lastCharClass = 29;
 
 { ===== }
 
 
 	{ Scanner -> Parser token stream definitions }
 	firstSyntaxToken  =  -1;
-
 	{ Nonexistent input token used only in syntax error recovery }
 	pSyntaxError = -1;
 
@@ -142,8 +146,13 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	pRightParen = 45;
 	pLeftBracket = 46;
 	pRightBracket = 47;
-	pDotDot = 48;
-	lastSyntaxToken = 48;
+	pPercent = 48;
+	pHash = 49;
+	pExclamation = 50;
+	pQuestion = 51;
+	pDollar = 52;
+	pDotDot = 53;
+	lastSyntaxToken = 53;
 
 { ===== }
 
@@ -321,7 +330,7 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	{ misc. }
 	tab = '	';
 	blank = ' ';
-	quote = '''';
+	quote = '"';
 	null = 0;
 
 	{ Phase identification values - for use by common routines }
@@ -818,8 +827,13 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	    charClassMap[ord(']')] := lRightBracket;
 	    charClassMap[ord('{')] := lLeftBrace;
 	    charClassMap[ord('}')] := lRightBrace;
-
+	    charClassMap[ord('%')] := lPercent;
+	    charClassMap[ord('#')] := lHash;
+	    charClassMap[ord('!')] := lExclamation;
+	    charClassMap[ord('?')] := lQuestion;
+	    charClassMap[ord('$')] := lDollar;	
 	    { Initialize the scan ssl table }
+
 	    reset(scanSsl {, NscanSsl} );
 	    i := 0;
 	    while not eof(scanSsl) do
@@ -1671,10 +1685,10 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	newInputLine := false;
 
 	while parseInputToken <> pEndFile do
-    	AcceptSyntaxToken;
+	AcceptSyntaxToken;
 
 	{ Parser; }
 	{ No sense running semantic phase if serious syntax errors found }
 	{ if errorCount > 0 then
-	    rewrite(parseStream }{, NparseStream}{ ); }
+	    rewrite(parseStream }{, NparseStream}{ );}
     end.  { ScannerParser }

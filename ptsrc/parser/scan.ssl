@@ -17,6 +17,11 @@ Input :
 	lLetter 
 	firstCharClass = lLetter 
 	lDigit
+	lPercent        '%' % Added garnet inputs
+	lHash		'#' %
+	lExclamation	'!' %
+	lQuestion	'?' %
+	lDollar		'$' %
 	lPlus		'+'
 	lMinus		'-'
 	lStar		'*'
@@ -44,7 +49,7 @@ Input :
 
 Output :
 	% Keyword tokens -
-	%   Tokens pDiv through pRepeat are keywords which will be separated
+	%   Tokens pDiv through pModule are keywords which will be separated
 	%   from user defined identifiers by the Screener.  This Scanner
 	%   treats them all as identifiers.
 	pDiv 
@@ -109,6 +114,11 @@ Output :
 	pRightParen
 	pLeftBracket
 	pRightBracket
+	pPercent         % Added outputs
+	pHash		 %
+	pExclamation	 %
+	pQuestion	 %
+	pDollar		 %
 	pDotDot
 	lastSyntaxToken = pDotDot;
 
@@ -145,6 +155,16 @@ Scan :
 	    | lNewLine:
 		.pNewLine
 	    | lTab:
+	    | '%':
+		.pPercent
+ 	    | '#':
+		.pHash
+	    | '!':
+		.pExclamation
+	    | '?':
+		.pQuestion
+	    | '$':
+		.pDollar
 	    | ';':
 		.pSemicolon
 	    | '(':
