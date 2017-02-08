@@ -8,7 +8,7 @@
 % Abstract
 %     The scanner breaks a PT source program up into syntax tokens.
 %   It removes token separators - blanks, tabs, comments.  The
-%   scanner detects these lexical errors:  unclosed comments,
+%   scanner detects these lexical errors:
 %   unclosed literals, literals that cross a line boundary,
 %   illegal characters and integers followed by identifiers with no
 %   separator between them.
@@ -17,12 +17,11 @@ Input :
 	lLetter 
 	firstCharClass = lLetter 
 	lDigit
-	lPercent        '%' % Added inputs
+	lPercent        '%' % Added garnet inputs
 	lHash		'#' %
 	lExclamation	'!' %
 	lQuestion	'?' %
 	lDollar		'$' %
-	
 	lPlus		'+'
 	lMinus		'-'
 	lStar		'*'
@@ -48,7 +47,7 @@ Input :
 
 Output :
 	% Keyword tokens -
-	%   Tokens pDiv through pRepeat are keywords which will be separated
+	%   Tokens pDiv through pModule are keywords which will be separated
 	%   from user defined identifiers by the Screener.  This Scanner
 	%   treats them all as identifiers.
 	pDiv 
@@ -112,7 +111,8 @@ Output :
 	pRightParen
 	pLeftBracket
 	pRightBracket
-	pHash		 %	Added Syntax Tokens
+	pHash		 % Added Garnet syntax tokens
+	pExclamation	 %
 	pQuestion	 %
 	pDollar		 %
 	pDotDot
@@ -280,6 +280,7 @@ Literal :
 
 Comment :
 	% Discard the contents of a comment
+	% Comments end at a new line or end of file
 
 	{[
 	    | lNewLine:
