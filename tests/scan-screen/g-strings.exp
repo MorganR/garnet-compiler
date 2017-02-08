@@ -7,4 +7,12 @@
  .pAssign
   .pLiteral
  .pNewLine
+  .pIdentifier
+ .pAssign
+  .pLiteral
+ .pNewLine
+  .pIdentifier
+ .pAssign
+  .pLiteral
+ .pNewLine
  .pEndFile

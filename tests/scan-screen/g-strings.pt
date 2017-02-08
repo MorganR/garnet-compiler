@@ -1,2 +1,4 @@
 var str : string
 str = "word"
+str = ""
+str = "string with "" quote"
