@@ -1,0 +1,3 @@
+Test the PT style comments have been removed.
+The first two lines are false PT comments and should result in a pIdentifier for each word.
+The -i output is checked to make sure {} characters are now illegal.

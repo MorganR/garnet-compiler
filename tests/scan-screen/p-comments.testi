@@ -1,0 +1,6 @@
+if [ $(grep -q "lIllegal" "p-comments.resi" | wc -l) -eq 4 ]
+then
+	echo "pass"
+else
+	echo "fail"
+fi

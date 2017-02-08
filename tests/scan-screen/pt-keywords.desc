@@ -1,0 +1,2 @@
+This test confirms that the old PT keywords have been removed from the language.
+Each word should return pIdentifier with no additional keyword identification.

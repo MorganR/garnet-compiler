@@ -10,26 +10,28 @@ div
 mod
 or
 and
-not
 then
 else
 of
 end
-until
 do
 array
 file
 packed
-program
-const
 var
 type
-procedure
-begin
 if
 case
 while
-repeat
+% Add garnet keywords below
+using
+val
+def
+unless
+elsif
+break
+when
+module
 
 % End of keywords
 
@@ -39,7 +41,7 @@ repeat
 
 % Predeclared type names
 integer
-char
+string
 boolean
 text
 

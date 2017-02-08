@@ -8,4 +8,11 @@ ptsrc/ptam/ptam.sst
 ptsrc/ptruntimelinux/ptruntime.o
 ptsrc/semantic/semantic.out
 ptsrc/semantic/semantic.sst
+ptsrc/parser/*.def
+ptsrc/parser/*.out
+ptsrc/parser/*.sst
+ptsrc/parser/scan.def.diffs
 
+tests/**/TestResults
+tests/**/*.rese
+tests/**/*.resi

@@ -1,0 +1,2 @@
+Tests that garnet-style strings are working.
+Checks the -i output to ensure that no characters are registered as lIllegal chars.

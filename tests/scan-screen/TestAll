@@ -1,0 +1,52 @@
+#!/bin/bash
+
+testingDir="$(pwd)"
+
+cd "../../ptsrc"
+
+ptBase="$(pwd)"
+ptLib="${ptBase}/lib/pt"
+ptScanDefs=${ptBase}/parser/scan.def
+
+cd "$testingDir"
+
+> TestResults
+
+passCount=0
+failCount=0
+
+for f in ./*.pt
+do
+  echo "Testing file $(basename $f)"
+  echo "############################" >> TestResults
+  baseName="$(basename -s .pt ""$f"")"
+  echo "$(basename $f):" >> TestResults
+  cat ${baseName}.desc >> TestResults
+  ssltrace "ptc -t1 -o1 -L ${ptLib} $f" "${ptScanDefs}" -e > "${baseName}.rese"
+  ssltrace "ptc -t1 -o1 -L ${ptLib} $f" "${ptScanDefs}" -i > "${baseName}.resi"
+  if [ -e "${baseName}.testi" ]
+  then
+    if [[ `./${baseName}.testi` = pass ]]
+    then
+      echo "I-Test passed." >> TestResults
+      (( passCount += 1 ))
+    else
+      echo "I-Test failed." >> TestResults
+      (( failCount += 1 ))
+    fi
+  fi
+  if (diff ${baseName}.rese ${baseName}.exp -q)
+  then
+    echo "E-Test passed." >> TestResults
+    (( passCount += 1 ))
+  else
+    echo "E-Test FAILED." >> TestResults
+    (( failCount += 1 ))
+  fi
+  echo >> TestResults
+done
+
+echo "${failCount} test(s) failed, ${passCount} test(s) passed." >> TestResults
+
+cat TestResults
+
