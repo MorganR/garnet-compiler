@@ -14,4 +14,5 @@ ptsrc/parser/*.sst
 ptsrc/parser/scan.def.diffs
 
 tests/**/TestResults
-tests/**/*.res
+tests/**/*.rese
+tests/**/*.resi
