@@ -256,9 +256,8 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	eIllegalChar = 5;
 	eLiteralLine = 6;
 	eLiteralEOF = 7;
-	eCommentEOF = 8;
-	eNoSeparator = 9;
-	lastScanError = 9;
+	eNoSeparator = 8;
+	lastScanError = 8;
 
 	{ Screener error codes - values must be bigger than scanner error codes }
 	eNullString = 10;
