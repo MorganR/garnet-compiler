@@ -72,15 +72,13 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	lRightParen = 19;
 	lLeftBracket = 20;
 	lRightBracket = 21;
-	lLeftBrace = 22;
-	lRightBrace = 23;
-	lBlank = 24;
-	lIllegal = 25;
-	lNewLine = 26;
-	lTab = 27;
-	lNewPage = 28;
-	lEndFile = 29;
-	lastCharClass = 29;
+	lBlank = 22;
+	lIllegal = 23;
+	lNewLine = 24;
+	lTab = 25;
+	lNewPage = 26;
+	lEndFile = 27;
+	lastCharClass = 27;
 
 { ===== }
 
@@ -126,27 +124,27 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	pInteger = 26;
 	pLiteral = 27;
 	lastCompoundInputToken = 27;
-	pNewLine = 28;
-	pEndFile = 29;
-	pPlus = 30;
-	pMinus = 31;
-	pStar = 32;
-	pColonEquals = 33;
-	pDot = 34;
-	pComma = 35;
-	pSemicolon = 36;
-	pColon = 37;
-	pEquals = 38;
-	pNotEqual = 39;
-	pLess = 40;
-	pLessEqual = 41;
-	pGreaterEqual = 42;
-	pGreater = 43;
-	pLeftParen = 44;
-	pRightParen = 45;
-	pLeftBracket = 46;
-	pRightBracket = 47;
-	pPercent = 48;
+	pNot = 28;
+	pNewLine = 29;
+	pEndFile = 30;
+	pPlus = 31;
+	pMinus = 32;
+	pStar = 33;
+	pAssign = 34;
+	pDot = 35;
+	pComma = 36;
+	pSemicolon = 37;
+	pColon = 38;
+	pEquals = 39;
+	pNotEqual = 40;
+	pLess = 41;
+	pLessEqual = 42;
+	pGreaterEqual = 43;
+	pGreater = 44;
+	pLeftParen = 45;
+	pRightParen = 46;
+	pLeftBracket = 47;
+	pRightBracket = 48;
 	pHash = 49;
 	pExclamation = 50;
 	pQuestion = 51;
@@ -155,7 +153,6 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	lastSyntaxToken = 53;
 
 { ===== }
-
 
 	{ Parser -> Semantic pass token stream definitions }
 
@@ -260,9 +257,8 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	eIllegalChar = 5;
 	eLiteralLine = 6;
 	eLiteralEOF = 7;
-	eCommentEOF = 8;
-	eNoSeparator = 9;
-	lastScanError = 9;
+	eNoSeparator = 8;
+	lastScanError = 8;
 
 	{ Screener error codes - values must be bigger than scanner error codes }
 	eNullString = 10;
@@ -565,8 +561,6 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 			write('syntax error at: ');
 			ReportSyntaxError
 		    end;
-		eCommentEOF:
-		    write('unclosed comment');
 		eLiteralEOF:
 		    write('unclosed literal string');
 		eLiteralLine:
@@ -825,8 +819,6 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	    charClassMap[ord('>')] := lRightAngle;
 	    charClassMap[ord('[')] := lLeftBracket;
 	    charClassMap[ord(']')] := lRightBracket;
-	    charClassMap[ord('{')] := lLeftBrace;
-	    charClassMap[ord('}')] := lRightBrace;
 	    charClassMap[ord('%')] := lPercent;
 	    charClassMap[ord('#')] := lHash;
 	    charClassMap[ord('!')] := lExclamation;

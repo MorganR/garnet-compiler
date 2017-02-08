@@ -8,7 +8,7 @@
 % Abstract
 %     The scanner breaks a PT source program up into syntax tokens.
 %   It removes token separators - blanks, tabs, comments.  The
-%   scanner detects these lexical errors:  unclosed comments,
+%   scanner detects these lexical errors:
 %   unclosed literals, literals that cross a line boundary,
 %   illegal characters and integers followed by identifiers with no
 %   separator between them.
@@ -37,8 +37,6 @@ Input :
 	lRightParen	')'
 	lLeftBracket	'['
 	lRightBracket	']'
-	lLeftBrace	'{'
-	lRightBrace	'}'
 	lBlank
 	lIllegal
 	lNewLine
@@ -94,12 +92,13 @@ Output :
 
 	% Non-compound tokens - 
 	%   These tokens simply represent themselves.
+	pNot
 	pNewLine
 	pEndFile
 	pPlus
 	pMinus
 	pStar
-	pColonEquals
+	pAssign
 	pDot
 	pComma
 	pSemicolon
@@ -114,8 +113,7 @@ Output :
 	pRightParen
 	pLeftBracket
 	pRightBracket
-	pPercent         % Added outputs
-	pHash		 %
+	pHash		 % Added Garnet syntax tokens
 	pExclamation	 %
 	pQuestion	 %
 	pDollar		 %
@@ -127,7 +125,6 @@ Error :
 	firstScanError = eIllegalChar
 	eLiteralLine
 	eLiteralEOF
-	eCommentEOF
 	eNoSeparator
 	lastScanError = eNoSeparator;
 
@@ -148,19 +145,23 @@ rules
 % under some implementations of S/SL.
 Scan :
 	{[
-	    | lBlank :
+	    | lBlank, lTab:
 	    | lLetter:
 		oBufferSave
 		@Identifier
 	    | lNewLine:
 		.pNewLine
-	    | lTab:
 	    | '%':
-		.pPercent
+		@Comment
  	    | '#':
 		.pHash
 	    | '!':
-		.pExclamation
+		[
+			| '=':
+			.pNotEqual
+			| *:
+			.pNot
+		]
 	    | '?':
 		.pQuestion
 	    | '$':
@@ -168,12 +169,7 @@ Scan :
 	    | ';':
 		.pSemicolon
 	    | '(':
-		[
-		    | '*':
-			@AlternateComment
-		    | *:
-			.pLeftParen
-		]
+		.pLeftParen
 	    | ')':
 		.pRightParen
 	    | '[':
@@ -183,12 +179,7 @@ Scan :
 	    | ',':
 		.pComma
 	    | ':':
-		[
-		    | '=':
-			.pColonEquals
-		    | *:
-			.pColon
-		]
+		.pColon
 	    | lDigit:
 		oBufferSave
 		@Integer
@@ -200,7 +191,12 @@ Scan :
 		    | *:
 		]
 	    | '=':
-		.pEquals
+		[	
+			| '=':
+			.pEquals
+			| *:
+			.pAssign
+		]
 	    | '+':
 		.pPlus
 	    | lQuote:
@@ -216,8 +212,6 @@ Scan :
 		]
 	    | '<':
 		[
-		    | '>':
-			.pNotEqual
 		    | '=':
 			.pLessEqual
 		    | *:
@@ -230,8 +224,6 @@ Scan :
 		    | *:
 			.pGreater
 		]
-	    | '{':
-		@Comment
 	    | '*':
 		.pStar
 	    | lNewPage:
@@ -291,35 +283,16 @@ Literal :
 
 Comment :
 	% Discard the contents of a comment
+	% Comments end at a new line or end of file
 
 	{[
-	    | '}':
-		>
 	    | lNewLine:
 		.pNewLine
-	    | lEndFile:		% comment must be closed before EOF
-		#eCommentEOF
+		>
+	    | lEndFile:
 		.pEndFile
 		>
 	    | *:	% comment may contain any other character
-		?
-	]};
-
-AlternateComment :
-	{[
-	    | '*':
-		[
-		    | ')':
-			>
-		    | *:
-		]
-	    | lNewLine:
-		.pNewLine
-	    | lEndFile:
-		#eCommentEOF
-		.pEndFile
-		>
-	    | *:
 		?
 	]};
 
