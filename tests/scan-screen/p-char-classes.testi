@@ -1,0 +1,6 @@
+if [ $(grep "lIllegal" "p-char-classes.resi" | wc -l) -eq 6 ]
+then
+	echo "pass"
+else
+	echo "fail"
+fi

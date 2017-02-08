@@ -1,0 +1,4 @@
+Check that old pt-style chars no longer exist:
+<> - pt "not"
+{} - curly brackets
+' - char identifier
