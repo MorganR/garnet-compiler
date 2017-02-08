@@ -67,18 +67,35 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	lRightParen = 14;
 	lLeftBracket = 15;
 	lRightBracket = 16;
+
 	lBlank = 17;
 	lIllegal = 18;
 	lNewLine = 19;
 	lTab = 20;
 	lNewPage = 21;
-    lPercent = 22; % Added inputs
-	lHash	= 23;	 %
-	lExclamation = 24; %
-	lQuestion = 25;	 %
-	lDollar	= 26;	 %
+    lPercent = 22; 
+	lHash	= 23;	 
+	lExclamation = 24; 
+	lQuestion = 25;	 
+	lDollar	= 26;	 
 	lEndFile = 27;
 	lastCharClass = 27;
+	lLeftBrace = 17;
+	lRightBrace = 18;
+	lBlank = 19;
+	lIllegal = 20;
+	lNewLine = 21;
+	lTab = 22;
+	lNewPage = 23;
+	lEndFile = 29;
+	lastCharClass = 29;
+        lPercent = 24; 
+	lHash	= 25;	 
+	lExclamation = 26; 
+	lQuestion = 27;	 
+	lDollar	= 28;	 
+	
+
 
 { ===== }
 
@@ -144,11 +161,18 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	pRightParen = 44;
 	pLeftBracket = 45;
 	pRightBracket = 46;
-	pHash	= 47;	 % Added Inputs
-	pQuestion = 48;	 %
-	pDollar	= 49;	 %
+	pHash	= 47;	 
+	pQuestion = 48;	 
+	pDollar	= 49;	 
 	pDotDot = 50;
 	lastSyntaxToken = 50;
+	pDotDot = 52;
+	lastSyntaxToken = 52;
+	pPercent = 47;
+	pHash	= 48;	 
+	pExclamation = 49; 
+	pQuestion = 50;	 
+	pDollar	= 51;	 
 
 { ===== }
 
@@ -325,7 +349,7 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	{ misc. }
 	tab = '	';
 	blank = ' ';
-	quote = '''';
+	quote = '"';
 	null = 0;
 
 	{ Phase identification values - for use by common routines }
