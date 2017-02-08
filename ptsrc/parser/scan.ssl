@@ -50,7 +50,7 @@ Input :
 
 Output :
 	% Keyword tokens -
-	%   Tokens pDiv through pRepeat are keywords which will be separated
+	%   Tokens pDiv through pModule are keywords which will be separated
 	%   from user defined identifiers by the Screener.  This Scanner
 	%   treats them all as identifiers.
 	pDiv 
@@ -120,9 +120,7 @@ Output :
 	pExclamation	 %
 	pQuestion	 %
 	pDollar		 %
-	
 	pDotDot
-	
 	lastSyntaxToken = pDotDot;
 
 Error :
