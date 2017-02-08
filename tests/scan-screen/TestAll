@@ -35,3 +35,5 @@ done
 
 echo "${failCount} test(s) failed, ${passCount} test(s) passed." >> TestResults
 
+cat TestResults
+
