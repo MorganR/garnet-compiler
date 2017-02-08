@@ -151,7 +151,7 @@ Scan :
 		@Identifier
 	    | lNewLine:
 		.pNewLine
-	    | '%':
+	    | '%':           %Added rules for new inputs and changed % to be treated as a comment
 		@Comment
  	    | '#':
 		.pHash
