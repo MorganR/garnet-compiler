@@ -17,12 +17,11 @@ Input :
 	lLetter 
 	firstCharClass = lLetter 
 	lDigit
-	lPercent        '%' % Added inputs
+	lPercent        '%' % Added garnet inputs
 	lHash		'#' %
 	lExclamation	'!' %
 	lQuestion	'?' %
 	lDollar		'$' %
-	
 	lPlus		'+'
 	lMinus		'-'
 	lStar		'*'
@@ -31,7 +30,7 @@ Input :
 	lDot		'.'
 	lComma		','
 	lSemicolon	';'
-	lQuote          
+	lQuote
 	lLeftAngle	'<'
 	lRightAngle	'>'
 	lLeftParen	'('
