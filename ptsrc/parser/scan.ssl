@@ -17,6 +17,12 @@ Input :
 	lLetter 
 	firstCharClass = lLetter 
 	lDigit
+	lPercent        '%' % Added inputs
+	lHash		'#' %
+	lExclamation	'!' %
+	lQuestion	'?' %
+	lDollar		'$' %
+	
 	lPlus		'+'
 	lMinus		'-'
 	lStar		'*'
@@ -25,15 +31,13 @@ Input :
 	lDot		'.'
 	lComma		','
 	lSemicolon	';'
-	lQuote
+	lQuote          
 	lLeftAngle	'<'
 	lRightAngle	'>'
 	lLeftParen	'('
 	lRightParen	')'
 	lLeftBracket	'['
 	lRightBracket	']'
-	lLeftBrace	'{'
-	lRightBrace	'}'
 	lBlank
 	lIllegal
 	lNewLine
@@ -56,25 +60,23 @@ Output :
 	pElse
 	pOf
 	pEnd
+	pUntil
 	pDo
 	pArray
 	pFile
 	pPacked
+	pProgram
+	pConst
 	pVar
 	pType
+	pProcedure
+	pBegin
 	pIf
 	pCase
 	pWhile
-	% Add garnet keywords below
-	pUsing
-	pVal
-	pDef
-	pUnless
-	pElsif
-	pBreak
-	pWhen
-	pModule
-	lastKeywordToken = pModule
+	pRepeat
+	
+	lastKeywordToken = pRepeat
 
 	% Scanner tokens -
 	%   These are the tokens actually recognized by the Scanner itself.
@@ -89,12 +91,13 @@ Output :
 
 	% Non-compound tokens - 
 	%   These tokens simply represent themselves.
+	pNot	 %
 	pNewLine
 	pEndFile
 	pPlus
 	pMinus
 	pStar
-	pColonEquals
+	pAssign
 	pDot
 	pComma
 	pSemicolon
@@ -109,6 +112,9 @@ Output :
 	pRightParen
 	pLeftBracket
 	pRightBracket
+	pHash		 %	Added Syntax Tokens
+	pQuestion	 %
+	pDollar		 %
 	pDotDot
 	lastSyntaxToken = pDotDot;
 
@@ -117,7 +123,6 @@ Error :
 	firstScanError = eIllegalChar
 	eLiteralLine
 	eLiteralEOF
-	eCommentEOF
 	eNoSeparator
 	lastScanError = eNoSeparator;
 
@@ -138,22 +143,31 @@ rules
 % under some implementations of S/SL.
 Scan :
 	{[
-	    | lBlank :
+	    | lBlank, lTab, lNewPage:
 	    | lLetter:
 		oBufferSave
 		@Identifier
 	    | lNewLine:
 		.pNewLine
-	    | lTab:
+	    | '%':
+		@Comment
+ 	    | '#':
+		.pHash
+	    | '!':
+		[
+			| '=':
+			.pNotEqual
+			| *:
+			.pNot
+		]
+	    | '?':
+		.pQuestion
+	    | '$':
+		.pDollar
 	    | ';':
 		.pSemicolon
 	    | '(':
-		[
-		    | '*':
-			@AlternateComment
-		    | *:
-			.pLeftParen
-		]
+		.pLeftParen
 	    | ')':
 		.pRightParen
 	    | '[':
@@ -163,12 +177,7 @@ Scan :
 	    | ',':
 		.pComma
 	    | ':':
-		[
-		    | '=':
-			.pColonEquals
-		    | *:
-			.pColon
-		]
+		.pColon
 	    | lDigit:
 		oBufferSave
 		@Integer
@@ -180,7 +189,12 @@ Scan :
 		    | *:
 		]
 	    | '=':
-		.pEquals
+		[	
+			| '=':
+			.pEquals
+			| *:
+			.pAssign
+		]
 	    | '+':
 		.pPlus
 	    | lQuote:
@@ -196,8 +210,6 @@ Scan :
 		]
 	    | '<':
 		[
-		    | '>':
-			.pNotEqual
 		    | '=':
 			.pLessEqual
 		    | *:
@@ -210,11 +222,8 @@ Scan :
 		    | *:
 			.pGreater
 		]
-	    | '{':
-		@Comment
 	    | '*':
 		.pStar
-	    | lNewPage:
 	    | lEndFile:
 		.pEndFile
 	    | *:
@@ -273,33 +282,13 @@ Comment :
 	% Discard the contents of a comment
 
 	{[
-	    | '}':
-		>
 	    | lNewLine:
 		.pNewLine
-	    | lEndFile:		% comment must be closed before EOF
-		#eCommentEOF
+		>
+	    | lEndFile:
 		.pEndFile
 		>
 	    | *:	% comment may contain any other character
-		?
-	]};
-
-AlternateComment :
-	{[
-	    | '*':
-		[
-		    | ')':
-			>
-		    | *:
-		]
-	    | lNewLine:
-		.pNewLine
-	    | lEndFile:
-		#eCommentEOF
-		.pEndFile
-		>
-	    | *:
 		?
 	]};
 
