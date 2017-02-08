@@ -1,0 +1,9 @@
+ptLib="$1"
+ptScanDefs="$2"
+
+if [ $(ssltrace "ptc -o1 -t1 -L ${ptLib} bad-g-strings.pt" "${ptScanDefs}" | grep "#eLiteralLine" | wc -l) -eq 2 ]
+then
+	echo "pass"
+else
+	echo "false"
+fi
