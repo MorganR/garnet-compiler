@@ -1,6 +1,6 @@
-if grep -q Illegal g-strings.resi
+if [ $(grep Illegal g-strings.resi | wc -l) -eq 6 ]
 then
-  echo "fail"
-else
   echo "pass"
+else
+  echo "fail"
 fi

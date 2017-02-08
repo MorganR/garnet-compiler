@@ -2,3 +2,4 @@ var str : string
 str = "word"
 str = ""
 str = "string with "" quote"
+str = "string with illegals ' { }"

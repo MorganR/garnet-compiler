@@ -1,3 +1,3 @@
 Tests that garnet-style strings are working.
-Checks the -i output to ensure that no characters are registered as lIllegal chars.
-Tests a one-word string, string with a quote inside, and an empty string.
+Checks the -i output to ensure that only the {, }, and ' characters in the last string are registered as illegal inputs. The -e output is checked to make sure this does not affect the screener's ability to consider this string a valid literal.
+Also tests a one-word string, string with a quote inside, and an empty string.
