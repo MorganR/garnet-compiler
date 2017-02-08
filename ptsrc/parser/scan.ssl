@@ -98,7 +98,7 @@ Output :
 	pPlus
 	pMinus
 	pStar
-	pAssign
+	pAssign	%changed to have a more descriptive name of funcionality
 	pDot
 	pComma
 	pSemicolon
@@ -114,7 +114,6 @@ Output :
 	pLeftBracket
 	pRightBracket
 	pHash		 % Added Garnet syntax tokens
-	pExclamation	 %
 	pQuestion	 %
 	pDollar		 %
 	pDotDot
@@ -124,7 +123,7 @@ Error :
 	eIllegalChar = 5
 	firstScanError = eIllegalChar
 	eLiteralLine
-	eLiteralEOF
+	eLiteralEOF	%eCommentEOF removed as it is no longer relevant
 	eNoSeparator
 	lastScanError = eNoSeparator;
 
@@ -151,20 +150,20 @@ Scan :
 		@Identifier
 	    | lNewLine:
 		.pNewLine
-	    | '%':           %Added rules for new inputs and changed % to be treated as a comment
+	    | '%':	%Added rule for % related to new comment style. Further modification in the Comment method
 		@Comment
- 	    | '#':
+ 	    | '#':	%Added rule for #
 		.pHash
-	    | '!':
+	    | '!':	%Added rule for ! involving its leading of not and not equals
 		[
 			| '=':
 			.pNotEqual
 			| *:
 			.pNot
 		]
-	    | '?':
+	    | '?':	%Added rule for ?
 		.pQuestion
-	    | '$':
+	    | '$':	%Added rule for $
 		.pDollar
 	    | ';':
 		.pSemicolon
@@ -195,7 +194,7 @@ Scan :
 			| '=':
 			.pEquals
 			| *:
-			.pAssign
+			.pAssign	%changed to have a more descriptive name of funcionality
 		]
 	    | '+':
 		.pPlus
@@ -283,7 +282,7 @@ Literal :
 
 Comment :
 	% Discard the contents of a comment
-	% Comments end at a new line or end of file
+	% Modified so comments end at a new line or end of file
 
 	{[
 	    | lNewLine:
