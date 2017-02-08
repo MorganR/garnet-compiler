@@ -1681,12 +1681,15 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
     { Main program ScannerParser }
     begin
 	Initialize;
+
 	parseInputToken := pNewLine;
 	newInputLine := false;
-	while parserInputToke <> pEndFile do
-	acceptSyntaxToken;
-	{Parser;
+
+	while parseInputToken <> pEndFile do
+	AcceptSyntaxToken;
+
+	{ Parser; }
 	{ No sense running semantic phase if serious syntax errors found }
-	if errorCount > 0 then
-	    rewrite(parseStream {, NparseStream} );}
+	{ if errorCount > 0 then
+	    rewrite(parseStream }{, NparseStream}{ );}
     end.  { ScannerParser }
