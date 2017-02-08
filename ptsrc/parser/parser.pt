@@ -76,11 +76,11 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	lNewPage = 23;
 	lEndFile = 29;
 	lastCharClass = 29;
-        lPercent = 24; % Added inputs
-	lHash	= 25;	 %
-	lExclamation = 26; %
-	lQuestion = 27;	 %
-	lDollar	= 28;	 %
+        lPercent = 24; 
+	lHash	= 25;	 
+	lExclamation = 26; 
+	lQuestion = 27;	 
+	lDollar	= 28;	 
 	
 
 { ===== }
@@ -149,11 +149,11 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	pRightBracket = 46;
 	pDotDot = 52;
 	lastSyntaxToken = 52;
-	pPercent = 47; % Added inputs
-	pHash	= 48;	 %
-	pExclamation = 49; %
-	pQuestion = 50;	 %
-	pDollar	= 51;	 %
+	pPercent = 47;
+	pHash	= 48;	 
+	pExclamation = 49; 
+	pQuestion = 50;	 
+	pDollar	= 51;	 
 
 { ===== }
 
@@ -331,7 +331,7 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	{ misc. }
 	tab = '	';
 	blank = ' ';
-	quote = '''';
+	quote = '"';
 	null = 0;
 
 	{ Phase identification values - for use by common routines }
