@@ -1,0 +1,12 @@
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+  .pColon
+  .pIdentifier
+ .pNewLine
+  .pIdentifier
+  .pEquals
+  .pIllegal
+  .pIdentifier
+  .pIllegal
+ .pNewLine
+ .pEndFile
