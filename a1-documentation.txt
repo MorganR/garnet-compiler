@@ -1,0 +1,21 @@
+Assignment 1
+Due: February 8th, 2017
+
+The changes were broken into different sections, outlined below, to allow partners to work simultaneously.
+
+Keywords:
+ - Old PT keywords were removed from stdIdentifiers
+ - New Garnet keywords were added at the bottom of the keywords list in stdIdentifiers
+ - The same keywords were likewise swapped, using the same order, in the scan.ssl file.
+ - After compiling these changes, the parser.pt file was updated with the new token numers from scan.def. The numberStdIdentifiers was also increased by one to equal 44, to account for the net gain of one keyword.
+
+Character Classes:
+
+
+Syntax Tokens:
+
+
+String Literals:
+
+
+Comments:
