@@ -8,4 +8,5 @@ ptsrc/ptam/ptam.sst
 ptsrc/ptruntimelinux/ptruntime.o
 ptsrc/semantic/semantic.out
 ptsrc/semantic/semantic.sst
-
+tests/**/TestResults
+tests/**/*.res
