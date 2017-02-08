@@ -1,8 +1,8 @@
 Group account: CISC458k
 
 Students:
-	Derek Shum, Student Number: , Net ID:
-	Michael Dulberg, Student Number: , Net ID:
+	Derek Shum, Student Number: 10073643, Net ID: 12ds27
+	Michael Dulberg, Student Number: 10053956, Net ID: 11mjd21
 	Morgan Roff, Student Number: 10044329, Net ID: 11mr60
 	
 All test files are in tests/scan-screen/. 'tests/' sits level with 'ptsrc/'.
