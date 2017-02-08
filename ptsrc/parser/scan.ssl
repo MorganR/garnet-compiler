@@ -59,23 +59,25 @@ Output :
 	pElse
 	pOf
 	pEnd
-	pUntil
 	pDo
 	pArray
 	pFile
 	pPacked
-	pProgram
-	pConst
 	pVar
 	pType
-	pProcedure
-	pBegin
 	pIf
 	pCase
 	pWhile
-	pRepeat
-	
-	lastKeywordToken = pRepeat
+	% Add garnet keywords below
+	pUsing
+	pVal
+	pDef
+	pUnless
+	pElsif
+	pBreak
+	pWhen
+	pModule
+	lastKeywordToken = pModule
 
 	% Scanner tokens -
 	%   These are the tokens actually recognized by the Scanner itself.
@@ -143,7 +145,7 @@ rules
 % under some implementations of S/SL.
 Scan :
 	{[
-	    | lBlank, lTab, lNewPage:
+	    | lBlank, lTab:
 	    | lLetter:
 		oBufferSave
 		@Identifier
@@ -224,6 +226,7 @@ Scan :
 		]
 	    | '*':
 		.pStar
+	    | lNewPage:
 	    | lEndFile:
 		.pEndFile
 	    | *:
