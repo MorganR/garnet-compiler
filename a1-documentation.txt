@@ -14,6 +14,7 @@ Character Classes:
 - Added Charclassmap entries for each character class added
 - Set quote input to look for double quotes instead
 - set not input to look for '!'
+- Added ssl logic to look for new characters mentioned above
 
 Syntax Tokens:
 
