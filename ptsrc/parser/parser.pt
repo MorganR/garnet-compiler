@@ -132,7 +132,7 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	pPlus = 29;
 	pMinus = 30;
 	pStar = 31;
-	pColonEquals = 32;
+	pAssign = 32;
 	pDot = 33;
 	pComma = 34;
 	pSemicolon = 35;
@@ -149,11 +149,11 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	pRightBracket = 46;
 	pDotDot = 52;
 	lastSyntaxToken = 52;
-	pPercent = 47;
-	pHash	= 48;	 
-	pExclamation = 49; 
-	pQuestion = 50;	 
-	pDollar	= 51;	 
+	pPercent = 47; % Added inputs
+	pHash	= 48;	 %
+	pQuestion = 49;	 %
+	pDollar	= 50;	 %
+
 
 { ===== }
 

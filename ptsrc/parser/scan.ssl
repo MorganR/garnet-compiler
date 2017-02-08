@@ -58,7 +58,6 @@ Output :
 	pMod
 	pOr
 	pAnd
-	pNot
 	pThen
 	pElse
 	pOf
@@ -99,7 +98,7 @@ Output :
 	pPlus
 	pMinus
 	pStar
-	pColonEquals
+	pAssign
 	pDot
 	pComma
 	pSemicolon
@@ -116,7 +115,7 @@ Output :
 	pRightBracket
 	pPercent         % Added outputs
 	pHash		 %
-	pExclamation	 %
+	pNot	 %
 	pQuestion	 %
 	pDollar		 %
 	
@@ -150,19 +149,23 @@ rules
 % under some implementations of S/SL.
 Scan :
 	{[
-	    | lBlank :
+	    | lBlank, lTab, lNewPage:
 	    | lLetter:
 		oBufferSave
 		@Identifier
 	    | lNewLine:
 		.pNewLine
-	    | lTab:
 	    | '%':
 		.pPercent
  	    | '#':
 		.pHash
 	    | '!':
-		.pExclamation
+		[
+			| '=':
+			.pNotEqual
+			| *:
+			.pNot
+		]
 	    | '?':
 		.pQuestion
 	    | '$':
@@ -185,12 +188,7 @@ Scan :
 	    | ',':
 		.pComma
 	    | ':':
-		[
-		    | '=':
-			.pColonEquals
-		    | *:
-			.pColon
-		]
+		.pColon
 	    | lDigit:
 		oBufferSave
 		@Integer
@@ -202,7 +200,12 @@ Scan :
 		    | *:
 		]
 	    | '=':
-		.pEquals
+		[	
+			| '=':
+			.pEquals
+			| *:
+			.pAssign
+		]
 	    | '+':
 		.pPlus
 	    | lQuote:
@@ -218,8 +221,6 @@ Scan :
 		]
 	    | '<':
 		[
-		    | '>':
-			.pNotEqual
 		    | '=':
 			.pLessEqual
 		    | *:
@@ -236,7 +237,6 @@ Scan :
 		@Comment
 	    | '*':
 		.pStar
-	    | lNewPage:
 	    | lEndFile:
 		.pEndFile
 	    | *:
