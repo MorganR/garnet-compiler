@@ -1,0 +1,26 @@
+13d12
+< not
+18d16
+< until
+23,24d20
+< program
+< const
+27,28d22
+< procedure
+< begin
+32c26,34
+< repeat
+---
+> % Add garnet keywords below
+> using
+> val
+> def
+> unless
+> elsif
+> break
+> when
+> module
+42c44
+< char
+---
+> string
