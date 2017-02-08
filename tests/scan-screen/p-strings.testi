@@ -1,0 +1,6 @@
+if [ $(grep -q "lIllegal" "p-strings.resi" | wc -l) -eq 2 ]
+then
+	echo "pass"
+else
+	echo "fail"
+fi
