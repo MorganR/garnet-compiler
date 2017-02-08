@@ -35,7 +35,7 @@ do
       (( failCount += 1 ))
     fi
   fi
-  if (diff ${baseName}.rese ${baseName}.exp -q)
+  if (diff ${baseName}.rese ${baseName}.exp -qw)
   then
     echo "E-Test passed." >> TestResults
     (( passCount += 1 ))
