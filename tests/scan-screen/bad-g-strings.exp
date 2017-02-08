@@ -5,14 +5,8 @@
  .pNewLine
   .pIdentifier
  .pAssign
-  .pLiteral
- .pNewLine
+  .pNewLine
   .pIdentifier
  .pAssign
-  .pLiteral
- .pNewLine
-  .pIdentifier
- .pAssign
-  .pLiteral
- .pNewLine
+  .pNewLine
  .pEndFile
