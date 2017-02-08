@@ -1,0 +1,2 @@
+Test that garnet-style comments have been implemented.
+The first line is just a comment, the second starts with a variable declaration.

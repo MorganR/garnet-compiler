@@ -1,0 +1,2 @@
+Test the PT style comments have been removed.
+The first two lines are false PT comments and should result in a pIdentifier for each word.
