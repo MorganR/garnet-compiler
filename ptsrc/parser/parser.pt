@@ -72,13 +72,14 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	lNewLine = 19;
 	lTab = 20;
 	lNewPage = 21;
-    lPercent = 22; % Added inputs
-	lHash	= 23;	 %
-	lExclamation = 24; %
-	lQuestion = 25;	 %
-	lDollar	= 26;	 %
+    lPercent = 22; 
+	lHash	= 23;	 
+	lExclamation = 24; 
+	lQuestion = 25;	 
+	lDollar	= 26;	 
 	lEndFile = 27;
 	lastCharClass = 27;
+
 
 { ===== }
 
