@@ -10,7 +10,10 @@ Keywords:
  - After compiling these changes, the parser.pt file was updated with the new token numers from scan.def. The numberStdIdentifiers was also increased by one to equal 44, to account for the net gain of one keyword.
 
 Character Classes:
-
+- Added the hash, exclamation, question and dollar characters to parser.pt and scan.ssl input and output definitions
+- Added Charclassmap entries for each character class added
+- Set quote input to look for double quotes instead
+- set not input to look for '!'
 
 Syntax Tokens:
 
