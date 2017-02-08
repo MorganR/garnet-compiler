@@ -2,8 +2,12 @@
   .pIdentifier
   .pIdentifier
  .pNewLine
+ .pLeftParen
+ .pStar
   .pIdentifier
   .pIdentifier
   .pIdentifier
+ .pStar
+ .pRightParen
  .pNewLine
  .pEndFile
