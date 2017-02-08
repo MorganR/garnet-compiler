@@ -30,7 +30,7 @@ Input :
 	lDot		'.'
 	lComma		','
 	lSemicolon	';'
-	lQuote          
+	lQuote
 	lLeftAngle	'<'
 	lRightAngle	'>'
 	lLeftParen	'('
@@ -92,7 +92,7 @@ Output :
 
 	% Non-compound tokens - 
 	%   These tokens simply represent themselves.
-	pNot	 %
+	pNot
 	pNewLine
 	pEndFile
 	pPlus
