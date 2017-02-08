@@ -1,2 +1,2 @@
 Tests that PT-style 'char's have been removed.
-Checks the -i output to ensure that {} are now registered as lIllegal chars.
+Checks the -i output to ensure that ' chars are now registered as lIllegal chars.
