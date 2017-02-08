@@ -1,4 +1,4 @@
 Check that old pt-style chars no longer exist:
-<> - pt "not"
+<> - pt "notEquals"
 {} - curly brackets
 ' - char identifier
