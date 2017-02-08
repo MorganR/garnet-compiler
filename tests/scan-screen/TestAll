@@ -18,4 +18,7 @@ do
   baseName="$(basename -s .pt ""$f"")"
   cat ${baseName}.desc >> TestResults
   ssltrace "ptc -t1 -o1 -L ${ptLib} $f" "${ptScanDefs}" -e >> "${baseName}.res"
+  if $(diff ${baseName}.res ${baseName}.exp)
+    echo "Test passed." >> TestResults
+    echo >> TestResults # blank line
 done
