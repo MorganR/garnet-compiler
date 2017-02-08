@@ -54,9 +54,9 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	lDigit = 1;
 	lPercent = 2;
 	lHash = 3;
-	lExclamation = 4;
+	lExclamation = 4; {Newly added input tokens: lExclamation, lQuestion, lDollar}
 	lQuestion = 5;
-	lDollar = 6;
+	lDollar = 6; 
 	lPlus = 7;
 	lMinus = 8;
 	lStar = 9;
@@ -147,7 +147,7 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	pRightBracket = 48;
 	pHash = 49;
 	pExclamation = 50;
-	pQuestion = 51;
+	pQuestion = 51; {Newly added outputs: pQuestion, pDollar, Pexclamation}
 	pDollar = 52;
 	pDotDot = 53;
 	lastSyntaxToken = 53;
@@ -326,7 +326,7 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	{ misc. }
 	tab = '	';
 	blank = ' ';
-	quote = '"';
+	quote = '"'; {Changed to recognize double quotes}
 	null = 0;
 
 	{ Phase identification values - for use by common routines }
