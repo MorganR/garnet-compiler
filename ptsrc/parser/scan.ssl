@@ -38,8 +38,6 @@ Input :
 	lRightParen	')'
 	lLeftBracket	'['
 	lRightBracket	']'
-	lLeftBrace	'{'
-	lRightBrace	'}'
 	lBlank
 	lIllegal
 	lNewLine
@@ -58,7 +56,6 @@ Output :
 	pMod
 	pOr
 	pAnd
-	pNot
 	pThen
 	pElse
 	pOf
@@ -99,7 +96,7 @@ Output :
 	pPlus
 	pMinus
 	pStar
-	pColonEquals
+	pAssign
 	pDot
 	pComma
 	pSemicolon
@@ -114,14 +111,11 @@ Output :
 	pRightParen
 	pLeftBracket
 	pRightBracket
-	pPercent         % Added outputs
-	pHash		 %
-	pExclamation	 %
+	pHash		 %	Added Syntax Tokens
+	pNot	 %
 	pQuestion	 %
 	pDollar		 %
-	
 	pDotDot
-	
 	lastSyntaxToken = pDotDot;
 
 Error :
@@ -129,7 +123,6 @@ Error :
 	firstScanError = eIllegalChar
 	eLiteralLine
 	eLiteralEOF
-	eCommentEOF
 	eNoSeparator
 	lastScanError = eNoSeparator;
 
@@ -150,19 +143,23 @@ rules
 % under some implementations of S/SL.
 Scan :
 	{[
-	    | lBlank :
+	    | lBlank, lTab, lNewPage:
 	    | lLetter:
 		oBufferSave
 		@Identifier
 	    | lNewLine:
 		.pNewLine
-	    | lTab:
 	    | '%':
-		.pPercent
+		@Comment
  	    | '#':
 		.pHash
 	    | '!':
-		.pExclamation
+		[
+			| '=':
+			.pNotEqual
+			| *:
+			.pNot
+		]
 	    | '?':
 		.pQuestion
 	    | '$':
@@ -170,12 +167,7 @@ Scan :
 	    | ';':
 		.pSemicolon
 	    | '(':
-		[
-		    | '*':
-			@AlternateComment
-		    | *:
-			.pLeftParen
-		]
+		.pLeftParen
 	    | ')':
 		.pRightParen
 	    | '[':
@@ -185,12 +177,7 @@ Scan :
 	    | ',':
 		.pComma
 	    | ':':
-		[
-		    | '=':
-			.pColonEquals
-		    | *:
-			.pColon
-		]
+		.pColon
 	    | lDigit:
 		oBufferSave
 		@Integer
@@ -202,7 +189,12 @@ Scan :
 		    | *:
 		]
 	    | '=':
-		.pEquals
+		[	
+			| '=':
+			.pEquals
+			| *:
+			.pAssign
+		]
 	    | '+':
 		.pPlus
 	    | lQuote:
@@ -218,8 +210,6 @@ Scan :
 		]
 	    | '<':
 		[
-		    | '>':
-			.pNotEqual
 		    | '=':
 			.pLessEqual
 		    | *:
@@ -232,11 +222,8 @@ Scan :
 		    | *:
 			.pGreater
 		]
-	    | '{':
-		@Comment
 	    | '*':
 		.pStar
-	    | lNewPage:
 	    | lEndFile:
 		.pEndFile
 	    | *:
@@ -295,33 +282,13 @@ Comment :
 	% Discard the contents of a comment
 
 	{[
-	    | '}':
-		>
 	    | lNewLine:
 		.pNewLine
-	    | lEndFile:		% comment must be closed before EOF
-		#eCommentEOF
+		>
+	    | lEndFile:
 		.pEndFile
 		>
 	    | *:	% comment may contain any other character
-		?
-	]};
-
-AlternateComment :
-	{[
-	    | '*':
-		[
-		    | ')':
-			>
-		    | *:
-		]
-	    | lNewLine:
-		.pNewLine
-	    | lEndFile:
-		#eCommentEOF
-		.pEndFile
-		>
-	    | *:
 		?
 	]};
 
