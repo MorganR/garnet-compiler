@@ -1,4 +1,4 @@
-if [ $(grep -q "lIllegal" "p-strings.resi" | wc -l) -eq 2 ]
+if [ $(grep "lIllegal" "p-strings.resi" | wc -l) -eq 5 ]
 then
 	echo "pass"
 else
