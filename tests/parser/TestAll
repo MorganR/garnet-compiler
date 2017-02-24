@@ -1,0 +1,65 @@
+#!/bin/bash
+
+testingDir="$(pwd)"
+
+cd "../../ptsrc"
+
+ptBase="$(pwd)"
+ptLib="${ptBase}/lib/pt"
+ptParserDefs=${ptBase}/parser/parser.def
+
+cd "$testingDir"
+
+> TestResults
+
+passCount=0
+failCount=0
+
+for f in ./*.pt
+do
+  echo "Testing file $(basename $f)"
+  echo "############################" >> TestResults
+  baseName="$(basename -s .pt ""$f"")"
+  echo "$(basename $f):" >> TestResults
+  cat ${baseName}.desc >> TestResults
+  ssltrace "ptc -t2 -o2 -L ${ptLib} $f" "${ptParserDefs}" -e > "${baseName}.rese"
+  ssltrace "ptc -t2 -o2 -L ${ptLib} $f" "${ptParserDefs}" -i > "${baseName}.resi"
+  # Test against the -i output if there is a test script (.testi file)
+  if [ -e "${baseName}.testi" ]
+  then
+    if [[ `./${baseName}.testi` = pass ]]
+    then
+      echo "-i output passed." >> TestResults
+      (( passCount += 1 ))
+    else
+      echo "-i output FAILED." >> TestResults
+      (( failCount += 1 ))
+    fi
+  fi
+  # Run other test script if it exists (.testo file)
+  if [ -e "${baseName}.testo" ]
+  then
+    if [[ `./${baseName}.testo ${ptLib} ${ptScanDefs}` = pass ]]
+    then
+      echo "Additional test script passed." >> TestResults
+      (( passCount += 1 ))
+    else
+      echo "Additional test script FAILED." >> TestResults
+      (( failCount += 1 ))
+    fi
+  fi
+  # if (diff ${baseName}.rese ${baseName}.exp -qw)
+  # then
+  #   echo "-e output passed." >> TestResults
+  #   (( passCount += 1 ))
+  # else
+  #   echo "-e output FAILED." >> TestResults
+  #   (( failCount += 1 ))
+  # fi
+  echo >> TestResults
+done
+
+echo "${failCount} test(s) failed, ${passCount} test(s) passed." >> TestResults
+
+cat TestResults
+
