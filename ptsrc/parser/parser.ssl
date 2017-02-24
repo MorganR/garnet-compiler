@@ -115,8 +115,6 @@ Output :
 	sThen
 	sElse
 	sWhileStmt
-	sRepeatStmt
-	sRepeatEnd
 	sEq
 	sNE
 	sLT
@@ -134,7 +132,15 @@ Output :
 	sAnd
 	sNot
 	sNewLine
-	lastSemanticToken = sNewLine;
+	% Garnet tokens below
+	sPublic
+	sModule
+	sDoStmt
+	sBreakIf
+	sSubstring
+	sLength
+	sIndex
+	lastSemanticToken = sIndex;
 
 
 rules
