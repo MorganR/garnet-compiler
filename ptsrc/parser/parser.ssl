@@ -23,27 +23,20 @@ Input :
 	pMod			'mod'
 	pOr			'or'
 	pAnd			'and'
-	pNot			'not'
 	pThen			'then'
 	pElse			'else'
 	pOf			'of'
 	pEnd			'end'
-	pUntil			'until'
 	pDo			'do'
 	pArray			'array'
 	pFile			'file'
 	pPacked			'packed'
-	pProgram		'program'
-	pConst			'const'
 	pVar			'var'
 	pType			'type'
-	pProcedure		'procedure'
-	pBegin			'begin'
 	pIf			'if'
 	pCase			'case'
 	pWhile			'while'
-	pRepeat			'repeat'
-	lastKeywordToken = pRepeat 
+	lastKeywordToken = pWhile
 
 	pIdentifier 
 	firstCompoundInputToken = pIdentifier
