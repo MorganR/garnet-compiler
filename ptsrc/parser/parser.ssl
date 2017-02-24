@@ -36,7 +36,16 @@ Input :
 	pIf			'if'
 	pCase			'case'
 	pWhile			'while'
-	lastKeywordToken = pWhile
+	% Add garnet keywords below
+	pUsing			'using'
+	pVal			'val'
+	pDef			'def'
+	pUnless			'unless'
+	pElsif			'elsif
+	pBreak			'break'
+	pWhen			'when'
+	pModule			'module'
+	lastKeywordToken = pModule
 
 	pIdentifier 
 	firstCompoundInputToken = pIdentifier
@@ -44,18 +53,19 @@ Input :
 	pLiteral
 	lastCompoundInputToken = pLiteral
 
+	pNot
 	pNewLine
 	pEndFile
 	pPlus			'+'
 	pMinus			'-'
 	pStar			'*'
-	pColonEquals		':='
+	pAssign			'=' % Replaces pSemicolon for Garnet
 	pDot			'.'
 	pComma			','
 	pSemicolon		';'
 	pColon			':'
-	pEquals			'='
-	pNotEqual		'<>'
+	pEquals			'=='
+	pNotEqual		'!=' % Modified for Garnet
 	pLess			'<'
 	pLessEqual		'<='
 	pGreaterEqual		'>='
@@ -64,6 +74,9 @@ Input :
 	pRightParen		')'
 	pLeftBracket		'['
 	pRightBracket		']'
+	pHash			'#' % Garnet token
+	pQuestion		'?' % Garnet token
+	pDollar			'$' % Garnet token
 	pDotDot			'..'
 	lastSyntaxToken = pDotDot;
 
