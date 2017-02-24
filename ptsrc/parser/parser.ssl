@@ -151,15 +151,22 @@ Program :
 	pIdentifier .sIdentifier
 	% optional identifiers
 	{
-	    pIdentifier  .sIdentifier
-	    [
+		[
 		| ',':
 		| *:
 		    >
 	    ]
+	    pIdentifier  .sIdentifier
 	}
 	.sParmEnd
-	';'  @Block  '.';
+	@Declarations
+	@Statements
+
+Declarations :
+	% Process any Garnet constant, variable, or type declarations.
+	{[
+
+	]}
 
 Block :
 	% Strictly speaking, standard Pascal requires that declarations
