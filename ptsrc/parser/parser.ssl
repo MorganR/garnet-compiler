@@ -148,7 +148,7 @@ rules
 Program :
 	'using'  .sProgram
 	% program name
-	pIdentifier
+	pIdentifier .sIdentifier
 	% optional identifiers
 	{
 	    pIdentifier  .sIdentifier
