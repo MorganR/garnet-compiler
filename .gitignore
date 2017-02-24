@@ -1,5 +1,6 @@
 ptsrc/lib/pt/*
 ptsrc/bin/
+ptsrc/bin
 ptsrc/cmd/ptc
 ptsrc/coderlinux/coder.out
 ptsrc/coderlinux/coder.sst
@@ -11,7 +12,7 @@ ptsrc/semantic/semantic.sst
 ptsrc/parser/*.def
 ptsrc/parser/*.out
 ptsrc/parser/*.sst
-ptsrc/parser/scan.def.diffs
+ptsrc/parser/*.def.diffs
 
 tests/**/TestResults
 tests/**/*.rese
