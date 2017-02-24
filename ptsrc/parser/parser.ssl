@@ -146,11 +146,10 @@ Output :
 rules
 
 Program :
-	'program'  .sProgram
+	'using'  .sProgram
 	% program name
 	pIdentifier
-	% program parameters
-	'('
+	% optional identifiers
 	{
 	    pIdentifier  .sIdentifier
 	    [
@@ -159,7 +158,6 @@ Program :
 		    >
 	    ]
 	}
-	')'
 	.sParmEnd
 	';'  @Block  '.';
 
