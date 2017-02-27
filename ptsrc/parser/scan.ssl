@@ -1,7 +1,7 @@
 % PT Scanner.ssl   Ver. 1.04
 %
 % Date:  30 Jun 1980
-%	(revised 30 Dec 2016)
+%    (revised 30 Dec 2016)
 %
 % Author:  Alan Rosselet
 %
@@ -14,125 +14,125 @@
 %   separator between them.
 
 Input :
-	lLetter 
-	firstCharClass = lLetter 
-	lDigit
-	lPercent        '%' % Added garnet inputs
-	lHash		'#' %
-	lExclamation	'!' %
-	lQuestion	'?' %
-	lDollar		'$' %
-	lPlus		'+'
-	lMinus		'-'
-	lStar		'*'
-	lColon		':'
-	lEquals		'='
-	lDot		'.'
-	lComma		','
-	lSemicolon	';'
-	lQuote
-	lLeftAngle	'<'
-	lRightAngle	'>'
-	lLeftParen	'('
-	lRightParen	')'
-	lLeftBracket	'['
-	lRightBracket	']'
-	lBlank
-	lIllegal
-	lNewLine
-	lTab
-	lNewPage 
-	lEndFile
-	lastCharClass = lEndFile;
+    lLetter 
+    firstCharClass = lLetter 
+    lDigit
+    lPercent        '%' % Added garnet inputs
+    lHash        '#' %
+    lExclamation    '!' %
+    lQuestion    '?' %
+    lDollar        '$' %
+    lPlus        '+'
+    lMinus        '-'
+    lStar        '*'
+    lColon        ':'
+    lEquals        '='
+    lDot        '.'
+    lComma        ','
+    lSemicolon    ';'
+    lQuote
+    lLeftAngle    '<'
+    lRightAngle    '>'
+    lLeftParen    '('
+    lRightParen    ')'
+    lLeftBracket    '['
+    lRightBracket    ']'
+    lBlank
+    lIllegal
+    lNewLine
+    lTab
+    lNewPage 
+    lEndFile
+    lastCharClass = lEndFile;
 
 Output :
-	% Keyword tokens -
-	%   Tokens pDiv through pModule are keywords which will be separated
-	%   from user defined identifiers by the Screener.  This Scanner
-	%   treats them all as identifiers.
-	pDiv 
-	firstKeywordToken = pDiv
-	pMod
-	pOr
-	pAnd
-	pThen
-	pElse
-	pOf
-	pEnd
-	pDo
-	pArray
-	pFile
-	pPacked
-	pVar
-	pType
-	pIf
-	pCase
-	pWhile
-	% Add garnet keywords below
-	pUsing
-	pVal
-	pDef
-	pUnless
-	pElsif
-	pBreak
-	pWhen
-	pModule
-	lastKeywordToken = pModule
+    % Keyword tokens -
+    %   Tokens pDiv through pModule are keywords which will be separated
+    %   from user defined identifiers by the Screener.  This Scanner
+    %   treats them all as identifiers.
+    pDiv 
+    firstKeywordToken = pDiv
+    pMod
+    pOr
+    pAnd
+    pThen
+    pElse
+    pOf
+    pEnd
+    pDo
+    pArray
+    pFile
+    pPacked
+    pVar
+    pType
+    pIf
+    pCase
+    pWhile
+    % Add garnet keywords below
+    pUsing
+    pVal
+    pDef
+    pUnless
+    pElsif
+    pBreak
+    pWhen
+    pModule
+    lastKeywordToken = pModule
 
-	% Scanner tokens -
-	%   These are the tokens actually recognized by the Scanner itself.
+    % Scanner tokens -
+    %   These are the tokens actually recognized by the Scanner itself.
 
-	% Compound tokens - 
-	%   These will be sent to the parser with a value or index.
-	pIdentifier 
-	firstCompoundInputToken = pIdentifier
-	pInteger
-	pLiteral
-	lastCompoundInputToken = pLiteral
+    % Compound tokens - 
+    %   These will be sent to the parser with a value or index.
+    pIdentifier 
+    firstCompoundInputToken = pIdentifier
+    pInteger
+    pLiteral
+    lastCompoundInputToken = pLiteral
 
-	% Non-compound tokens - 
-	%   These tokens simply represent themselves.
-	pNot
-	pNewLine
-	pEndFile
-	pPlus
-	pMinus
-	pStar
-	pAssign	%changed to have a more descriptive name of funcionality
-	pDot
-	pComma
-	pSemicolon
-	pColon
-	pEquals
-	pNotEqual
-	pLess
-	pLessEqual
-	pGreaterEqual
-	pGreater
-	pLeftParen
-	pRightParen
-	pLeftBracket
-	pRightBracket
-	pHash		 % Added Garnet syntax tokens
-	pQuestion	 %
-	pDollar		 %
-	pDotDot
-	lastSyntaxToken = pDotDot;
+    % Non-compound tokens - 
+    %   These tokens simply represent themselves.
+    pNot
+    pNewLine
+    pEndFile
+    pPlus
+    pMinus
+    pStar
+    pAssign    %changed to have a more descriptive name of funcionality
+    pDot
+    pComma
+    pSemicolon
+    pColon
+    pEquals
+    pNotEqual
+    pLess
+    pLessEqual
+    pGreaterEqual
+    pGreater
+    pLeftParen
+    pRightParen
+    pLeftBracket
+    pRightBracket
+    pHash         % Added Garnet syntax tokens
+    pQuestion     %
+    pDollar         %
+    pDotDot
+    lastSyntaxToken = pDotDot;
 
 Error :
-	eIllegalChar = 5
-	firstScanError = eIllegalChar
-	eLiteralLine
-	eLiteralEOF	%eCommentEOF removed as it is no longer relevant
-	eNoSeparator
-	lastScanError = eNoSeparator;
+    eIllegalChar = 5
+    firstScanError = eIllegalChar
+    eLiteralLine
+    eLiteralEOF    %eCommentEOF removed as it is no longer relevant
+    eNoSeparator
+    lastScanError = eNoSeparator;
 
 mechanism Buffer :
     % Buffer saves the characters associated with the
     % compound tokens identifier, integer and literal.
 
     oBufferSave;
-	% Save the character form of the last accepted lexical token.
+    % Save the character form of the last accepted lexical token.
 
 
 
@@ -143,156 +143,156 @@ rules
 % may have a significant effect on performance
 % under some implementations of S/SL.
 Scan :
-	{[
-	    | lBlank, lTab:
-	    | lLetter:
-		oBufferSave
-		@Identifier
-	    | lNewLine:
-		.pNewLine
-	    | '%':	%Added rule for % related to new comment style. Further modification in the Comment method
-		@Comment
- 	    | '#':	%Added rule for #
-		.pHash
-	    | '!':	%Added rule for ! involving its leading of not and not equals
-		[
-			| '=':
-			.pNotEqual
-			| *:
-			.pNot
-		]
-	    | '?':	%Added rule for ?
-		.pQuestion
-	    | '$':	%Added rule for $
-		.pDollar
-	    | ';':
-		.pSemicolon
-	    | '(':
-		.pLeftParen
-	    | ')':
-		.pRightParen
-	    | '[':
-		.pLeftBracket
-	    | ']':
-		.pRightBracket
-	    | ',':
-		.pComma
-	    | ':':
-		.pColon
-	    | lDigit:
-		oBufferSave
-		@Integer
-		[
-		    | lLetter:
-			#eNoSeparator
-			oBufferSave
-			@Identifier
-		    | *:
-		]
-	    | '=':
-		[	
-			| '=':
-			.pEquals
-			| *:
-			.pAssign	%changed to have a more descriptive name of funcionality
-		]
-	    | '+':
-		.pPlus
-	    | lQuote:
-		@Literal
-	    | '-':
-		.pMinus
-	    | '.':
-		[
-		    | '.':
-			.pDotDot
-		    | *:
-			.pDot
-		]
-	    | '<':
-		[
-		    | '=':
-			.pLessEqual
-		    | *:
-			.pLess
-		]
-	    | '>':
-		[
-		    | '=':
-			.pGreaterEqual
-		    | *:
-			.pGreater
-		]
-	    | '*':
-		.pStar
-	    | lNewPage:
-	    | lEndFile:
-		.pEndFile
-	    | *:
-		?
-		#eIllegalChar
-	]};
+    {[
+        | lBlank, lTab:
+        | lLetter:
+        oBufferSave
+        @Identifier
+        | lNewLine:
+        .pNewLine
+        | '%':    %Added rule for % related to new comment style. Further modification in the Comment method
+        @Comment
+         | '#':    %Added rule for #
+        .pHash
+        | '!':    %Added rule for ! involving its leading of not and not equals
+        [
+            | '=':
+            .pNotEqual
+            | *:
+            .pNot
+        ]
+        | '?':    %Added rule for ?
+        .pQuestion
+        | '$':    %Added rule for $
+        .pDollar
+        | ';':
+        .pSemicolon
+        | '(':
+        .pLeftParen
+        | ')':
+        .pRightParen
+        | '[':
+        .pLeftBracket
+        | ']':
+        .pRightBracket
+        | ',':
+        .pComma
+        | ':':
+        .pColon
+        | lDigit:
+        oBufferSave
+        @Integer
+        [
+            | lLetter:
+            #eNoSeparator
+            oBufferSave
+            @Identifier
+            | *:
+        ]
+        | '=':
+        [    
+            | '=':
+            .pEquals
+            | *:
+            .pAssign    %changed to have a more descriptive name of funcionality
+        ]
+        | '+':
+        .pPlus
+        | lQuote:
+        @Literal
+        | '-':
+        .pMinus
+        | '.':
+        [
+            | '.':
+            .pDotDot
+            | *:
+            .pDot
+        ]
+        | '<':
+        [
+            | '=':
+            .pLessEqual
+            | *:
+            .pLess
+        ]
+        | '>':
+        [
+            | '=':
+            .pGreaterEqual
+            | *:
+            .pGreater
+        ]
+        | '*':
+        .pStar
+        | lNewPage:
+        | lEndFile:
+        .pEndFile
+        | *:
+        ?
+        #eIllegalChar
+    ]};
 
 Identifier :
-	% Assemble an identifier token
+    % Assemble an identifier token
 
-	{[
-	    | lLetter, lDigit:
-		oBufferSave
-	    | *:
-		.pIdentifier
-		>
-	]};
+    {[
+        | lLetter, lDigit:
+        oBufferSave
+        | *:
+        .pIdentifier
+        >
+    ]};
 
 Integer :
-	% Assemble an integer token
+    % Assemble an integer token
 
-	{[
-	    | lDigit:
-		oBufferSave
-	    | *:
-		.pInteger
-		>
-	]};
+    {[
+        | lDigit:
+        oBufferSave
+        | *:
+        .pInteger
+        >
+    ]};
 
 Literal :
-	% Assemble a literal string token
+    % Assemble a literal string token
 
-	{[
-	    | lQuote:
-		[
-		    | lQuote:
-			oBufferSave
-		    | *:
-			.pLiteral
-			>
-		]
-	    | lNewLine:		% literal must not cross a line boundary
-		#eLiteralLine
-		.pNewLine
-		>
-	    | lEndFile:		% literal must be closed before EOF
-		#eLiteralEOF
-		.pEndFile
-		>
-	    | *:	% literal may contain any other character
-		?
-		oBufferSave
-	]};
+    {[
+        | lQuote:
+        [
+            | lQuote:
+            oBufferSave
+            | *:
+            .pLiteral
+            >
+        ]
+        | lNewLine:        % literal must not cross a line boundary
+        #eLiteralLine
+        .pNewLine
+        >
+        | lEndFile:        % literal must be closed before EOF
+        #eLiteralEOF
+        .pEndFile
+        >
+        | *:    % literal may contain any other character
+        ?
+        oBufferSave
+    ]};
 
 Comment :
-	% Discard the contents of a comment
-	% Modified so comments end at a new line or end of file
+    % Discard the contents of a comment
+    % Modified so comments end at a new line or end of file
 
-	{[
-	    | lNewLine:
-		.pNewLine
-		>
-	    | lEndFile:
-		.pEndFile
-		>
-	    | *:	% comment may contain any other character
-		?
-	]};
+    {[
+        | lNewLine:
+        .pNewLine
+        >
+        | lEndFile:
+        .pEndFile
+        >
+        | *:    % comment may contain any other character
+        ?
+    ]};
 
 end

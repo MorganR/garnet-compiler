@@ -1,7 +1,7 @@
-%  PT Parser.ssl	v1.01
+%  PT Parser.ssl    v1.01
 %
 % Date:  30 Jun 1980
-%	 (revised 7 December 2009)
+%     (revised 7 December 2009)
 %
 % Author:  Alan Rosselet
 %
@@ -15,555 +15,555 @@
 %   comment in the Block routine below).
 
 Input :
-	% Keywords must be first both here and in stdIdentifiers,
-	% and they must appear in the same order
+    % Keywords must be first both here and in stdIdentifiers,
+    % and they must appear in the same order
 
-	pDiv			'div'
-	firstKeywordToken = pDiv
-	pMod			'mod'
-	pOr			'or'
-	pAnd			'and'
-	pThen			'then'
-	pElse			'else'
-	pOf			'of'
-	pEnd			'end'
-	pDo			'do'
-	pArray			'array'
-	pFile			'file'
-	pPacked			'packed'
-	pVar			'var'
-	pType			'type'
-	pIf			'if'
-	pCase			'case'
-	pWhile			'while'
-	% Add garnet keywords below
-	pUsing			'using'
-	pVal			'val'
-	pDef			'def'
-	pUnless			'unless'
-	pElsif			'elsif
-	pBreak			'break'
-	pWhen			'when'
-	pModule			'module'
-	lastKeywordToken = pModule
+    pDiv            'div'
+    firstKeywordToken = pDiv
+    pMod            'mod'
+    pOr            'or'
+    pAnd            'and'
+    pThen            'then'
+    pElse            'else'
+    pOf            'of'
+    pEnd            'end'
+    pDo            'do'
+    pArray            'array'
+    pFile            'file'
+    pPacked            'packed'
+    pVar            'var'
+    pType            'type'
+    pIf            'if'
+    pCase            'case'
+    pWhile            'while'
+    % Add garnet keywords below
+    pUsing            'using'
+    pVal            'val'
+    pDef            'def'
+    pUnless            'unless'
+    pElsif            'elsif
+    pBreak            'break'
+    pWhen            'when'
+    pModule            'module'
+    lastKeywordToken = pModule
 
-	pIdentifier 
-	firstCompoundInputToken = pIdentifier
-	pInteger
-	pLiteral
-	lastCompoundInputToken = pLiteral
+    pIdentifier 
+    firstCompoundInputToken = pIdentifier
+    pInteger
+    pLiteral
+    lastCompoundInputToken = pLiteral
 
-	pNot
-	pNewLine
-	pEndFile
-	pPlus			'+'
-	pMinus			'-'
-	pStar			'*'
-	pAssign			'=' % Replaces pSemicolon for Garnet
-	pDot			'.'
-	pComma			','
-	pSemicolon		';'
-	pColon			':'
-	pEquals			'=='
-	pNotEqual		'!=' % Modified for Garnet
-	pLess			'<'
-	pLessEqual		'<='
-	pGreaterEqual		'>='
-	pGreater		'>'
-	pLeftParen		'('
-	pRightParen		')'
-	pLeftBracket		'['
-	pRightBracket		']'
-	pHash			'#' % Garnet token
-	pQuestion		'?' % Garnet token
-	pDollar			'$' % Garnet token
-	pDotDot			'..'
-	lastSyntaxToken = pDotDot;
+    pNot
+    pNewLine
+    pEndFile
+    pPlus            '+'
+    pMinus            '-'
+    pStar            '*'
+    pAssign            '=' % Replaces pSemicolon for Garnet
+    pDot            '.'
+    pComma            ','
+    pSemicolon        ';'
+    pColon            ':'
+    pEquals            '=='
+    pNotEqual        '!=' % Modified for Garnet
+    pLess            '<'
+    pLessEqual        '<='
+    pGreaterEqual        '>='
+    pGreater        '>'
+    pLeftParen        '('
+    pRightParen        ')'
+    pLeftBracket        '['
+    pRightBracket        ']'
+    pHash            '#' % Garnet token
+    pQuestion        '?' % Garnet token
+    pDollar            '$' % Garnet token
+    pDotDot            '..'
+    lastSyntaxToken = pDotDot;
 
 Output :
-	sIdentifier 
-	firstSemanticToken = sIdentifier
-	firstCompoundSemanticToken = sIdentifier
-	sInteger
-	sLiteral
-	lastCompoundSemanticToken = sLiteral
+    sIdentifier 
+    firstSemanticToken = sIdentifier
+    firstCompoundSemanticToken = sIdentifier
+    sInteger
+    sLiteral
+    lastCompoundSemanticToken = sLiteral
 
-	sProgram
-	sParmBegin
-	sParmEnd
-	sConst
-	sType
-	sVar
-	sProcedure
-	sBegin
-	sEnd
-	sNegate
-	sArray
-	sPacked
-	sFile
-	sRange
-	sCaseStmt
-	sCaseEnd
-	sLabelEnd
-	sExpnEnd
-	sNullStmt
-	sAssignmentStmt
-	sSubscript
-	sCallStmt
-	sFieldWidth
-	sIfStmt
-	sThen
-	sElse
-	sWhileStmt
-	sEq
-	sNE
-	sLT
-	sLE
-	sGT
-	sGE
-	sAdd
-	sSubtract
-	sMultiply
-	sDivide
-	sModulus
-	sInfixOr
-	sOr
-	sInfixAnd
-	sAnd
-	sNot
-	sNewLine
-	% Garnet tokens below
-	sPublic
-	sModule
-	sDoStmt
-	sBreakIf
-	sSubstring
-	sLength
-	sIndex
-	lastSemanticToken = sIndex;
+    sProgram
+    sParmBegin
+    sParmEnd
+    sConst
+    sType
+    sVar
+    sProcedure
+    sBegin
+    sEnd
+    sNegate
+    sArray
+    sPacked
+    sFile
+    sRange
+    sCaseStmt
+    sCaseEnd
+    sLabelEnd
+    sExpnEnd
+    sNullStmt
+    sAssignmentStmt
+    sSubscript
+    sCallStmt
+    sFieldWidth
+    sIfStmt
+    sThen
+    sElse
+    sWhileStmt
+    sEq
+    sNE
+    sLT
+    sLE
+    sGT
+    sGE
+    sAdd
+    sSubtract
+    sMultiply
+    sDivide
+    sModulus
+    sInfixOr
+    sOr
+    sInfixAnd
+    sAnd
+    sNot
+    sNewLine
+    % Garnet tokens below
+    sPublic
+    sModule
+    sDoStmt
+    sBreakIf
+    sSubstring
+    sLength
+    sIndex
+    lastSemanticToken = sIndex;
 
 
 rules
 
 Program :
-	'using'  .sProgram
-	% program name
-	pIdentifier .sIdentifier
-	% optional identifiers
-	{
-		[
-		| ',':
-		| *:
-		    >
-	    ]
-	    pIdentifier  .sIdentifier
-	}
-	.sParmEnd
-	@MainBlock;
+    'using'  .sProgram
+    % program name
+    pIdentifier .sIdentifier
+    % optional identifiers
+    {
+        [
+            | ',':
+            | *:
+                >
+        ]
+        pIdentifier  .sIdentifier
+    }
+    .sParmEnd
+    @MainBlock;
 
 MainBlock :
-	% Garnet accepts const, var, and type declarations, followed
-	% by routine and module definitions, followed by the main 
-	% statements.
-	@Declarations
-	{[
-	    | 'def':
-			.sProcedure
-			% procedure name
-			pIdentifier  .sIdentifier
-			@ProcedureHeading
-			@Block
-		| 'module':
-			% TODO Implement modules
-	    | *:
-		>
-	]}
-	@Statements;
+    % Garnet accepts const, var, and type declarations, followed
+    % by routine and module definitions, followed by the main 
+    % statements.
+    @Declarations
+    {[
+        | 'def':
+            .sProcedure
+            % procedure name
+            pIdentifier  .sIdentifier
+            @ProcedureHeading
+            @Block
+        | 'module':
+            % TODO Implement modules
+        | *:
+        >
+    ]}
+    @Statements;
 
 Declarations :
-	% Process any Garnet constant, variable, or type declarations.
-	{[
-		| 'val':
-			.sConst
-			@ConstantDefinitions
-		| 'type':
-			.sType
-			@TypeDefinitions
-		| 'var':
-			.sVar
-			@VariableDeclarations
-		| *:
-			>
-	]};
+    % Process any Garnet constant, variable, or type declarations.
+    {[
+        | 'val':
+            .sConst
+            @ConstantDefinitions
+        | 'type':
+            .sType
+            @TypeDefinitions
+        | 'var':
+            .sVar
+            @VariableDeclarations
+        | *:
+            >
+    ]};
 
 Statements :
-	% Process a block of Garnet statements. The output is wrapped
-	% within sBegin and sEnd tokens to simplify semantic analysis
-	% by staying in line with PT Pascal.
-	.sBegin
-	{[
-	    | pIdentifier:
-			@AssignmentOrCallStmt
-	    | 'if':
-			@IfStmt
-		| 'unless':
-			% TODO: Implement 'unless' statement
-	    | 'while':
-			@WhileStmt
-	    | 'case':
-			@CaseStmt
-	    | 'do':
-			% TODO: Implement 'do' statement
-	    | *:
-			>
-	]}
-	.sEnd;
+    % Process a block of Garnet statements. The output is wrapped
+    % within sBegin and sEnd tokens to simplify semantic analysis
+    % by staying in line with PT Pascal.
+    .sBegin
+    {[
+        | pIdentifier:
+            @AssignmentOrCallStmt
+        | 'if':
+            @IfStmt
+        | 'unless':
+            % TODO: Implement 'unless' statement
+        | 'while':
+            @WhileStmt
+        | 'case':
+            @CaseStmt
+        | 'do':
+            % TODO: Implement 'do' statement
+        | *:
+            >
+    ]}
+    .sEnd;
 
 Block :
-	% Accepts a simple Garnet block with only declarations and 
-	% statements, but without routines or modules.
-	@Declarations
-	@Statements;
+    % Accepts a simple Garnet block with only declarations and 
+    % statements, but without routines or modules.
+    @Declarations
+    @Statements;
 
 ConstantDefinitions :
-	% Accept one or more named constant definitions
-	pIdentifier  .sIdentifier
-	@ConstantValue ';'
-	{[
-	    | pIdentifier:
-		.sIdentifier
-		@ConstantValue ';'
-	    | *:
-		>
-	]};
+    % Accept one or more named constant definitions
+    pIdentifier  .sIdentifier
+    @ConstantValue ';'
+    {[
+        | pIdentifier:
+        .sIdentifier
+        @ConstantValue ';'
+        | *:
+        >
+    ]};
 
 ConstantValue :
-	'='
-	[
-	    | pInteger:
-		.sInteger
-	    | pIdentifier:
-		.sIdentifier
-	    | '-':
-		@UnsignedIntegerConstant
-		.sNegate
-	    | '+':
-		@UnsignedIntegerConstant
-	    | pLiteral:
-		.sLiteral
-	];
+    '='
+    [
+        | pInteger:
+        .sInteger
+        | pIdentifier:
+        .sIdentifier
+        | '-':
+        @UnsignedIntegerConstant
+        .sNegate
+        | '+':
+        @UnsignedIntegerConstant
+        | pLiteral:
+        .sLiteral
+    ];
 
 UnsignedIntegerConstant :
-	[
-	    | pIdentifier:
-		.sIdentifier
-	    | pInteger:
-		.sInteger
-	];
+    [
+        | pIdentifier:
+        .sIdentifier
+        | pInteger:
+        .sInteger
+    ];
 
 TypeDefinitions :
-	% Accept one or more named type definitions.
-	pIdentifier  .sIdentifier
-	'='  @TypeBody  ';'
-	{[
-	    | pIdentifier:
-		.sIdentifier
-		'='  @TypeBody  ';'
-	    | *:
-		>
-	]};
+    % Accept one or more named type definitions.
+    pIdentifier  .sIdentifier
+    '='  @TypeBody  ';'
+    {[
+        | pIdentifier:
+        .sIdentifier
+        '='  @TypeBody  ';'
+        | *:
+        >
+    ]};
 
 TypeBody :
-	[
-	    | 'packed':
-		'array'  .sArray  .sPacked
-		'['  @SimpleType  ']'
-		'of'  @SimpleType
-	    | 'array':
-		.sArray
-		'['  @SimpleType  ']'
-		'of'  @SimpleType
-	    | 'file':
-		.sFile
-		'of'  @SimpleType
-	    | *:
-		@SimpleType
-	];
+    [
+        | 'packed':
+        'array'  .sArray  .sPacked
+        '['  @SimpleType  ']'
+        'of'  @SimpleType
+        | 'array':
+        .sArray
+        '['  @SimpleType  ']'
+        'of'  @SimpleType
+        | 'file':
+        .sFile
+        'of'  @SimpleType
+        | *:
+        @SimpleType
+    ];
 
 SimpleType :
-	% A simple type is a named type (possibly predefined)
-	% or a subrange type specification
-	[
-	    | pIdentifier:
-		.sIdentifier
-		[
-		    | '..':
-			.sRange		%% this may be unnecessary
-			@OptionallySignedIntegerConstant
-		    | *:
-		]
-	    | *:
-		@OptionallySignedIntegerConstant
-		'..'  .sRange
-		@OptionallySignedIntegerConstant
-	];
+    % A simple type is a named type (possibly predefined)
+    % or a subrange type specification
+    [
+        | pIdentifier:
+        .sIdentifier
+        [
+            | '..':
+            .sRange        %% this may be unnecessary
+            @OptionallySignedIntegerConstant
+            | *:
+        ]
+        | *:
+        @OptionallySignedIntegerConstant
+        '..'  .sRange
+        @OptionallySignedIntegerConstant
+    ];
 
 OptionallySignedIntegerConstant :
-	[
-	    | '-':
-		@UnsignedIntegerConstant
-		.sNegate
-	    | '+':
-		@UnsignedIntegerConstant
-	    | *:
-		@UnsignedIntegerConstant
-	];
+    [
+        | '-':
+        @UnsignedIntegerConstant
+        .sNegate
+        | '+':
+        @UnsignedIntegerConstant
+        | *:
+        @UnsignedIntegerConstant
+    ];
 
 VariableDeclarations :
-	% Accept one or more variable declarations.
-	pIdentifier  .sIdentifier
-	':'  @TypeBody  ';'
-	{[
-	    | pIdentifier:
-		.sIdentifier
-		':'  @TypeBody  ';'
-	    | *:
-		>
-	]};
+    % Accept one or more variable declarations.
+    pIdentifier  .sIdentifier
+    ':'  @TypeBody  ';'
+    {[
+        | pIdentifier:
+        .sIdentifier
+        ':'  @TypeBody  ';'
+        | *:
+        >
+    ]};
 
 ProcedureHeading :
-	% Accept zero or more procedure formal parameter declarations.
-	[
-	    | '(':
-		{
-		    % formal parameter identifier
-		    [
-			| 'var':
-			    pIdentifier  .sIdentifier
-			    .sVar
-			| *:
-			    pIdentifier  .sIdentifier
-		    ]
-		    ':'
-		    % type identifier
-		    pIdentifier  .sIdentifier
-		    [
-			| ';':
-			| *:
-			    >
-		    ]
-		}
-		')'
-	    | *:
-	]
-	';'
-	.sParmEnd;
+    % Accept zero or more procedure formal parameter declarations.
+    [
+        | '(':
+        {
+            % formal parameter identifier
+            [
+            | 'var':
+                pIdentifier  .sIdentifier
+                .sVar
+            | *:
+                pIdentifier  .sIdentifier
+            ]
+            ':'
+            % type identifier
+            pIdentifier  .sIdentifier
+            [
+            | ';':
+            | *:
+                >
+            ]
+        }
+        ')'
+        | *:
+    ]
+    ';'
+    .sParmEnd;
 
 AssignmentOrCallStmt :
-	[
-	    | ':=':
-		.sAssignmentStmt
-		.sIdentifier	% identifier accepted in the Statement rule
-		@Expression
-		.sExpnEnd
-	    | '[':
-		.sAssignmentStmt
-		.sIdentifier
-		.sSubscript
-		@Expression
-		.sExpnEnd
-		']'  ':='
-		@Expression
-		.sExpnEnd
-	    | *:
-		@CallStmt
-	];
+    [
+        | ':=':
+        .sAssignmentStmt
+        .sIdentifier    % identifier accepted in the Statement rule
+        @Expression
+        .sExpnEnd
+        | '[':
+        .sAssignmentStmt
+        .sIdentifier
+        .sSubscript
+        @Expression
+        .sExpnEnd
+        ']'  ':='
+        @Expression
+        .sExpnEnd
+        | *:
+        @CallStmt
+    ];
 
 CallStmt :
-	.sCallStmt
-	.sIdentifier	% procedure identifier accepted in the Statement rule
-	% accept zero or more actual parameters
-	[
-	    | '(':
-		{
-		    @Expression
-		    .sExpnEnd
-		    % allow a field width specification to occur in calls
-		    % to the standard procedures write and writeln
-		    [
-			| ':':
-			    .sFieldWidth
-			    @Expression
-			    .sExpnEnd
-			| *:
-		    ]
-		    [
-			| ',':
-			| *:
-			    >
-		    ]
-		}
-		')'
-	    | *:	% no actual parameters
-	]
-	.sParmEnd;
+    .sCallStmt
+    .sIdentifier    % procedure identifier accepted in the Statement rule
+    % accept zero or more actual parameters
+    [
+        | '(':
+        {
+            @Expression
+            .sExpnEnd
+            % allow a field width specification to occur in calls
+            % to the standard procedures write and writeln
+            [
+            | ':':
+                .sFieldWidth
+                @Expression
+                .sExpnEnd
+            | *:
+            ]
+            [
+            | ',':
+            | *:
+                >
+            ]
+        }
+        ')'
+        | *:    % no actual parameters
+    ]
+    .sParmEnd;
 
 IfStmt :
-	.sIfStmt
-	@Expression
-	.sExpnEnd
-	'then'  .sThen
-	@Statements
-	[
-	    | 'else':
-		.sElse
-		@Statements
-	    | *:
-	];
+    .sIfStmt
+    @Expression
+    .sExpnEnd
+    'then'  .sThen
+    @Statements
+    [
+        | 'else':
+        .sElse
+        @Statements
+        | *:
+    ];
 
 CaseStmt :
-	.sCaseStmt
-	@Expression
-	.sExpnEnd
-	'of'
-	@CaseAlternative
-	{[
-	    | ';':
-		% since case alternatives cannot be null, allow
-		% for the common situation of an extra semicolon
-		% at the end of the list of case alternatives.
-		[
-		    | 'end':
-			>
-		    | *:
-			@CaseAlternative
-		]
-	    | 'end':
-		>
-	]}
-	.sCaseEnd;
+    .sCaseStmt
+    @Expression
+    .sExpnEnd
+    'of'
+    @CaseAlternative
+    {[
+        | ';':
+        % since case alternatives cannot be null, allow
+        % for the common situation of an extra semicolon
+        % at the end of the list of case alternatives.
+        [
+            | 'end':
+            >
+            | *:
+            @CaseAlternative
+        ]
+        | 'end':
+        >
+    ]}
+    .sCaseEnd;
 
 CaseAlternative :
-	% A case alternative is a statement labelled by
-	% one or more optionally signed integer constants
+    % A case alternative is a statement labelled by
+    % one or more optionally signed integer constants
 
-	{
-	    @OptionallySignedIntegerConstant
-	    [
-		| ',':
-		| *:
-		    >
-	    ]
-	}
-	.sLabelEnd
-	':'  @Statements;
+    {
+        @OptionallySignedIntegerConstant
+        [
+        | ',':
+        | *:
+            >
+        ]
+    }
+    .sLabelEnd
+    ':'  @Statements;
 
 WhileStmt :
-	.sWhileStmt
-	@Expression
-	.sExpnEnd
-	'do'
-	@Statements;
+    .sWhileStmt
+    @Expression
+    .sExpnEnd
+    'do'
+    @Statements;
 
 RepeatStmt :
-	.sRepeatStmt
-	{
-	    @Statements
-	    [
-		| ';':
-		| 'until':
-		    .sRepeatEnd
-		    >
-	    ]
-	}
-	@Expression
-	.sExpnEnd;
+    .sRepeatStmt
+    {
+        @Statements
+        [
+        | ';':
+        | 'until':
+            .sRepeatEnd
+            >
+        ]
+    }
+    @Expression
+    .sExpnEnd;
 
 Expression :
-	@SimpleExpression
-	[
-	    | '=':
-		@SimpleExpression  .sEq
-	    | '<>':
-		@SimpleExpression  .sNE
-	    | '<':
-		@SimpleExpression  .sLT
-	    | '<=':
-		@SimpleExpression  .sLE
-	    | '>':
-		@SimpleExpression  .sGT
-	    | '>=':
-		@SimpleExpression  .sGE
-	    | *:
-	];
+    @SimpleExpression
+    [
+        | '=':
+        @SimpleExpression  .sEq
+        | '<>':
+        @SimpleExpression  .sNE
+        | '<':
+        @SimpleExpression  .sLT
+        | '<=':
+        @SimpleExpression  .sLE
+        | '>':
+        @SimpleExpression  .sGT
+        | '>=':
+        @SimpleExpression  .sGE
+        | *:
+    ];
 
 SimpleExpression :
-	[
-	    | '+':
-		@Term
-	    | '-':
-		@Term  .sNegate
-	    | *:
-		@Term
-	]
-	{[
-	    | '+':
-		@Term  .sAdd
-	    | '-':
-		@Term  .sSubtract
-	    | 'or':
-		.sInfixOr  @Term  .sOr
-	    | *:
-		>
-	]};
+    [
+        | '+':
+        @Term
+        | '-':
+        @Term  .sNegate
+        | *:
+        @Term
+    ]
+    {[
+        | '+':
+        @Term  .sAdd
+        | '-':
+        @Term  .sSubtract
+        | 'or':
+        .sInfixOr  @Term  .sOr
+        | *:
+        >
+    ]};
 
 Term :
-	@Factor
-	{[
-	    | '*':
-		@Factor  .sMultiply
-	    | 'div':
-		@Factor  .sDivide
-	    | 'mod':
-		@Factor  .sModulus
-	    | 'and':
-		.sInfixAnd  @Factor  .sAnd
-	    | *:
-		>
-	]};
+    @Factor
+    {[
+        | '*':
+        @Factor  .sMultiply
+        | 'div':
+        @Factor  .sDivide
+        | 'mod':
+        @Factor  .sModulus
+        | 'and':
+        .sInfixAnd  @Factor  .sAnd
+        | *:
+        >
+    ]};
 
 Factor :
-	[
-	    | pIdentifier:
-		.sIdentifier
-		@IdentifierExtension
-	    | pInteger:
-		.sInteger
-	    | '(':
-		@Expression  ')'
-	    | 'not':
-		@Factor
-		.sNot
-	    | pLiteral:
-		.sLiteral
-	    | 'file':
-		.sFile '(' @Expression ')'
-		.sExpnEnd
-	];
+    [
+        | pIdentifier:
+        .sIdentifier
+        @IdentifierExtension
+        | pInteger:
+        .sInteger
+        | '(':
+        @Expression  ')'
+        | 'not':
+        @Factor
+        .sNot
+        | pLiteral:
+        .sLiteral
+        | 'file':
+        .sFile '(' @Expression ')'
+        .sExpnEnd
+    ];
 
 IdentifierExtension :
-	% Handle subscripts and function actual parameter lists
-	[
-	    | '[':
-		.sSubscript
-		@Expression  ']'
-		.sExpnEnd
-	    | '(':
-		.sParmBegin
-		@Expression  ')'
-		.sExpnEnd
-		.sParmEnd
-	    | *:
-	];
+    % Handle subscripts and function actual parameter lists
+    [
+        | '[':
+        .sSubscript
+        @Expression  ']'
+        .sExpnEnd
+        | '(':
+        .sParmBegin
+        @Expression  ')'
+        .sExpnEnd
+        .sParmEnd
+        | *:
+    ];
 
 end
