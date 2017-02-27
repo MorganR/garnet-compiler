@@ -185,13 +185,13 @@ Declarations :
     {[
         | 'val':
             .sConst
-            @ConstantDefinitions
+            @ConstantDefinition
         | 'type':
             .sType
-            @TypeDefinitions
+            @TypeDefinition
         | 'var':
             .sVar
-            @VariableDeclarations
+            @VariableDeclaration
         | *:
             >
     ]};
@@ -225,69 +225,55 @@ Block :
     @Declarations
     @Statements;
 
-ConstantDefinitions :
+ConstantDefinition :
     % Accept one or more named constant definitions
     pIdentifier  .sIdentifier
-    @ConstantValue ';'
-    {[
-        | pIdentifier:
-        .sIdentifier
-        @ConstantValue ';'
-        | *:
-        >
-    ]};
+    @ConstantValue;
 
 ConstantValue :
     '='
     [
         | pInteger:
-        .sInteger
+            .sInteger
         | pIdentifier:
-        .sIdentifier
+            .sIdentifier
         | '-':
-        @UnsignedIntegerConstant
-        .sNegate
+            @UnsignedIntegerConstant
+            .sNegate
         | '+':
-        @UnsignedIntegerConstant
+            @UnsignedIntegerConstant
         | pLiteral:
-        .sLiteral
+            .sLiteral
     ];
 
 UnsignedIntegerConstant :
     [
         | pIdentifier:
-        .sIdentifier
+            .sIdentifier
         | pInteger:
-        .sInteger
+            .sInteger
     ];
 
-TypeDefinitions :
+TypeDefinition :
     % Accept one or more named type definitions.
     pIdentifier  .sIdentifier
-    '='  @TypeBody  ';'
-    {[
-        | pIdentifier:
-        .sIdentifier
-        '='  @TypeBody  ';'
-        | *:
-        >
-    ]};
+    ':'  @TypeBody;
 
 TypeBody :
     [
         | 'packed':
-        'array'  .sArray  .sPacked
-        '['  @SimpleType  ']'
-        'of'  @SimpleType
+            'array'  .sArray  .sPacked
+            '['  @SimpleType  ']'
+            'of'  @SimpleType
         | 'array':
-        .sArray
-        '['  @SimpleType  ']'
-        'of'  @SimpleType
+            .sArray
+            '['  @SimpleType  ']'
+            'of'  @SimpleType
         | 'file':
-        .sFile
-        'of'  @SimpleType
+            .sFile
+            'of'  @SimpleType
         | *:
-        @SimpleType
+            @SimpleType
     ];
 
 SimpleType :
@@ -295,17 +281,17 @@ SimpleType :
     % or a subrange type specification
     [
         | pIdentifier:
-        .sIdentifier
-        [
-            | '..':
-            .sRange        %% this may be unnecessary
-            @OptionallySignedIntegerConstant
-            | *:
-        ]
+            .sIdentifier
+            [
+                | '..':
+                    .sRange        %% this may be unnecessary
+                    @OptionallySignedIntegerConstant
+                | *:
+            ]
         | *:
-        @OptionallySignedIntegerConstant
-        '..'  .sRange
-        @OptionallySignedIntegerConstant
+            @OptionallySignedIntegerConstant
+            '..'  .sRange
+            @OptionallySignedIntegerConstant
     ];
 
 OptionallySignedIntegerConstant :
@@ -319,17 +305,16 @@ OptionallySignedIntegerConstant :
         @UnsignedIntegerConstant
     ];
 
-VariableDeclarations :
+VariableDeclaration :
     % Accept one or more variable declarations.
     pIdentifier  .sIdentifier
-    ':'  @TypeBody  ';'
     {[
-        | pIdentifier:
-        .sIdentifier
-        ':'  @TypeBody  ';'
-        | *:
-        >
-    ]};
+        | ',':
+            pIdentifier .sIdentifier
+        |*:
+            >
+    ]}
+    ':'  @TypeBody;
 
 ProcedureHeading :
     % Accept zero or more procedure formal parameter declarations.
