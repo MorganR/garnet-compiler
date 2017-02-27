@@ -175,6 +175,7 @@ Block :
             pIdentifier  .sIdentifier
             @ProcedureHeading
             @Block
+            'end'
         | 'module':
             % TODO Implement modules
         | *:
