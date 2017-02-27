@@ -445,7 +445,7 @@ IfStmt :
         @Statements
         | *:
     ]
-    'end';
+    'end';  % added to consume end keyword
 
 CaseStmt :
     .sCaseStmt
@@ -507,9 +507,9 @@ RepeatStmt :
 Expression :
     @SimpleExpression
     [
-        | '==':
+        | '==': % updated to new pEquals
 			@SimpleExpression  .sEq
-        | '!=':
+        | '!=': % updated to new pNotEquals
 			@SimpleExpression  .sNE
         | '<':
 			@SimpleExpression  .sLT
