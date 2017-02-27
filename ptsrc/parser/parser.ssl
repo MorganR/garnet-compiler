@@ -482,18 +482,18 @@ RepeatStmt :
 Expression :
     @SimpleExpression
     [
-        | '=':
-        @SimpleExpression  .sEq
-        | '<>':
-        @SimpleExpression  .sNE
+        | '==':
+			@SimpleExpression  .sEq
+        | '!=':
+			@SimpleExpression  .sNE
         | '<':
-        @SimpleExpression  .sLT
+			@SimpleExpression  .sLT
         | '<=':
-        @SimpleExpression  .sLE
+			@SimpleExpression  .sLE
         | '>':
-        @SimpleExpression  .sGT
+			@SimpleExpression  .sGT
         | '>=':
-        @SimpleExpression  .sGE
+			@SimpleExpression  .sGE
         | *:
     ];
 
