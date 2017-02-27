@@ -438,13 +438,13 @@ IfStmt :
         .sElse
         @Statements
         | *:
-    ];
+    ]
+    'end';
 
 CaseStmt :
     .sCaseStmt
     @Expression
     .sExpnEnd
-    'of'
     @CaseAlternative
     {[
         | ';':
