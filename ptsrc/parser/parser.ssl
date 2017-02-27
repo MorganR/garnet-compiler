@@ -159,9 +159,9 @@ Program :
         pIdentifier  .sIdentifier
     }
     .sParmEnd
-    @MainBlock;
+    @Block;
 
-MainBlock :
+Block :
     % Garnet accepts const, var, and type declarations, followed
     % by routine and module definitions, followed by the main 
     % statements.
@@ -169,7 +169,9 @@ MainBlock :
     {[
         | 'def':
             .sProcedure
-            % procedure name
+            % Procedures that are not in a module can't have
+            % a public '*' symbol.
+            % Output the procedure name.
             pIdentifier  .sIdentifier
             @ProcedureHeading
             @Block
@@ -223,12 +225,6 @@ Statements :
             >
     ]}
     .sEnd;
-
-Block :
-    % Accepts a simple Garnet block with only declarations and 
-    % statements, but without routines or modules.
-    @Declarations
-    @Statements;
 
 ConstantDefinition :
     % Accept one or more named constant definitions
@@ -322,36 +318,34 @@ VariableDeclaration :
     ':'  @TypeBody;
 
 ProcedureHeading :
-    % Accept zero or more procedure formal parameter declarations.
-    [
-        | '(':
-        {
-            % formal parameter identifier
-            [
+    '('
+    {
+        % Accept zero or more procedure formal parameter declarations.
+        [
             | 'var':
                 pIdentifier  .sIdentifier
                 .sVar
+            | pIdentifier:
+                .sIdentifier
             | *:
-                pIdentifier  .sIdentifier
-            ]
-            ':'
-            % type identifier
-            pIdentifier  .sIdentifier
-            [
-            | ';':
+                % No parameters
+                >
+        ]
+        ':'
+        % type identifier
+        pIdentifier  .sIdentifier
+        [
+            | ',':
             | *:
                 >
-            ]
-        }
-        ')'
-        | *:
-    ]
-    ';'
+        ]
+    }
+    ')'
     .sParmEnd;
 
 AssignmentOrCallStmt :
     [
-        | ':=':
+        | '=':
         .sAssignmentStmt
         .sIdentifier    % identifier accepted in the Statement rule
         @Expression
@@ -362,7 +356,7 @@ AssignmentOrCallStmt :
         .sSubscript
         @Expression
         .sExpnEnd
-        ']'  ':='
+        ']'  '='
         @Expression
         .sExpnEnd
         | *:

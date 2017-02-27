@@ -2,6 +2,6 @@ using HelloWorld
 
 // This is a very simple program which just prints the string "Hello World"
 
-write('Hello World')
+write("Hello World")
 writeln
 
