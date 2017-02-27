@@ -175,6 +175,11 @@ MainBlock :
             @Block
         | 'module':
             % TODO Implement modules
+	    .sModule
+	    % Module name
+	    pIdentifier  .sIdentifier
+ 	    @Block
+	    
         | *:
         >
     ]}
