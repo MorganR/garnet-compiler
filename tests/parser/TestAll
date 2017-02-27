@@ -48,15 +48,18 @@ do
       (( failCount += 1 ))
     fi
   fi
-  # if (diff ${baseName}.rese ${baseName}.exp -qw)
-  # then
-  #   echo "-e output passed." >> TestResults
-  #   (( passCount += 1 ))
-  # else
-  #   echo "-e output FAILED." >> TestResults
-  #   (( failCount += 1 ))
-  # fi
-  echo >> TestResults
+  if [ -e "${baseName}.exp" ]
+  then  
+    if (diff ${baseName}.rese ${baseName}.exp -qw)
+    then
+      echo "-e output passed." >> TestResults
+      (( passCount += 1 ))
+    else
+      echo "-e output FAILED." >> TestResults
+      (( failCount += 1 ))
+    fi
+  fi  
+echo >> TestResults
 done
 
 echo "${failCount} test(s) failed, ${passCount} test(s) passed." >> TestResults
