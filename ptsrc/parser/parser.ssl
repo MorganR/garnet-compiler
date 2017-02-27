@@ -551,6 +551,13 @@ Term :
         >
     ]};
 
+Substring:
+	[
+	    |'$':
+	      pInteger .sInteger '..' pInteger .sInteger
+	      .sSubstring
+	    | *:	
+	];
 Factor :
     [
         | pIdentifier:
@@ -565,6 +572,7 @@ Factor :
         .sNot
         | pLiteral:
         .sLiteral
+	@Substring
         | 'file':
         .sFile '(' @Expression ')'
         .sExpnEnd
