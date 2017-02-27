@@ -162,11 +162,24 @@ Program :
     @Block;
 
 Block :
-    % Garnet accepts const, var, and type declarations, followed
-    % by routine and module definitions, followed by the main 
-    % statements.
+    % Garnet accepts const, var, type, routine and module definitions, 
+    % followed by the main statements.
     @Declarations
+    @Statements;
+
+Declarations :
+    % Process any Garnet constant, variable, type, routine, or 
+    % module declarations.
     {[
+        | 'val':
+            .sConst
+            @ConstantDefinition
+        | 'type':
+            .sType
+            @TypeDefinition
+        | 'var':
+            .sVar
+            @VariableDeclaration
         | 'def':
             .sProcedure
             % Procedures that are not in a module can't have
@@ -178,21 +191,25 @@ Block :
             'end'
         | 'module':
             .sModule
-            % Module name
-            pIdentifier  .sIdentifier
-            @ModuleBlock
+            @ModuleDefinition
         | *:
-        >
-    ]}
-    @Statements;
+            >
+    ]};
 
-ModuleBlock :
-    % Garnet accepts const, var, and type declarations, followed
-    % by routine and module definitions, followed by the main 
-    % statements. This is essentially the same as Block, except
-    % it also checks for public-ness of routines.
-    @Declarations
+ModuleDeclarations :
+    % Process any Garnet constant, variable, type, routine, or 
+    % module declarations. Include public modifier for procedures
+    % since this is in a module.
     {[
+        | 'val':
+            .sConst
+            @ConstantDefinition
+        | 'type':
+            .sType
+            @TypeDefinition
+        | 'var':
+            .sVar
+            @VariableDeclaration
         | 'def':
             .sProcedure
             % Check if the routine is public
@@ -207,27 +224,8 @@ ModuleBlock :
             @Block
             'end'
         | 'module':
-	        .sModule
-	        % Module name
-	        pIdentifier  .sIdentifier
- 	        @ModuleBlock
-        | *:
-        >
-    ]}
-    @Statements;
-
-Declarations :
-    % Process any Garnet constant, variable, or type declarations.
-    {[
-        | 'val':
-            .sConst
-            @ConstantDefinition
-        | 'type':
-            .sType
-            @TypeDefinition
-        | 'var':
-            .sVar
-            @VariableDeclaration
+            .sModule
+            @ModuleDefinition         
         | *:
             >
     ]};
@@ -371,6 +369,14 @@ ProcedureHeading :
     }
     ')'
     .sParmEnd;
+
+ModuleDefinition :
+    % Process a module's declarations and statements.
+    % Module name
+    pIdentifier  .sIdentifier
+    @ModuleDeclarations
+    @Statements
+    'end';
 
 AssignmentOrCallStmt :
     [
