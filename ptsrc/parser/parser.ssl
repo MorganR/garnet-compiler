@@ -192,6 +192,8 @@ Declarations :
         | 'module':
             .sModule
             @ModuleDefinition
+        | ';':
+            % Ignore semicolons
         | *:
             >
     ]};
@@ -225,7 +227,9 @@ ModuleDeclarations :
             'end'
         | 'module':
             .sModule
-            @ModuleDefinition         
+            @ModuleDefinition    
+        | ';':
+            % Ignore semicolons     
         | *:
             >
     ]};
@@ -248,6 +252,8 @@ Statements :
             @CaseStmt
         | 'do':
             % TODO: Implement 'do' statement
+        | ';':
+            % Ignore semicolons
         | *:
             >
     ]}
