@@ -346,7 +346,7 @@ ProcedureHeading :
 
 AssignmentOrCallStmt :
     [
-        | ':=':
+        | '=':
         .sAssignmentStmt
         .sIdentifier    % identifier accepted in the Statement rule
         @Expression
@@ -357,7 +357,7 @@ AssignmentOrCallStmt :
         .sSubscript
         @Expression
         .sExpnEnd
-        ']'  ':='
+        ']'  '='
         @Expression
         .sExpnEnd
         | *:
