@@ -169,7 +169,7 @@ Block :
     {[
         | 'def':
             .sProcedure
-            % Procedures on the main block can't have
+            % Procedures that are not in a module can't have
             % a public '*' symbol.
             % Output the procedure name.
             pIdentifier  .sIdentifier
