@@ -181,6 +181,33 @@ Block :
 	    .sModule
 	    % Module name
 	    pIdentifier  .sIdentifier
+ 	    @ModuleBlock
+	    
+        | *:
+        >
+    ]}
+    @Statements;
+
+ModuleBlock :
+    % Garnet accepts const, var, and type declarations, followed
+    % by routine and module definitions, followed by the main 
+    % statements.
+    @Declarations
+    {[
+        | 'def':
+            .sProcedure
+            % Procedures that are not in a module can't have
+            % a public '*' symbol.
+            % Output the procedure name.
+            pIdentifier  .sIdentifier
+            @ProcedureHeading
+            @Block
+            'end'
+        | 'module':
+            % TODO Implement modules
+	    .sModule
+	    % Module name
+	    pIdentifier  .sIdentifier
  	    @Block
 	    
         | *:
