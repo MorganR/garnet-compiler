@@ -558,31 +558,32 @@ SimpleExpression :
     ]};
 
 Term :
-    @Factor
-    @Substring
+    @SimpleTerm % Term goes to new simple term level to check for substring operator at correct precedence
     {[
         | '*':
-        @Factor  .sMultiply
+        @SimpleTerm  .sMultiply
         | 'div':
-        @Factor  .sDivide
+        @SimpleTerm  .sDivide
         | 'mod':
-        @Factor  .sModulus
+        @SimpleTerm  .sModulus
         | 'and':
-        .sInfixAnd  @Factor  .sAnd
-	| '?' % Not sure if we need to consider first operand or assume that it is a Pliteral
-	@Factor
-	.sIndex
+        .sInfixAnd  @SimpleTerm  .sAnd
+	    | '?' % Not sure if we need to consider first operand or assume that it is a Pliteral
+	    @SimpleTerm
+	    .sIndex
         | *:
         >
     ]};
 
-Substring: % Looking for inputs to substring if '$' is found after a literal
-	[
-	    |'$':
-	      @Factor '..' @Factor 
+SimpleTerm :    % New level added to check substring operator
+    @Factor
+    [
+        |'$':
+	      @Expression '..' @Expression 
 	      .sSubstring
-	    | *:	
-	];
+	    | *:
+    ];
+
 Factor :
     [
         | pIdentifier:
