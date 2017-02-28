@@ -451,30 +451,25 @@ CaseStmt :
     .sCaseStmt
     @Expression
     .sExpnEnd
+    % removed 'of' consumption, as it is not longer needed in Garnet
     @CaseAlternative
-    {[
-        | ';':
-        % since case alternatives cannot be null, allow
-        % for the common situation of an extra semicolon
-        % at the end of the list of case alternatives.
-        [
-            | 'end':
-            >
-            | *:
-            @CaseAlternative
-        ]
+    {[  % deleted semicolon checking condition
         | 'end':
-        >
+            >
+        | 'when':   % expect when at the beginning of a new case
+            @CaseAlternative
+        | 'else':   % added else case to case statements
+            % TODO: CaseElse- must go to end statement next
+        % TODO: need a "|*:" here?
     ]}
     .sCaseEnd;
 
 CaseAlternative :
     % A case alternative is a statement labelled by
     % one or more optionally signed integer constants
-
-    'when'  % expect when at the beginning of a new case
+  
     {
-        @OptionallySignedIntegerConstant
+        @OptionallySignedIntegerConstant    %TODO: ? change what types are accepted into case statements
         [
         | ',':
         | *:
