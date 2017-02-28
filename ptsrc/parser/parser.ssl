@@ -472,6 +472,7 @@ CaseAlternative :
     % A case alternative is a statement labelled by
     % one or more optionally signed integer constants
 
+    'when'  % expect when at the beginning of a new case
     {
         @OptionallySignedIntegerConstant
         [
@@ -481,7 +482,7 @@ CaseAlternative :
         ]
     }
     .sLabelEnd
-    ':'  @Statements;
+    'then'  @Statements;    % changed to then keyword before case statements
 
 WhileStmt :
     .sWhileStmt
