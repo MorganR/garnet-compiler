@@ -1,0 +1,7 @@
+using Assignments
+    var i : integer
+    var s : string
+    i = 3
+    i = i
+    s = "test"
+    s = s
