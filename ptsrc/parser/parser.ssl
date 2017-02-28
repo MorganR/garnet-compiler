@@ -245,7 +245,7 @@ Statements :
         | 'if':
             @IfStmt
         | 'unless':
-            % TODO: Implement 'unless' statement
+            @UnlessStmt
         | 'while':
             @WhileStmt
         | 'case':
@@ -441,8 +441,23 @@ IfStmt :
     @Statements
     [
         | 'else':
-        .sElse
-        @Statements
+            .sElse
+            @Statements
+        | *:
+    ]
+    'end';  % added to consume end keyword
+
+UnlessStmt :
+    .sIfStmt
+    @Expression
+    .sNot
+    .sExpnEnd
+    'then'  .sThen
+    @Statements
+    [
+        | 'else':
+            .sElse
+            @Statements
         | *:
     ]
     'end';  % added to consume end keyword
@@ -575,15 +590,15 @@ Factor :
         .sInteger
         | '(':
         @Expression  ')'
-	| '#'
-	@Factor
-	.sLength
+	    | '#'
+	    @Factor
+	    .sLength
         | 'not':
         @Factor
         .sNot
         | pLiteral
         .sLiteral
-	@Substring
+	    @Substring
         | 'file':
         .sFile '(' @Expression ')'
         .sExpnEnd
