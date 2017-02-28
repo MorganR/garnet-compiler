@@ -59,7 +59,7 @@ Input :
     pPlus            '+'
     pMinus            '-'
     pStar            '*'
-    pAssign            '=' % Replaces pSemicolon for Garnet
+    pAssign            '=' % Replaces pColonEquals for Garnet
     pDot            '.'
     pComma            ','
     pSemicolon        ';'
