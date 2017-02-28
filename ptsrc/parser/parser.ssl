@@ -472,14 +472,14 @@ CaseAlternative :
     % one or more optionally signed integer constants
   
     {
-        @OptionallySignedIntegerConstant    %TODO: ? change what types are accepted into case statements
+        @OptionallySignedIntegerConstant
         [
         | ',':
         | *:
             >
         ]
     }
-    .sLabelEnd % TODO: remove? It doesn't appear in the specification sheet, but it seems like it should stay for symetry
+    .sLabelEnd
     'then'  @Statements;    % changed to then keyword before case statements
 
 WhileStmt :
