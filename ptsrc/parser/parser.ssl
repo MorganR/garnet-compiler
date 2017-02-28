@@ -545,6 +545,7 @@ SimpleExpression :
 
 Term :
     @Factor
+    @Substring
     {[
         | '*':
         @Factor  .sMultiply
@@ -564,7 +565,7 @@ Term :
 Substring: % Looking for inputs to substring if '$' is found after a literal
 	[
 	    |'$':
-	      pInteger .sInteger '..' pInteger .sInteger
+	      @Factor '..' @Factor 
 	      .sSubstring
 	    | *:	
 	];
@@ -585,7 +586,6 @@ Factor :
         .sNot
         | pLiteral
         .sLiteral
-	@Substring
         | 'file':
         .sFile '(' @Expression ')'
         .sExpnEnd
