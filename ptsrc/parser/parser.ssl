@@ -502,7 +502,8 @@ WhileStmt :
     @Expression
     .sExpnEnd
     'do'
-    @Statements;
+    @Statements
+    'end';
 
 RepeatStmt :
     .sRepeatStmt
