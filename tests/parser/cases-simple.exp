@@ -12,20 +12,18 @@
     .sIdentifier
     .sExpnEnd
 
-    .sIdentifier
+    .sInteger
+    .sLabelEnd
+    .sBegin
+      .sAssignmentStmt
+      .sIdentifier
+    .sEnd
+    .sInteger
     .sLabelEnd
     .sBegin
 
     .sEnd
-
-    .sIdentifier
-    .sLabelEnd
-    .sBegin
-
-    .sEnd
-
     .sElse
-    .sLabelEnd
     .sBegin
 
     .sEnd

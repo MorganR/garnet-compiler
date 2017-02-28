@@ -8,5 +8,5 @@ using Cases
             t = 32 + 1
             t = t/2
         else
-            // Do nothing
+            % Do nothing
     end
