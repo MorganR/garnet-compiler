@@ -1,0 +1,13 @@
+.sProgram
+.sIdentifier
+.sParmEnd
+	.sVar
+	.sIdentifier
+	.sIdentifier
+.sBegin
+.sAssignmentStatement
+.sIdentifier
+.sLiteral
+.sLiteral
+.sIndex
+.sExpnEnd

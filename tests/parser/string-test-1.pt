@@ -1,0 +1,7 @@
+using StringTest
+
+var s1 : string
+
+s1 = "String1" ? "String2"
+
+
