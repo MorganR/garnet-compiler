@@ -16,12 +16,25 @@
     .sLabelEnd
     .sBegin
       .sAssignmentStmt
-      .sIdentifier
+        .sIdentifier
+        .sInteger
+      .sExpnEnd
     .sEnd
     .sInteger
     .sLabelEnd
     .sBegin
-
+      .sAssignmentStmt
+        .sIdentifier
+          .sInteger
+          .sInteger
+        .sAdd
+      .sExpnEnd
+      .sAssignmentStmt
+        .sIdentifier
+          .sIdentifier
+          .sInteger
+        .sDivide
+      .sExpnEnd
     .sEnd
     .sElse
     .sBegin
