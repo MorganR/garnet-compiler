@@ -568,17 +568,17 @@ Term :
         @Factor  .sModulus
         | 'and':
         .sInfixAnd  @Factor  .sAnd
-	| '?' % Not sure if we need to consider first operand or assume that it is a Pliteral
+	| '?' % Adding postfix output for index
 	@Factor
 	.sIndex
         | *:
         >
     ]};
 
-Substring: % Looking for inputs to substring if '$' is found after a literal
+Substring: % Looking for inputs to substring if '$' is found after a factor
 	[
 	    |'$':
-	      @Factor '..' @Factor 
+	      @Factor '..' @Factor %Outputing in postfix
 	      .sSubstring
 	    | *:	
 	];
@@ -591,9 +591,9 @@ Factor :
         .sInteger
         | '(':
         @Expression  ')'
-	    | '#'
-	    @Factor
-	    .sLength
+	| '#'
+	@Factor
+	.sLength
         | 'not':
         @Factor
         .sNot
