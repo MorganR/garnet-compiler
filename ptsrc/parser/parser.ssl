@@ -459,7 +459,10 @@ CaseStmt :
         | 'when':   % expect when at the beginning of a new case
             @CaseAlternative
         | 'else':   % added else case to case statements
-            % TODO: CaseElse- must go to end statement next
+            .sElse 
+            @Statements
+            'end'
+            >
         % TODO: need a "|*:" here?
     ]}
     .sCaseEnd;
@@ -476,7 +479,7 @@ CaseAlternative :
             >
         ]
     }
-    .sLabelEnd
+    .sLabelEnd % TODO: remove? It doesn't appear in the specification sheet, but it seems like it should stay for symetry
     'then'  @Statements;    % changed to then keyword before case statements
 
 WhileStmt :
