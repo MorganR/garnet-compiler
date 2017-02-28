@@ -1,0 +1,33 @@
+.sProgram
+.sIdentifier
+.sParmEnd
+  .sVar
+  .sIdentifier
+  .sIdentifier
+  .sVar
+  .sIdentifier
+  .sIdentifier
+  .sBegin
+    .sCaseStmt
+    .sIdentifier
+    .sExpnEnd
+
+    .sIdentifier
+    .sLabelEnd
+    .sBegin
+
+    .sEnd
+
+    .sIdentifier
+    .sLabelEnd
+    .sBegin
+
+    .sEnd
+
+    .sElse
+    .sLabelEnd
+    .sBegin
+
+    .sEnd
+    .sCaseEnd
+  .sEnd  
