@@ -463,7 +463,7 @@ CaseStmt :
             @Statements
             'end'
             >
-        % TODO: need a "|*:" here?
+        % only 3 options in a case statement, so no general alternative needed
     ]}
     .sCaseEnd;
 
