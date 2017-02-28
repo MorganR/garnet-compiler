@@ -1,0 +1,23 @@
+.sProgram
+.sIdentifier
+.sParmEnd
+  .sVar
+    .sIdentifier
+      .sIdentifier
+  .sVar
+    .sIdentifier
+      .sIdentifier
+  .sBegin
+    .sAssmtStmt
+      .sIdentifier
+        .sIdentifier
+    .sAssmtStmt
+      .sIdentifier
+        .sIdentifier
+    .sAssmtStmt
+      .sIdentifier
+        .sIdentifier
+    .sAssmtStmt
+      .sIdentifier
+        .sIdentifier
+  .sEnd
