@@ -549,11 +549,14 @@ Term :
         @Factor  .sModulus
         | 'and':
         .sInfixAnd  @Factor  .sAnd
+	| '?' % Not sure if we need to consider first operand or assume that it is a Pliteral
+	@Factor
+	.sIndex
         | *:
         >
     ]};
 
-Substring:
+Substring: % Looking for inputs to substring if '$' is found after a literal
 	[
 	    |'$':
 	      pInteger .sInteger '..' pInteger .sInteger
@@ -569,10 +572,13 @@ Factor :
         .sInteger
         | '(':
         @Expression  ')'
+	| '#'
+	@Factor
+	.sLength
         | 'not':
         @Factor
         .sNot
-        | pLiteral:
+        | pLiteral
         .sLiteral
 	@Substring
         | 'file':
