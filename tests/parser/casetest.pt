@@ -1,4 +1,4 @@
-using Cases
+using CaseTest
     var i : integer
     var t : integer
     case i

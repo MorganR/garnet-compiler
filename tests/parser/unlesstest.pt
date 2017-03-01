@@ -1,10 +1,8 @@
-using Elsif
+using UnlessTest
     var i : integer
     i = 3
-    if i < 2 then
+    unless i < 2 then
         i = 0
-    elsif i < 4 then
-        i = 5
     else
         i = 10
     end
