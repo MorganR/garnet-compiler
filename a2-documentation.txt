@@ -19,13 +19,21 @@ Declarations:
  - Declarations include specifying any of the following: constants, variables, types, routines, and modules
  - The different declaration types can occur in any order, but all declarations must occur at the start of a block
 
-Statements:
+The Statements Rule:
  - Declarations are followed by Statements. These include expressions and if, call, unless, do, case, and while statements. 
  - A block of statements is surrounded by .sBegin and .sEnd to maintain compatibility with the PT compiler. This will simplify the semantic analysis stage of compilation.
 
 Routines (Procedures):
+ - Routines start with 'def' instead of 'Procedure'.
+ - Routines can have 0 or more arguments, with or without 'var' declarations for the arguments.
+ - Just like a main program, routines consist of Declarations followed by Statements
+ - Nesting of routines is allowed
 
 Modules:
+ - Modules start with 'module' and are new to garnet
+ - Similar to Routines, modules consist of declarations followed by statements
+ - Modules use a slightly modified Declarations rule to allow Routines to be declared public with a '*'. This is only done for Module declarations because it would not make sense anywhere else in a program.
+ - Nesting of moduels is allowed
 
 Statements:
 
