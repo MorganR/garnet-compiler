@@ -1,4 +1,4 @@
-Assignment 1
+Assignment 2
 Due: March 1st, 2017
 
 The changes were broken into different sections, outlined below, to allow partners to work simultaneously. Most changes were made in parser.ssl, with a few changes to parser.pt and parser.deff for token updates.
@@ -6,7 +6,10 @@ The changes were broken into different sections, outlined below, to allow partne
 The first change was to fix the broken parser from Assignment 1. This was done by removing the added code to the bottom of parser.pt and uncommenting the original code.
 
 Token Changes:
- - Removed unused PT input tokens from parser.pt
+ - Removed unused PT keyword input tokens from parser.ssl: not, until, program, const, procedure, begin, and repeat
+ - Added garnet keyword inputs to parser.ssl: using, val, def, unless, elsif, break, when, Modules
+ - Modified input tokens for Garnet in parser.ssl: pColonEquals became pAssign, pNot added, pEquals changed to '==', pNotEquals changed to '!=', and pHash, pQuestion and pDollar added.
+ - Add garnet semantic tokens for parser output to parser.ssl, and copied the compiled output of parser.deff to parser.pt. Tokens: sPublic, sModule, sDoStmt, sBreakIf, sSubstring, sLength, and sIndex
 
 Programs:
 
