@@ -32,7 +32,7 @@
         .sIdentifier
           .sIdentifier
           .sInteger
-        .sDivide
+        .sMultiply
       .sExpnEnd
     .sEnd
     .sElse
