@@ -1,0 +1,21 @@
+using Routines
+    def f0()
+        val i = 0
+        var t : integer
+        t = i
+    end
+    def f1(var a : integer)
+        a = a + 1
+    end
+    def f2(var a : integer, var b : integer)
+        a = a + b
+    end
+    var c : integer
+    def f3(var a : integer, var b : integer, c : integer)
+        a = a + b + c
+    end
+
+    f0
+    f1(1)
+    f2(2, 3)
+    f3(1, 2, c)

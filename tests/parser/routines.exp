@@ -1,0 +1,99 @@
+.sProgram
+.sIdentifier
+.sParmEnd
+.sProcedure
+    .sIdentifier
+    .sParmEnd
+    .sConst
+    .sIdentifier
+    .sInteger
+    .sVar
+    .sIdentifier
+    .sIdentifier
+    .sBegin
+    .sAssignmentStmt
+    .sIdentifier
+    .sIdentifier
+    .sExpnEnd
+    .sEnd
+.sProcedure
+    .sIdentifier
+    .sVar
+    .sIdentifier
+    .sIdentifier
+    .sParmEnd
+    .sBegin
+    .sAssignmentStmt
+    .sIdentifier
+        .sIdentifier
+        .sInteger
+        .sAdd
+    .sExpnEnd
+    .sEnd
+.sProcedure
+    .sIdentifier
+    .sVar
+    .sIdentifier
+    .sIdentifier
+    .sVar
+    .sIdentifier
+    .sIdentifier
+    .sParmEnd
+    .sBegin
+    .sAssignmentStmt
+    .sIdentifier
+        .sIdentifier
+        .sIdentifier
+        .sAdd
+      .sExpnEnd
+    .sEnd
+.sVar
+    .sIdentifier
+    .sIdentifier
+.sProcedure
+    .sIdentifier
+    .sVar
+        .sIdentifier
+        .sIdentifier
+    .sVar
+        .sIdentifier
+        .sIdentifier
+    .sIdentifier
+    .sIdentifier
+    .sParmEnd
+    .sBegin
+    .sAssignmentStmt
+    .sIdentifier
+        .sIdentifier
+        .sIdentifier
+        .sAdd
+        .sIdentifier
+        .sAdd
+    .sExpnEnd
+    .sEnd
+.sBegin
+    .sCallStmt
+    .sIdentifier
+    .sParmEnd
+    .sCallStmt
+    .sIdentifier
+        .sInteger
+    .sExpnEnd
+    .sParmEnd
+    .sCallStmt
+    .sIdentifier
+    .sInteger
+    .sExpnEnd
+    .sInteger
+    .sExpnEnd
+    .sParmEnd
+    .sCallStmt
+    .sIdentifier
+    .sInteger
+    .sExpnEnd
+    .sInteger
+    .sExpnEnd
+    .sIdentifier
+    .sExpnEnd
+    .sParmEnd
+.sEnd

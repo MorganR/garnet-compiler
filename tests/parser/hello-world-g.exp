@@ -5,6 +5,7 @@
     .sCallStmt
     .sIdentifier
     .sLiteral
+    .sExpnEnd
     .sParmEnd
     .sCallStmt
     .sIdentifier
