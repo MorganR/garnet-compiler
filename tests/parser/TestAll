@@ -20,8 +20,9 @@ do
   echo "Testing file $(basename $f)"
   echo "############################" >> TestResults
   baseName="$(basename -s .pt ""$f"")"
-  echo "$(basename $f):" >> TestResults
+  echo "" >> TestResults
   cat ${baseName}.desc >> TestResults
+  echo "" >> TestResults
   ssltrace "ptc -t2 -o2 -L ${ptLib} $f" "${ptParserDefs}" -e > "${baseName}.rese"
   ssltrace "ptc -t2 -o2 -L ${ptLib} $f" "${ptParserDefs}" -i > "${baseName}.resi"
   # Test against the -i output if there is a test script (.testi file)
