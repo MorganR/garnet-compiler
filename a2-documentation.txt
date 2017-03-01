@@ -33,7 +33,7 @@ Modules:
  - Modules start with 'module' and are new to garnet
  - Similar to Routines, modules consist of declarations followed by statements
  - Modules use a slightly modified Declarations rule to allow Routines to be declared public with a '*'. This is only done for Module declarations because it would not make sense anywhere else in a program.
- - Nesting of moduels is allowed
+ - Nesting of modules is allowed
 
 Statements:
 
