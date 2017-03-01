@@ -53,7 +53,7 @@ Input :
     pLiteral
     lastCompoundInputToken = pLiteral
 
-    pNot
+    pNot            'not'   % added shorthand
     pNewLine
     pEndFile
     pPlus            '+'
@@ -568,7 +568,7 @@ Term :
         @SimpleTerm  .sModulus
         | 'and':
         .sInfixAnd  @SimpleTerm  .sAnd
-	    | '?' 
+	    | '?': 
 	    @SimpleTerm
 	    .sIndex
         | *:
@@ -593,13 +593,13 @@ Factor :
         .sInteger
         | '(':
         @Expression  ')'
-        | '#'
+        | '#':
         @Factor
         .sLength
         | 'not':
         @Factor
         .sNot
-        | pLiteral
+        | pLiteral:
         .sLiteral
         | 'file':
         .sFile '(' @Expression ')'
