@@ -571,7 +571,7 @@ Term :
         @SimpleTerm  .sModulus
         | 'and':
         .sInfixAnd  @SimpleTerm  .sAnd
-	    | '?' % Not sure if we need to consider first operand or assume that it is a Pliteral
+	    | '?' 
 	    @SimpleTerm
 	    .sIndex
         | *:

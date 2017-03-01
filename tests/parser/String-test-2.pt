@@ -2,6 +2,4 @@ using StringTest
 
 var s1 : int
 
-s1 = "String1" ? "S"
-
-
+s1 = #"String1"
