@@ -9,9 +9,9 @@
       .sIdentifier
         .sInteger
     .sExpnEnd
-    .sWhile
+    .sWhileStmt
     .sIdentifier
-    .sIdentifier
+    .sInteger
     .sLT
     .sExpnEnd
     .sBegin
