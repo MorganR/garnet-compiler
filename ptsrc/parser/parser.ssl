@@ -440,8 +440,8 @@ IfStmt :
     'then'  .sThen
     @Statements
     [
-        | 'elsif':
-            .sElse .sBegin
+        | 'elsif':  % implementing elsif handling the parser intensive (second) way
+            .sElse .sBegin  % since elsifs should add an if statement within the conditional statements, we must specify that it's an if statement, and put in the begin and end tokens
             @IfStmt
             .sEnd
         | 'else':
@@ -516,7 +516,7 @@ DoStmt :    % implementing Garnet do statements
     @Expression
     .sExpnEnd
     @Statements
-    'end' .sDo;   %TODO: is this sDo included?
+    'end';
 % repeat statement method removed, as repeat statements are not included in Garnet
 
 Expression :
