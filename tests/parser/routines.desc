@@ -1,0 +1,2 @@
+Tests simple routines with 0 to 3 arguments. 
+The last case uses an argument without the "var" keyword.
