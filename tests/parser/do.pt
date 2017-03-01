@@ -1,0 +1,7 @@
+using Assignments
+    var i : integer
+    do
+        i = i + 2
+        break if i > 1
+        i = i - 1
+    end
