@@ -20,15 +20,15 @@
     .sEnd
     .sBreakIf
         .sIdentifier
-        .sGreaterEquals
         .sInteger
+      .sGT
     .sExpnEnd
     .sBegin
       .sAssignmentStmt
         .sIdentifier
           .sIdentifier
           .sInteger
-          .sAdd
+          .sSubtract
       .sExpnEnd
     .sEnd
   .sEnd
