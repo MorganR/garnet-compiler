@@ -8,16 +8,20 @@
     .sIdentifier
       .sIdentifier
   .sBegin
-    .sAssmtStmt
+    .sAssignmentStmt
+      .sIdentifier
+        .sInteger
+    .sExpnEnd
+    .sAssignmentStmt
       .sIdentifier
         .sIdentifier
-    .sAssmtStmt
+    .sExpnEnd
+    .sAssignmentStmt
+      .sIdentifier
+        .sLiteral
+    .sExpnEnd
+    .sAssignmentStmt
       .sIdentifier
         .sIdentifier
-    .sAssmtStmt
-      .sIdentifier
-        .sIdentifier
-    .sAssmtStmt
-      .sIdentifier
-        .sIdentifier
+    .sExpnEnd
   .sEnd
