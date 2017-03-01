@@ -1,0 +1,8 @@
+using Unless
+    var i : integer
+    i = 3
+    unless i < 2 then
+        i = 0
+    else
+        i = 10
+    end
