@@ -16,6 +16,13 @@
       .sExpnEnd
       .sThen
       .sBegin
+        .sAssignmentStmt
+          .sIdentifier
+          .sInteger
+        .sExpnEnd
+      .sEnd
+      .sElse
+      .sBegin
         .sIfStmt
         .sIdentifier
         .sInteger
@@ -24,8 +31,8 @@
         .sThen
         .sBegin
           .sAssignmentStmt
-          .sIdentifier
-          .sInteger
+            .sIdentifier
+            .sInteger
           .sExpnEnd
         .sEnd
         .sElse
