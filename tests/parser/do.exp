@@ -18,4 +18,17 @@
         .sAdd
       .sExpnEnd
     .sEnd
+    .sBreakIf
+        .sIdentifier
+        .sGreaterEquals
+        .sInteger
+    .sExpnEnd
+    .sBegin
+      .sAssignmentStmt
+        .sIdentifier
+          .sIdentifier
+          .sInteger
+          .sAdd
+      .sExpnEnd
+    .sEnd
   .sEnd
