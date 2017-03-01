@@ -244,6 +244,7 @@ Statements :
             @AssignmentOrCallStmt
         | 'if':
             @IfStmt
+            'end'   % added to consume end keyword
         | 'unless':
             @UnlessStmt
         | 'while':
@@ -448,8 +449,7 @@ IfStmt :
             .sElse
             @Statements
         | *:
-    ]
-    'end';  % added to consume end keyword
+    ];
 
 UnlessStmt :
     .sIfStmt
