@@ -19,7 +19,7 @@ Declarations:
  - Declarations include specifying any of the following: constants, variables, types, routines, and modules
  - The different declaration types can occur in any order, but all declarations must occur at the start of a block
 
-Statements:
+The Statements Rule:
  - Declarations are followed by Statements. These include expressions and if, call, unless, do, case, and while statements. 
  - A block of statements is surrounded by .sBegin and .sEnd to maintain compatibility with the PT compiler. This will simplify the semantic analysis stage of compilation.
  - Elsifs were implemented using the second recommended way, which is more parser intensive and allows for no changes to later phases in the handling of if statements.
@@ -31,18 +31,27 @@ Statements:
 
 
 Routines (Procedures):
+ - Routines start with 'def' instead of 'Procedure'.
+ - Routines can have 0 or more arguments, with or without 'var' declarations for the arguments.
+ - Just like a main program, routines consist of Declarations followed by Statements
+ - Nesting of routines is allowed
 
 Modules:
+ - Modules start with 'module' and are new to garnet
+ - Similar to Routines, modules consist of declarations followed by statements
+ - Modules use a slightly modified Declarations rule to allow Routines to be declared public with a '*'. This is only done for Module declarations because it would not make sense anywhere else in a program.
+ - Nesting of modules is allowed
 
 Statements:
 
 Strings:
-- Removing handling of chars for strings was done in Assignment #1
-- Added input and output tokens for '#', '$' and '?'
-- Added new precedence rule called "simple term" for substring '$' in order to make precedence between '#' and '?'
-- Changed all calls at term level to call simple term which in turn calls factor (for suubstring precedence)
-- Added logic for # at same precedence as 'not' (can only use other factors)
-- Added logic for ? at same precedence as 'mod' and 'div' (can only use simple terms)
-- Added logic for $ at new precedence level (can only use simple terms)
+ - Removing handling of chars for strings was done in Assignment #1
+ - Added input and output tokens for '#', '$' and '?'
+ - Added new precedence rule called "simple term" for substring '$' in order to make precedence between '#' and '?'
+ - Changed all calls at term level to call simple term which in turn calls factor (for suubstring precedence)
+ - Added logic for # at same precedence as 'not' (can only use other factors)
+ - Added logic for ? at same precedence as 'mod' and 'div' (can only use simple terms)
+ - Added logic for $ at new precedence level (can only use simple terms)
 
 Precedence:
+ - Aside from the precedence changes in handling of Strings as outlined above, the precedence has not changed from PT
