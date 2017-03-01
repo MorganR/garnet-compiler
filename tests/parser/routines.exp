@@ -45,6 +45,7 @@
         .sIdentifier
         .sIdentifier
         .sAdd
+      .sExpnEnd
     .sEnd
 .sVar
     .sIdentifier
