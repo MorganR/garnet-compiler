@@ -440,6 +440,10 @@ IfStmt :
     'then'  .sThen
     @Statements
     [
+        | 'elsif':
+            .sElse .sBegin
+            @IfStmt
+            .sEnd
         | 'else':
             .sElse
             @Statements
