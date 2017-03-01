@@ -30,5 +30,12 @@ Modules:
 Statements:
 
 Strings:
+- Removing handling of chars for strings was done in Assignment #1
+- Added input and output tokens for '#', '$' and '?'
+- Added new precedence rule called "simple term" for substring '$' in order to make precedence between '#' and '?'
+- Changed all calls at term level to call simple term which in turn calls factor (for suubstring precedence)
+- Added logic for # at same precedence as 'not' (can only use other factors)
+- Added logic for ? at same precedence as 'mod' and 'div' (can only use simple terms)
+- Added logic for $ at new precedence level (can only use simple terms)
 
 Precedence:
