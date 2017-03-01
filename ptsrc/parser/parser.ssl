@@ -250,8 +250,8 @@ Statements :
             @WhileStmt
         | 'case':
             @CaseStmt
-        | 'do':
-            % TODO: Implement 'do' statement
+        | 'do': % implementing Garnet do loops
+            @DoStmt
         | ';':
             % Ignore semicolons
         | *:
@@ -505,17 +505,20 @@ WhileStmt :
     @Statements
     'end';
 
-RepeatStmt :
-    .sRepeatStmt
-    {
-        @Statements
-        [
-        | ';':
-        | 'until':
-            .sRepeatEnd
-            >
-        ]
-    }
+DoStmt :    % implementing Garnet do statements
+    % TODO: Implement 'do' statement
+
+%RepeatStmt :
+%    .sRepeatStmt
+%    {
+%       @Statements
+%        [
+%        | ';':
+%        | 'until':
+%            .sRepeatEnd
+%            >
+%        ]
+%    }
     @Expression
     .sExpnEnd;
 
