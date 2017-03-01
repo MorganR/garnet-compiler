@@ -1,0 +1,453 @@
+26d25
+< 	pNot			'not'
+31d29
+< 	pUntil			'until'
+36,37d33
+< 	pProgram		'program'
+< 	pConst			'const'
+40,41d35
+< 	pProcedure		'procedure'
+< 	pBegin			'begin'
+45,46c39,48
+< 	pRepeat			'repeat'
+< 	lastKeywordToken = pRepeat 
+---
+>     % Add garnet keywords below
+>     pUsing            'using'
+>     pVal            'val'
+>     pDef            'def'
+>     pUnless            'unless'
+>     pElsif            'elsif
+>     pBreak            'break'
+>     pWhen            'when'
+>     pModule            'module'
+>     lastKeywordToken = pModule
+53a56
+>     pNot            'not'   % added shorthand
+59c62
+< 	pColonEquals		':='
+---
+>     pAssign            '=' % Replaces pColonEquals for Garnet
+64,65c67,68
+< 	pEquals			'='
+< 	pNotEqual		'<>'
+---
+>     pEquals            '=='
+>     pNotEqual        '!=' % Modified for Garnet
+73a77,79
+>     pHash            '#' % Garnet token
+>     pQuestion        '?' % Garnet token
+>     pDollar            '$' % Garnet token
+112,113d117
+< 	sRepeatStmt
+< 	sRepeatEnd
+131c135,143
+< 	lastSemanticToken = sNewLine;
+---
+>     % Garnet tokens below
+>     sPublic
+>     sModule
+>     sDo     %changed from pDoStmt match assignment instructions
+>     sBreakIf
+>     sSubstring
+>     sLength
+>     sIndex
+>     lastSemanticToken = sIndex;
+137c149
+< 	'program'  .sProgram
+---
+>     'using'  .sProgram
+139,142d150
+< 	pIdentifier
+< 	% program parameters
+< 	'('
+< 	{
+143a152,153
+>     % optional identifiers
+>     {
+148a159
+>         pIdentifier  .sIdentifier
+150d160
+< 	')'
+152c162
+< 	';'  @Block  '.';
+---
+>     @Block;
+155,158c165,172
+< 	% Strictly speaking, standard Pascal requires that declarations
+< 	% appear only in the order consts, types, vars, procedures.
+< 	% We allow arbitrary intermixing of these instead to preserve
+< 	% programmer sanity.
+---
+>     % Garnet accepts const, var, type, routine and module definitions, 
+>     % followed by the main statements.
+>     @Declarations
+>     @Statements;
+> 
+> Declarations :
+>     % Process any Garnet constant, variable, type, routine, or 
+>     % module declarations.
+160c174
+< 	    | 'const':
+---
+>         | 'val':
+162c176
+< 		@ConstantDefinitions
+---
+>             @ConstantDefinition
+165c179
+< 		@TypeDefinitions
+---
+>             @TypeDefinition
+168,169c182,183
+< 		@VariableDeclarations
+< 	    | 'procedure':
+---
+>             @VariableDeclaration
+>         | 'def':
+171c185,187
+< 		% procedure name
+---
+>             % Procedures that are not in a module can't have
+>             % a public '*' symbol.
+>             % Output the procedure name.
+174c190,196
+< 		@Block  ';'
+---
+>             @Block
+>             'end'
+>         | 'module':
+>             .sModule
+>             @ModuleDefinition
+>         | ';':
+>             % Ignore semicolons
+177,179c199
+< 	]}
+< 	'begin'
+< 	@BeginStmt;
+---
+>     ]};
+181,182c201,222
+< ConstantDefinitions :
+< 	% Accept one or more named constant definitions
+---
+> ModuleDeclarations :
+>     % Process any Garnet constant, variable, type, routine, or 
+>     % module declarations. Include public modifier for procedures
+>     % since this is in a module.
+>     {[
+>         | 'val':
+>             .sConst
+>             @ConstantDefinition
+>         | 'type':
+>             .sType
+>             @TypeDefinition
+>         | 'var':
+>             .sVar
+>             @VariableDeclaration
+>         | 'def':
+>             .sProcedure
+>             % Check if the routine is public
+>             [
+>                 | '*':
+>                     pIdentifier .sIdentifier
+>                     .sPublic
+>                 |*:
+184c224,241
+< 	@ConstantValue ';'
+---
+>             ]
+>             @ProcedureHeading
+>             @Block
+>             'end'
+>         | 'module':
+>             .sModule
+>             @ModuleDefinition    
+>         | ';':
+>             % Ignore semicolons     
+>         | *:
+>             >
+>     ]};
+> 
+> Statements :
+>     % Process a block of Garnet statements. The output is wrapped
+>     % within sBegin and sEnd tokens to simplify semantic analysis
+>     % by staying in line with PT Pascal.
+>     .sBegin
+187,188c244,257
+< 		.sIdentifier
+< 		@ConstantValue ';'
+---
+>             @AssignmentOrCallStmt
+>         | 'if':
+>             @IfStmt
+>             'end'   % added to consume end keyword
+>         | 'unless':
+>             @UnlessStmt
+>         | 'while':
+>             @WhileStmt
+>         | 'case':
+>             @CaseStmt
+>         | 'do': % implementing Garnet do loops
+>             @DoStmt
+>         | ';':
+>             % Ignore semicolons
+191c260,266
+< 	]};
+---
+>     ]}
+>     .sEnd;
+> 
+> ConstantDefinition :
+>     % Accept one or more named constant definitions
+>     pIdentifier  .sIdentifier
+>     @ConstantValue;
+217c292
+< TypeDefinitions :
+---
+> TypeDefinition :
+220,227c295
+< 	'='  @TypeBody  ';'
+< 	{[
+< 	    | pIdentifier:
+< 		.sIdentifier
+< 		'='  @TypeBody  ';'
+< 	    | *:
+< 		>
+< 	]};
+---
+>     ':'  @TypeBody;
+275c343
+< VariableDeclarations :
+---
+> VariableDeclaration :
+278d345
+< 	':'  @TypeBody  ';'
+280,282c347,348
+< 	    | pIdentifier:
+< 		.sIdentifier
+< 		':'  @TypeBody  ';'
+---
+>         | ',':
+>             pIdentifier .sIdentifier
+285c351,352
+< 	]};
+---
+>     ]}
+>     ':'  @TypeBody;
+288,290c355
+< 	% Accept zero or more procedure formal parameter declarations.
+< 	[
+< 	    | '(':
+---
+>     '('
+292c357
+< 		    % formal parameter identifier
+---
+>         % Accept zero or more procedure formal parameter declarations.
+295d359
+< 			    pIdentifier  .sIdentifier
+297d360
+< 			| *:
+298a362,366
+>             | pIdentifier:
+>                 .sIdentifier
+>             | *:
+>                 % No parameters
+>                 >
+304c372
+< 			| ';':
+---
+>             | ',':
+310,312d377
+< 	    | *:
+< 	]
+< 	';'
+315,331c380,386
+< Statement :
+< 	[
+< 	    | pIdentifier:
+< 		@AssignmentOrCallStmt
+< 	    | 'begin':
+< 		@BeginStmt
+< 	    | 'if':
+< 		@IfStmt
+< 	    | 'while':
+< 		@WhileStmt
+< 	    | 'case':
+< 		@CaseStmt
+< 	    | 'repeat':
+< 		@RepeatStmt
+< 	    | *:
+< 		.sNullStmt
+< 	];
+---
+> ModuleDefinition :
+>     % Process a module's declarations and statements.
+>     % Module name
+>     pIdentifier  .sIdentifier
+>     @ModuleDeclarations
+>     @Statements
+>     'end';
+335c390
+< 	    | ':=':
+---
+>         | '=':
+346c401
+< 		']'  ':='
+---
+>         ']'  '='
+382,385c437,442
+< BeginStmt :
+< 	.sBegin
+< 	{
+< 	    @Statement
+---
+> IfStmt :
+>     .sIfStmt
+>     @Expression
+>     .sExpnEnd
+>     'then'  .sThen
+>     @Statements
+387,388c444,446
+< 		| ';':
+< 		| 'end':
+---
+>         | 'elsif':  % implementing elsif handling the parser intensive (second) way
+>             .sElse .sBegin  % since elsifs should add an if statement within the conditional statements, we must specify that it's an if statement, and put in the begin and end tokens
+>             @IfStmt
+390,392c448,452
+< 		    >
+< 	    ]
+< 	};
+---
+>         | 'else':
+>             .sElse
+>             @Statements
+>         | *:
+>     ];
+394c454
+< IfStmt :
+---
+> UnlessStmt :
+396a457
+>     .sNot
+399c460
+< 	@Statement
+---
+>     @Statements
+403c464
+< 		@Statement
+---
+>             @Statements
+405c466,467
+< 	];
+---
+>     ]
+>     'end';  % added to consume end keyword
+411c473,474
+< 	'of'
+---
+>     % removed 'of' consumption, as it is not longer needed in Garnet
+>     'when'
+413,418c476
+< 	{[
+< 	    | ';':
+< 		% since case alternatives cannot be null, allow
+< 		% for the common situation of an extra semicolon
+< 		% at the end of the list of case alternatives.
+< 		[
+---
+>     {[  % deleted semicolon checking condition
+421c479
+< 		    | *:
+---
+>         | 'when':   % expect when at the beginning of a new case
+423,424c481,484
+< 		]
+< 	    | 'end':
+---
+>         | 'else':   % added else case to case statements
+>             .sElse 
+>             @Statements
+>             'end'
+425a486
+>         % only 3 options in a case statement, so no general alternative needed
+442c503
+< 	':'  @Statement;
+---
+>     'then'  @Statements;    % changed to then keyword before case statements
+449c510,511
+< 	@Statement;
+---
+>     @Statements
+>     'end';
+451,461c513,516
+< RepeatStmt :
+< 	.sRepeatStmt
+< 	{
+< 	    @Statement
+< 	    [
+< 		| ';':
+< 		| 'until':
+< 		    .sRepeatEnd
+< 		    >
+< 	    ]
+< 	}
+---
+> DoStmt :    % implementing Garnet do statements
+>     .sDo
+>     @Statements
+>     'break' 'if' .sBreakIf
+463c518,521
+< 	.sExpnEnd;
+---
+>     .sExpnEnd
+>     @Statements
+>     'end';
+> % repeat statement method removed, as repeat statements are not included in Garnet
+468c526
+< 	    | '=':
+---
+>         | '==': % updated to new pEquals
+470c528
+< 	    | '<>':
+---
+>         | '!=': % updated to new pNotEquals
+504c562
+< 	@Factor
+---
+>     @SimpleTerm % Term goes to new simple term level to check for substring operator at correct precedence
+507c565
+< 		@Factor  .sMultiply
+---
+>         @SimpleTerm  .sMultiply
+509c567
+< 		@Factor  .sDivide
+---
+>         @SimpleTerm  .sDivide
+511c569
+< 		@Factor  .sModulus
+---
+>         @SimpleTerm  .sModulus
+513c571,574
+< 		.sInfixAnd  @Factor  .sAnd
+---
+>         .sInfixAnd  @SimpleTerm  .sAnd
+> 	    | '?': 
+> 	    @SimpleTerm
+> 	    .sIndex
+517a579,587
+> SimpleTerm :    % New level added to check substring operator
+>     @Factor
+>     [
+>         |'$':
+> 	      @Factor '..' @Factor 
+> 	      .sSubstring
+> 	    | *:
+>     ];
+> 
+526a597,599
+>         | '#':
+>         @Factor
+>         .sLength
