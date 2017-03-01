@@ -471,6 +471,7 @@ CaseStmt :
     @Expression
     .sExpnEnd
     % removed 'of' consumption, as it is not longer needed in Garnet
+    'when'
     @CaseAlternative
     {[  % deleted semicolon checking condition
         | 'end':
