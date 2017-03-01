@@ -10,8 +10,8 @@
 .sLiteral
 .sInteger
 .sInteger
-.sMultiply
 .sInteger
+.sMultiply
 .sSubtract
 .sLiteral
 .sLength
