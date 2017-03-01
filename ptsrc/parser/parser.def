@@ -113,7 +113,7 @@
 	sNewLine = 46;
 	sPublic = 47;
 	sModule = 48;
-	sDo = 49;	%changed from pDoStmt match assignment instructions
+	sDo = 49;
 	sBreakIf = 50;
 	sSubstring = 51;
 	sLength = 52;
