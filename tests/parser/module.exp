@@ -25,4 +25,8 @@
                     .sInteger
                 .sExpnEnd
             .sEnd
+        .sBegin
+        .sEnd
+    .sEnd
+    .sBegin
     .sEnd
