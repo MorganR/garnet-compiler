@@ -19,7 +19,7 @@ Declarations:
  - Declarations include specifying any of the following: constants, variables, types, routines, and modules
  - The different declaration types can occur in any order, but all declarations must occur at the start of a block
 
-The Statements Rule:
+Statements:
  - Declarations are followed by Statements. These include expressions and if, call, unless, do, case, and while statements. 
  - A block of statements is surrounded by .sBegin and .sEnd to maintain compatibility with the PT compiler. This will simplify the semantic analysis stage of compilation.
  - Elsifs were implemented using the second recommended way, which is more parser intensive and allows for no changes to later phases in the handling of if statements.
@@ -41,8 +41,6 @@ Modules:
  - Similar to Routines, modules consist of declarations followed by statements
  - Modules use a slightly modified Declarations rule to allow Routines to be declared public with a '*'. This is only done for Module declarations because it would not make sense anywhere else in a program.
  - Nesting of modules is allowed
-
-Statements:
 
 Strings:
  - Removing handling of chars for strings was done in Assignment #1
