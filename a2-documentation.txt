@@ -24,6 +24,7 @@ Statements:
  - A block of statements is surrounded by .sBegin and .sEnd to maintain compatibility with the PT compiler. This will simplify the semantic analysis stage of compilation.
  - Elsifs were implemented using the second recommended way, which is more parser intensive and allows for no changes to later phases in the handling of if statements.
  - The else clause of the case statement was added by adding a third condition within the CaseStmt rule.
+ - Unless statements were added by following a simliar rule to the if statement, but not including the elsif additions and adding a not token after the condition (which takes the form of an expression).
  - Do statements were implemented, allowing for a statement block before the exit condition of the loop is checked and another after that. 
  - Repeat Statements (and the associated rule) were removed.
  - Consumption of the 'end' keyword at the end of if statements (and unless statements) was added. This was done outside of the if statement method as an if, even with elsifs, only has one end token input.
