@@ -8,7 +8,8 @@
 .sAssignmentStatement
 .sIdentifier
 .sLiteral
-.sLiteral
-.sIndex
+.sInteger
+.sInteger
+.sSubstring
 .sExpnEnd
 .sEnd

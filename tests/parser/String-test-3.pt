@@ -1,0 +1,6 @@
+using StringTest
+
+var s1 : String
+
+s1 = "String1" $ 1..2
+

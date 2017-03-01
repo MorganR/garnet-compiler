@@ -8,7 +8,6 @@
 .sAssignmentStatement
 .sIdentifier
 .sLiteral
-.sLiteral
-.sIndex
+.sLength
 .sExpnEnd
 .sEnd
