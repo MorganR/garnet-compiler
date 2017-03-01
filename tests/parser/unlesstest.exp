@@ -11,7 +11,7 @@
     .sExpnEnd
     .sIfStmt
       .sIdentifier
-      .sIdentifier
+      .sInteger
       .sLT
       .sNot
       .sExpnEnd
