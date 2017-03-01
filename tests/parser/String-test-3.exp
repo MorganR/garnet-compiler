@@ -5,7 +5,7 @@
 	.sIdentifier
 	.sIdentifier
 .sBegin
-.sAssignmentStatement
+.sAssignmentStmt
 .sIdentifier
 .sLiteral
 .sInteger
