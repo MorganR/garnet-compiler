@@ -10,5 +10,12 @@
         .sInteger
     .sExpnEnd
     .sDo
-    //finish
+    .sBegin
+      .sAssignmentStmt
+        .sIdentifier
+          .sIdentifier
+          .sInteger
+        .sAdd
+      .sExpnEnd
+    .sEnd
   .sEnd
