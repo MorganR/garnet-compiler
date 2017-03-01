@@ -506,21 +506,14 @@ WhileStmt :
     'end';
 
 DoStmt :    % implementing Garnet do statements
-    % TODO: Implement 'do' statement
-
-%RepeatStmt :
-%    .sRepeatStmt
-%    {
-%       @Statements
-%        [
-%        | ';':
-%        | 'until':
-%            .sRepeatEnd
-%            >
-%        ]
-%    }
+    .sDo
+    @Statements
+    'break' 'if' .sBreakIf
     @Expression
-    .sExpnEnd;
+    .sExpnEnd
+    @Statements
+    'end' .sDo;   %TODO: is this sDo included?
+% repeat statement method removed, as repeat statements are not included in Garnet
 
 Expression :
     @SimpleExpression
