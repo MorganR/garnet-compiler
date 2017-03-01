@@ -135,7 +135,7 @@ Output :
     % Garnet tokens below
     sPublic
     sModule
-    sDo
+    sDo     %changed from pDoStmt match assignment instructions
     sBreakIf
     sSubstring
     sLength
