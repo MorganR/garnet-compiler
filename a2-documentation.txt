@@ -12,10 +12,16 @@ Token Changes:
  - Add garnet semantic tokens for parser output to parser.ssl, and copied the compiled output of parser.deff to parser.pt. Tokens: sPublic, sModule, sDoStmt, sBreakIf, sSubstring, sLength, and sIndex
 
 Programs:
+ - Modified parser.ssl so programs start with 'using' instead of 'Program'
+ - Enabled programs to have multiple identifiers, as in 'using name1, name2'
 
 Declarations:
+ - Declarations include specifying any of the following: constants, variables, types, routines, and modules
+ - The different declaration types can occur in any order, but all declarations must occur at the start of a block
 
 Statements:
+ - Declarations are followed by Statements. These include expressions and if, call, unless, do, case, and while statements. 
+ - A block of statements is surrounded by .sBegin and .sEnd to maintain compatibility with the PT compiler. This will simplify the semantic analysis stage of compilation.
 
 Routines (Procedures):
 
@@ -24,5 +30,12 @@ Modules:
 Statements:
 
 Strings:
+- Removing handling of chars for strings was done in Assignment #1
+- Added input and output tokens for '#', '$' and '?'
+- Added new precedence rule called "simple term" for substring '$' in order to make precedence between '#' and '?'
+- Changed all calls at term level to call simple term which in turn calls factor (for suubstring precedence)
+- Added logic for # at same precedence as 'not' (can only use other factors)
+- Added logic for ? at same precedence as 'mod' and 'div' (can only use simple terms)
+- Added logic for $ at new precedence level (can only use simple terms)
 
 Precedence:
