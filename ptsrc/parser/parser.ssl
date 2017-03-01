@@ -580,7 +580,7 @@ SimpleTerm :    % New level added to check substring operator
     @Factor
     [
         |'$':
-	      @Expression '..' @Expression 
+	      @Factor '..' @Factor 
 	      .sSubstring
 	    | *:
     ];
