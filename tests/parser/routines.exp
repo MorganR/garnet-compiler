@@ -45,6 +45,7 @@
         .sIdentifier
         .sIdentifier
         .sAdd
+      .sExpnEnd
     .sEnd
 .sVar
     .sIdentifier
@@ -73,16 +74,26 @@
 .sBegin
     .sCallStmt
     .sIdentifier
+    .sParmEnd
     .sCallStmt
     .sIdentifier
         .sInteger
+    .sExpnEnd
+    .sParmEnd
     .sCallStmt
     .sIdentifier
     .sInteger
+    .sExpnEnd
     .sInteger
+    .sExpnEnd
+    .sParmEnd
     .sCallStmt
     .sIdentifier
     .sInteger
+    .sExpnEnd
     .sInteger
+    .sExpnEnd
     .sIdentifier
+    .sExpnEnd
+    .sParmEnd
 .sEnd

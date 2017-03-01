@@ -15,7 +15,7 @@ using Routines
         a = a + b + c
     end
 
-    f0()
+    f0
     f1(1)
     f2(2, 3)
     f3(1, 2, c)
