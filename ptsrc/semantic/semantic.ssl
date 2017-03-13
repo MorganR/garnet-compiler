@@ -50,9 +50,7 @@ Input :
 	sIfStmt
 	sThen
 	sElse
-	sWhileStmt
-	sRepeatStmt
-	sRepeatEnd
+	sWhileStmt	%removed sRepeatStmt and sRepeatEnd, as Garnet has not repeat statements
 	sEq
 	sNE
 	sLT
@@ -70,6 +68,14 @@ Input :
 	sAnd
 	sNot
 	sNewLine
+	% Garnet tokens below (except eEndOfFile)
+    sPublic
+    sModule
+    sDo
+    sBreakIf
+    sSubstring
+    sLength
+    sIndex
 	sEndOfFile
 	lastInputToken = sEndOfFile;
 
