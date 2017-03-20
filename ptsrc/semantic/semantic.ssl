@@ -322,6 +322,8 @@ type SymbolKind :
 	syFunction
 	syExternal
 	syExpression
+	syModule
+	syPublicProcedure
 	syUndefined;
 
 type StdRoutine :
