@@ -105,30 +105,32 @@ Output :	% corresponds to coder.ssl input
 	tVarParm
 	tFetchAddress
 	tFetchInteger
-	tFetchChar
+	tFetchString
 	tFetchBoolean
 	tAssignBegin
 	tAssignAddress
 	tAssignInteger
-	tAssignChar
+	tAssignString
 	tAssignBoolean
 	tStoreParmAddress
 	tStoreParmInteger
-	tStoreParmChar
+	tStoreParmString
 	tStoreParmBoolean
 	tSubscriptBegin
 	tSubscriptAddress
 	tSubscriptInteger
-	tSubscriptChar
+	tSubscriptString
 	tSubscriptBoolean
 	tArrayDescriptor
 	tFileDescriptor
 	tIfBegin
 	tIfEnd
 	tCaseBegin
-	tWhileBegin
-	tRepeatBegin
-	tRepeatControl
+	tDoBegin 
+	tDoBreakIf 
+	tDoTest 
+	tDoEnd
+	tCaseElse
 	tCallBegin
 	tParmEnd
 	tProcedureEnd
@@ -142,9 +144,13 @@ Output :	% corresponds to coder.ssl input
 	tLiteralAddress
 	firstCompoundOutputToken = tLiteralAddress
 	tLiteralInteger
-	tLiteralChar
-	tLiteralBoolean
 	tLiteralString
+	tLiteralBoolean
+	tConcatenate
+	tSubstring
+	tLength 
+	tIndex
+	tStrin	gEqual
 	tStringDescriptor
 	tSkipString
 	tIfThen
@@ -191,7 +197,7 @@ Error :
 	eTypeIdentifierReqd
 	eIntegerExpnReqd
 	eBooleanExpnReqd
-	eCharExpnReqd
+	eStringExpnReqd
 	eArrayVarReqd
 	eVariableReqd
 	eDuplicateLabel
@@ -201,7 +207,7 @@ Error :
 	eInputNotVisible
 	eOutputNotVisible
 	eFieldWidth
-	eCharFileVarReqd
+	eStringFileVarReqd
 	eWriteExpn
 	eReadVar
 	lastSslErrorCode = eReadVar;
@@ -234,7 +240,7 @@ type PredeclaredId :
 
 	firstPredeclaredType = firstPredeclaredId
 	pidInteger = firstPredeclaredType
-	pidChar
+	pidString
 	pidBoolean
 	pidText
 	lastPredeclaredType = pidText
