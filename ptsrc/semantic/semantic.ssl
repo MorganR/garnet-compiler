@@ -454,7 +454,7 @@ mechanism TypeTable :
 
 type TypeKind :
 	tpInteger
-	tpChar
+	tpString
 	tpBoolean
 	tpSubrange
 	tpArray
@@ -567,11 +567,10 @@ type TrapKind :
 	trReadln = 4
 	trWrite = 5
 	trWriteln = 6
-	trWriteString = 7
 	trWriteInteger = 8
-	trWriteChar = 9
 	trReadInteger = 10
-	trReadChar = 11
+	trReadString = 108
+	trWriteString = 109
 	trAssign = 12;
 
 
@@ -1347,7 +1346,7 @@ AllocateVar :
 			oAllocateAlignOnWord
 			oSymbolStkEnterDataAddress
 			oAllocateVariable
-		    | tpChar, tpBoolean:
+		    | tpString, tpBoolean:
 			oSymbolStkEnterDataAddress
 			oAllocateVariable
 		    | tpArray:
@@ -1521,7 +1520,7 @@ ProcedurePrologue :
 			[ oTypeStkChooseKind
 			    | tpInteger, tpSubrange:
 				.tStoreParmInteger
-			    | tpChar:
+			    | tpString:
 				.tStoreParmChar
 			    | tpBoolean:
 				.tStoreParmBoolean
@@ -1581,7 +1580,7 @@ AssignmentStmt :
 	[ oTypeStkChooseKind
 	    | tpInteger, tpSubrange, tpFile:
 		.tAssignInteger
-	    | tpChar:
+	    | tpString:
 		.tAssignChar
 	    | tpBoolean:
 		.tAssignBoolean
@@ -1718,7 +1717,7 @@ VariableActual :
 			#eParameterTypeMismatch
 		]
 		[ oTypeStkChooseKind
-		    | tpInteger, tpSubrange, tpChar, tpBoolean:
+		    | tpInteger, tpSubrange, tpString, tpBoolean:
 			% Subscripted packed array variables are
 			% illegal as variable actual parameters
 			[ oTypeStkChoosePackedComponentFlag
@@ -1935,11 +1934,11 @@ Operand :
 		    | zero:
 			#eNullString
 			oSymbolStkPush(syExpression)
-			oTypeStkPush(tpChar)
+			oTypeStkPush(tpString)
 		    | one:
 			oSymbolStkPush(syExpression)
-			oTypeStkPush(tpChar)
-			.tLiteralChar
+			oTypeStkPush(tpString)
+			.tLiteralString
 			oEmitString
 		    | *:
 			oSymbolStkPush(syExpression)
@@ -2058,10 +2057,10 @@ CompareAndSwapTypes :
 		    | *:
 			#eTypeMismatch
 		]
-	    | tpChar:
+	    | tpString:
 		oTypeStkSwap
 		[ oTypeStkChooseKind
-		    | tpChar:
+		    | tpString:
 		    | *:
 			#eTypeMismatch
 		]
@@ -2122,10 +2121,10 @@ CompareRelationalOperandTypes :
 		    | *:
 			#eOperandOperatorTypeMismatch
 		]
-	    | tpChar:
+	    | tpString:
 		oTypeStkPop
 		[ oTypeStkChooseKind
-		    | tpChar:
+		    | tpString:
 		    | *:
 			#eOperandOperatorTypeMismatch
 		]
@@ -2200,14 +2199,14 @@ VariableExtension :
 		[ oTypeStkChooseKind
 		    | tpInteger, tpSubrange:
 			.tSubscriptInteger
-		    | tpChar:
+		    | tpString:
 			.tSubscriptChar
 		    | tpBoolean:
 			.tSubscriptBoolean
 		]
 	    | *:
 		[ oTypeStkChooseKind
-		    | tpInteger, tpSubrange, tpChar, tpBoolean:
+		    | tpInteger, tpSubrange, tpString, tpBoolean:
 			oTypeStkSetPackedComponentFlag(no)
 		    | *:
 		]
@@ -2220,8 +2219,8 @@ ConstantOperand :
 	[ oTypeStkChooseKind
 	    | tpInteger, tpSubrange:
 		.tLiteralInteger
-	    | tpChar:
-		.tLiteralChar
+	    | tpString:
+		.tLiteralString
 	    | tpBoolean:
 		.tLiteralBoolean
 	    | tpPackedArray:	% always a named literal string
@@ -2239,7 +2238,7 @@ VariableOperand :
 	[ oTypeStkChooseKind
 	    | tpInteger, tpSubrange, tpFile:
 		.tFetchInteger		% replace address with value
-	    | tpChar:
+	    | tpString:
 		.tFetchChar
 	    | tpBoolean:
 		.tFetchBoolean
@@ -2275,13 +2274,13 @@ FunctionOperand :
 		oSymbolStkPop	% Chr symbol
 		oTypeStkPop
 		oSymbolStkPush(syExpression)
-		oTypeStkPush(tpChar)
+		oTypeStkPush(tpString)
 	    | rtOrd:
 		[
 		    | sParmBegin:
 			@Expression
 			[ oTypeStkChooseKind
-			    | tpChar:
+			    | tpString:
 			    | *:
 				#eCharExpnReqd
 			]
@@ -2475,7 +2474,7 @@ AssignProcedure :
 			    | tpArray, tpPackedArray:	% must be a char array or literal string	
 				oTypeStkPushComponent
 				[ oTypeStkChooseKind
-				    | tpChar:
+				    | tpString:
 				    | *:
 					#eFileNameReqd
 				]
@@ -2538,7 +2537,7 @@ WriteProcedure :
 				oTypeStkPushComponent
 				oValuePushSymbol	% file descriptor
 				[ oTypeStkChooseKind
-				    | tpChar:
+				    | tpString:
 					{
 					    .tTrapBegin
 					    .tLiteralAddress
@@ -2725,7 +2724,7 @@ WriteChar :
 		[ oTypeStkChooseKind	% of expression being written
 		    | tpInteger, tpSubrange:
 			oValuePush(ten)
-		    | tpChar:
+		    | tpString:
 			oValuePush(one)
 		    | tpPackedArray:	% a literal string
 			oValuePushTypeStkUpperBound
@@ -2738,16 +2737,16 @@ WriteChar :
 		.tParmEnd
 	]
 	[ oTypeStkChooseKind
-	    | tpChar:
+	    | tpString:
 		.tTrap
-		oEmitTrapKind(trWriteChar)
+		oEmitTrapKind(trWriteString)
 	    | tpInteger, tpSubrange:
 		.tTrap
 		oEmitTrapKind(trWriteInteger)
 	    | tpArray, tpPackedArray:	% must be a char array or literal string
 		oTypeStkPushComponent
 		[ oTypeStkChooseKind
-		    | tpChar:
+		    | tpString:
 		    | *:
 			#eWriteExpn
 		]
@@ -2848,7 +2847,7 @@ WritelnProcedure :
 				oTypeStkPushComponent
 				% writeln applies only to text files
 				[ oTypeStkChooseKind
-				    | tpChar:
+				    | tpString:
 					% There should not be more parameters
 					[
 					    | sExpnEnd:
@@ -2916,7 +2915,7 @@ ReadProcedure :
 				oValuePushSymbol	% file descriptor
 				oTypeStkPushComponent
 				[ oTypeStkChooseKind
-				    | tpChar:
+				    | tpString:
 					@ReadCharParameterList
 				    | *:
 					@ReadNonCharParameterList
@@ -3057,9 +3056,9 @@ ReadNonCharParameterList :
 
 ReadChar :
 	[ oTypeStkChooseKind
-	    | tpChar:
+	    | tpString:
 		.tTrap
-		oEmitTrapKind(trReadChar)
+		oEmitTrapKind(trReadString)
 	    | tpInteger, tpSubrange:
 		.tTrap
 		oEmitTrapKind(trReadInteger)
@@ -3136,7 +3135,7 @@ ReadlnProcedure :
 				oTypeStkPushComponent
 				% readln applies only to text files
 				[ oTypeStkChooseKind
-				    | tpChar:
+				    | tpString:
 					% There should not be more parameters
 					[
 					    | sExpnEnd:
