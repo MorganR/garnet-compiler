@@ -148,7 +148,7 @@ Output :	% corresponds to coder.ssl input
 	tSubstring %Changed to string
 	tLength 
 	tIndex
-	tStrin	gEqual
+	tStringEqual
 	tStringDescriptor %Changed to string
 	tSkipString %Changed to string
 	tIfThen
