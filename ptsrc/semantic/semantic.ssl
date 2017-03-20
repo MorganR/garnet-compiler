@@ -105,30 +105,30 @@ Output :	% corresponds to coder.ssl input
 	tVarParm
 	tFetchAddress
 	tFetchInteger
-	tFetchChar
+	tFetchString %Changed to string
 	tFetchBoolean
 	tAssignBegin
 	tAssignAddress
 	tAssignInteger
-	tAssignChar
+	tAssignString %Changed to string
 	tAssignBoolean
 	tStoreParmAddress
 	tStoreParmInteger
-	tStoreParmChar
+	tStoreParmString %Changed to string
 	tStoreParmBoolean
 	tSubscriptBegin
 	tSubscriptAddress
 	tSubscriptInteger
-	tSubscriptChar
+	tSubscriptString %Changed to string
 	tSubscriptBoolean
 	tArrayDescriptor
 	tFileDescriptor
 	tIfBegin
 	tIfEnd
 	tCaseBegin
-	tWhileBegin
-	tRepeatBegin
-	tRepeatControl
+	tDoBegin %Added new t-codes for Do and else
+	tDoBreakIf 
+	tCaseElse 
 	tCallBegin
 	tParmEnd
 	tProcedureEnd
@@ -142,19 +142,22 @@ Output :	% corresponds to coder.ssl input
 	tLiteralAddress
 	firstCompoundOutputToken = tLiteralAddress
 	tLiteralInteger
-	tLiteralChar
+	tLiteralString %Changed to string
 	tLiteralBoolean
-	tLiteralString
-	tStringDescriptor
-	tSkipString
+	tConcatenate
+	tSubstring %Changed to string
+	tLength 
+	tIndex
+	tStrin	gEqual
+	tStringDescriptor %Changed to string
+	tSkipString %Changed to string
 	tIfThen
 	tIfMerge
 	tCaseSelect
 	tCaseMerge
 	tCaseEnd
-	tWhileTest
-	tWhileEnd
-	tRepeatTest
+	tDoTest  %Added t-codes for Do and else
+	tDoEnd
 	tSkipProc
 	tCallEnd
 	tLineNumber
@@ -191,7 +194,7 @@ Error :
 	eTypeIdentifierReqd
 	eIntegerExpnReqd
 	eBooleanExpnReqd
-	eCharExpnReqd
+	eStringExpnReqd
 	eArrayVarReqd
 	eVariableReqd
 	eDuplicateLabel
@@ -201,7 +204,7 @@ Error :
 	eInputNotVisible
 	eOutputNotVisible
 	eFieldWidth
-	eCharFileVarReqd
+	eStringFileVarReqd
 	eWriteExpn
 	eReadVar
 	lastSslErrorCode = eReadVar;
@@ -234,7 +237,7 @@ type PredeclaredId :
 
 	firstPredeclaredType = firstPredeclaredId
 	pidInteger = firstPredeclaredType
-	pidChar
+	pidString
 	pidBoolean
 	pidText
 	lastPredeclaredType = pidText
