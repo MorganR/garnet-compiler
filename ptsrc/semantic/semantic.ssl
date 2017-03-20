@@ -144,7 +144,7 @@ Output :	% corresponds to coder.ssl input
 	tLiteralInteger
 	tLiteralString %Changed to string
 	tLiteralBoolean
-	tConcatenate
+	tConcatenate % Added T-code
 	tSubstring %Changed to string
 	tLength 
 	tIndex
