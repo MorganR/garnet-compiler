@@ -262,7 +262,7 @@ type PredeclaredId :
 
 type StdType :
 	stdInteger
-	stdChar
+	stdString
 	stdBoolean
 	stdText;
 
