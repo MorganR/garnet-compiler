@@ -454,7 +454,7 @@ mechanism TypeTable :
 
 type TypeKind :
 	tpInteger
-	tpString
+	tpString %Changed tpChar to tpString
 	tpBoolean
 	tpSubrange
 	tpArray
@@ -569,7 +569,7 @@ type TrapKind :
 	trWriteln = 6
 	trWriteInteger = 8
 	trReadInteger = 10
-	trReadString = 108
+	trReadString = 108 %Changed trRead and Write from Char to String
 	trWriteString = 109
 	trAssign = 12;
 
@@ -2847,7 +2847,7 @@ WritelnProcedure :
 				oTypeStkPushComponent
 				% writeln applies only to text files
 				[ oTypeStkChooseKind
-				    | tpString:
+				    | tpString: %Changed from tpChar
 					% There should not be more parameters
 					[
 					    | sExpnEnd:
@@ -2915,7 +2915,7 @@ ReadProcedure :
 				oValuePushSymbol	% file descriptor
 				oTypeStkPushComponent
 				[ oTypeStkChooseKind
-				    | tpString:
+				    | tpString: %Changed from tpChar
 					@ReadCharParameterList
 				    | *:
 					@ReadNonCharParameterList
@@ -3056,7 +3056,7 @@ ReadNonCharParameterList :
 
 ReadChar :
 	[ oTypeStkChooseKind
-	    | tpString:
+	    | tpString: %Changed from tpChar
 		.tTrap
 		oEmitTrapKind(trReadString)
 	    | tpInteger, tpSubrange:
@@ -3135,7 +3135,7 @@ ReadlnProcedure :
 				oTypeStkPushComponent
 				% readln applies only to text files
 				[ oTypeStkChooseKind
-				    | tpString:
+				    | tpString: %Changed from tpChar
 					% There should not be more parameters
 					[
 					    | sExpnEnd:
