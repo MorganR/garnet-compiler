@@ -105,32 +105,30 @@ Output :	% corresponds to coder.ssl input
 	tVarParm
 	tFetchAddress
 	tFetchInteger
-	tFetchString
+	tFetchString %Changed to string
 	tFetchBoolean
 	tAssignBegin
 	tAssignAddress
 	tAssignInteger
-	tAssignString
+	tAssignString %Changed to string
 	tAssignBoolean
 	tStoreParmAddress
 	tStoreParmInteger
-	tStoreParmString
+	tStoreParmString %Changed to string
 	tStoreParmBoolean
 	tSubscriptBegin
 	tSubscriptAddress
 	tSubscriptInteger
-	tSubscriptString
+	tSubscriptString %Changed to string
 	tSubscriptBoolean
 	tArrayDescriptor
 	tFileDescriptor
 	tIfBegin
 	tIfEnd
 	tCaseBegin
-	tDoBegin 
+	tDoBegin %Added new t-codes for Do and else
 	tDoBreakIf 
-	tDoTest 
-	tDoEnd
-	tCaseElse
+	tCaseElse 
 	tCallBegin
 	tParmEnd
 	tProcedureEnd
@@ -144,23 +142,22 @@ Output :	% corresponds to coder.ssl input
 	tLiteralAddress
 	firstCompoundOutputToken = tLiteralAddress
 	tLiteralInteger
-	tLiteralString
+	tLiteralString %Changed to string
 	tLiteralBoolean
 	tConcatenate
-	tSubstring
+	tSubstring %Changed to string
 	tLength 
 	tIndex
 	tStrin	gEqual
-	tStringDescriptor
-	tSkipString
+	tStringDescriptor %Changed to string
+	tSkipString %Changed to string
 	tIfThen
 	tIfMerge
 	tCaseSelect
 	tCaseMerge
 	tCaseEnd
-	tWhileTest
-	tWhileEnd
-	tRepeatTest
+	tDoTest  %Added t-codes for Do and else
+	tDoEnd
 	tSkipProc
 	tCallEnd
 	tLineNumber
