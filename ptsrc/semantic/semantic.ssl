@@ -301,6 +301,8 @@ mechanism SymbolTable :
 	% Return true if any external names (program parameters)
 	% have not yet been declared.
 
+	% 5. Add the new oSymbolTblStripScope and oSymbolTblMergeScope operations to the SymbolTable mechanism.
+
 
 
 
