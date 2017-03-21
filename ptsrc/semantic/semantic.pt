@@ -1699,7 +1699,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 
 			begin
 			    Assert((lexicLevelStackTop >= 1), assert31);
-			    i := symbolTblTop;
+			    i := symbolTblTop;	
 			    symbolTblTop := symbolTblDisplay[lexicLevelStackTop];
 			    { Set the identifier table pointer to the identifier
 			      entry in the closest enclosing scope if there is 
@@ -1732,6 +1732,11 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 			      names. }
 			    typeTblTop := typeTblDisplay[lexicLevelStackTop];
 			    lexicLevelStackTop := lexicLevelStackTop - 1;
+			end;
+			oSymbolMergeStripScope:
+			begin
+				 Assert((lexicLevelStackTop >= 1), assert31);
+				 lexicLevelStackTop = lexicLevelStackTop - 1;
 			end;
 
 			oSymbolTblStripScope:
