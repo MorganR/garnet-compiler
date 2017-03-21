@@ -306,7 +306,10 @@ mechanism SymbolTable :
 
 	% 5. Add the new oSymbolTblStripScope and oSymbolTblMergeScope operations to the SymbolTable mechanism.
 
-
+	oSymbolTblStripScope
+	% Added oSymbolTblStripScope, sets the symbol table reference for each identifier index to the next lexical level
+	oSymbolTblPopScope
+	% Added oSymbolTblPopScope, decrements the lexical level
 
 
 
