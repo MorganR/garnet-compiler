@@ -2051,6 +2051,10 @@ BinaryOperator :
 		.tModulus
 		oTypeStkPush(tpInteger)
 		@CompareOperandAndResultTypes
+		|sIndex %Added handling for string index function
+		.tIndex
+		oTypeStkPush(tpInteger)
+		@CompareOperandAndResultTypes
 	    | *:
 	];
 
