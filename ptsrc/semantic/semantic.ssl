@@ -459,7 +459,7 @@ type TypeKind :
 	tpBoolean
 	tpSubrange
 	tpArray
-	tpPackedArray	% string literal
+	tpPackedArray
 	tpFile
 	tpNull;
 
