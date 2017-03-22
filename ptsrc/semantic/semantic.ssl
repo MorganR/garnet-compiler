@@ -1980,6 +1980,9 @@ UnaryOperator :
 	    | sNot:
 		.tNot
 		oTypeStkPush(tpBoolean)
+		| sLength
+		.tLength
+		oTypeStkPush(tpString)	% result type
 	    | *:
 		>>		% bypass type check
 	]
