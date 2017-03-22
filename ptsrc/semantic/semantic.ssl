@@ -1555,7 +1555,7 @@ Statement :
 	    | sWhileStmt:
 		@WhileStmt
 	    | sCaseStmt:
-		@CaseStmt
+		@CaseStmt	
 	    | sRepeatStmt:
 		@RepeatStmt
 	    | sNullStmt:
@@ -1806,6 +1806,10 @@ CaseStmt :
 	{[
 	    | sCaseEnd:
 		>
+		| sElse
+		@CaseAlternative
+		sCaseEnd 
+		>
 	    | *:
 		@CaseAlternative
 	]}
@@ -1890,7 +1894,7 @@ Expression :
 	% pushes symbol and type table entries for the expression result.
 
 	{
-	    @Operand
+	    @Operand	
 	    @UnaryOperator
 	    @BinaryOperator
 	    [
