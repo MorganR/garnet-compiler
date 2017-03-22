@@ -859,12 +859,13 @@ Block :
 	@BeginStmt;
 
 ConstantDefinitions :		% Process named constant definitions
-	{[
+    % Changed to only process one constant definition per call
+	[
 	    | sIdentifier:
 		@ConstantValue
-	    | *:
+        | *:
 		>
-	]};
+    ];
 
 ConstantValue :		% An identifier token has just been accepted
 	oSymbolStkPushLocalIdentifier
