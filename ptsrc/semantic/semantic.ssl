@@ -851,7 +851,7 @@ Block :
 		@ProcedureDefinition
 	    | sConst:
 		@ConstantDefinitions
-	    | sType:
+	    | sType: 
 		@TypeDefinitions
 	    | sVar:
 		@VariableDeclarations
