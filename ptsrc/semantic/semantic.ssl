@@ -959,7 +959,8 @@ ConstantValue :		% An identifier token has just been accepted
 	oSymbolStkPop;		% name being defined
 
 TypeDefinitions :	% process named type definitions
-	{[
+    % Change to only allow one definition per call
+	[
 	    | sIdentifier:
 		oSymbolStkPushLocalIdentifier
 		@TypeBody
@@ -1010,7 +1011,7 @@ TypeDefinitions :	% process named type definitions
 		oTypeStkPop
 	    | *:
 		>
-	]};
+	];
 
 TypeBody :
 	% Push a type stack entry for the structure type (e.g. array)
