@@ -1806,7 +1806,7 @@ CaseStmt :
 	{[
 	    | sCaseEnd:
 		>
-		| sElse
+		| sElse % Added handling for case else
 		@CaseAlternative
 		sCaseEnd 
 		>
@@ -1954,8 +1954,7 @@ Operand :
 			oSymbolStkPush(syExpression)
 			% branch around string since
 			% it is stored in the code area
-			.tSkipString
-			oFixPushForwardBranch
+			oFixPushForwardBranch % Removed .tskipstring and .tStringDescriptor
 			oEmitNullAddress
 			.tLiteralString
 			oEmitValue	% string length
@@ -1965,7 +1964,6 @@ Operand :
 			oFixPopForwardBranch
 			% Descriptor points to the
 			% first character of the string
-			.tStringDescriptor
 			oFixPopTargetAddress
 			oTypeStkPush(tpPackedArray)
 			oTypeStkEnterBounds
@@ -1987,7 +1985,7 @@ UnaryOperator :
 	    | sNot:
 		.tNot
 		oTypeStkPush(tpBoolean)
-		| sLength
+		| sLength %Added length operator
 		.tLength
 		oTypeStkPush(tpString)	% result type
 	    | *:
