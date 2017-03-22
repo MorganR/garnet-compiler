@@ -68,7 +68,7 @@ Input :
 	sAnd
 	sNot
 	sNewLine
-	% Garnet tokens below (except eEndOfFile)
+	% Garnet tokens below (except sEndOfFile, which was there for PT)
     sPublic
     sModule
     sDo
@@ -76,6 +76,7 @@ Input :
     sSubstring
     sLength
     sIndex
+    % sEndOfFile kept here for symbolic reasons
 	sEndOfFile
 	lastInputToken = sEndOfFile;
 
