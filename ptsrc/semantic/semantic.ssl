@@ -68,7 +68,7 @@ Input :
 	sAnd
 	sNot
 	sNewLine
-	% Garnet tokens below (except eEndOfFile)
+	% Garnet tokens below (except sEndOfFile, which was there for PT)
     sPublic
     sModule
     sDo
@@ -76,6 +76,7 @@ Input :
     sSubstring
     sLength
     sIndex
+    % sEndOfFile kept here for symbolic reasons
 	sEndOfFile
 	lastInputToken = sEndOfFile;
 
@@ -461,7 +462,7 @@ type TypeKind :
 	tpBoolean
 	tpSubrange
 	tpArray
-	tpPackedArray	% string literal
+	tpPackedArray
 	tpFile
 	tpNull;
 
@@ -861,12 +862,13 @@ Block :
 	@BeginStmt;
 
 ConstantDefinitions :		% Process named constant definitions
-	{[
+    % Changed to only process one constant definition per call
+	[
 	    | sIdentifier:
 		@ConstantValue
-	    | *:
+        | *:
 		>
-	]};
+    ];
 
 ConstantValue :		% An identifier token has just been accepted
 	oSymbolStkPushLocalIdentifier
@@ -960,7 +962,8 @@ ConstantValue :		% An identifier token has just been accepted
 	oSymbolStkPop;		% name being defined
 
 TypeDefinitions :	% process named type definitions
-	{[
+    % Change to only allow one definition per call
+	[
 	    | sIdentifier:
 		oSymbolStkPushLocalIdentifier
 		@TypeBody
@@ -1011,7 +1014,7 @@ TypeDefinitions :	% process named type definitions
 		oTypeStkPop
 	    | *:
 		>
-	]};
+	];
 
 TypeBody :
 	% Push a type stack entry for the structure type (e.g. array)
