@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 %  PT Semantic Analysis Pass   Ver. 2.00
 %
 %  Date  30 Jun 1980
@@ -2078,16 +2077,11 @@ BinaryOperator :
 	TernaryOperator :
 	% Added choice of ternary operators (substring)
 	[
-<<<<<<< HEAD
 		| sSubstring:
 			.tSubstring
 			% oTypeStkPush(tpString)
 			% @CompareOperandAndResultTypes
 		| *:
-=======
-		|sSubstring
-			.tSubstring
->>>>>>> 3fcee0d4e95fa2babeed249e4eb9fc539938a082
 
 	];
 
