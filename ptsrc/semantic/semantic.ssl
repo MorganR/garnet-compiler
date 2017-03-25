@@ -50,7 +50,7 @@ Input :
 	sIfStmt
 	sThen
 	sElse
-	sWhileStmt	%removed sRepeatStmt and sRepeatEnd, as Garnet has not repeat statements
+	sWhileStmt	% Removed sRepeatStmt and sRepeatEnd, as Garnet doesn't haverepeat statements
 	sEq
 	sNE
 	sLT
@@ -106,30 +106,31 @@ Output :	% corresponds to coder.ssl input
 	tVarParm
 	tFetchAddress
 	tFetchInteger
-	tFetchString %Changed to string
+	tFetchString	% Changed to string
 	tFetchBoolean
 	tAssignBegin
 	tAssignAddress
 	tAssignInteger
-	tAssignString %Changed to string
+	tAssignString	% Changed to string
 	tAssignBoolean
 	tStoreParmAddress
 	tStoreParmInteger
-	tStoreParmString %Changed to string
+	tStoreParmString	% Changed to string
+
 	tStoreParmBoolean
 	tSubscriptBegin
 	tSubscriptAddress
 	tSubscriptInteger
-	tSubscriptString %Changed to string
+	tSubscriptString	% Changed to string
 	tSubscriptBoolean
 	tArrayDescriptor
 	tFileDescriptor
 	tIfBegin
 	tIfEnd
 	tCaseBegin
-	tDoBegin %Added new t-codes for Do and else
-	tDoBreakIf 
-	tCaseElse 
+	tDoBegin	% Added new t-code for do loops
+	tDoBreakIf	% Added new t-code for do loops
+	tCaseElse	% Added t-code for case else
 	tCallBegin
 	tParmEnd
 	tProcedureEnd
@@ -143,22 +144,22 @@ Output :	% corresponds to coder.ssl input
 	tLiteralAddress
 	firstCompoundOutputToken = tLiteralAddress
 	tLiteralInteger
-	tLiteralString %Changed to string
+	tLiteralString	% Changed to string
 	tLiteralBoolean
-	tConcatenate % Added T-code
-	tSubstring %Changed to string
+	tConcatenate	% Added T-code
+	tSubstring	% Changed to string
 	tLength 
 	tIndex
 	tStringEqual
-	tStringDescriptor %Changed to string
-	tSkipString %Changed to string
+	tStringDescriptor	% Changed to string
+	tSkipString	% Changed to string
 	tIfThen
 	tIfMerge
 	tCaseSelect
 	tCaseMerge
 	tCaseEnd
-	tDoTest  %Added t-codes for Do and else
-	tDoEnd
+	tDoTest	% Added t-code for Do
+	tDoEnd	% Added t-code for Do
 	tSkipProc
 	tCallEnd
 	tLineNumber
@@ -217,7 +218,7 @@ type Integer :
 	two = 2
 	three = 3
 	ten = 10
-	stringSize = 1024	% added as per checklist 3
+	stringSize = 1024	% added per checklist 3
 
 	% These two sizes are machine dependent
 	byteSize = 1
@@ -326,7 +327,7 @@ type SymbolKind :
 	syFunction
 	syExternal
 	syExpression
-	syModule
+	syModule	% Added symodule and sypublicProcedure
 	syPublicProcedure
 	syUndefined;
 
@@ -1805,17 +1806,21 @@ CaseStmt :
 	oEmitNullAddress		% address of case branch table
 	{[
 	    | sCaseEnd:
+		  .tCaseEnd
+		  oFixPopForwardBranch
+		  oEmitCaseBranchTable
 		>
 		| sElse % Added handling for case else
+		.tCaseEnd
+		oFixPopForwardBranch
+		oEmitCaseBranchTable
+		.tCaseElse
 		@CaseAlternative
 		sCaseEnd 
 		>
 	    | *:
 		@CaseAlternative
 	]}
-	.tCaseEnd
-	oFixPopForwardBranch
-	oEmitCaseBranchTable
 	% emit merge branches for case alternatives
 	{[ oCountChoose		% number of case alternatives
 	    | zero:
@@ -1825,7 +1830,7 @@ CaseStmt :
 		oCountDecrement
 	]}
 	oCasePopDisplay
-	oCountPop;
+	oCountPop;	
 
 CaseAlternative :
 	% A case alternative is a series of integer
@@ -1897,6 +1902,7 @@ Expression :
 	    @Operand	
 	    @UnaryOperator
 	    @BinaryOperator
+		@TernaryOperator %Added ternary operator rule
 	    [
 		| sExpnEnd:
 		    >
@@ -1987,7 +1993,7 @@ UnaryOperator :
 		oTypeStkPush(tpBoolean)
 		| sLength %Added length operator
 		.tLength
-		oTypeStkPush(tpString)	% result type
+		oTypeStkPush(tpInteger)	% result type
 	    | *:
 		>>		% bypass type check
 	]
@@ -2001,10 +2007,17 @@ BinaryOperator :
 	% Could make this a cycle (comment applies to UnaryOperator as well)
 	% but that would probably be less efficient on average.
 	[
-	    | sAdd:
-		.tAdd
-		oTypeStkPush(tpInteger)	% result type
-		@CompareOperandAndResultTypes
+	    | sAdd: % Made it possible to choose between integer add and string concatenate
+			[oTypeStkChooseKind
+	    		| tpInteger, tpSubrange:
+					.tAdd
+					oTypeStkPush(tpInteger)	% result type
+					@CompareOperandAndResultTypes
+				| tpString
+					.tConcatenate
+					oTypeStkPush(tpString)	% result type
+					@CompareOperandAndResultTypes
+			]
 	    | sSubtract:
 		.tSubtract
 		oTypeStkPush(tpInteger)
@@ -2053,9 +2066,18 @@ BinaryOperator :
 		@CompareOperandAndResultTypes
 		|sIndex %Added handling for string index function
 		.tIndex
-		oTypeStkPush(tpInteger)
+		oTypeStkPush(tpString)
 		@CompareOperandAndResultTypes
+		oTypeStkPush(tpInteger)
 	    | *:
+	];
+
+	TernaryOperator :
+	% Added choice of ternary operators (substring)
+	[
+		|sSubstring
+			.tSubstring
+
 	];
 
 CompareAndSwapTypes :
