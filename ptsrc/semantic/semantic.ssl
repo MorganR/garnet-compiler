@@ -1916,86 +1916,86 @@ Expression :
 Operand :
 	[
 	    | sIdentifier:
-		oSymbolStkPushIdentifier
-		[ oSymbolStkChooseKind
-		    | syUndefined:
-			#eUndefinedIdentifier
-		    | *:
-		]
-		[ oSymbolStkChooseKind
-		    | syConstant:
-			@ConstantOperand
-		    | syVariable, syVarParameter:
-			@Variable
-			@VariableOperand
-		    | syFunction:
-			@FunctionOperand
-		    | *:
-			#eExpnOperandReqd
-			oSymbolStkPop
-			@SymbolStkPushIntegerVariable
-			oTypeStkPushSymbol
-		]
+			oSymbolStkPushIdentifier
+			[ oSymbolStkChooseKind
+				| syUndefined:
+					#eUndefinedIdentifier
+				| *:
+			]
+			[ oSymbolStkChooseKind
+				| syConstant:
+					@ConstantOperand
+				| syVariable, syVarParameter:
+					@Variable
+					@VariableOperand
+				| syFunction:
+					@FunctionOperand
+				| *:
+					#eExpnOperandReqd
+					oSymbolStkPop
+					@SymbolStkPushIntegerVariable
+					oTypeStkPushSymbol
+			]
 	    | sInteger:
-		oValuePushInteger
-		oSymbolStkPush(syExpression)
-		oTypeStkPush(tpInteger)
-		.tLiteralInteger
-		oEmitValue
-		oValuePop
+			oValuePushInteger
+			oSymbolStkPush(syExpression)
+			oTypeStkPush(tpInteger)
+			.tLiteralInteger
+			oEmitValue
+			oValuePop
 	    | sLiteral:
-		oValuePush(one)	% implicit lower bound of string index type
-		oValuePushStringLength
-		[ oValueChoose
-		    | zero:
-			#eNullString
-			oSymbolStkPush(syExpression)
-			oTypeStkPush(tpString)
-		    | one:
-			oSymbolStkPush(syExpression)
-			oTypeStkPush(tpString)
-			.tLiteralString
-			oEmitString
-		    | *:
-			oSymbolStkPush(syExpression)
-			% branch around string since
-			% it is stored in the code area
-			oFixPushForwardBranch % Removed .tskipstring and .tStringDescriptor
-			oEmitNullAddress
-			.tLiteralString
-			oEmitValue	% string length
-			oFixPushTargetAddress
-			oFixSwap		% Forward branch back on top
-			oEmitString
-			oFixPopForwardBranch
-			% Descriptor points to the
-			% first character of the string
-			oFixPopTargetAddress
-			oTypeStkPush(tpPackedArray)
-			oTypeStkEnterBounds
-			oTypeStkLinkToStandardComponentType(stdChar)
-		]
-		oValuePop
-		oValuePop
+			oValuePush(one)	% implicit lower bound of string index type
+			oValuePushStringLength
+			[ oValueChoose
+				| zero:
+					#eNullString
+					oSymbolStkPush(syExpression)
+					oTypeStkPush(tpString)
+				| one:
+					oSymbolStkPush(syExpression)
+					oTypeStkPush(tpString)
+					.tLiteralString
+					oEmitString
+				| *:
+					oSymbolStkPush(syExpression)
+					% branch around string since
+					% it is stored in the code area
+					oFixPushForwardBranch % Removed .tskipstring and .tStringDescriptor
+					oEmitNullAddress
+					.tLiteralString
+					oEmitValue	% string length
+					oFixPushTargetAddress
+					oFixSwap		% Forward branch back on top
+					oEmitString
+					oFixPopForwardBranch
+					% Descriptor points to the
+					% first character of the string
+					oFixPopTargetAddress
+					oTypeStkPush(tpPackedArray)
+					oTypeStkEnterBounds
+					oTypeStkLinkToStandardComponentType(stdChar)
+			]
+			oValuePop
+			oValuePop
 	    | sFile:
-		@Expression
-		@FileOperand
+			@Expression
+			@FileOperand
 	    | *:
 	];
 
 UnaryOperator :
 	[
 	    | sNegate:
-		.tNegate
-		oTypeStkPush(tpInteger)	% result type
+			.tNegate
+			oTypeStkPush(tpInteger)	% result type
 	    | sNot:
-		.tNot
-		oTypeStkPush(tpBoolean)
+			.tNot
+			oTypeStkPush(tpBoolean)
 		| sLength %Added length operator
-		.tLength
-		oTypeStkPush(tpInteger)	% result type
+			.tLength
+			oTypeStkPush(tpInteger)	% result type
 	    | *:
-		>>		% bypass type check
+			>>		% bypass type check
 	]
 	% If an operator is present the result is an expression
 	oSymbolStkSetKind(syExpression)
@@ -2019,56 +2019,56 @@ BinaryOperator :
 					@CompareOperandAndResultTypes
 			]
 	    | sSubtract:
-		.tSubtract
-		oTypeStkPush(tpInteger)
-		@CompareOperandAndResultTypes
+			.tSubtract
+			oTypeStkPush(tpInteger)
+			@CompareOperandAndResultTypes
 	    | sInfixAnd:	% marker without semantic significance
-		.tInfixAnd
+			.tInfixAnd
 	    | sAnd:
-		.tAnd
-		oTypeStkPush(tpBoolean)
-		@CompareOperandAndResultTypes
+			.tAnd
+			oTypeStkPush(tpBoolean)
+			@CompareOperandAndResultTypes
 	    | sInfixOr:
-		.tInfixOr
+			.tInfixOr
 	    | sOr:
-		.tOr
-		oTypeStkPush(tpBoolean)
-		@CompareOperandAndResultTypes
+			.tOr
+			oTypeStkPush(tpBoolean)
+			@CompareOperandAndResultTypes
 	    | sEq:
-		.tEq
-		@CompareRelationalOperandTypes
+			.tEq
+			@CompareRelationalOperandTypes
 	    | sNE:
-		.tNE
-		@CompareRelationalOperandTypes
+			.tNE
+			@CompareRelationalOperandTypes
 	    | sGT:
-		.tGT
-		@CompareRelationalOperandTypes
+			.tGT
+			@CompareRelationalOperandTypes
 	    | sGE:
-		.tGE
-		@CompareRelationalOperandTypes
+			.tGE
+			@CompareRelationalOperandTypes
 	    | sLT:
-		.tLT
-		@CompareRelationalOperandTypes
+			.tLT
+			@CompareRelationalOperandTypes
 	    | sLE:
-		.tLE
-		@CompareRelationalOperandTypes
+			.tLE
+			@CompareRelationalOperandTypes
 	    | sMultiply:
-		.tMultiply
-		oTypeStkPush(tpInteger)
-		@CompareOperandAndResultTypes
+			.tMultiply
+			oTypeStkPush(tpInteger)
+			@CompareOperandAndResultTypes
 	    | sDivide:
-		.tDivide
-		oTypeStkPush(tpInteger)
-		@CompareOperandAndResultTypes
+			.tDivide
+			oTypeStkPush(tpInteger)
+			@CompareOperandAndResultTypes
 	    | sModulus:
-		.tModulus
-		oTypeStkPush(tpInteger)
-		@CompareOperandAndResultTypes
+			.tModulus
+			oTypeStkPush(tpInteger)
+			@CompareOperandAndResultTypes
 		|sIndex %Added handling for string index function
-		.tIndex
-		oTypeStkPush(tpString)
-		@CompareOperandAndResultTypes
-		oTypeStkPush(tpInteger)
+			.tIndex
+			oTypeStkPush(tpString)
+			@CompareOperandAndResultTypes
+			oTypeStkPush(tpInteger)
 	    | *:
 	];
 
@@ -3282,12 +3282,12 @@ FlushExpn :
 	% Delete part of an expression for semantic error recovery
 	{[
 	    | sExpnEnd:
-		>
+			>
 	    | sParmBegin, sSubscript:
-		% Handle nested expressions
-		@FlushExpn
+			% Handle nested expressions
+			@FlushExpn
 	    | *:
-		?
+			?
 	]};
 
 
