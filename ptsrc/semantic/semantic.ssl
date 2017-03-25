@@ -1990,11 +1990,11 @@ UnaryOperator :
 	    | sNot:
 			.tNot
 			oTypeStkPush(tpBoolean)
-		| sLength %Added length operator
+		| sLength: %Added length operator
 			.tLength
 			oTypeStkPush(tpString)	
 			@CompareOperandAndResultTypes
-			oTypeStkPop(tpString)
+			oTypeStkPop
 			oTypeStkPush(tpInteger) %Result type
 	    | *:
 			>>		% bypass type check
@@ -2070,7 +2070,7 @@ BinaryOperator :
 			.tIndex
 			oTypeStkPush(tpString)
 			@CompareOperandAndResultTypes
-			oTypeStkPop(tpString)
+			oTypeStkPop
 			oTypeStkPush(tpInteger)
 	    | *:
 	];
@@ -2080,8 +2080,7 @@ BinaryOperator :
 	[
 		| sSubstring:
 			.tSubstring
-			% oTypeStkPush(tpString)
-			% @CompareOperandAndResultTypes
+			@CompareForOperandsForSubstring
 		| *:
 
 	];
@@ -2137,7 +2136,7 @@ CompareAndSwapTypes :
 			]
 	];
 
-CompareOperandAndResultTypes :
+CompareOperandAndResultTypes :	% should be called CompareOperandsAndResultTypes
 	% Compare the two operand types and the result type for assignment
 	% compatibility.  Pop the operand symbol and type stack entries
 	% leaving the result symbol and type stack entries.
@@ -2149,6 +2148,20 @@ CompareOperandAndResultTypes :
 	oSymbolStkPop
 	oSymbolStkSetKind(syExpression);
 
+CompareOperandsForSubstring :
+	% Ensures the 3rd and 2nd operands in a substring are integers, 
+	% then checks that the 1st operand was a string
+	oTypeStkPush(tpInteger)
+	@CompareAndSwapTypes
+	oTypeStkPop
+	@CompareAndSwapTypes
+	oTypeStkPop
+	oTypeStkPop
+	oTypeStkPush(tpString)
+	@CompareAndSwapTypes
+	oTypeStkPop
+	oSymbolStkSetKind(syExpression)	
+
 CompareRelationalOperandTypes :
 	% Verify that the types of the two operands are assignment
 	% compatible and that they are valid relational expression
@@ -2158,22 +2171,22 @@ CompareRelationalOperandTypes :
 
 	[ oTypeStkChooseKind
 	    | tpInteger, tpSubrange:
-		oTypeStkPop
-		[ oTypeStkChooseKind
-		    | tpInteger, tpSubrange:
-		    | *:
-			#eOperandOperatorTypeMismatch
-		]
+			oTypeStkPop
+			[ oTypeStkChooseKind
+				| tpInteger, tpSubrange:
+				| *:
+					#eOperandOperatorTypeMismatch
+			]
 	    | tpString:
-		oTypeStkPop
-		[ oTypeStkChooseKind
-		    | tpString:
-		    | *:
-			#eOperandOperatorTypeMismatch
-		]
+			oTypeStkPop
+			[ oTypeStkChooseKind
+				| tpString:
+				| *:
+					#eOperandOperatorTypeMismatch
+			]
 	    | *:
-		#eOperandOperatorTypeMismatch
-		oTypeStkPop
+			#eOperandOperatorTypeMismatch
+			oTypeStkPop
 	]
 	oTypeStkPop
 	oTypeStkPush(tpBoolean)
