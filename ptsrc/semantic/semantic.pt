@@ -332,6 +332,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 	ten = 10;
 	byteSize = 1;
 	wordSize = 4;
+	stringSize = 1024; 		% Added value for stringsize
 	{ Type 14 }
 	no = 0;
 	yes = 1;
@@ -2404,6 +2405,8 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 				dataAreaEnd := dataAreaEnd + wordSize;
 			    tpChar, tpBoolean:
 				dataAreaEnd := dataAreaEnd + byteSize;
+				tpString: 	% added handling for strings
+				dataAreaEnd := dataAreaEnd + stringSize
 			    tpArray, tpPackedArray:
 				begin
 				    size := typeStkUpperBound[typeStkTop]
@@ -2411,6 +2414,8 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 				    if (typeStkKind[typeStkTop-1] = tpInteger) or
 					   (typeStkKind[typeStkTop-1] = tpSubrange) then
 					size := size * wordSize;
+					if (typeStkKind[typeStkTop-1] = tpString) then
+   						 size := size * stringSize
 
 				    dataAreaEnd := dataAreaEnd + size
 				end;
