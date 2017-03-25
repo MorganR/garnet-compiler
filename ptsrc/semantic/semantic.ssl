@@ -1939,7 +1939,6 @@ Operand :
 	    | sInteger:
 			oValuePushInteger
 			oSymbolStkPush(syExpression)
-<<<<<<< HEAD
 			oTypeStkPush(tpInteger)
 			.tLiteralInteger
 			oEmitValue
@@ -1978,37 +1977,6 @@ Operand :
 			]
 			oValuePop
 			oValuePop
-=======
-			oTypeStkPush(tpString)
-		    | one:
-			oSymbolStkPush(syExpression)
-			oTypeStkPush(tpString)
-			.tLiteralString
-			oEmitString
-		    | *:
-			oSymbolStkPush(syExpression)
-			% branch around string since
-			% it is stored in the code area
-			oFixPushForwardBranch % Removed .tskipstring and .tStringDescriptor
-			oEmitNullAddress
-			.tLiteralString
-			oEmitValue	% string length
-			oFixPushTargetAddress
-			oFixSwap		% Forward branch back on top
-			oEmitString
-			oFixPopForwardBranch
-			% Descriptor points to the
-			% first character of the string
-			oFixPopTargetAddress
-			oTypeStkPush(tpPackedArray)
-			oTypeStkEnterBounds
-			
-			
-			oTypeStkLinkToStandardComponentType(stdChar)
-		]
-		oValuePop
-		oValuePop
->>>>>>> c70e93ed7557145487a1fb98b5940ca24b310348
 	    | sFile:
 			@Expression
 			@FileOperand
