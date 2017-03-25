@@ -2075,8 +2075,9 @@ BinaryOperator :
 	TernaryOperator :
 	% Added choice of ternary operators (substring)
 	[
-		|sSubstring
+		|sSubstring :
 			.tSubstring
+		| *:
 
 	];
 
