@@ -2071,6 +2071,7 @@ BinaryOperator :
 			.tIndex
 			oTypeStkPush(tpString)
 			@CompareOperandAndResultTypes
+			oTypeStkPop(tpString)
 			oTypeStkPush(tpInteger)
 	    | *:
 	];
