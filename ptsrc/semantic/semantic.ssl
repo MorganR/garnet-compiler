@@ -1991,9 +1991,12 @@ UnaryOperator :
 	    | sNot:
 			.tNot
 			oTypeStkPush(tpBoolean)
-		| sLength	% Added length operator
+		| sLength %Added length operator
 			.tLength
-			oTypeStkPush(tpInteger)	% result type
+			oTypeStkPush(tpString)	
+			@CompareOperandAndResultTypes
+			oTypeStkPop(tpString)
+			oTypeStkPush(tpInteger) %Result type
 	    | *:
 			>>		% bypass type check
 	]
@@ -2075,11 +2078,16 @@ BinaryOperator :
 	TernaryOperator :
 	% Added choice of ternary operators (substring)
 	[
+<<<<<<< HEAD
 		| sSubstring:
 			.tSubstring
 			% oTypeStkPush(tpString)
 			% @CompareOperandAndResultTypes
 		| *:
+=======
+		|sSubstring
+			.tSubstring
+>>>>>>> 3fcee0d4e95fa2babeed249e4eb9fc539938a082
 
 	];
 
