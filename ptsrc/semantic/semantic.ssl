@@ -1995,6 +1995,7 @@ UnaryOperator :
 			.tLength
 			oTypeStkPush(tpString)	
 			@CompareOperandAndResultTypes
+			oTypeStkPop(tpString)
 			oTypeStkPush(tpInteger) %Result type
 	    | *:
 			>>		% bypass type check
