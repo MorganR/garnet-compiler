@@ -1888,8 +1888,8 @@ CaseAlternative :
 	@Statement
 	.tCaseMerge
 	oFixPushForwardBranch
-	oEmitNullAddress		% merge branch at end of statement
-	oFixSwap			% keep case select branch on top
+	oEmitNullAddress	% merge branch at end of statement
+	oFixSwap	% keep case select branch on top
 	oCountIncrement;
 
 
@@ -1902,7 +1902,7 @@ Expression :
 	    @Operand	
 	    @UnaryOperator
 	    @BinaryOperator
-		@TernaryOperator %Added ternary operator rule
+		@TernaryOperator	% Added ternary operator rule
 	    [
 		| sExpnEnd:
 		    >
