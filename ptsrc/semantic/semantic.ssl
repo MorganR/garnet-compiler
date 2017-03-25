@@ -2075,8 +2075,10 @@ BinaryOperator :
 	TernaryOperator :
 	% Added choice of ternary operators (substring)
 	[
-		|sSubstring :
+		| sSubstring:
 			.tSubstring
+			% oTypeStkPush(tpString)
+			% @CompareOperandAndResultTypes
 		| *:
 
 	];
@@ -2090,46 +2092,46 @@ CompareAndSwapTypes :
 	[ oTypeStkChooseKind
 	    | tpInteger, tpSubrange:
 		oTypeStkSwap
-		[ oTypeStkChooseKind
-		    | tpInteger, tpSubrange:
-		    | *:
-			#eTypeMismatch
-		]
+			[ oTypeStkChooseKind
+				| tpInteger, tpSubrange:
+				| *:
+					#eTypeMismatch
+			]
 	    | tpString:
-		oTypeStkSwap
-		[ oTypeStkChooseKind
-		    | tpString:
-		    | *:
-			#eTypeMismatch
-		]
+			oTypeStkSwap
+			[ oTypeStkChooseKind
+				| tpString:
+				| *:
+					#eTypeMismatch
+			]
 	    | tpBoolean:
-		oTypeStkSwap
-		[ oTypeStkChooseKind
-		    | tpBoolean:
-		    | *:
-			#eTypeMismatch
-		]
+			oTypeStkSwap
+			[ oTypeStkChooseKind
+				| tpBoolean:
+				| *:
+					#eTypeMismatch
+			]
 	    | tpArray:
-		oTypeStkSwap
-		[ oTypeStkChooseKind
-		    | tpArray:
-		    | *:
-			#eTypeMismatch
-		]
+			oTypeStkSwap
+			[ oTypeStkChooseKind
+				| tpArray:
+				| *:
+				#eTypeMismatch
+			]
 	    | tpPackedArray:
-		oTypeStkSwap
-		[ oTypeStkChooseKind
-		    | tpPackedArray:
-		    | *:
-			#eTypeMismatch
-		]
+			oTypeStkSwap
+			[ oTypeStkChooseKind
+				| tpPackedArray:
+				| *:
+				#eTypeMismatch
+			]
 	    | tpFile:
-		oTypeStkSwap
-		[ oTypeStkChooseKind
-		    | tpFile:
-		    | *:
-			#eTypeMismatch
-		]
+			oTypeStkSwap
+			[ oTypeStkChooseKind
+				| tpFile:
+				| *:
+				#eTypeMismatch
+			]
 	];
 
 CompareOperandAndResultTypes :
