@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 %  PT Semantic Analysis Pass   Ver. 2.00
 %
 %  Date  30 Jun 1980
@@ -1995,7 +1994,7 @@ UnaryOperator :
 			.tLength
 			oTypeStkPush(tpString)	
 			@CompareOperandAndResultTypes
-			oTypeStkPop(tpString)
+			oTypeStkPop()
 			oTypeStkPush(tpInteger) %Result type
 	    | *:
 			>>		% bypass type check
@@ -2084,6 +2083,10 @@ BinaryOperator :
 			% oTypeStkPush(tpString)
 			% @CompareOperandAndResultTypes
 		| *:
+<<<<<<< HEAD
+=======
+
+>>>>>>> 56b736706f4704e084ca4ee7e679a59c0d40c805
 	];
 
 CompareAndSwapTypes :
