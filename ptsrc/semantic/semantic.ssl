@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 %  PT Semantic Analysis Pass   Ver. 2.00
 %
 %  Date  30 Jun 1980
@@ -50,7 +51,7 @@ Input :
 	sIfStmt
 	sThen
 	sElse
-	sWhileStmt	% Removed sRepeatStmt and sRepeatEnd, as Garnet doesn't haverepeat statements
+	sWhileStmt	%removed sRepeatStmt and sRepeatEnd, as Garnet has not repeat statements
 	sEq
 	sNE
 	sLT
@@ -106,31 +107,30 @@ Output :	% corresponds to coder.ssl input
 	tVarParm
 	tFetchAddress
 	tFetchInteger
-	tFetchString	% Changed to string
+	tFetchString %Changed to string
 	tFetchBoolean
 	tAssignBegin
 	tAssignAddress
 	tAssignInteger
-	tAssignString	% Changed to string
+	tAssignString %Changed to string
 	tAssignBoolean
 	tStoreParmAddress
 	tStoreParmInteger
-	tStoreParmString	% Changed to string
-
+	tStoreParmString %Changed to string
 	tStoreParmBoolean
 	tSubscriptBegin
 	tSubscriptAddress
 	tSubscriptInteger
-	tSubscriptString	% Changed to string
+	tSubscriptString %Changed to string
 	tSubscriptBoolean
 	tArrayDescriptor
 	tFileDescriptor
 	tIfBegin
 	tIfEnd
 	tCaseBegin
-	tDoBegin	% Added new t-code for do loops
-	tDoBreakIf	% Added new t-code for do loops
-	tCaseElse	% Added t-code for case else
+	tDoBegin %Added new t-codes for Do and else
+	tDoBreakIf 
+	tCaseElse 
 	tCallBegin
 	tParmEnd
 	tProcedureEnd
@@ -144,22 +144,22 @@ Output :	% corresponds to coder.ssl input
 	tLiteralAddress
 	firstCompoundOutputToken = tLiteralAddress
 	tLiteralInteger
-	tLiteralString	% Changed to string
+	tLiteralString %Changed to string
 	tLiteralBoolean
-	tConcatenate	% Added T-code
-	tSubstring	% Changed to string
+	tConcatenate % Added T-code
+	tSubstring %Changed to string
 	tLength 
 	tIndex
 	tStringEqual
-	tStringDescriptor	% Changed to string
-	tSkipString	% Changed to string
+	tStringDescriptor %Changed to string
+	tSkipString %Changed to string
 	tIfThen
 	tIfMerge
 	tCaseSelect
 	tCaseMerge
 	tCaseEnd
-	tDoTest	% Added t-code for Do
-	tDoEnd	% Added t-code for Do
+	tDoTest  %Added t-codes for Do and else
+	tDoEnd
 	tSkipProc
 	tCallEnd
 	tLineNumber
@@ -218,7 +218,7 @@ type Integer :
 	two = 2
 	three = 3
 	ten = 10
-	stringSize = 1024	% added per checklist 3
+	stringSize = 1024	% added as per checklist 3
 
 	% These two sizes are machine dependent
 	byteSize = 1
@@ -327,7 +327,7 @@ type SymbolKind :
 	syFunction
 	syExternal
 	syExpression
-	syModule	% Added symodule and sypublicProcedure
+	syModule %Added symodule and sypublicProcedure
 	syPublicProcedure
 	syUndefined;
 
@@ -1939,6 +1939,7 @@ Operand :
 	    | sInteger:
 			oValuePushInteger
 			oSymbolStkPush(syExpression)
+<<<<<<< HEAD
 			oTypeStkPush(tpInteger)
 			.tLiteralInteger
 			oEmitValue
@@ -1977,6 +1978,37 @@ Operand :
 			]
 			oValuePop
 			oValuePop
+=======
+			oTypeStkPush(tpString)
+		    | one:
+			oSymbolStkPush(syExpression)
+			oTypeStkPush(tpString)
+			.tLiteralString
+			oEmitString
+		    | *:
+			oSymbolStkPush(syExpression)
+			% branch around string since
+			% it is stored in the code area
+			oFixPushForwardBranch % Removed .tskipstring and .tStringDescriptor
+			oEmitNullAddress
+			.tLiteralString
+			oEmitValue	% string length
+			oFixPushTargetAddress
+			oFixSwap		% Forward branch back on top
+			oEmitString
+			oFixPopForwardBranch
+			% Descriptor points to the
+			% first character of the string
+			oFixPopTargetAddress
+			oTypeStkPush(tpPackedArray)
+			oTypeStkEnterBounds
+			
+			
+			oTypeStkLinkToStandardComponentType(stdChar)
+		]
+		oValuePop
+		oValuePop
+>>>>>>> c70e93ed7557145487a1fb98b5940ca24b310348
 	    | sFile:
 			@Expression
 			@FileOperand
