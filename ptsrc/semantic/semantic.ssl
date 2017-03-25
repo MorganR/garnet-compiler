@@ -1991,7 +1991,7 @@ UnaryOperator :
 	    | sNot:
 			.tNot
 			oTypeStkPush(tpBoolean)
-		| sLength %Added length operator
+		| sLength	% Added length operator
 			.tLength
 			oTypeStkPush(tpInteger)	% result type
 	    | *:
