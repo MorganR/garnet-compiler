@@ -345,6 +345,7 @@ VariableDeclaration :
     pIdentifier  .sIdentifier
     {[
         | ',':
+            .sVar
             pIdentifier .sIdentifier
         |*:
             >
