@@ -778,7 +778,7 @@ ModuleDefinition:	% added to handle modules
 	oSymbolTblStripScope
 	oSymbolTblMergeScope
 
-Program :
+Program:
 	sProgram
 	% Program scope, distinct from implicit scope surrounding
 	% program which contains predefined names
@@ -879,7 +879,6 @@ ConstantDefinitions :		% Process named constant definitions
 	    | sIdentifier:
 		@ConstantValue
         | *:
-		>
     ];
 
 ConstantValue :		% An identifier token has just been accepted
@@ -1026,7 +1025,6 @@ TypeDefinitions :	% process named type definitions
 		oTypeStkPop
 		oTypeStkPop
 	    | *:
-		>
 	];
 
 TypeBody :
@@ -1257,11 +1255,11 @@ VariableDeclarations :
             oCountIncrement
             @PrepareNewVarDeclaration
             | *:
+				>
         ]}        
 		@VariableAttributes
         oCountPop
 	    | *:
-		>
 	];
 
 PrepareNewVarDeclaration :
