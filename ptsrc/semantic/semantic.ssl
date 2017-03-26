@@ -2091,7 +2091,7 @@ BinaryOperator :
 	[
 		| sSubstring:
 			.tSubstring
-			@CompareForOperandsForSubstring
+			@CompareOperandsForSubstring
 		| *:
 	];
 
