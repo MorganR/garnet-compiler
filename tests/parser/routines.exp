@@ -18,8 +18,8 @@
     .sEnd
 .sProcedure
     .sIdentifier
-    .sVar
     .sIdentifier
+    .sVar
     .sIdentifier
     .sParmEnd
     .sBegin
@@ -32,11 +32,11 @@
     .sEnd
 .sProcedure
     .sIdentifier
-    .sVar
-    .sIdentifier
     .sIdentifier
     .sVar
     .sIdentifier
+    .sIdentifier
+    .sVar
     .sIdentifier
     .sParmEnd
     .sBegin
@@ -47,16 +47,13 @@
         .sAdd
       .sExpnEnd
     .sEnd
-.sVar
-    .sIdentifier
-    .sIdentifier
 .sProcedure
     .sIdentifier
-    .sVar
-        .sIdentifier
         .sIdentifier
     .sVar
         .sIdentifier
+        .sIdentifier
+    .sVar
         .sIdentifier
     .sIdentifier
     .sIdentifier
