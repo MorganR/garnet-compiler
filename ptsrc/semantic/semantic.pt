@@ -1926,7 +1926,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 					standardIntegerTypeRef;
 			    stdString:
 				symbolStkTypeTblLink[symbolStkTop] :=
-					standardCharTypeRef;
+					standardStringTypeRef;
 			    stdBoolean:
 				symbolStkTypeTblLink[symbolStkTop] :=
 					standardBooleanTypeRef;
