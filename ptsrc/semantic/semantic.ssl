@@ -1567,12 +1567,18 @@ ProcedurePrologue :
 	oCountPop;
 
 ModuleDefinition:	% added to handle modules
-	sModule
-	%? oSymbolTblPushScope 
-	%? sIdentifier  oSymbolStkPushLocalIdentifier	% module name
-
 	% TODO:  Add a new rule ModuleDefinition to handle modules. A ModuleDefinition is much like Program except it has no program parameters and no halt. At the end of the module it uses the new oSymbolTblStripScope and oSymbolTblMergeScope symbol table operations to promote all public symbols to the enclosing scope.
-	% TODO: use syModule to store the module name in the symbol table so it can't be used elsewhere
+	sModule
+	sIdentifier  oSymbolStkPushLocalIdentifier	% module name
+	[ oSymbolStkChooseKind
+	    | syUndefined:
+	    | syExternal:
+		% Program parameters must be declared as file variables
+		#eExternalDeclare
+	    | *:
+		#eMultiplyDefined
+		% New definition obscures old one.
+	]
 
 	% TODO: start of procedure ocodes modified
 	% oFixPushForwardBranch	% modules act immediately, unlike procedures
