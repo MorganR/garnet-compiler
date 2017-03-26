@@ -1,4 +1,4 @@
-using StringTest
+using output
 
 var s1 : String
 

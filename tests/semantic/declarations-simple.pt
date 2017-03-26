@@ -1,4 +1,4 @@
-using Declarations
+using output
   val a = 5
   var b : integer
   type myInt : integer
