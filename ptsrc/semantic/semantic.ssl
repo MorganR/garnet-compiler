@@ -305,10 +305,9 @@ mechanism SymbolTable :
 	% Return true if any external names (program parameters)
 	% have not yet been declared.
 
-	% 5. Add the new oSymbolTblStripScope and oSymbolTblMergeScope operations to the SymbolTable mechanism.
-
 	oSymbolTblStripScope
 	% Added oSymbolTblStripScope, sets the symbol table reference for each identifier index to the next lexical level
+
 	oSymbolTblPopScope
 	% Added oSymbolTblPopScope, decrements the lexical level
 
@@ -326,7 +325,7 @@ type SymbolKind :
 	syFunction
 	syExternal
 	syExpression
-	syModule %Added symodule and sypublicProcedure
+	syModule 	% Added symodule and sypublicProcedure
 	syPublicProcedure
 	syUndefined;
 
@@ -767,6 +766,9 @@ mechanism FixAddress :
 
 rules
 
+ModuleDefinition:	% added to handle modules
+	
+	% TODO:  Add a new rule ModuleDefinition to handle modules. A ModuleDefinition is much like Program except it has no program parameters and no halt. At the end of the module it uses the new oSymbolTblStripScope and oSymbolTblMergeScope symbol table operations to promote all public symbols to the enclosing scope.
 
 Program :
 	sProgram
