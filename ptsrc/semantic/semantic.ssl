@@ -301,14 +301,14 @@ mechanism SymbolTable :
 	% the scope being exited, except for formal parameters
 	% which must be retained for type checking.
 
-    oSymbolTblLookupExternal >> Boolean;
+    oSymbolTblLookupExternal >> Boolean
 	% Return true if any external names (program parameters)
 	% have not yet been declared.
 
 	oSymbolTblStripScope
 	% Added oSymbolTblStripScope, sets the symbol table reference for each identifier index to the next lexical level
 
-	oSymbolTblPopScope
+	oSymbolTblPopScope;
 	% Added oSymbolTblPopScope, decrements the lexical level
 
 
