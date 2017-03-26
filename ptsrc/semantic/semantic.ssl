@@ -238,7 +238,7 @@ type PredeclaredId :
 
 	firstPredeclaredType = firstPredeclaredId
 	pidInteger = firstPredeclaredType
-	pidString
+	pidString  %Changed pidchar to string
 	pidBoolean
 	pidText
 	lastPredeclaredType = pidText
