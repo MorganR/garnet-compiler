@@ -1759,8 +1759,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 					begin
 					    while link > 0 do
 						link := symbolTblIdentLink[link];
-					    identSymbolTblRef[-link] :=
-						symbolTblIdentLink[i];
+					    identSymbolTblRef[-link] := symbolTblIdentLink[i];
 					end;
 
 				    i := i - 1
