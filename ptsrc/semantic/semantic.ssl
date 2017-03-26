@@ -942,7 +942,7 @@ ConstantValue :		% An identifier token has just been accepted
 		oValuePush(one)	% implicit lower bound of string index type
 		oValuePushStringLength
 
-			oSymbolStkLinkToStandardType(stdChar)
+			oSymbolStkLinkToStandardType(stdString)
 			oSymbolStkEnterStringValue
 			% Emit a branch around the string since
 			% it is stored in the code area
