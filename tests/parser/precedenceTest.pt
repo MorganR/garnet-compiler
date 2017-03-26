@@ -1,4 +1,4 @@
-using precedenceTest
+using output
 
 var val1 : integer
 

@@ -1,2 +1,2 @@
-using Declarations
+using output
     val a, b = 5 % should fail
