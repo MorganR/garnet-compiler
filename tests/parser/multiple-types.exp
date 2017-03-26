@@ -1,13 +1,7 @@
 .sProgram
 .sIdentifier
 .sParmEnd
-    .sConst
-    .sIdentifier
     .sType
-    .sIdentifier
-    .sVar
-    .sIdentifier
-    .sVar
     .sIdentifier
     .sIdentifier
 .sBegin

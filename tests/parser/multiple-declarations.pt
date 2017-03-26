@@ -1,4 +1,0 @@
-using Declarations
-    val a, b = 5 % should fail
-    type t1, t2 : integer % should fail
-    var c, d : integer % should work

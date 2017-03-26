@@ -1,0 +1,1 @@
+Tests that multiple type declarations in one line are not allowed.
