@@ -1560,7 +1560,7 @@ ProcedurePrologue :
 			    | tpInteger, tpSubrange:
 				.tStoreParmInteger
 			    | tpString:
-				.tStoreParmChar
+				.tStoreParmString
 			    | tpBoolean:
 				.tStoreParmBoolean
 			]
@@ -1620,7 +1620,7 @@ AssignmentStmt :
 	    | tpInteger, tpSubrange, tpFile:
 		.tAssignInteger
 	    | tpString:
-		.tAssignChar
+		.tAssignString
 	    | tpBoolean:
 		.tAssignBoolean
 	    | *:		% error flagged above
@@ -2263,7 +2263,7 @@ VariableExtension :
 		    | tpInteger, tpSubrange:
 			.tSubscriptInteger
 		    | tpString:
-			.tSubscriptChar
+			.tSubscriptString
 		    | tpBoolean:
 			.tSubscriptBoolean
 		]
@@ -2302,7 +2302,7 @@ VariableOperand :
 	    | tpInteger, tpSubrange, tpFile:
 		.tFetchInteger		% replace address with value
 	    | tpString:
-		.tFetchChar
+		.tFetchString
 	    | tpBoolean:
 		.tFetchBoolean
 	    % The caller is responsible for detecting illegal situations
@@ -2345,7 +2345,7 @@ FunctionOperand :
 			[ oTypeStkChooseKind
 			    | tpString:
 			    | *:
-				#eCharExpnReqd
+				#eStringExpnReqd
 			]
 			sParmEnd
 			oSymbolStkPop	% Parameter expression
@@ -2529,7 +2529,7 @@ AssignProcedure :
 				oValuePush(one)
 				oEmitValue
 				oValuePop
-				.tSubscriptChar
+				.tSubscriptString
 				.tVarParm
 			    | *:
 			]
@@ -2620,7 +2620,7 @@ WriteProcedure :
 						    oValuePush(one)
 						    oEmitValue
 						    oValuePop
-						    .tSubscriptChar
+						    .tSubscriptString
 						    .tVarParm
 						| *:
 					    ]
@@ -2711,7 +2711,7 @@ WriteProcedure :
 				oValuePush(one)
 				oEmitValue
 				oValuePop
-				.tSubscriptChar
+				.tSubscriptString
 				.tVarParm
 			    | *:
 			]
@@ -2753,7 +2753,7 @@ WriteStandardExpnList :
 			oValuePush(one)
 			oEmitValue
 			oValuePop
-			.tSubscriptChar
+			.tSubscriptString
 			.tVarParm
 		    | *:
 		]
@@ -2917,25 +2917,25 @@ WritelnProcedure :
 						[
 						    | sParmEnd:
 						    | *:
-							#eCharFileVarReqd
+							#eStringFileVarReqd
 							@FlushActuals
 						]
 					    | *:
-						#eCharFileVarReqd
+						#eStringFileVarReqd
 						@FlushActuals
 					]
 				    | *:
-					#eCharFileVarReqd
+					#eStringFileVarReqd
 					@FlushActuals
 				]
 				oValuePop
 				oTypeStkPop
 			    | *:
-				#eCharFileVarReqd
+				#eStringFileVarReqd
 				@FlushActuals
 			]
 		    | *:
-			#eCharFileVarReqd
+			#eStringFileVarReqd
 			@FlushActuals
 		]
 		oTypeStkPop
@@ -2943,7 +2943,7 @@ WritelnProcedure :
 		.tVarParm
 		.tParmEnd
 	    | *:
-		#eCharFileVarReqd
+		#eStringFileVarReqd
 		@FlushActuals
 	];
 
@@ -3205,24 +3205,24 @@ ReadlnProcedure :
 						[
 						    | sParmEnd:
 						    | *:
-							#eCharFileVarReqd
+							#eStringFileVarReqd
 							@FlushActuals
 						]
 					    | *:
-						#eCharFileVarReqd
+						#eStringFileVarReqd
 						@FlushActuals
 					]
 				    | *:
-					#eCharFileVarReqd
+					#eStringFileVarReqd
 					@FlushActuals
 				]
 				oTypeStkPop
 			    | *:
-				#eCharFileVarReqd
+				#eStringFileVarReqd
 				@FlushActuals
 			]
 		    | *:
-			#eCharFileVarReqd
+			#eStringFileVarReqd
 			@FlushActuals
 		]
 		oTypeStkPop
@@ -3230,7 +3230,7 @@ ReadlnProcedure :
 		.tVarParm
 		.tParmEnd
 	    | *:
-		#eCharFileVarReqd
+		#eStringFileVarReqd
 		@FlushActuals
 	];
 
@@ -3288,7 +3288,7 @@ SymbolStkPushCharConstant :
 	oValuePush(zero)
 	oSymbolStkEnterValue
 	oValuePop
-	oSymbolStkLinkToStandardType(stdChar);
+	oSymbolStkLinkToStandardType(stdString);
 
 
 SymbolStkPushIntegerType :
