@@ -769,7 +769,8 @@ rules
 ModuleDefinition:	% added to handle modules
 	sModule
 	%? oSymbolTblPushScope 
-	%? sIdentifier
+	%? sIdentifier  oSymbolStkPushLocalIdentifier	% module name
+
 	% TODO:  Add a new rule ModuleDefinition to handle modules. A ModuleDefinition is much like Program except it has no program parameters and no halt. At the end of the module it uses the new oSymbolTblStripScope and oSymbolTblMergeScope symbol table operations to promote all public symbols to the enclosing scope.
 	% TODO: use syModule to store the module name in the symbol table so it can't be used elsewhere
 
@@ -864,6 +865,8 @@ Block :
 		@TypeDefinitions
 	    | sVar:
 		@VariableDeclarations
+		| sModule:
+		@ModuleDefinition
 	    | *:
 		>
 	]}
