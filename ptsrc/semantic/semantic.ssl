@@ -154,6 +154,9 @@ Output :	% corresponds to coder.ssl input
 	tSkipString %Changed to string
 	tIfThen
 	tIfMerge
+	tWhileBegin %Added while t-codes
+	tWhileTest
+	tWhileEnd
 	tCaseSelect
 	tCaseMerge
 	tCaseEnd
