@@ -828,13 +828,13 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 
 	{ Predefined type table entries }
 	standardIntegerTypeRef :  TypeTblReference;
-	standardCharTypeRef :  TypeTblReference;
+	standardStringTypeRef :  TypeTblReference;
 	standardBooleanTypeRef :  TypeTblReference;
 	standardTextTypeRef :  TypeTblReference;
 	
 	{ UNIX argument file names }
 	{NsemanticSsl, NparseStream, Ntemp, NtCode, Noptions:
-		packed array [1 .. 50] of char;}
+		packed array [1 .. 50] of String;}
 
 
     procedure Assert (assertion: Boolean; number: integer);
@@ -943,14 +943,14 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 	    typeTblKind[pidInteger] := tpInteger;
 	    { This index is used by the semantic mechanisms to
 	      link to predefined type integer; similarly for
-	      char, Boolean and text.				}
+	      String, Boolean and text.				}
 	    standardIntegerTypeRef := pidInteger;
 
-	    { char }
-	    symbolTblKind[pidChar] := syType;
-	    symbolTblTypeTblLink[pidChar] := pidChar;
-	    typeTblKind[pidChar] := tpChar;
-	    standardCharTypeRef := pidChar;
+	    { String }
+	    symbolTblKind[pidString] := syType;
+	    symbolTblTypeTblLink[pidString] := pidString;
+	    typeTblKind[pidString] := tpString;
+	    standardStringTypeRef := pidString;
 
 	    { Boolean }
 	    symbolTblKind[pidBoolean] := syType;
@@ -958,11 +958,11 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 	    typeTblKind[pidBoolean] := tpBoolean;
 	    standardBooleanTypeRef := pidBoolean;
 
-	    { text (i.e. file of char) }
+	    { text (i.e. file of String) }
 	    symbolTblKind[pidText] := syType;
 	    symbolTblTypeTblLink[pidText] := pidText;
 	    typeTblKind[pidText] := tpFile;
-	    typeTblComponentLink[pidText] := standardCharTypeRef;
+	    typeTblComponentLink[pidText] := standardStringTypeRef;
 	    standardTextTypeRef := pidText;
 
 	    { true (1) }
@@ -1100,8 +1100,8 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 		    write('integer type expression required');
 		eBooleanExpnReqd:
 		    write('Boolean type expression required');
-		eCharExpnReqd:
-		    write('char type expression required');
+		eStringExpnReqd:
+		    write('String type expression required');
 		eArrayVarReqd:
 		    write('array variable required');
 		eVariableReqd:
@@ -1122,7 +1122,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 		    write('invalid field width specification');
 		eWriteExpn:
 		    write('invalid write expression');
-		eCharFileVarReqd:
+		eStringFileVarReqd:
 		    write('text file required');
 		eReadVar:
 		    write('invalid read variable');
@@ -1924,9 +1924,9 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 			    stdInteger:
 				symbolStkTypeTblLink[symbolStkTop] :=
 					standardIntegerTypeRef;
-			    stdChar:
+			    stdString:
 				symbolStkTypeTblLink[symbolStkTop] :=
-					standardCharTypeRef;
+					standardStringTypeRef;
 			    stdBoolean:
 				symbolStkTypeTblLink[symbolStkTop] :=
 					standardBooleanTypeRef;
@@ -2098,9 +2098,9 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 				stdInteger:
 				    typeStkComponentLink[typeStkTop] :=
 					standardIntegerTypeRef;
-				stdChar:
+				stdString:
 				    typeStkComponentLink[typeStkTop] :=
-					standardCharTypeRef;
+					standardStringTypeRef;
 				stdBoolean:
 				    typeStkComponentLink[typeStkTop] :=
 					standardBooleanTypeRef;
