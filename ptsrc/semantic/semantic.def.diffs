@@ -1,0 +1,17 @@
+c217 228
+	tWhileBegin = 69;
+	tWhileTest = 70;
+	tWhileEnd = 71;
+	tCaseSelect = 72;
+	tCaseMerge = 73;
+	tCaseEnd = 74;
+	tDoTest = 75;
+	tDoEnd = 76;
+	tSkipProc = 77;
+	tCallEnd = 78;
+	tLineNumber = 79;
+	tTrap = 80;
+	lastCompoundOutputToken = 80;
+	tEndOfFile = 81;
+	lastOutputToken = 81;
+.

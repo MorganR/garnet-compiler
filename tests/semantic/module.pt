@@ -1,0 +1,10 @@
+using ModuleTest
+    module mod1
+        var i : integer
+        def * publicRoutine()
+            i = 1
+        end
+        def privateRoutine()
+            i = 2
+        end
+    end

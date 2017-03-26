@@ -1,0 +1,2 @@
+using Declarations
+    var c, d : integer % should work
