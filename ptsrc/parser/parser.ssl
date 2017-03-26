@@ -357,8 +357,8 @@ ProcedureHeading :
         % Accept zero or more procedure formal parameter declarations.
         [
             | 'var':
-                .sVar
                 pIdentifier  .sIdentifier
+                .sVar
             | pIdentifier:
                 .sIdentifier
             | *:
