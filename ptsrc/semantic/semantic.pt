@@ -828,7 +828,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 
 	{ Predefined type table entries }
 	standardIntegerTypeRef :  TypeTblReference;
-	standardCharTypeRef :  TypeTblReference;
+	standardStringTypeRef :  TypeTblReference;
 	standardBooleanTypeRef :  TypeTblReference;
 	standardTextTypeRef :  TypeTblReference;
 	
@@ -962,7 +962,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 	    symbolTblKind[pidText] := syType;
 	    symbolTblTypeTblLink[pidText] := pidText;
 	    typeTblKind[pidText] := tpFile;
-	    typeTblComponentLink[pidText] := standardCharTypeRef;
+	    typeTblComponentLink[pidText] := standardStringTypeRef;
 	    standardTextTypeRef := pidText;
 
 	    { true (1) }
