@@ -337,6 +337,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 	two = 2;
 	three = 3;
 	ten = 10;
+	stringSize = 1024;
 	byteSize = 1;
 	wordSize = 4;
 	{ Type 14 }
