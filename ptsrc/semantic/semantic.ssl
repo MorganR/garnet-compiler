@@ -774,6 +774,28 @@ ModuleDefinition:	% added to handle modules
 	% TODO:  Add a new rule ModuleDefinition to handle modules. A ModuleDefinition is much like Program except it has no program parameters and no halt. At the end of the module it uses the new oSymbolTblStripScope and oSymbolTblMergeScope symbol table operations to promote all public symbols to the enclosing scope.
 	% TODO: use syModule to store the module name in the symbol table so it can't be used elsewhere
 
+	% TODO: start of procedure ocodes modified
+	oFixPushForwardBranch
+	oEmitNullAddress
+	oSymbolStkSetKind(syModule)
+	oSymbolStkEnterCodeAddress
+	oTypeStkPush(tpNull)
+	oTypeStkSetRecursionFlag(yes)
+	oTypeTblEnter
+	oSymbolStkEnterTypeReference
+	oSymbolTblEnter
+	oSymbolTblPushScope	% module scope
+	% should there be any formal parameter handling here?
+	@Block
+	.tProcedureEnd
+	oFixPopForwardBranch	% fix skip around procedure
+	oSymbolTblUpdate
+	oSymbolStkPop
+	oTypeStkSetRecursionFlag(no)
+	oTypeTblUpdate
+	oTypeStkPop
+	% TODO: end of produre ocodes modifier
+
 	% promote all public symbols to enclosing scope
 	oSymbolTblStripScope
 	oSymbolTblMergeScope;
@@ -865,7 +887,7 @@ Block :
 		@TypeDefinitions
 	    | sVar:
 		@VariableDeclarations
-		| sModule:
+		| sModule:	% added to handle modules
 		@ModuleDefinition
 	    | *:
 		>
