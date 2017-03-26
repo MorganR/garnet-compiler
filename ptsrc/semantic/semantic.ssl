@@ -1843,7 +1843,7 @@ CaseStmt :
 		  oFixPopForwardBranch
 		  oEmitCaseBranchTable
 		>
-		| sElse % Added handling for case else
+		| sElse: % Added handling for case else
 		.tCaseEnd
 		oFixPopForwardBranch
 		oEmitCaseBranchTable
@@ -2023,7 +2023,7 @@ BinaryOperator :
 					.tAdd
 					oTypeStkPush(tpInteger)	% result type
 					@CompareOperandAndResultTypes
-				| tpString
+				| tpString:
 					.tConcatenate
 					oTypeStkPush(tpString)	% result type
 					@CompareOperandAndResultTypes
