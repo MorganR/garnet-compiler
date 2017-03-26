@@ -1563,8 +1563,8 @@ Statement :
 		@WhileStmt
 	    | sCaseStmt:
 		@CaseStmt	
-	    | sRepeatStmt:
-		@RepeatStmt
+	    | sDo:
+		@DoStmt
 	    | sNullStmt:
 	];
 
@@ -1788,19 +1788,20 @@ WhileStmt :
 	oFixPopTargetAddress
 	oFixPopForwardBranch;
 
-RepeatStmt :
-	.tRepeatBegin
+DoStmt : 	%Changed handling of repeat statement to handling of Do statement
+	.tDoBegin
 	oFixPushTargetAddress		% top-of-loop branch target
-	{[
-	    | sRepeatEnd:
-		>
-	    | *:
-		@Statement
-	]}
-	.tRepeatControl
+	@Statement
+	sBreakIf .tDoBreakIf
 	@BooleanControlExpression
-	.tRepeatTest
-	oFixPopTargetAddress;
+	.tDoTest
+	oFixPushForwardBranch
+	oEmitNullAddress		% exit branch
+	oFixSwap		% top-of-loop target back on top
+	@Statement
+	.tDoEnd
+	oFixPopTargetAddress
+	oFixPopForwardBranch;
 
 CaseStmt :
 	.tCaseBegin
@@ -1979,7 +1980,7 @@ Operand :
 					oFixPopTargetAddress
 					oTypeStkPush(tpPackedArray)
 					oTypeStkEnterBounds
-					oTypeStkLinkToStandardComponentType(stdChar)
+					oTypeStkLinkToStandardComponentType(stdString)
 			]
 			oValuePop
 			oValuePop
