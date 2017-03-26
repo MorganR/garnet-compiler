@@ -1734,14 +1734,15 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 			    typeTblTop := typeTblDisplay[lexicLevelStackTop];
 			    lexicLevelStackTop := lexicLevelStackTop - 1;
 			end;
+
+			oSymbolTblStripScope: %Added in definition of Stripscope
+			{ Sets all symbol table references for each symbol's identifier index of top scope to that of a lower lexical level  }
+
 			oSymbolTblMergeScope: %Added in definition of Mergescope
 			begin
 				 Assert((lexicLevelStackTop >= 1), assert31);
 				 lexicLevelStackTop = lexicLevelStackTop - 1;
 			end;
-
-			oSymbolTblStripScope: %Added in definition of Stripscope
-			{ Sets all symbol table references for each symbol's identifier index of top scope to that of a lower lexical level  }
 
 			begin
 			    Assert((lexicLevelStackTop >= 1), assert31);
