@@ -1,0 +1,2 @@
+using Declarations
+    val a, b = 5 % should fail
