@@ -834,7 +834,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 	
 	{ UNIX argument file names }
 	{NsemanticSsl, NparseStream, Ntemp, NtCode, Noptions:
-		packed array [1 .. 50] of char;}
+		packed array [1 .. 50] of String;}
 
 
     procedure Assert (assertion: Boolean; number: integer);
@@ -943,7 +943,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 	    typeTblKind[pidInteger] := tpInteger;
 	    { This index is used by the semantic mechanisms to
 	      link to predefined type integer; similarly for
-	      char, Boolean and text.				}
+	      String, Boolean and text.				}
 	    standardIntegerTypeRef := pidInteger;
 
 	    { String }
@@ -958,7 +958,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 	    typeTblKind[pidBoolean] := tpBoolean;
 	    standardBooleanTypeRef := pidBoolean;
 
-	    { text (i.e. file of char) }
+	    { text (i.e. file of String) }
 	    symbolTblKind[pidText] := syType;
 	    symbolTblTypeTblLink[pidText] := pidText;
 	    typeTblKind[pidText] := tpFile;
