@@ -371,7 +371,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 	lastSpecialId = 19;
 	{ Type 16 }
 	stdInteger = 0;
-	stdChar = 1;
+	stdString = 1;
 	stdBoolean = 2;
 	stdText = 3;
 	{ Type 17 }
