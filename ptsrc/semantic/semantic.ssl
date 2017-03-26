@@ -776,7 +776,7 @@ ModuleDefinition:	% added to handle modules
 
 	% promote all public symbols to enclosing scope
 	oSymbolTblStripScope
-	oSymbolTblMergeScope
+	oSymbolTblMergeScope;
 
 Program:
 	sProgram
