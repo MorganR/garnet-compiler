@@ -10,7 +10,6 @@ using Routines
     def f2(var a : integer, var b : integer)
         a = a + b
     end
-    var c : integer
     def f3(var a : integer, var b : integer, c : integer)
         a = a + b + c
     end

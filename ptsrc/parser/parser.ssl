@@ -290,7 +290,7 @@ UnsignedIntegerConstant :
     ];
 
 TypeDefinition :
-    % Accept one or more named type definitions.
+    % Accept one named type definition.
     pIdentifier  .sIdentifier
     ':'  @TypeBody;
 
@@ -345,6 +345,7 @@ VariableDeclaration :
     pIdentifier  .sIdentifier
     {[
         | ',':
+            .sVar
             pIdentifier .sIdentifier
         |*:
             >
@@ -357,8 +358,8 @@ ProcedureHeading :
         % Accept zero or more procedure formal parameter declarations.
         [
             | 'var':
-                .sVar
                 pIdentifier  .sIdentifier
+                .sVar
             | pIdentifier:
                 .sIdentifier
             | *:
@@ -471,8 +472,7 @@ CaseStmt :
     @Expression
     .sExpnEnd
     % removed 'of' consumption, as it is not longer needed in Garnet
-    'when'
-    @CaseAlternative
+    % 'when' consumption and non-required first @CaseAlternative removed per phase2 corrections
     {[  % deleted semicolon checking condition
         | 'end':
             >
