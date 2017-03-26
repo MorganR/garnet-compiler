@@ -1,0 +1,1 @@
+This test checks the various cases of multiple declarations in one line. Val and Type declarations only allow one declaration per line. Var declarations should allow multiple.
