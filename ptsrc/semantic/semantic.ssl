@@ -1584,7 +1584,7 @@ ModuleDefinition:	% added to handle modules
 	oTypeTblEnter
 	oSymbolStkEnterTypeReference
 	oSymbolTblEnter
-	oSymbolTblPushScope	% module scope
+	% oSymbolTblPushScope	% (module scope)
 	% should there be any formal parameter handling here?
 	@Block
 	.tProcedureEnd
