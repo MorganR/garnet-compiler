@@ -1699,7 +1699,6 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 		    oSymbolTblPushScope:
 			{ Push the lexic level stack with pointers to
 			  the symbol and type stack tops.		}
-
 			if lexicLevelStackTop < lexicLevelStackSize then
 			    begin
 				lexicLevelStackTop := lexicLevelStackTop + 1;
@@ -1710,7 +1709,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 			    end
 			else
 			    Error(eLexicLevelStackOvfl);
-
+				
 		    oSymbolTblPopScope:
 			{ Pop the lexic level stack, remove local entries
 			  from the type table, remove local entries but
