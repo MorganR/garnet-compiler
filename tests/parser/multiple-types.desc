@@ -1,1 +1,1 @@
-Tests that multiple type declarations in one line are not allowed.
+Tests that multiple type declarations in one line are not allowed. Default output is to assume the type is a subrange on this error condition.

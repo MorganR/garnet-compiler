@@ -290,7 +290,7 @@ UnsignedIntegerConstant :
     ];
 
 TypeDefinition :
-    % Accept one or more named type definitions.
+    % Accept one named type definition.
     pIdentifier  .sIdentifier
     ':'  @TypeBody;
 
