@@ -1758,7 +1758,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 			{Added in definition of Mergescope - Decreases lexical level}
 			begin
 				 Assert((lexicLevelStackTop >= 1), assert31);
-				 lexicLevelStackTop = lexicLevelStackTop - 1;
+				 lexicLevelStackTop := lexicLevelStackTop - 1;
 			end;
 
 			oSymbolTblStripScope: {Added in definition of Stripscope}
@@ -2435,9 +2435,9 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 					   (typeStkKind[typeStkTop-1] = tpSubrange) then
 					size := size * wordSize;
 					if (typeStkKind[typeStkTop-1] = tpString) then
-   						 size := size * stringSize
+   						 size := size * stringSize;
 
-				    dataAreaEnd := dataAreaEnd + size
+				    dataAreaEnd := dataAreaEnd + size;
 				end;
 			end;
 
