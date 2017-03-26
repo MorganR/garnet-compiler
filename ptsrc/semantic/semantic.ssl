@@ -1247,7 +1247,7 @@ SubrangeUpperBound :
 VariableDeclarations :
 	[
 	    | sIdentifier:
-        oCountPush(1)
+        oCountPush(one)
         @PrepareNewVarDeclaration
         {[
             | sVar:
@@ -1278,7 +1278,7 @@ VariableAttributes :
 	% component types onto the type stack
 	@TypeBody
     {[ oCountChoose
-        | 0:
+        | zero:
             % No more new symbols left on symbol stack
             >
         | *:
