@@ -4,5 +4,7 @@
     .sType
     .sIdentifier
     .sIdentifier
+    .sRange
+    .sIdentifier
 .sBegin
 .sEnd
