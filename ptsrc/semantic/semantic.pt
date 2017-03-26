@@ -946,11 +946,11 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 	      char, Boolean and text.				}
 	    standardIntegerTypeRef := pidInteger;
 
-	    { char }
-	    symbolTblKind[pidChar] := syType;
-	    symbolTblTypeTblLink[pidChar] := pidChar;
-	    typeTblKind[pidChar] := tpChar;
-	    standardCharTypeRef := pidChar;
+	    { String }
+	    symbolTblKind[pidString] := syType;
+	    symbolTblTypeTblLink[pidString] := pidString;
+	    typeTblKind[pidString] := tpString;
+	    standardStringTypeRef := pidString;
 
 	    { Boolean }
 	    symbolTblKind[pidBoolean] := syType;
@@ -1100,8 +1100,8 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 		    write('integer type expression required');
 		eBooleanExpnReqd:
 		    write('Boolean type expression required');
-		eCharExpnReqd:
-		    write('char type expression required');
+		eStringExpnReqd:
+		    write('String type expression required');
 		eArrayVarReqd:
 		    write('array variable required');
 		eVariableReqd:
@@ -1122,7 +1122,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 		    write('invalid field width specification');
 		eWriteExpn:
 		    write('invalid write expression');
-		eCharFileVarReqd:
+		eStringFileVarReqd:
 		    write('text file required');
 		eReadVar:
 		    write('invalid read variable');
@@ -1924,7 +1924,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 			    stdInteger:
 				symbolStkTypeTblLink[symbolStkTop] :=
 					standardIntegerTypeRef;
-			    stdChar:
+			    stdString:
 				symbolStkTypeTblLink[symbolStkTop] :=
 					standardCharTypeRef;
 			    stdBoolean:
@@ -2098,9 +2098,9 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 				stdInteger:
 				    typeStkComponentLink[typeStkTop] :=
 					standardIntegerTypeRef;
-				stdChar:
+				stdString:
 				    typeStkComponentLink[typeStkTop] :=
-					standardCharTypeRef;
+					standardStringTypeRef;
 				stdBoolean:
 				    typeStkComponentLink[typeStkTop] :=
 					standardBooleanTypeRef;
