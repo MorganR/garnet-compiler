@@ -768,8 +768,10 @@ rules
 
 ModuleDefinition:	% added to handle modules
 	sModule
+	%? oSymbolTblPushScope 
+	%? sIdentifier
 	% TODO:  Add a new rule ModuleDefinition to handle modules. A ModuleDefinition is much like Program except it has no program parameters and no halt. At the end of the module it uses the new oSymbolTblStripScope and oSymbolTblMergeScope symbol table operations to promote all public symbols to the enclosing scope.
-	% TODO: use syModule somehow
+	% TODO: use syModule to store the module name in the symbol table so it can't be used elsewhere
 
 	% promote all public symbols to enclosing scope
 	oSymbolTblStripScope
@@ -1974,38 +1976,12 @@ Operand :
 			oEmitValue
 			oValuePop
 	    | sLiteral:
-			oValuePush(one)	% implicit lower bound of string index type
 			oValuePushStringLength
-			[ oValueChoose
-				| zero:
-					#eNullString
-					oSymbolStkPush(syExpression)
-					oTypeStkPush(tpString)
-				| one:
-					oSymbolStkPush(syExpression)
-					oTypeStkPush(tpString)
-					.tLiteralString
-					oEmitString
-				| *:
-					oSymbolStkPush(syExpression)
-					% branch around string since
-					% it is stored in the code area
-					oFixPushForwardBranch % Removed .tskipstring and .tStringDescriptor
-					oEmitNullAddress
-					.tLiteralString
-					oEmitValue	% string length
-					oFixPushTargetAddress
-					oFixSwap		% Forward branch back on top
-					oEmitString
-					oFixPopForwardBranch
-					% Descriptor points to the
-					% first character of the string
-					oFixPopTargetAddress
-					oTypeStkPush(tpPackedArray)
-					oTypeStkEnterBounds
-					oTypeStkLinkToStandardComponentType(stdString)
-			]
-			oValuePop
+    		oSymbolStkPush(syExpression)
+    		oTypeStkPush(tpString)
+    		.tLiteralString
+    		oEmitValue
+    		oEmitString
 			oValuePop
 	    | sFile:
 			@Expression
