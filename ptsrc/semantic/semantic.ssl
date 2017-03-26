@@ -1261,7 +1261,7 @@ VariableDeclarations :
 		>
 	];
 
-PerpareNewVarDeclaration :
+PrepareNewVarDeclaration :
     % Push the new identifier onto the symbol stack and
     % check the identifier isn't already in use.
     oSymbolStkPushLocalIdentifier
@@ -1270,7 +1270,7 @@ PerpareNewVarDeclaration :
 	    | *:
 		#eMultiplyDefined
 		% The new definition will obscure the old one
-	]
+	];
 
 VariableAttributes :
 	% Push the variable's structure and
