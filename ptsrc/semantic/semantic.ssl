@@ -1429,7 +1429,8 @@ ProcedureDefinition :
 	.tSkipProc	% Branch around the procedure definition
 	oFixPushForwardBranch
 	oEmitNullAddress
-	[	% added condition to check if new procedures should be made public 		% (containment in module checked earlier)
+	[	% added condition to check if new procedures should be made public
+		% (containment in module checked earlier)
 		| sPublic:
 			oSymbolStkSetKind(syPublicProcedure)
 			% add semantic mechanisms to make visible by lexical level?
