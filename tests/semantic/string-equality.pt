@@ -1,0 +1,8 @@
+using output
+    var a, b : string
+    a = "word"
+    b = "otherWord"
+    if a == "word" then
+        a = "cool"
+    if b != "otherWord" then
+        b = "notCool"
