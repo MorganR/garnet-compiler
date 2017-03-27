@@ -1,1 +1,1 @@
-Tests that multiple variable declarations in one line work correctly. sVar should be output before each identifier in the line.
+Tests that multiple variable declarations in one line work correctly. One variable is assigned to the other after declaration.

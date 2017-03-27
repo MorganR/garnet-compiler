@@ -1,0 +1,1 @@
+Tests that an error in multiple variables code does not lead to an infinite loop.

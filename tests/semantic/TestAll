@@ -38,45 +38,6 @@ do
       (( failCount += 1 ))
     fi
   fi
-  #ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" -m | grep -e "[[:space:]]o[A-Z]" > "${baseName}.resm"
-  #if [ -e "${baseName}.expm" ]
-  #then  
-  #  if (diff ${baseName}mexpm ${baseName}.resm -qw)
-  #  then
-  #    echo "-m output passed." >> TestResults
-  #    (( passCount += 1 ))
-  #  else
-  #    echo "output FAILED." >> TestResults
-  #    (( failCount += 1 ))
-  #  fi
-  #fi
-  for rule in $(cat "${baseName}.rules")
-  do
-  ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" -o $rule | grep @ > "${baseName}-${rule}.resr"
-  ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" -o $rule | grep -e "[[:space:]]o[A-Z]" > "${baseName}-${rule}.resm"
-  if [ -e "${baseName}-${rule}.expr" ]
-  then  
-    if (diff ${baseName}-${rule}.expr ${baseName}-${rule}.resr -qw)
-    then
-      echo "-r output passed for rule ${rule}." >> TestResults
-      (( passCount += 1 ))
-    else
-      echo "-r output FAILED for rule ${rule}." >> TestResults
-      (( failCount += 1 ))
-    fi
-  fi
-  if [ -e "${baseName}-${rule}.expm" ]
-  then  
-    if (diff ${baseName}-${rule}.expm ${baseName}-${rule}.resm -qw)
-    then
-      echo "-m output passed for rule ${rule}." >> TestResults
-      (( passCount += 1 ))
-    else
-      echo "output FAILED for rule ${rule}." >> TestResults
-      (( failCount += 1 ))
-    fi
-  fi
-  done
 echo >> TestResults
 done
 
