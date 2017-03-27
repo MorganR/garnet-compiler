@@ -1,0 +1,20 @@
+ oSymbolTblPushScope
+ oCountPush(three)
+  oSymbolStkPushLocalIdentifier
+  [ oSymbolStkChooseKind (syUndefined)
+  [ oSymbolStkChooseStandardFile (stdOutput)
+  oSymbolStkSetKind(syVariable)
+  oSymbolStkLinkToStandardType(stdText)
+  oTypeStkPushSymbol
+  oValuePush(two)
+   [ oSymbolStkChooseKind (syVariable)
+   [ oTypeStkChooseKind (tpFile)
+   oAllocateAlignOnWord
+   oSymbolStkEnterDataAddress
+   oEmitValue
+   oEmitDataAddress
+   oAllocateDescriptor
+  oSymbolTblEnter
+  oSymbolStkPop
+  oTypeStkPop
+  oValuePop
