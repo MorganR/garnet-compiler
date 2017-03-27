@@ -1,14 +1,14 @@
-Assignment 2
-Due: March 1st, 2017
+Assignment 3
+Due: March 26th, 2017
 
 The changes were broken into different sections, outlined below, to allow partners to work simultaneously. Most changes were made in semantic.ssl, with a few changes to semantic.pt and semantic.def for token updates.
 
 Phase2 fixes:
 
 Tokens:
-
+- We updated all of the input tokens to the semantic phase to correspond with the output tokens from the parser
 Strings:
-
+- All references to char in semantic.pt and semantic.ssl were replaced with string
 Modules:
 
 Declarations:

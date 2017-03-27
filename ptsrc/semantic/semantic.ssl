@@ -1885,7 +1885,7 @@ CaseStmt :
 		oFixPopForwardBranch
 		oEmitCaseBranchTable
 		.tCaseElse
-		@CaseAlternative
+		@Statement
 		sCaseEnd 
 		>
 	    | *:
