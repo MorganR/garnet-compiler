@@ -4,6 +4,7 @@ Due: March 26th, 2017
 The changes were broken into different sections, outlined below, to allow partners to work simultaneously. Most changes were made in semantic.ssl, with a few changes to semantic.pt and semantic.def for token updates.
 
 Phase2 fixes:
+- The case statement requirement for one when condition was removed to allow for empty or else only case statements
 
 Tokens:
 - We updated all of the input tokens to the semantic phase to correspond with the output tokens from the parser in semantic.ssl
@@ -17,8 +18,13 @@ Strings:
 - Added handling of index as a binary operator and checking the operand and ouput types
 - Removed tSkipString and tStringDescriptor for string literal operations so that string literals only output tLiteralString
 - Changed handling of string constants to act like vars. This was done by allocating room for the variable and then assigning the value of the string literals to the variable memory 
+- Equality comparisson with == and inequality comparisson with != were implemented to specify cases for string
+- Greater than, less than, greater or equal, and less or equal now do type checking to ensure only integers (not strings) are their operands
+- A TernaryOperatorsrule was added to handle the substring method. It checks that the 2nd and 3rd inputs were integers, and the first was a string, before outputting a string
 
 Modules:
+- A new rule was created for the definition of modules called ModuleDefinition and a condition for entering it from the Block rule was added
+- Public procedures were specified when procedures had sPublic tokens in them with then new symbol syPublicProcedure
 
 Declarations:
 
@@ -28,7 +34,8 @@ Procedures:
 Conditionals:
 - Removed all handling of repeat statements in semantic.ssl
 - Added handling of "do" statements instead (made very similar to while statements except emmitting do t-codes)
-- Handling of if-else statements was completed in the parser phase. 
+- Handling of if-else statements was completed in the parser phase
+- Elsif statements were transformed during the parser phase to be if statments nested in the else statement, so no changes in the semantic phase were necessary for them
 
 Semantic Mechanisms:
 - Added handling of oSymbolTblStripScope in semantic.pt which removes all visibilty of the SymbolTblRefs in the top scope
