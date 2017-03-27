@@ -2,5 +2,13 @@ using output
     module mod1
         module mod2
             var i : integer
+            def * f0()
+                i = 1
+            end
+        end
+        def * f1()
+            f0
         end
     end
+
+    f1
