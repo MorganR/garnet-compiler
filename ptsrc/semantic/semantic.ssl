@@ -2059,12 +2059,11 @@ BinaryOperator :
 	    		| tpInteger, tpSubrange:
 					.tAdd
 					oTypeStkPush(tpInteger)	% result type
-					@CompareOperandAndResultTypes
 				| tpString:
 					.tConcatenate
 					oTypeStkPush(tpString)	% result type
-					@CompareOperandAndResultTypes
 			]
+			@CompareOperandAndResultTypes
 	    | sSubtract:
 			.tSubtract
 			oTypeStkPush(tpInteger)
@@ -2082,10 +2081,21 @@ BinaryOperator :
 			oTypeStkPush(tpBoolean)
 			@CompareOperandAndResultTypes
 	    | sEq:
-			.tEq
+			[oTypeStkChooseKind
+	    		| tpInteger, tpSubrange:
+					.tEq
+				| tpString:
+					.tStringEqual
+			]
 			@CompareRelationalOperandTypes
 	    | sNE:
-			.tNE
+			[oTypeStkChooseKind
+	    		| tpInteger, tpSubrange:
+					.tNE
+				| tpString:
+					.tStringEqual
+					.tNot
+			]
 			@CompareRelationalOperandTypes
 	    | sGT:
 			.tGT
