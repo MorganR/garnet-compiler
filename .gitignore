@@ -17,7 +17,9 @@ ptsrc/parser/*.def.diffs
 tests/**/TestResults
 tests/**/*.rese
 tests/**/*.resi
-test/**/*.res
+tests/**/*.res
+tests/**/*.resr
+tests/**/*.resm
 
 # vscode
 .vscode
