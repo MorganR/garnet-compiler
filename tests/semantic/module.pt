@@ -8,3 +8,5 @@ using output
             i = 2
         end
     end
+    mod1.publicRoutine()
+    
