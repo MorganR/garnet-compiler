@@ -21,6 +21,9 @@ Strings:
 Modules:
 
 Declarations:
+- Removed loops for ConstantDeclarations, TypeDeclarations, and VariableDeclarations to prevent multiple declarations per line
+- Added separate loop using the PrepareNewVarDeclaration rule to push each symbol to the stack. Also incremented the counter stack. After retrieving the new type information, the counter stack was checked to make sure there was still one symbole left to assign, and decremented after each symbol was entered into the symbol table.
+- Note this has one failing test because multiple variables with the same name can be identified within that one line.
 
 Procedures:
 - Changed all assertions in semantic.pt to include the option of syPublicProcedure as well as syProcedure
@@ -35,3 +38,5 @@ Semantic Mechanisms:
 - Added handling of oSymbolTblMergeScope which simply decrements the lexical level
 - Both of the above mechanisms were used to show public procedures even when not in their lexical level
 
+Testing:
+- Testing mostly looks at the -e output from ssltrace, for the emitted tokens. 
