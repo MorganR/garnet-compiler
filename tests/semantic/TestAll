@@ -25,43 +25,58 @@ do
   cat ${baseName}.desc >> TestResults
   echo "" >> TestResults
   ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" > "${baseName}.res"
-  ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" -e > "${baseName}.rese"
   ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" -i > "${baseName}.resi"
-  # Test against the -i output if there is a test script (.testi file)
-#   if [ -e "${baseName}.testi" ]
-#   then
-#     if [[ `./${baseName}.testi` = pass ]]
-#     then
-#       echo "-i output passed." >> TestResults
-#       (( passCount += 1 ))
-#     else
-#       echo "-i output FAILED." >> TestResults
-#       (( failCount += 1 ))
-#     fi
-#   fi
-#   # Run other test script if it exists (.testo file)
-#   if [ -e "${baseName}.testo" ]
-#   then
-#     if [[ `./${baseName}.testo ${ptLib} ${ptScanDefs}` = pass ]]
-#     then
-#       echo "Additional test script passed." >> TestResults
-#       (( passCount += 1 ))
-#     else
-#       echo "Additional test script FAILED." >> TestResults
-#       (( failCount += 1 ))
-#     fi
-#   fi
-  if [ -e "${baseName}.exp" ]
+  #ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" -m | grep -e "[[:space:]]o[A-Z]" > "${baseName}.resm"
+  #if [ -e "${baseName}.expm" ]
+  #then  
+  #  if (diff ${baseName}mexpm ${baseName}.resm -qw)
+  #  then
+  #    echo "-m output passed." >> TestResults
+  #    (( passCount += 1 ))
+  #  else
+  #    echo "output FAILED." >> TestResults
+  #    (( failCount += 1 ))
+  #  fi
+  #fi
+  for rule in $(cat "${baseName}.rules")
+  do
+  ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" -r -o $rule | grep @ > "${baseName}-${rule}.resr"
+  ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" -e -o $rule > "${baseName}-${rule}.rese"
+  ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" -o $rule | grep -e "[[:space:]]o[A-Z]" > "${baseName}-${rule}.resm"
+  if [ -e "${baseName}-${rule}.expr" ]
   then  
-    if (diff ${baseName}.res ${baseName}.exp -qw)
+    if (diff ${baseName}-${rule}.expr ${baseName}-${rule}.resr -qw)
     then
-      echo "output passed." >> TestResults
+      echo "-r output passed for rule ${rule}." >> TestResults
       (( passCount += 1 ))
     else
-      echo "output FAILED." >> TestResults
+      echo "-r output FAILED for rule ${rule}." >> TestResults
       (( failCount += 1 ))
     fi
-  fi  
+  fi
+  if [ -e "${baseName}-${rule}.expe" ]
+  then  
+    if (diff ${baseName}-${rule}.expe ${baseName}-${rule}.rese -qw)
+    then
+      echo "-e output passed for rule ${rule}." >> TestResults
+      (( passCount += 1 ))
+    else
+      echo "-e output FAILED for rule ${rule}." >> TestResults
+      (( failCount += 1 ))
+    fi
+  fi
+  if [ -e "${baseName}-${rule}.expm" ]
+  then  
+    if (diff ${baseName}-${rule}.expm ${baseName}-${rule}.resm -qw)
+    then
+      echo "-m output passed for rule ${rule}." >> TestResults
+      (( passCount += 1 ))
+    else
+      echo "output FAILED for rule ${rule}." >> TestResults
+      (( failCount += 1 ))
+    fi
+  fi
+  done
 echo >> TestResults
 done
 

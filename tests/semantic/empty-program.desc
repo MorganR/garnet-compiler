@@ -1,3 +1,2 @@
 An empty program that consists simply of a 'using' statement and identifier.
-
-Should have no errors.
+This is the base test case for all other tests.
