@@ -1,2 +1,3 @@
 using output
-    var c, d : integer % should work
+    var c, d : integer
+    c = d
