@@ -1,0 +1,13 @@
+using output
+    module mod1
+        var g: integer
+        def rout1 (var in1: integer)
+            module mod2
+                def * rout2 (var inA: integer)
+                    inA = 1
+                end
+            end
+            rout2(in1)
+        end
+        rout1 (g)
+    end
