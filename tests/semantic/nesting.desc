@@ -1,1 +1,0 @@
-This test demonstrates that nesting modules and routines in eachother is allowed, and that public routines can be used outside their modules.

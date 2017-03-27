@@ -8,5 +8,6 @@ using output
             i = 2
         end
     end
-    mod1.publicRoutine()
+    var p : mod1
+    publicRoutine
     

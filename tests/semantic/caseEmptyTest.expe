@@ -1,0 +1,16 @@
+   .tLiteralInteger
+   oEmitValue
+   .tLiteralAddress
+   oEmitDataAddress
+   .tFileDescriptor
+     .tCaseBegin
+         .tLiteralAddress
+         oEmitValue
+         .tFetchInteger
+     .tCaseSelect
+     oEmitNullAddress
+     .tCaseEnd
+     oEmitCaseBranchTable
+ .tTrapBegin
+ .tTrap
+ oEmitTrapKind(trHalt)
