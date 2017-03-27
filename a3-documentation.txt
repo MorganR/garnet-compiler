@@ -6,7 +6,9 @@ The changes were broken into different sections, outlined below, to allow partne
 Phase2 fixes:
 
 Tokens:
-- We updated all of the input tokens to the semantic phase to correspond with the output tokens from the parser
+- We updated all of the input tokens to the semantic phase to correspond with the output tokens from the parser in semantic.ssl
+- Updated all of the values by copying semantic.def into semantic.pt
+
 Strings:
 - All references to char (types, traps, etc.) in semantic.pt and semantic.ssl were replaced with string
 - The stringsize value was added to semantic.pt and semantic.ssl
@@ -15,16 +17,19 @@ Strings:
 - Added handling of index as a binary operator and checking the operand and ouput types
 - Removed tSkipString and tStringDescriptor for string literal operations so that string literals only output tLiteralString
 - Changed handling of string constants to act like vars. This was done by allocating room for the variable and then assigning the value of the string literals to the variable memory 
+
 Modules:
 
 Declarations:
 
 Procedures:
+- Changed all assertions in semantic.pt to include the option of syPublicProcedure as well as syProcedure
 
 Conditionals:
 - Removed all handling of repeat statements in semantic.ssl
 - Added handling of "do" statements instead (made very similar to while statements except emmitting do t-codes)
 - Handling of if-else statements was completed in the parser phase. 
+
 Semantic Mechanisms:
 - Added handling of oSymbolTblStripScope in semantic.pt which removes all visibilty of the SymbolTblRefs in the top scope
 - Added handling of oSymbolTblMergeScope which simply decrements the lexical level
