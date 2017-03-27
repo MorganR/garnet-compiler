@@ -1,4 +1,4 @@
-using ElsifTest
+using output
     var i : integer
     i = 3
     if i < 2 then

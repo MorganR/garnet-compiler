@@ -1,4 +1,4 @@
-using ModuleTest
+using output
     module mod1
         module mod2
             var i : integer

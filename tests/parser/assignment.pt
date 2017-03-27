@@ -1,4 +1,4 @@
-using Assignments
+using output
     var i : integer
     var s : string
     i = 3

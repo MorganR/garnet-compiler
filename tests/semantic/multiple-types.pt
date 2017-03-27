@@ -1,2 +1,2 @@
-using Declarations
+using output
     type t1, t2 : integer % should fail

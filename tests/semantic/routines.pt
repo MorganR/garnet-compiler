@@ -1,4 +1,4 @@
-using Routines
+using output
     def f0()
         val i = 0
         var t : integer

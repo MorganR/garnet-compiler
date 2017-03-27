@@ -1,4 +1,4 @@
-using ModuleTest
+using output
     module mod1
         var i : integer
         def * publicRoutine()
