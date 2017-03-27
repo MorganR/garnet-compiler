@@ -328,7 +328,7 @@ type SymbolKind :
 	syFunction
 	syExternal
 	syExpression
-	syModule 	% Added symodule and sypublicProcedure
+	syModule 	% Added symodule and syPublicProcedure
 	syPublicProcedure
 	syUndefined;
 

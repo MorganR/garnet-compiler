@@ -39,6 +39,17 @@ do
       (( failCount += 1 ))
     fi
   fi
+  if [ -e "${baseName}.exp" ]
+  then
+    if (diff ${baseName}.exp ${baseName}.res -qw)
+    then
+    echo "main output passed." >> TestResults
+    (( passCount += 1 ))
+    else
+    echo "-e output FAILED." >> TestResults
+    (( failCount += 1 ))
+    fi
+  fi
 echo >> TestResults
 done
 
