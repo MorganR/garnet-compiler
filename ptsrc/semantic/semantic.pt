@@ -1765,7 +1765,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 			begin
 			    Assert((lexicLevelStackTop >= 1), assert31);
 			    i := symbolTblTop;	
-			   while i >  symbolTblDisplay[lexicLevelStackTop] do
+				while i >  symbolTblDisplay[lexicLevelStackTop] do
 				begin
 				    link := symbolTblIdentLink[i];
 
