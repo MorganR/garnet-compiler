@@ -1,0 +1,5 @@
+using input
+
+% This is a very simple program which just prints the string
+var a : string
+readln(a)

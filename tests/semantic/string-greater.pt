@@ -1,0 +1,7 @@
+using output
+    var a : string
+    if a > "d" then
+        a = "c" % unreachable
+    elsif a < "b" then
+        a = "e" % unreachable
+    end
