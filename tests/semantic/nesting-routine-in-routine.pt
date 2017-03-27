@@ -1,0 +1,9 @@
+using output
+    var g: integer
+    def rout1 (var in1: integer)
+        def rout2 (var inA: integer)
+            inA = 1
+        end
+        rout2(in1)
+    end
+    rout1 (g)
