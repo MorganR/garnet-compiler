@@ -1,0 +1,10 @@
+using output
+    module mod1
+        var i : integer
+        def f0()
+            i = 1
+        end
+    end
+
+    f0
+    

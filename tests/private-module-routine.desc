@@ -1,0 +1,1 @@
+Tests that private routines inside a module are not accessible outside it.
