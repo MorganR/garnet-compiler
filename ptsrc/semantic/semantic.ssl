@@ -2070,7 +2070,7 @@ BinaryOperator :
 			oTypeStkPush(tpBoolean)
 			@CompareOperandAndResultTypes
 	    | sEq:
-			[oTypeStkChooseKind	%added 
+			[oTypeStkChooseKind		% added to handle string equality
 	    		| tpInteger, tpSubrange:
 					.tEq
 				| tpString:
@@ -2078,7 +2078,7 @@ BinaryOperator :
 			]
 			@CompareRelationalOperandTypes
 	    | sNE:
-			[oTypeStkChooseKind
+			[oTypeStkChooseKind		% added to handle string inequality
 	    		| tpInteger, tpSubrange:
 					.tNE
 				| tpString:
