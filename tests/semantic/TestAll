@@ -7,6 +7,7 @@ cd "../../ptsrc"
 ptBase="$(pwd)"
 ptLib="${ptBase}/lib/pt"
 ptSemanticDefs=${ptBase}/semantic/semantic.def
+ptParserDefs=${ptBase}/parser/parser.def
 
 cd "$testingDir"
 
@@ -25,7 +26,7 @@ do
   echo "" >> TestResults
   ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" > "${baseName}.res"
   ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" -e > "${baseName}.rese"
-  ssltrace "ptc -t2 -o2 -L ${ptLib} $f" "${ptSemanticDefs}" -i > "${baseName}.resi"
+  ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" -i > "${baseName}.resi"
   # Test against the -i output if there is a test script (.testi file)
 #   if [ -e "${baseName}.testi" ]
 #   then
