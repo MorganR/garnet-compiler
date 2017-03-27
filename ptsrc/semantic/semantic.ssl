@@ -2038,7 +2038,7 @@ UnaryOperator :
 		| sLength: %Added length operator
 			.tLength
 			oTypeStkPush(tpString)	
-			@CompareOperandAndResultTypes
+			@CompareRelationalOperandTypes
 			oTypeStkPop
 			oTypeStkPush(tpInteger) %Result type
 	    | *:
@@ -2081,7 +2081,7 @@ BinaryOperator :
 			oTypeStkPush(tpBoolean)
 			@CompareOperandAndResultTypes
 	    | sEq:
-			[oTypeStkChooseKind
+			[oTypeStkChooseKind	%added 
 	    		| tpInteger, tpSubrange:
 					.tEq
 				| tpString:
@@ -2097,18 +2097,31 @@ BinaryOperator :
 					.tNot
 			]
 			@CompareRelationalOperandTypes
-	    | sGT:
+	    % added checking that only integers and its subtypes can be inequally compared
+		| sGT:
 			.tGT
-			@CompareRelationalOperandTypes
+			oTypeStkPush(tpInteger)
+			@CompareOperandAndResultTypes
+			oTypeStkPop
+			oTypeStkPush(tpBoolean) %Result type
 	    | sGE:
 			.tGE
-			@CompareRelationalOperandTypes
+			oTypeStkPush(tpInteger)	
+			@CompareOperandAndResultTypes
+			oTypeStkPop
+			oTypeStkPush(tpBoolean) %Result type
 	    | sLT:
 			.tLT
-			@CompareRelationalOperandTypes
+			oTypeStkPush(tpInteger)	
+			@CompareOperandAndResultTypes
+			oTypeStkPop
+			oTypeStkPush(tpBoolean) %Result type
 	    | sLE:
 			.tLE
-			@CompareRelationalOperandTypes
+			oTypeStkPush(tpInteger)	
+			@CompareOperandAndResultTypes
+			oTypeStkPop
+			oTypeStkPush(tpBoolean) %Result type
 	    | sMultiply:
 			.tMultiply
 			oTypeStkPush(tpInteger)
