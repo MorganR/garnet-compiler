@@ -26,6 +26,18 @@ do
   echo "" >> TestResults
   ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" > "${baseName}.res"
   ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" -i > "${baseName}.resi"
+  ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" -e > "${baseName}.rese"
+  if [ -e "${baseName}.expe" ]
+  then  
+    if (diff ${baseName}.expe ${baseName}.rese -qw)
+    then
+      echo "-e output passed." >> TestResults
+      (( passCount += 1 ))
+    else
+      echo "-e output FAILED." >> TestResults
+      (( failCount += 1 ))
+    fi
+  fi
   #ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" -m | grep -e "[[:space:]]o[A-Z]" > "${baseName}.resm"
   #if [ -e "${baseName}.expm" ]
   #then  
@@ -40,8 +52,7 @@ do
   #fi
   for rule in $(cat "${baseName}.rules")
   do
-  ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" -r -o $rule | grep @ > "${baseName}-${rule}.resr"
-  ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" -e -o $rule > "${baseName}-${rule}.rese"
+  ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" -o $rule | grep @ > "${baseName}-${rule}.resr"
   ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" -o $rule | grep -e "[[:space:]]o[A-Z]" > "${baseName}-${rule}.resm"
   if [ -e "${baseName}-${rule}.expr" ]
   then  
@@ -51,17 +62,6 @@ do
       (( passCount += 1 ))
     else
       echo "-r output FAILED for rule ${rule}." >> TestResults
-      (( failCount += 1 ))
-    fi
-  fi
-  if [ -e "${baseName}-${rule}.expe" ]
-  then  
-    if (diff ${baseName}-${rule}.expe ${baseName}-${rule}.rese -qw)
-    then
-      echo "-e output passed for rule ${rule}." >> TestResults
-      (( passCount += 1 ))
-    else
-      echo "-e output FAILED for rule ${rule}." >> TestResults
       (( failCount += 1 ))
     fi
   fi
