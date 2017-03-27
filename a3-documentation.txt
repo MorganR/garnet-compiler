@@ -4,6 +4,8 @@ Due: March 26th, 2017
 The changes were broken into different sections, outlined below, to allow partners to work simultaneously. Most changes were made in semantic.ssl, with a few changes to semantic.pt and semantic.def for token updates.
 
 Phase2 fixes:
+- sVar token now emitted before each sIdentifier when accepting a string of variables
+- the sVar token now be emmitted after the sIdentifier in the ProcedureHeading rule
 - The case statement requirement for one when condition was removed to allow for empty or else only case statements
 
 Tokens:
@@ -27,6 +29,9 @@ Modules:
 - Public procedures were specified when procedures had sPublic tokens in them with then new symbol syPublicProcedure
 
 Declarations:
+- constant definitions modified to allow only one per definition
+- type definitions modified to allow only one per definition
+- variable declarations modified to allow for the declaration of more than one of the same type
 
 Procedures:
 - Changed all assertions in semantic.pt to include the option of syPublicProcedure as well as syProcedure
