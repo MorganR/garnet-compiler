@@ -24,7 +24,7 @@ Procedures:
 Conditionals:
 - Removed all handling of repeat statements in semantic.ssl
 - Added handling of "do" statements instead (made very similar to while statements except emmitting do t-codes)
-
+- Handling of if-else statements was completed in the parser phase. 
 Semantic Mechanisms:
 - Added handling of oSymbolTblStripScope in semantic.pt which removes all visibilty of the SymbolTblRefs in the top scope
 - Added handling of oSymbolTblMergeScope which simply decrements the lexical level
