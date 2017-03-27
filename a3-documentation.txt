@@ -1,0 +1,22 @@
+Assignment 2
+Due: March 1st, 2017
+
+The changes were broken into different sections, outlined below, to allow partners to work simultaneously. Most changes were made in semantic.ssl, with a few changes to semantic.pt and semantic.def for token updates.
+
+Phase2 fixes:
+
+Tokens:
+
+Strings:
+
+Modules:
+
+Declarations:
+
+Procedures:
+
+Conditionals:
+
+Semantic Mechanisms:
+
+
