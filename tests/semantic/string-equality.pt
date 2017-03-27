@@ -4,5 +4,7 @@ using output
     b = "otherWord"
     if a == "word" then
         a = "cool"
+    end
     if b != "otherWord" then
         b = "notCool"
+    end
