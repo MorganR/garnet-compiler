@@ -1579,10 +1579,9 @@ ModuleDefinition:	% added to handle modules
 		#eMultiplyDefined
 		% New definition obscures old one.
 	]
-
 	% TODO: start of procedure ocodes modified
 	% oFixPushForwardBranch	% modules act immediately, unlike procedures
-	oEmitNullAddress
+	% oEmitNullAddress
 	oSymbolStkSetKind(syModule)
 	oSymbolStkEnterCodeAddress
 	oTypeStkPush(tpNull)
@@ -1590,10 +1589,10 @@ ModuleDefinition:	% added to handle modules
 	oTypeTblEnter
 	oSymbolStkEnterTypeReference
 	oSymbolTblEnter
-	% oSymbolTblPushScope	% (module scope)
+	oSymbolTblPushScope	% module scope
 	% should there be any formal parameter handling here?
 	@Block
-	.tProcedureEnd
+	% .tProcedureEnd
 	% oFixPopForwardBranch	% (fix skip around procedure) skipping around modules doesn't happen
 	oSymbolTblUpdate
 	oSymbolStkPop
