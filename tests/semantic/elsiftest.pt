@@ -5,7 +5,7 @@ using output
         i = 0
     elsif i < 4 then
         i = 5
-    elsif i < 5
+    elsif i < 5 then
         i = 6
     else
         i = 10
