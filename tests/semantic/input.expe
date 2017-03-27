@@ -1,0 +1,15 @@
+   .tLiteralInteger
+   oEmitValue
+   .tLiteralAddress
+   oEmitDataAddress
+   .tFileDescriptor
+     .tTrapBegin
+       .tLiteralAddress
+       oEmitValue
+      .tVarParm
+      .tParmEnd
+     .tTrap
+     oEmitTrapKind(trReadln)
+ .tTrapBegin
+ .tTrap
+ oEmitTrapKind(trHalt)
