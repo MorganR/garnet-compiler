@@ -1429,7 +1429,14 @@ ProcedureDefinition :
 	.tSkipProc	% Branch around the procedure definition
 	oFixPushForwardBranch
 	oEmitNullAddress
-	oSymbolStkSetKind(syProcedure)
+	[	% added condition to check if new procedures should be made public
+		% (containment in module checked earlier)
+		| sPublic:
+			oSymbolStkSetKind(syPublicProcedure)
+			% add semantic mechanisms to make visible by lexical level?
+		| *:
+			oSymbolStkSetKind(syProcedure)
+	]
 	oSymbolStkEnterCodeAddress
 	oTypeStkPush(tpNull)
 	oTypeStkSetRecursionFlag(yes)
