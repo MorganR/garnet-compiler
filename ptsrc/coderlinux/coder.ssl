@@ -1079,8 +1079,8 @@ SkipToEndWhile:
     ]};
 
 
-DoStmt:
-	;
+DoStmt:	% Added to handle do statements
+	% implement similar to WhileStmt;
 
 RepeatStmt:	% TODO: remove
     % Save the target address for the top-of-loop branch
