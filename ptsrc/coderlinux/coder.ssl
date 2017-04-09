@@ -851,8 +851,6 @@ Statements:
 	    @WhileStmt
 	| tDoBegin:
 		@DoStmt
-	| tRepeatBegin:
-	    @RepeatStmt
 	| tCaseBegin:
 	    @CaseStmt
 	| tWriteBegin:
