@@ -164,7 +164,7 @@ type Integer:
     % Data kinds
     byte = 1
     word = 2	% 4 bytes on x86
-	string = 3;	% Added to include strings as a data type
+	string = 3;	% Added to include strings as a data kind
 
 
 type Boolean:
