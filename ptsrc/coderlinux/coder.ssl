@@ -100,8 +100,6 @@ Input:		% corresponds to semantic.ssl output
     tLiteralInteger	% removed char
     tLiteralBoolean
     tLiteralString
-    tStringDescriptor
-    tSkipString
     tIfThen
     tIfMerge
     tCaseSelect
@@ -721,7 +719,7 @@ Block:
     % array bounds and file descriptors which are emitted as assignment
     % statements, nested procedure definitions and finally statements.
     {[
-	| tSkipString:
+	| tLiteralString:
             % Emit a string constant to the data area
             oEmitNone(iData)                    %       .data
             tLiteralString
@@ -807,7 +805,7 @@ Routine:
 		    @OperandPopAndFreeTemp	% ... 8(%ebp), formal
 		    @OperandPopAndFreeTemp	% ... 8(%ebp)
 
-		| tStoreParmChar, tStoreParmBoolean:
+		| tStoreParmString, tStoreParmBoolean:
 		    oOperandSwap		% ... formal, 8(%ebp)
 		    oOperandPushCopy		% ... formal, 8(%ebp), 8(%ebp)
 		    oOperandSwapLeftAndDest	% ... 8(%ebp), formal, 8(%ebp)
@@ -1462,15 +1460,9 @@ OperandPushExpression:
 	    @OperandPushVariable
 	| tLiteralInteger:
 	    oOperandPushInteger
-	| tLiteralChar:
-	    oOperandPushChar
 	| tLiteralBoolean:
 	    oOperandPushBoolean
-	| tStringDescriptor:
-	    oOperandPushStringDescriptor
-	    % Get a string literal's address
-	    @EmitStringDescriptor		%	lea	sNNN, %T
-	| tSkipString:
+	| tLiteralString:
 	    % Emit string literal to data area
 	    oEmitNone(iData)			%	.data
 	    % Emit the string
@@ -1478,7 +1470,6 @@ OperandPushExpression:
 	    oEmitString				% sNNN:	.asciz	"SSSSS"
 	    oEmitNone(iText)			%	.text
 	    % Get the string literal's address
-	    tStringDescriptor
 	    oOperandPushStringDescriptor
 	    @EmitStringDescriptor		%	lea	sNNN, %T
 	| tNegate:
@@ -1558,8 +1549,6 @@ OperandPushVariable:
 	    [
 		| tSubscriptInteger:
 		    @OperandSubscriptIntegerPop
-		| tSubscriptChar:
-		    @OperandSubscriptCharPop
 		| tSubscriptBoolean:
 		    @OperandSubscriptBooleanPop
 	    ]
@@ -1949,15 +1938,12 @@ OperandPushExpressionAssignPopPop:
 	    @OperandPushVariable
 	| tLiteralInteger:
 	    oOperandPushInteger
-	| tLiteralChar:
+	| tLiteralString:
 	    oOperandPushChar
 	| tLiteralBoolean:
 	    oOperandPushBoolean
 	| tAssignInteger:
 	    @OperandAssignIntegerPopPop
-	    >
-	| tAssignChar:
-	    @OperandAssignCharPopPop
 	    >
 	| tAssignBoolean:
 	    @OperandAssignBooleanPopPop
@@ -2040,9 +2026,6 @@ OperandPushExpressionAssignPopPop:
 	    @OperandNot
 	| tChr:
 	    [
-		| tAssignChar:
-		    @OperandChrAssignPopPop
-		    >
 		| *:
 		    @OperandChr
 	    ]
