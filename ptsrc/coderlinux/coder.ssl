@@ -851,6 +851,8 @@ Statements:
 	    @IfStmt
 	| tWhileBegin:
 	    @WhileStmt
+	| tDoBegin:
+		@DoStmt
 	| tRepeatBegin:
 	    @RepeatStmt
 	| tCaseBegin:
@@ -1081,7 +1083,10 @@ SkipToEndWhile:
     ]};
 
 
-RepeatStmt:
+DoStmt:
+	;
+
+RepeatStmt:	% TODO: remove
     % Save the target address for the top-of-loop branch
     oFixPushAddress				% bNNN:
     oEmitMergeSourceCoordinate
