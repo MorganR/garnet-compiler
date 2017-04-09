@@ -54,21 +54,21 @@ Input:		% corresponds to semantic.ssl output
     tVarParm
     tFetchAddress
     tFetchInteger
-    tFetchChar
+    tFetchString	% Changed to string
     tFetchBoolean
     tAssignBegin
     tAssignAddress
     tAssignInteger
-    tAssignChar
+    tAssignString	% Changed to string
     tAssignBoolean
     tStoreParmAddress
     tStoreParmInteger
-    tStoreParmChar
+    tStoreParmString	% Changed to string
     tStoreParmBoolean
     tSubscriptBegin
     tSubscriptAddress
     tSubscriptInteger
-    tSubscriptChar
+    tSubscriptString	% Changed to string
     tSubscriptBoolean
     tArrayDescriptor
     tFileDescriptor
@@ -76,8 +76,9 @@ Input:		% corresponds to semantic.ssl output
     tIfEnd
     tCaseBegin
     tWhileBegin
-    tRepeatBegin
-    tRepeatControl
+	tDoBegin 	% Added new t-codes for Do loops
+	tDoBreakIf	% and removed repeat token
+	tCaseElse	% Added to handle else Case statements
     tCallBegin
     tParmEnd
     tProcedureEnd
@@ -86,12 +87,17 @@ Input:		% corresponds to semantic.ssl output
     tTrapBegin
     tWriteEnd
     tReadEnd
+	tCaseElse	% Added to handle else Case statements
+	tConcatenate	% Added T-code for string concatenation
+	tSubstring	% Changed to string
+	tLength	% Added string length token
+	tIndex	% Added substring index 
+	tStringEqual	% Added string equivalency token
 
     % Compound T-codes are those that take operands
     tLiteralAddress
     firstCompoundToken = tLiteralAddress
-    tLiteralInteger
-    tLiteralChar
+    tLiteralInteger	% removed char
     tLiteralBoolean
     tLiteralString
     tStringDescriptor
@@ -103,7 +109,8 @@ Input:		% corresponds to semantic.ssl output
     tCaseEnd
     tWhileTest
     tWhileEnd
-    tRepeatTest
+    tDoTest	% Added t-codes for Do
+	tDoEnd	% and removed for repeat
     tSkipProc
     tCallEnd
     tLineNumber

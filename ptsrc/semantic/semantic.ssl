@@ -127,9 +127,9 @@ Output :	% corresponds to coder.ssl input
 	tIfBegin
 	tIfEnd
 	tCaseBegin
-	tDoBegin %Added new t-codes for Do and else
-	tDoBreakIf 
-	tCaseElse 
+	tWhileBegin
+	tDoBegin	% Added new t-codes for Do loops
+	tDoBreakIf	%
 	tCallBegin
 	tParmEnd
 	tProcedureEnd
@@ -138,29 +138,29 @@ Output :	% corresponds to coder.ssl input
 	tTrapBegin
 	tWriteEnd
 	tReadEnd
+	tCaseElse	% Added to handle else Case statements
+	tConcatenate	% Added T-code for string concatenation
+	tSubstring	% Changed to string
+	tLength	% Added string length token
+	tIndex	% Added substring index 
+	tStringEqual	% Added string equivalency token
 
 	% Compound T-codes are those that take operands
 	tLiteralAddress
 	firstCompoundOutputToken = tLiteralAddress
 	tLiteralInteger
-	tLiteralString %Changed to string
+	tLiteralString	% Changed to string
 	tLiteralBoolean
-	tConcatenate % Added T-code
-	tSubstring %Changed to string
-	tLength 
-	tIndex
-	tStringEqual
-	tStringDescriptor %Changed to string
-	tSkipString %Changed to string
+	tStringDescriptor	% Changed to string
+	tSkipString	% Changed to string
 	tIfThen
 	tIfMerge
-	tWhileBegin %Added while t-codes
 	tWhileTest
 	tWhileEnd
 	tCaseSelect
 	tCaseMerge
 	tCaseEnd
-	tDoTest  %Added t-codes for Do and else
+	tDoTest 	% Added t-codes for Do and else
 	tDoEnd
 	tSkipProc
 	tCallEnd
