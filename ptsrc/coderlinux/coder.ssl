@@ -758,8 +758,27 @@ Block:
 	    ]
 	    oOperandPop				% ... desc
 	    oOperandPop				% ...
-	| *:
-	    >
+    % Statements handled here too
+    | tAssignBegin:
+        @AssignStmt
+    | tCallBegin:
+        @CallStmt
+    | tIfBegin:
+        @IfStmt
+    | tWhileBegin:
+        @WhileStmt
+    | tDoBegin:
+        @DoStmt
+    | tCaseBegin:
+        @CaseStmt
+    | tWriteBegin:
+        @WriteProc
+    | tReadBegin:
+        @ReadProc
+    | tTrapBegin:
+        @TrapStmt
+    | *:
+        >	% End of statement list or empty statement
     ]}
     [
 	| tSkipProc:
@@ -778,9 +797,7 @@ Block:
 	    oFixForwardBranch	% Branch around procedure defn's
 	    oFixPopAddress
 	| *:
-    ]
-    @Statements;
-
+    ];
 
 Routine:
     oEmitProcLabel(mProc)			% pNN:

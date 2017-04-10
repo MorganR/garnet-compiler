@@ -8,7 +8,12 @@ Added Garnet string traps
  - Removed old char trap definitions (trWriteString, trWriteChar, trReadChar)
 
 Tokens:
-- coder.ssl's input tokens were modified to match semantic.ssl's output tokens
+ - coder.ssl's input tokens were modified to match semantic.ssl's output tokens
 
 Data kinds:
-- string was added to data kinds (as number 3)
+ - string was added to data kinds (as number 3)
+
+Modules:
+ - Moved statement logic from the Statements rule into the declarations loop in the Block rule
+ - Statements logic placed at lower precedence than declarations operations in the loop
+ - Kept procedure handling as a separate step after this main loop
