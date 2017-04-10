@@ -1,3 +1,8 @@
 Assignment 4
 Due: April 13th, 2017
 
+Added Garnet string traps
+ - Copied new ptruntime.c file from "/cas/course/cisc458/garnet/ptruntimelinux" into ptsrc/ptruntimelinux/
+ - Ran 'make' to update the compiled files
+ - Added the new pttrap commands to coder.ssl (traps 101 - 109)
+ - Removed old char trap definitions (trWriteString, trWriteChar, trReadChar)
