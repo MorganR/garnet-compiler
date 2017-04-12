@@ -866,11 +866,7 @@ Block :
 
 ConstantDefinitions :		% Process named constant definitions
     % Changed to only process one constant definition per call
-	[
-	    | sIdentifier:
-		@ConstantValue
-        | *:
-    ];
+	sIdentifier;
 
 ConstantValue :		% An identifier token has just been accepted
 	oSymbolStkPushLocalIdentifier
@@ -966,57 +962,54 @@ ConstantValue :		% An identifier token has just been accepted
 
 TypeDefinitions :	% process named type definitions
     % Change to only allow one definition per call
-	[
-	    | sIdentifier:
-		oSymbolStkPushLocalIdentifier
-		@TypeBody
-		[ oSymbolStkChooseKind
-		    | syUndefined:
-		    | syExternal:
-			% Program parameters must be declared as file variables
-			#eExternalDeclare
-			% Ignore this definition
-			oSymbolStkPop
-			oTypeStkPop
-			oTypeStkPop
-			>>
-		    | *:
-			#eMultiplyDefined
-			% The new definition will obscure the old one
-		]
-		oSymbolStkSetKind(syType)
-
-		% Create type table entries for the object as necessary.
-		% Where named types were used in the declaration, a type
-		% reference will be present, otherwise the type reference
-		% fields will be null.
-		oTypeStkSwap	% structure on top
-		[ oTypeStkChooseKind
-		    | tpArray:
-			oTypeStkSwap	% component on top
-			[ oTypeStkChooseTypeReference
-			    | no:
-				% No type table entry exists,
-				% so create one.
-				oTypeTblEnter
-			    | *:
-			]
-			oTypeStkEnterComponentReference
-			oTypeStkSwap	% structure on top
-		    | *:
-		]
-		[ oTypeStkChooseTypeReference
-		    | no:
-			oTypeTblEnter
-		    | *:
-		]
-		oSymbolStkEnterTypeReference
-		oSymbolTblEnter
+	sIdentifier
+	oSymbolStkPushLocalIdentifier
+	@TypeBody
+	[ oSymbolStkChooseKind
+		| syUndefined:
+		| syExternal:
+		% Program parameters must be declared as file variables
+		#eExternalDeclare
+		% Ignore this definition
 		oSymbolStkPop
 		oTypeStkPop
 		oTypeStkPop
-	    | *:
-	];
+		>>
+		| *:
+		#eMultiplyDefined
+		% The new definition will obscure the old one
+	]
+	oSymbolStkSetKind(syType)
+
+	% Create type table entries for the object as necessary.
+	% Where named types were used in the declaration, a type
+	% reference will be present, otherwise the type reference
+	% fields will be null.
+	oTypeStkSwap	% structure on top
+	[ oTypeStkChooseKind
+		| tpArray:
+		oTypeStkSwap	% component on top
+		[ oTypeStkChooseTypeReference
+			| no:
+			% No type table entry exists,
+			% so create one.
+			oTypeTblEnter
+			| *:
+		]
+		oTypeStkEnterComponentReference
+		oTypeStkSwap	% structure on top
+		| *:
+	]
+	[ oTypeStkChooseTypeReference
+		| no:
+		oTypeTblEnter
+		| *:
+	]
+	oSymbolStkEnterTypeReference
+	oSymbolTblEnter
+	oSymbolStkPop
+	oTypeStkPop
+	oTypeStkPop;
 
 TypeBody :
 	% Push a type stack entry for the structure type (e.g. array)
@@ -1236,22 +1229,19 @@ SubrangeUpperBound :
 	];
 
 VariableDeclarations :
-	[
-	    | sIdentifier:
-        oCountPush(one)
-        @PrepareNewVarDeclaration
-        {[
-            | sVar:
-            sIdentifier
-            oCountIncrement
-            @PrepareNewVarDeclaration
-            | *:
-				>
-        ]}        
-		@VariableAttributes
-        oCountPop
-	    | *:
-	];
+	sIdentifier:
+	oCountPush(one)
+	@PrepareNewVarDeclaration
+	{[
+		| sVar:
+		sIdentifier
+		oCountIncrement
+		@PrepareNewVarDeclaration
+		| *:
+			>
+	]}        
+	@VariableAttributes
+	oCountPop;
 
 PrepareNewVarDeclaration :
     % Push the new identifier onto the symbol stack and
