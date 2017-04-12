@@ -928,35 +928,23 @@ ConstantValue :		% An identifier token has just been accepted
 		oSymbolStkSetKind(syVariable)
 		oSymbolStkLinkToStandardType(stdString)
 		oTypeStkPushSymbol
+		% Allocate an address for the variable
 		oAllocateAlignOnWord    
 		oSymbolStkEnterDataAddress
+		% Emit the variable address
+		.tAssignBegin
+		.tLiteralAddress
+		oEmitDataAddress
 		oAllocateVariable
 		oTypeStkPop
-		oValuePush(one)	% implicit lower bound of string index type
+		% "foo" is the value
+		.tLiteralString
 		oValuePushStringLength
-
-			oSymbolStkLinkToStandardType(stdString)
-			oSymbolStkEnterStringValue
-			% Emit a branch around the string since
-			% it is stored in the code area
-			.tAssignBegin
-			% s is the thing to assign to
-			.tLiteralAddress
-			oValuePushSymbol
-			oEmitValue
-			oValuePop
-
-			% "foo" is the value
-			.tLiteralString
-			oValuePushStringLength
-			oEmitValue
-			oValuePop
-			oEmitString
-
-			% and assign it
-			.tAssignString
-		oValuePop	% Upper bound
-		oValuePop	% Lower bound
+		oEmitValue
+		oValuePop
+		oEmitString
+		% and assign it
+		.tAssignString
 	]
 	oSymbolTblEnter
 	oSymbolStkPop;		% name being defined
