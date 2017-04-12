@@ -1,6 +1,11 @@
 Assignment 4
 Due: April 13th, 2017
 
+Phase 3 Fixes:
+ - Forced ConstantDefinitions, TypeDefinitions and VariableDefinitions to require an sIdentifier
+ - Fixed ConstantValue handling of string literals:
+   -- The data address allocated for the string needed to be emitted after .tAssignBegin. Previously the string length was being emitted twice.
+
 Added Garnet string traps
  - Copied new ptruntime.c file from "/cas/course/cisc458/garnet/ptruntimelinux" into ptsrc/ptruntimelinux/
  - Ran 'make' to update the compiled files
