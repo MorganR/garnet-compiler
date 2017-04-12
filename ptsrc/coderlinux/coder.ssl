@@ -1113,7 +1113,7 @@ SkipToEndWhile:
 
 
 DoStmt:	% Added to handle do statements, code modified WhileStmt code
-	% Save the target address for the top-of-loop branch	%TODO: move?
+	% Save the target address for the top-of-loop branch
     oFixPushAddress				% bNNN:
     oEmitMergeSourceCoordinate
 
@@ -1121,8 +1121,8 @@ DoStmt:	% Added to handle do statements, code modified WhileStmt code
 
 	tDoBreakIf
     @OperandPushBooleanControlExpression	% ... cond
-    tDoTest	% changed to Do %TODO: change location of?
-    oOperandComplementJumpCondition		% ... !cond	%TODO: should not be complemented
+    tDoTest	% changed to Do
+	% removed complementing of the exit condition
 
     % Optimize if the condition is know at compile time
     [ oOperandChooseJumpCondition
@@ -1131,15 +1131,15 @@ DoStmt:	% Added to handle do statements, code modified WhileStmt code
             % emit no conditional branch, just fall into loop body
             oFixAndFreeFalseBranches
 
-	| iJalways:
-		% Exit condition is always true (while false) - a nop.
-		% flush the loop body
-		oFixAndFreeFalseBranches
-		@SkipToEndWhile
-		oFixPopAddress
-		oFixAndFreeShuntList        	% fNN:, just in case
-		oOperandPop
-		>>
+		| iJalways:
+			% Exit condition is always true (while false) - a nop.
+			% flush the loop body
+			oFixAndFreeFalseBranches
+			@SkipToEndWhile
+			oFixPopAddress
+			oFixAndFreeShuntList        	% fNN:, just in case
+			oOperandPop
+			>>
 
 	| *:
 	    % Emit a conditional forward branch to exit the loop.
@@ -1154,76 +1154,6 @@ DoStmt:	% Added to handle do statements, code modified WhileStmt code
     oFixPopAddress
     oFixAndFreeShuntList			% fNNN:
     oOperandPop;;
-
-RepeatStmt:	% TODO: remove
-    % Save the target address for the top-of-loop branch
-    oFixPushAddress				% bNNN:
-    oEmitMergeSourceCoordinate
-    @Statements					% loop body
-    tRepeatControl
-    @OperandPushBooleanControlExpression 	% ... cond
-    tRepeatTest
-
-    % Optimize if loop condition is known at compile time
-    [ oOperandChooseJumpCondition
-	| iJnever:
-            % Exit condition is always false (until false) - an infinite loop.
-            % false branches fall through to top-of-loop backward branch
-            oFixAndFreeFalseBranches
-            oEmitUnconditionalBackwardBranch 	%  jmp      bNN
-
-        | iJalways:
-            % Exit condition is always true (until true) - loop never repeats.
-            % fall through without backward branch
-            oFixAndFreeFalseBranches
-
-	| *:
-	    % Emit a conditional forward branch to exit the loop.
-	    % True branches follow the conditional exit path, false
-	    % branches fall through to the top-of-loop branch.
-	    @OperandInfixOr			%	jcond	fNNN
-	    oEmitUnconditionalBackwardBranch	% 	jmp	bNNN
-    ]
-
-    oFixPopAddress
-    % Fix the true branches exiting the statement
-    oFixAndFreeShuntList			% fNNN:
-    oOperandPop;
-
-RepeatStmt:	% TODO: remove
-    % Save the target address for the top-of-loop branch
-    oFixPushAddress				% bNNN:
-    oEmitMergeSourceCoordinate
-    @Statements					% loop body
-    tRepeatControl
-    @OperandPushBooleanControlExpression 	% ... cond
-    tRepeatTest
-
-    % Optimize if loop condition is known at compile time
-    [ oOperandChooseJumpCondition
-	| iJnever:
-            % Exit condition is always false (until false) - an infinite loop.
-            % false branches fall through to top-of-loop backward branch
-            oFixAndFreeFalseBranches
-            oEmitUnconditionalBackwardBranch 	%  jmp      bNN
-
-        | iJalways:
-            % Exit condition is always true (until true) - loop never repeats.
-            % fall through without backward branch
-            oFixAndFreeFalseBranches
-
-	| *:
-	    % Emit a conditional forward branch to exit the loop.
-	    % True branches follow the conditional exit path, false
-	    % branches fall through to the top-of-loop branch.
-	    @OperandInfixOr			%	jcond	fNNN
-	    oEmitUnconditionalBackwardBranch	% 	jmp	bNNN
-    ]
-
-    oFixPopAddress
-    % Fix the true branches exiting the statement
-    oFixAndFreeShuntList			% fNNN:
-    oOperandPop;
 
 
 CaseStmt:
