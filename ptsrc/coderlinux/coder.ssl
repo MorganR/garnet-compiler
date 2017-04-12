@@ -1113,12 +1113,16 @@ SkipToEndWhile:
 
 
 DoStmt:	% Added to handle do statements, code modified WhileStmt code
-	% Save the target address for the top-of-loop branch
+	% Save the target address for the top-of-loop branch	%TODO: move?
     oFixPushAddress				% bNNN:
     oEmitMergeSourceCoordinate
+
+	@Statements					% loop body 1
+
+	tDoBreakIf
     @OperandPushBooleanControlExpression	% ... cond
     tDoTest	% changed to Do %TODO: change location of?
-    oOperandComplementJumpCondition		% ... !cond
+    oOperandComplementJumpCondition		% ... !cond	%TODO: should not be complemented
 
     % Optimize if the condition is know at compile time
     [ oOperandChooseJumpCondition
@@ -1127,15 +1131,15 @@ DoStmt:	% Added to handle do statements, code modified WhileStmt code
             % emit no conditional branch, just fall into loop body
             oFixAndFreeFalseBranches
 
-        | iJalways:
-            % Exit condition is always true (while false) - a nop.
-            % flush the loop body
-            oFixAndFreeFalseBranches
-            @SkipToEndWhile
-            oFixPopAddress
-            oFixAndFreeShuntList        	% fNN:, just in case
-            oOperandPop
-            >>
+	| iJalways:
+		% Exit condition is always true (while false) - a nop.
+		% flush the loop body
+		oFixAndFreeFalseBranches
+		@SkipToEndWhile
+		oFixPopAddress
+		oFixAndFreeShuntList        	% fNN:, just in case
+		oOperandPop
+		>>
 
 	| *:
 	    % Emit a conditional forward branch to exit the loop.
@@ -1144,7 +1148,7 @@ DoStmt:	% Added to handle do statements, code modified WhileStmt code
 	    @OperandInfixOr			%	j!cond	fNNN
     ]
 
-    @Statements					% loop body
+    @Statements					% loop body 2
     tDoEnd	% changed to Do
     oEmitUnconditionalBackwardBranch		% 	jmp	bNNN
     oFixPopAddress
