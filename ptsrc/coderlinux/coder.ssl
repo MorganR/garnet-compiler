@@ -1127,15 +1127,15 @@ DoStmt:	% Added to handle do statements, code modified WhileStmt code
     % Optimize if the condition is know at compile time
     [ oOperandChooseJumpCondition
 	| iJnever:
-            % Exit condition is always false (while true) - an infinite loop.
+            % Exit condition is always false - an infinite loop.
             % emit no conditional branch, just fall into loop body
             oFixAndFreeFalseBranches
 
 		| iJalways:
-			% Exit condition is always true (while false) - a nop.
+			% Exit condition is always true - a nop.
 			% flush the loop body
 			oFixAndFreeFalseBranches
-			@SkipToEndWhile
+			@SkipToEndDo
 			oFixPopAddress
 			oFixAndFreeShuntList        	% fNN:, just in case
 			oOperandPop
@@ -1153,8 +1153,17 @@ DoStmt:	% Added to handle do statements, code modified WhileStmt code
     oEmitUnconditionalBackwardBranch		% 	jmp	bNNN
     oFixPopAddress
     oFixAndFreeShuntList			% fNNN:
-    oOperandPop;;
+    oOperandPop;
 
+SkipToEndDo:
+    {[
+        | tDoEnd:
+            >
+        | tDoBegin:                 	% ignore nested do statements
+            @SkipToEndDo
+        | *:
+            ?                          	% accept and ignore anything else
+    ]};
 
 CaseStmt:
     oEmitSourceCoordinate
