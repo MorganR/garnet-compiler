@@ -882,7 +882,7 @@ Statements:
 	    @IfStmt
 	| tWhileBegin:
 	    @WhileStmt
-	| tDoBegin:
+	| tDoBegin:	% added to handle do statments
 		@DoStmt
 	| tCaseBegin:
 	    @CaseStmt
