@@ -1226,7 +1226,7 @@ CaseEnd:
     oEmitMergeSourceCoordinate;
 
 
-EmitDefaultCaseAbort:
+EmitDefaultCaseAbort:	% TODO: add tCaseElse handling if statement somewhere
     % Emit a case abort alternative to handle selector values
     % which do not match a label.
 
