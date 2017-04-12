@@ -50,8 +50,7 @@
   [ (sVar)
   | sVar:
   @VariableDeclarations
-   [ (sIdentifier)
-   | sIdentifier:
+   ?sIdentifier (sIdentifier)
    oCountPush(one)
    @PrepareNewVarDeclaration
     oSymbolStkPushLocalIdentifier
@@ -125,7 +124,6 @@
     >>
    ;VariableAttributes
    oCountPop
-   ] or >
    >>
   ;VariableDeclarations
   ] or >
