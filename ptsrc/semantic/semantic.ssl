@@ -1229,7 +1229,7 @@ SubrangeUpperBound :
 	];
 
 VariableDeclarations :
-	sIdentifier:
+	sIdentifier
 	oCountPush(one)
 	@PrepareNewVarDeclaration
 	{[
