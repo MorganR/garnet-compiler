@@ -767,7 +767,7 @@ Block:
         @IfStmt
     | tWhileBegin:
         @WhileStmt
-    | tDoBegin:
+    | tDoBegin:	% added to handle do statements
         @DoStmt
     | tCaseBegin:
         @CaseStmt
