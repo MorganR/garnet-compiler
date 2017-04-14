@@ -78,7 +78,6 @@ Input:		% corresponds to semantic.ssl output
     tWhileBegin
 	tDoBegin 	% Added new t-codes for Do loops
 	tDoBreakIf	% and removed repeat token
-	tCaseElse	% Added to handle else Case statements
     tCallBegin
     tParmEnd
     tProcedureEnd
