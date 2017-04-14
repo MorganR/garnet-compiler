@@ -22,3 +22,9 @@ Modules:
  - Moved statement logic from the Statements rule into the declarations loop in the Block rule
  - Statements logic placed at lower precedence than declarations operations in the loop
  - Kept procedure handling as a separate step after this main loop
+
+Do Statements
+ - Created the DoStmt rule to handle do statements. It utilizes a modified version of the WhileStmt rule.
+   -- Statements are allowed before the condition check
+   -- The break condition is no longer complemented
+   -- Token consumption was changed to match Do statements
