@@ -1789,7 +1789,7 @@ program Coder (output, coderSsl, tCode, object, options);
 	    else
 		begin
 		    subscript := subscript - lowerBound;
-			if operandStkLength[operandStkTop-1] = String then
+			if operandStkLength[operandStkTop-1] = String then {Condition to update subscript by string length (1024)}
 				subscript := subscript * stringSize;
 				operandStkValue[operandStkTop-1] := 
 				operandStkValue[operandStkTop-1] +
