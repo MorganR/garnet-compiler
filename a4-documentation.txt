@@ -37,3 +37,6 @@ String Tokens:
  - Added tSubscriptString and tFetchString to OperandPushVariable
  - Removed tFetchChar from OperandPushVariable
  - Added tAssignString to OperandPushExpressionAssignPopPop
+
+String Operations:
+ - Added OperandStringAssignPopPop to call tpAssignString
