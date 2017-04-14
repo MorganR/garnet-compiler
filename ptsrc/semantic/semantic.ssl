@@ -1648,7 +1648,7 @@ CallStmt :
 	    | *:
 	]
 	[ oSymbolStkChooseKind
-	    | syProcedure:
+	    | syProcedure, syPublicProcedure:	% changed to include public procedures
 		[ oSymbolStkChooseStandardRoutine
 		    | rtReset:
 			.tTrapBegin
