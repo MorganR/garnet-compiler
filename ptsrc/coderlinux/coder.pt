@@ -1789,6 +1789,11 @@ program Coder (output, coderSsl, tCode, object, options);
 	    else
 		begin
 		    subscript := subscript - lowerBound;
+			if operandStkLength[operandStkTop-1] = String then
+				subscript := subscript * stringSize;
+				operandStkValue[operandStkTop-1] := 
+				operandStkValue[operandStkTop-1] +
+				subscript + 2 * stringSize;
 		    if operandStkLength[operandStkTop-1] = word then
 			{ Convert a byte offset to a word offset }
 			subscript := subscript * wordSize;
