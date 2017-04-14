@@ -1648,7 +1648,7 @@ CallStmt :
 	    | *:
 	]
 	[ oSymbolStkChooseKind
-	    | syProcedure:
+	    | syProcedure, syPublicProcedure:	% changed to include public procedures
 		[ oSymbolStkChooseStandardRoutine
 		    | rtReset:
 			.tTrapBegin
@@ -1853,6 +1853,11 @@ CaseStmt :
 		oEmitCaseBranchTable
 		.tCaseElse
 		@Statement
+		.tCaseMerge		% start: added as correction
+		oFixPushForwardBranch
+		oEmitNullAddress
+		oFixSwap	
+		oCountIncrement	% end: added as correction
 		sCaseEnd 
 		>
 	    | *:

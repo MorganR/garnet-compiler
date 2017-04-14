@@ -2,9 +2,12 @@ Assignment 4
 Due: April 13th, 2017
 
 Phase 3 Fixes:
+ - Added check to oSymbolTblStripScope to make sure public procedures don't have their lexical level decremented
  - Forced ConstantDefinitions, TypeDefinitions and VariableDefinitions to require an sIdentifier
  - Fixed ConstantValue handling of string literals:
    -- The data address allocated for the string needed to be emitted after .tAssignBegin. Previously the string length was being emitted twice.
+ - allowed for syPublicProcedures (in addition to syProcedures) in Call Stmt
+ - fixed the output and semantic operations when an else case is reached
 
 Added Garnet string traps
  - Copied new ptruntime.c file from "/cas/course/cisc458/garnet/ptruntimelinux" into ptsrc/ptruntimelinux/
@@ -22,3 +25,9 @@ Modules:
  - Moved statement logic from the Statements rule into the declarations loop in the Block rule
  - Statements logic placed at lower precedence than declarations operations in the loop
  - Kept procedure handling as a separate step after this main loop
+
+Do Statements
+ - Created the DoStmt rule to handle do statements. It utilizes a modified version of the WhileStmt rule.
+   -- Statements are allowed before the condition check
+   -- The break condition is no longer complemented
+   -- Token consumption was changed to match Do statements
