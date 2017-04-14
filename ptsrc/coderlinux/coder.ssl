@@ -727,7 +727,7 @@ Block:
     % array bounds and file descriptors which are emitted as assignment
     % statements, nested procedure definitions and finally statements.
     {[
-	| tLiteralString:
+	| tLiteralString: % Changed to tLiteralString for garnet
             % Emit a string constant to the data area
             oEmitNone(iData)                    %       .data
             tLiteralString
@@ -843,7 +843,7 @@ Routine:
 		    oOperandPushCopy		% ... formal, 8(%ebp), 8(%ebp)
 		    oOperandSwapLeftAndDest	% ... 8(%ebp), formal, 8(%ebp)
 		    oOperandSetLength(string)
-			@OperandAssignStringPopPop 
+			@OperandAssignStringPopPop % Call garnet trap
 		| tParmEnd:	  
 		    >
 	    ]}
@@ -1517,7 +1517,7 @@ OperandPushExpression:
 	    oOperandPushInteger
 	| tLiteralBoolean:
 	    oOperandPushBoolean
-	| tLiteralString:
+	| tLiteralString: % Garnet code from tSkipString
 	    % Emit string literal to data area
 	    oEmitNone(iData)			%	.data
 	    % Emit the string
@@ -1567,19 +1567,19 @@ OperandPushExpression:
 	| tLE:
 	    @OperandGreaterPop
 	    @OperandNot
-    | tIndex:
+    | tIndex: % Garnet code
         @OperandIndexPop
-    | tConcatenate:
+    | tConcatenate: % Garnet code
         @OperandConcatenatePop
-    | tSubstring:
+    | tSubstring: % Garnet code
         @OperandSubstringPopPop
-    | tLength:
+    | tLength: % Garnet code
         @OperandLength
 	| tChr:
 	    @OperandChr
 	| tOrd:
 	    @OperandOrd
-    | tStringEqual:
+    | tStringEqual: % Garnet code
         @OperandStringEqualPop
 	| tEoln:
 	    @OperandEolnFunction
@@ -1614,11 +1614,9 @@ OperandPushVariable:
 	    [
 		| tSubscriptInteger:
 		    @OperandSubscriptIntegerPop
-		|tSubscriptString
-			@OperandSubscriptStringPop
 		| tSubscriptBoolean:
 		    @OperandSubscriptBooleanPop
-        | tSubscriptString:
+        | tSubscriptString: % Garnet code
             @OperandSubscriptStringPop
 	    ]
 	| *:	
@@ -1628,7 +1626,7 @@ OperandPushVariable:
 	| tFetchInteger:
 	| tFetchBoolean:
  	    oOperandSetLength(byte)
-    | tFetchString:
+    | tFetchString: % Garnet code
         oOperandSetLength(string)
 	| *: 
 	    % Value is not to be loaded
@@ -2175,7 +2173,7 @@ OperandPushExpressionAssignPopPop:
 	| tAssignInteger:
 	    @OperandAssignIntegerPopPop
 	    >
-    | tAssignString:
+    | tAssignString: % Garnet code
         @OperandAssignStringPopPop
         >
 	| tAssignBoolean:
