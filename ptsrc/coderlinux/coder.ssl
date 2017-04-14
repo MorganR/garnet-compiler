@@ -1654,6 +1654,7 @@ OperandSubscriptIntegerPop:
     ]
     oOperandSetLength(word);
 
+%%%  GARNET
 OperandSubscriptStringPop:
  [ oOperandChooseMode
 	| mManifest:
@@ -1672,6 +1673,7 @@ OperandSubscriptStringPop:
 	    @OperandSubscriptNonManifestStringPop
     ]
     oOperandSetLength(word);
+%%% END GARNET
 
 OperandSubscriptCharPop:
     % similar to above
@@ -2793,19 +2795,21 @@ OperandModPop:
 
 %%%%%% Garnet Operands
 
+OperandPrepStringArgForTrap:
+    % Prepare a string operand for a trap call by pushing it to 
+    % the stack.
+    @OperandForceAddressIntoTemp    %   ... addr(s1)
+    @OperandForceToStack            %   pushl addr(s1)
+    @OperandPopAndFreeTemp;          %   ...
+
 OperandAssignStringPopPop:
-    % GARNET CODE
     % Generate code to assign the right (top) operand's value to 
     % the left (second) operand and pop both operands.
     @SaveTempRegsToStack            %	pushl %eax .. %edx
     
     % Push arguments to run stack
-    @OperandForceAddressIntoTemp    %   ... s1, addr(s2)
-    @OperandForceToStack            %   pushl addr(s2)
-    @OperandPopAndFreeTemp          %   ... s1
-    @OperandForceAddressIntoTemp    %   ... addr(s1)
-    @OperandForceToStack            %   pushl addr(s1)
-    @OperandPopAndFreeTemp          %   ...
+    @OperandPrepStringArgForTrap    %   pushl addr(s2)
+    @OperandPrepStringArgForTrap    %   pushl addr(s1)
 
     % Call trap
     oOperandPushMode(mTrap)
@@ -2823,7 +2827,7 @@ OperandAssignStringPopPop:
     oOperandPop
     oOperandPop
 
-    @RestoreTempRegsFromStack
+    @RestoreTempRegsFromStack;
 
 %%%%%% End Garnet Operands
 
