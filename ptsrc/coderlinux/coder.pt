@@ -963,6 +963,7 @@ program Coder (output, coderSsl, tCode, object, options);
 	{ Emit an x86 assembly code string constant }
 	var
 	    i:	1 .. maxLiteralLength;
+	if (compoundTokenLength > 0) then  { Added in condition to allow for zero length strings
 	begin
 	    Assert ( (compoundToken = tLiteralString), assert26);
 	    write (object, '	.asciz	"');
