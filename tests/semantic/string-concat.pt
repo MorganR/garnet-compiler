@@ -1,0 +1,5 @@
+using output
+  var s : string
+  var s2 : string
+  s = "a "
+  s2 = s + "sentence"
