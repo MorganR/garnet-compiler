@@ -843,10 +843,8 @@ Routine:
 			oOperandSwap		% ... formal, 8(%ebp)
 		    oOperandPushCopy		% ... formal, 8(%ebp), 8(%ebp)
 		    oOperandSwapLeftAndDest	% ... 8(%ebp), formal, 8(%ebp)
-		    oOperandSetLength(byte)
+		    oOperandSetLength(string)
 			@OperandAssignStringPopPop 
-			@OperandPopAndFreeTemp	% ... 8(%ebp), formal
-		    @OperandPopAndFreeTemp	% ... 8(%ebp)			
 		| tParmEnd:	  
 		    >
 	    ]}
@@ -1563,10 +1561,20 @@ OperandPushExpression:
 	| tLE:
 	    @OperandGreaterPop
 	    @OperandNot
+    | tIndex:
+        @OperandIndexPop
+    | tConcatenate:
+        @OperandConcatenatePop
+    | tSubstring:
+        @OperandSubstringPopPop
+    | tLength:
+        @OperandLength
 	| tChr:
 	    @OperandChr
 	| tOrd:
 	    @OperandOrd
+    | tStringEqual:
+        @OperandStringEqualPop
 	| tEoln:
 	    @OperandEolnFunction
 	| tEOF:
@@ -1604,14 +1612,18 @@ OperandPushVariable:
 			@OperandSubscriptStringPop
 		| tSubscriptBoolean:
 		    @OperandSubscriptBooleanPop
+        | tSubscriptString:
+            @OperandSubscriptStringPop
 	    ]
 	| *:	
 	    % not a subscripted variable
     ]
     [
 	| tFetchInteger:
-	| tFetchChar, tFetchBoolean:
+	| tFetchBoolean:
  	    oOperandSetLength(byte)
+    | tFetchString:
+        oOperandSetLength(string)
 	| *: 
 	    % Value is not to be loaded
     ] ;
@@ -2157,6 +2169,9 @@ OperandPushExpressionAssignPopPop:
 	| tAssignInteger:
 	    @OperandAssignIntegerPopPop
 	    >
+    | tAssignString:
+        @OperandAssignStringPopPop
+        >
 	| tAssignBoolean:
 	    @OperandAssignBooleanPopPop
 	    >
