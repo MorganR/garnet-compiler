@@ -3062,6 +3062,38 @@ OperandAssignBooleanPopPop:
     @OperandConvertJumpConditionToData
     @OperandAssignCharPopPop;
 
+OperandAssignStringPopPop:
+    % GARNET CODE
+    % Generate code to assign the right (top) operand's value to 
+    % the left (second) operand and pop both operands.
+    @SaveTempRegsToStack            %	pushl %eax .. %edx
+    
+    % Push arguments to run stack
+    @OperandForceAddressIntoTemp    %   ... s1, addr(s2)
+    @OperandForceToStack            %   pushl addr(s2)
+    @OperandPopAndFreeTemp          %   ... s1
+    @OperandForceAddressIntoTemp    %   ... addr(s1)
+    @OperandForceToStack            %   pushl addr(s1)
+    @OperandPopAndFreeTemp          %   ...
+
+    % Call trap
+    oOperandPushMode(mTrap)
+    oOperandSetValue(trAssignString)
+    oOperandSetLength(word)
+    oEmitSingle(iCall)              % 	call 	trAssignString
+
+    % Pop arguments
+    oOperandPushMode(mStackReg)
+    oOperandSetLength(word)
+    oOperandPushMode(mManifest)
+    oOperandSetLength(word)
+    oOperandSetValue(eight)
+    oEmitDouble(iAdd)           % 	addl 	$8, %esp
+    oOperandPop
+    oOperandPop
+
+    @RestoreTempRegsFromStack
+
 
 OperandPopAndFreeTemp:
     % If the top operand has a temporary in it, free it. 
