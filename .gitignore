@@ -27,6 +27,7 @@ tests/**/*.res3
 tests/**/*.res1complete
 tests/**/*.res2complete
 tests/**/*.res3complete
+tests/**/*.out
 
 # vscode
 .vscode
