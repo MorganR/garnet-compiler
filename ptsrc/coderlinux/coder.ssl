@@ -727,7 +727,7 @@ Block:
     % array bounds and file descriptors which are emitted as assignment
     % statements, nested procedure definitions and finally statements.
     {[
-	| tLiteralString:
+	| tLiteralString: % Changed to tLiteralString for garnet
             % Emit a string constant to the data area
             oEmitNone(iData)                    %       .data
             tLiteralString
@@ -843,7 +843,7 @@ Routine:
 		    oOperandPushCopy		% ... formal, 8(%ebp), 8(%ebp)
 		    oOperandSwapLeftAndDest	% ... 8(%ebp), formal, 8(%ebp)
 		    oOperandSetLength(string)
-			@OperandAssignStringPopPop 
+			@OperandAssignStringPopPop % Call garnet trap
 		| tParmEnd:	  
 		    >
 	    ]}
@@ -1517,7 +1517,7 @@ OperandPushExpression:
 	    oOperandPushInteger
 	| tLiteralBoolean:
 	    oOperandPushBoolean
-	| tLiteralString:
+	| tLiteralString: % Garnet code from tSkipString
 	    % Emit string literal to data area
 	    oEmitNone(iData)			%	.data
 	    % Emit the string
@@ -1567,19 +1567,19 @@ OperandPushExpression:
 	| tLE:
 	    @OperandGreaterPop
 	    @OperandNot
-    | tIndex:
+    | tIndex: % Garnet code
         @OperandIndexPop
-    | tConcatenate:
+    | tConcatenate: % Garnet code
         @OperandConcatenatePop
-    | tSubstring:
+    | tSubstring: % Garnet code
         @OperandSubstringPopPop
-    | tLength:
+    | tLength: % Garnet code
         @OperandLength
 	| tChr:
 	    @OperandChr
 	| tOrd:
 	    @OperandOrd
-    | tStringEqual:
+    | tStringEqual: % Garnet code
         @OperandStringEqualPop
 	| tEoln:
 	    @OperandEolnFunction
@@ -1614,11 +1614,9 @@ OperandPushVariable:
 	    [
 		| tSubscriptInteger:
 		    @OperandSubscriptIntegerPop
-		|tSubscriptString
-			@OperandSubscriptStringPop
 		| tSubscriptBoolean:
 		    @OperandSubscriptBooleanPop
-        | tSubscriptString:
+        | tSubscriptString: % Garnet code
             @OperandSubscriptStringPop
 	    ]
 	| *:	
@@ -1628,7 +1626,7 @@ OperandPushVariable:
 	| tFetchInteger:
 	| tFetchBoolean:
  	    oOperandSetLength(byte)
-    | tFetchString:
+    | tFetchString: % Garnet code
         oOperandSetLength(string)
 	| *: 
 	    % Value is not to be loaded
@@ -1656,6 +1654,7 @@ OperandSubscriptIntegerPop:
     ]
     oOperandSetLength(word);
 
+%%%  GARNET
 OperandSubscriptStringPop:
  [ oOperandChooseMode
 	| mManifest:
@@ -1674,6 +1673,7 @@ OperandSubscriptStringPop:
 	    @OperandSubscriptNonManifestStringPop
     ]
     oOperandSetLength(word);
+%%% END GARNET
 
 OperandSubscriptCharPop:
     % similar to above
@@ -1844,8 +1844,8 @@ OperandCheckedSubscriptNonManifestStringPop:
 
     % Scale subscript by String size 		% ... arraydesc, %T
     oOperandPushMode(mManifest)
-    oOperandSetLength(word)
-    oOperandSetValue(ten)			% ... arraydesc, %T, 2
+    oOperandSetLength(String)
+    oOperandSetValue(2)			% ... arraydesc, %T, 2
     oEmitDouble(iShl)				% 	shll 	$2, %T
     oOperandPop					% ... arraydesc, %T
 
@@ -1994,8 +1994,8 @@ OperandUncheckedSubscriptNonManifestStringPop:
 	    % Scale subscript by integer element size 
 	    @OperandForceIntoTemp		% 	movl 	subscript, %T
 	    oOperandPushMode(mManifest)
-	    oOperandSetLength(word)
-	    oOperandSetValue(ten)
+	    oOperandSetLength(String)
+	    oOperandSetValue(2)
 	    oEmitDouble(iShl)			% 	shl 	$2, %T
 	    oOperandPop
 	    oOperandSwap			% ... %T, arraydesc
@@ -2175,7 +2175,7 @@ OperandPushExpressionAssignPopPop:
 	| tAssignInteger:
 	    @OperandAssignIntegerPopPop
 	    >
-    | tAssignString:
+    | tAssignString: % Garnet code
         @OperandAssignStringPopPop
         >
 	| tAssignBoolean:
@@ -2793,6 +2793,46 @@ OperandModPop:
     % finally, the result goes to a free temporary
     @OperandForceIntoTemp;              % ... %T
 
+%%%%%% Garnet Operands
+
+OperandPrepStringArgForTrap:
+    % Prepare a string operand for a trap call by pushing it to 
+    % the stack.
+    @OperandForceAddressIntoTemp    %   ... addr(s1)
+    @OperandForceToStack            %   pushl addr(s1)
+    @OperandPopAndFreeTemp;          %   ...
+
+OperandAssignStringPopPop:
+    % Generate code to assign the right (top) operand's value to 
+    % the left (second) operand and pop both operands.
+    @SaveTempRegsToStack            %	pushl %eax .. %edx
+    
+    % Push arguments to run stack
+    @OperandPrepStringArgForTrap    %   pushl addr(s2)
+    @OperandPrepStringArgForTrap    %   pushl addr(s1)
+
+    % Call trap
+    oOperandPushMode(mTrap)
+    oOperandSetValue(trAssignString)
+    oOperandSetLength(word)
+    oEmitSingle(iCall)              % 	call 	trAssignString
+
+    % Pop arguments
+    oOperandPushMode(mStackReg)
+    oOperandSetLength(word)
+    oOperandPushMode(mManifest)
+    oOperandSetLength(word)
+    oOperandSetValue(eight)
+    oEmitDouble(iAdd)           % 	addl 	$8, %esp
+    oOperandPop
+    oOperandPop
+
+    @RestoreTempRegsFromStack;
+
+OperandConcatenatePop:
+    % Concatenate a string with another string
+
+%%%%%% End Garnet Operands
 
 OperandChrAssignPopPop:
     % Assume operand's value is in range
@@ -2803,7 +2843,6 @@ OperandChrAssignPopPop:
     oEmitDouble(iMov)		% 	movb	%T, x
     @OperandPopAndFreeTemp
     @OperandPopAndFreeTemp;
-
 
 OperandChr:
     % Assume operand's value is in range
@@ -3061,7 +3100,6 @@ OperandAssignBooleanPopPop:
 
     @OperandConvertJumpConditionToData
     @OperandAssignCharPopPop;
-
 
 OperandPopAndFreeTemp:
     % If the top operand has a temporary in it, free it. 

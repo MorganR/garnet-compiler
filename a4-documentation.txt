@@ -31,3 +31,12 @@ Do Statements
    -- Statements are allowed before the condition check
    -- The break condition is no longer complemented
    -- Token consumption was changed to match Do statements
+
+String Tokens:
+ - Added tIndex, tConcatenate, tSubstring, tLength, and tStringEqual to the OperandPushExpression options
+ - Added tSubscriptString and tFetchString to OperandPushVariable
+ - Removed tFetchChar from OperandPushVariable
+ - Added tAssignString to OperandPushExpressionAssignPopPop
+
+String Operations:
+ - Added OperandStringAssignPopPop to call tpAssignString
