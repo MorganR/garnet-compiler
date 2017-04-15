@@ -1,0 +1,34 @@
+#!/bin/bash
+
+testingDir="$(pwd)"
+
+cd "../../ptsrc"
+
+ptBase="$(pwd)"
+ptLib="${ptBase}/lib/pt"
+ptCoderDefs=${ptBase}/coderlinux/coder.def
+ptSemanticDefs=${ptBase}/semantic/semantic.def
+ptParserDefs=${ptBase}/parser/parser.def
+
+cd "$testingDir"
+
+> TestResults
+
+passCount=0
+failCount=0
+
+for f in ./*.pt
+do
+  echo "Testing file $(basename $f)"
+  echo "############################" >> TestResults
+  baseName="$(basename -s .pt ""$f"")"
+  echo "$(basename $f):" >> TestResults
+  ptc -L ${ptLib} $f
+  ptc -S -L ${ptLib} $f
+echo >> TestResults
+done
+
+echo "${failCount} test(s) failed, ${passCount} test(s) passed." >> TestResults
+
+cat TestResults
+
