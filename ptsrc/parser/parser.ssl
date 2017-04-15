@@ -615,10 +615,22 @@ IdentifierExtension :
         @Expression  ']'
         .sExpnEnd
         | '(':
-        .sParmBegin
-        @Expression  ')'
-        .sExpnEnd
-        .sParmEnd
+            [
+                | ')':
+                | *:
+                    .sParmBegin
+                    {
+                        @Expression
+                        .sExpnEnd
+                        [
+                            | ',':
+                            | *:
+                                >
+                        ]
+                    }
+                    ')'                    
+                    .sParmEnd
+            ]
         | *:
     ];
 
