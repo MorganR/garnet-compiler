@@ -2844,6 +2844,7 @@ OperandReturnArgFromStringTrap:
 
     @OperandForceIntoTemp;           % ... %T
 
+
 OperandConcatenatePop:
     % Concatenates the top string onto the end of 
     % the second string.
@@ -2927,6 +2928,35 @@ OperandIndexPop:
     oOperandPop
 
     @OperandReturnArgFromStringTrap;
+
+OperandStringEqualPop:
+ % Finds the location of the top string operand in the
+    % second string operand.
+    % Puts the result in a temp.
+    @SaveTempRegsToStack        %   pushl %eax .. %edx
+
+    @OperandPrepStringArgForTrap    %   pushl addr(s2)
+    @OperandPrepStringArgForTrap    %   pushl addr(s1)
+
+    % Call trap
+    oOperandPushMode(mTrap)
+    oOperandSetValue(trStringEqual)
+    oOperandSetLength(word)
+    oEmitSingle(iCall)              % 	call trStringEqual
+
+    % Pop arguments	
+    oOperandPushMode(mStackReg)
+    oOperandSetLength(word)
+    oOperandPushMode(mManifest)
+    oOperandSetLength(word)
+    oOperandSetValue(eight)
+    oEmitDouble(iAdd)           % 	addl $8, %esp
+    oOperandPop
+    oOperandPop
+
+    @OperandReturnArgFromStringTrap;
+%takes two strings s1 and s2 and returns a boolean result in temporary register X
+
 
 %%%%%% End Garnet Operands
 
