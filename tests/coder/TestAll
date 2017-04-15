@@ -9,6 +9,7 @@ ptLib="${ptBase}/lib/pt"
 ptCoderDefs=${ptBase}/coderlinux/coder.def
 ptSemanticDefs=${ptBase}/semantic/semantic.def
 ptParserDefs=${ptBase}/parser/parser.def
+ptScanDefs=${ptBase}/parser/scan.def
 
 cd "$testingDir"
 
@@ -23,9 +24,45 @@ do
   echo "############################" >> TestResults
   baseName="$(basename -s .pt ""$f"")"
   echo "$(basename $f):" >> TestResults
-  ptc -L ${ptLib} $f
+  ptc -L ${ptLib} $f > "${baseName}.res"
   ptc -S -L ${ptLib} $f
-echo >> TestResults
+  ssltrace "ptc -t1 -o1 -L ${ptLib} $f" "${ptScanDefs}" -e > "${baseName}.res1"
+  ssltrace "ptc -t2 -o2 -L ${ptLib} $f" "${ptParserDefs}" -e > "${baseName}.res2"
+  ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" -e > "${baseName}.res3"
+  
+  echo >> TestResults
+  if (diff ${baseName}.exps ${baseName}.s -qw)
+  then
+    echo ".s output passed." >> TestResults
+    (( passCount += 1 ))
+  else
+    echo ".s output FAILED." >> TestResults
+    (( failCount += 1 ))
+  fi
+  if (diff ${baseName}.pt.ssltrace-t1-e ${baseName}.res1 -qw)
+  then
+    echo "scan-screen output passed." >> TestResults
+    (( passCount += 1 ))
+  else
+    echo "scan-screen output FAILED." >> TestResults
+    (( failCount += 1 ))
+  fi
+  if (diff ${baseName}.pt.ssltrace-t2-e ${baseName}.res2 -qw)
+  then
+    echo "parser output passed." >> TestResults
+    (( passCount += 1 ))
+  else
+    echo "parser output FAILED." >> TestResults
+    (( failCount += 1 ))
+  fi
+  if (diff ${baseName}.pt.ssltrace-t3-e ${baseName}.res3 -qw)
+  then
+    echo "semantic output passed." >> TestResults
+    (( passCount += 1 ))
+  else
+    echo "semantic output FAILED." >> TestResults
+    (( failCount += 1 ))
+  fi
 done
 
 echo "${failCount} test(s) failed, ${passCount} test(s) passed." >> TestResults
