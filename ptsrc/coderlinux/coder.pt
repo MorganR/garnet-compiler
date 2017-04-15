@@ -2204,8 +2204,7 @@ program Coder (output, coderSsl, tCode, object, options);
 			  not changed from the old value (e.g. inc  oldNum) }
 			begin
 			    lastEmittedLineNumber := undefined;
-			    OptionallyEmitSourceCoordinate;
-			    AssertTempsAreAllFree
+			    OptionallyEmitSourceCoordinate; {Removed AssertTempsAreAllFree}
 			end;
 
 		    oEmitCaseMergeBranch:
