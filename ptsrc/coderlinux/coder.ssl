@@ -2828,7 +2828,7 @@ OperandAssignStringPopPop:
 
     @RestoreTempRegsFromStack;      % popl %edx .. %eax
 
-OperandReturnStringArgFromTrap:
+OperandReturnArgFromStringTrap:
     % Move the string result from %eax onto a temp variable.
     % Restores temp registers from the stack.
     
@@ -2869,7 +2869,7 @@ OperandConcatenatePop:
     oOperandPop
     oOperandPop
 
-    @OperandReturnStringArgFromTrap;
+    @OperandReturnArgFromStringTrap;
 
 OperandSubstringPopPop:
     % Uses the top two operands as indices for a substring
@@ -2899,7 +2899,34 @@ OperandSubstringPopPop:
     oOperandPop
     oOperandPop
 
-    @OperandReturnStringArgFromTrap;
+    @OperandReturnArgFromStringTrap;
+
+OperandIndexPop:
+    % Finds the location of the top string operand in the
+    % second string operand.
+    % Puts the result in a temp.
+    @SaveTempRegsToStack        %   pushl %eax .. %edx
+
+    @OperandPrepStringArgForTrap    %   pushl addr(s2)
+    @OperandPrepStringArgForTrap    %   pushl addr(s1)
+
+    % Call trap
+    oOperandPushMode(mTrap)
+    oOperandSetValue(trStringIndex)
+    oOperandSetLength(word)
+    oEmitSingle(iCall)              % 	call trConcatenate
+
+    % Pop arguments
+    oOperandPushMode(mStackReg)
+    oOperandSetLength(word)
+    oOperandPushMode(mManifest)
+    oOperandSetLength(word)
+    oOperandSetValue(eight)
+    oEmitDouble(iAdd)           % 	addl $8, %esp
+    oOperandPop
+    oOperandPop
+
+    @OperandReturnArgFromStringTrap;
 
 %%%%%% End Garnet Operands
 
