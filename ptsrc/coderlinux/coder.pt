@@ -1904,7 +1904,7 @@ program Coder (output, coderSsl, tCode, object, options);
 			tLiteralString:
 			    begin
 				compoundTokenLength := compoundTokenValue;
-				Assert (compoundTokenLength >= 0); {Removed assert5 and changed it to allow string literals of length 0 or greater instead of 1}
+			 {Removed assert5 and to allow string literals of length 0 or greater instead of 1}
 				compoundTokenValue := tCodeAddress;
 				i := 1;
 				repeat
