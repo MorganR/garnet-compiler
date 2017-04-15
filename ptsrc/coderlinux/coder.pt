@@ -987,29 +987,28 @@ program Coder (output, coderSsl, tCode, object, options);
 	var
 	    i:	1 .. maxLiteralLength;
 	if (compoundTokenLength > 0) then  { Added in condition to allow for zero length strings }
-	begin
-	begin
-	    Assert ( (compoundToken = tLiteralString), assert26);
-	    write (object, '	.asciz	"');
+		begin
+			Assert ( (compoundToken = tLiteralString), assert26);
+			write (object, '	.asciz	"');
 
-	    i := 1;
-	    repeat
-		if (compoundTokenText[i] = ord('"')) or
-			(compoundTokenText[i] = ord('\')) then
-		    begin
-			write (object, '\');
-			write (object, chr (compoundTokenText[i]));
-		    end
-		else if (compoundTokenText[i] = ord('	')) then
-		    write (object, '\t')
-		else
-		    write (object, chr (compoundTokenText[i]));
-		i := i + 1
-	    until i > compoundTokenLength;
+			i := 1;
+			repeat
+			if (compoundTokenText[i] = ord('"')) or
+				(compoundTokenText[i] = ord('\')) then
+				begin
+				write (object, '\');
+				write (object, chr (compoundTokenText[i]));
+				end
+			else if (compoundTokenText[i] = ord('	')) then
+				write (object, '\t')
+			else
+				write (object, chr (compoundTokenText[i]));
+			i := i + 1
+			until i > compoundTokenLength;
 
-	    write (object, '"');
-	    writeln (object);
-	end  { EmitX86StringLiteral }
+			write (object, '"');
+			writeln (object);
+		end  { EmitX86StringLiteral }
 	end;
 
 
