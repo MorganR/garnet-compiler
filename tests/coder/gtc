@@ -1,0 +1,2 @@
+#!/bin/bash
+/opt/caslab/bin/ptc -L /cas/course/cisc458/garnet/lib/pt $*

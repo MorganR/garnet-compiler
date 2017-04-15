@@ -1,0 +1,54 @@
+  .pNewLine
+  .pIdentifier (screened to pUsing)
+  .pIdentifier
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pInteger
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pLiteral
+ .pNewLine
+  .pIdentifier (screened to pWhile)
+  .pIdentifier
+ .pLessEqual
+  .pInteger
+  .pIdentifier (screened to pDo)
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pLiteral
+ .pPlus
+  .pIdentifier
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pPlus
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pEndFile

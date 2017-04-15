@@ -1,0 +1,3 @@
+using output
+write("Hello world!") 
+writeln()
