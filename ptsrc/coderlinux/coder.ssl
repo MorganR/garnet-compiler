@@ -2886,7 +2886,7 @@ OperandSubstringPopPop:
     oOperandPushMode(mTrap)
     oOperandSetValue(trSubstring)
     oOperandSetLength(word)
-    oEmitSingle(iCall)              % 	call trConcatenate
+    oEmitSingle(iCall)              % 	call trSubstring
 
     % Pop arguments
     oOperandPushMode(mStackReg)
@@ -2914,7 +2914,7 @@ OperandIndexPop:
     oOperandPushMode(mTrap)
     oOperandSetValue(trStringIndex)
     oOperandSetLength(word)
-    oEmitSingle(iCall)              % 	call trConcatenate
+    oEmitSingle(iCall)              % 	call trStringIndex
 
     % Pop arguments
     oOperandPushMode(mStackReg)
@@ -2924,6 +2924,31 @@ OperandIndexPop:
     oOperandSetValue(eight)
     oEmitDouble(iAdd)           % 	addl $8, %esp
     oOperandPop
+    oOperandPop
+
+    @OperandReturnArgFromStringTrap;
+
+OperandLength:
+    % Finds the length of the top operand string.
+    % Puts the result in a temp.
+
+    @SaveTempRegsToStack        %   pushl %eax .. %edx
+    
+    @OperandPrepStringArgForTrap    %   pushl addr(s2)
+
+    % Call trap
+    oOperandPushMode(mTrap)
+    oOperandSetValue(trLength)
+    oOperandSetLength(word)
+    oEmitSingle(iCall)              % 	call trLength
+
+    % Pop arguments
+    oOperandPushMode(mStackReg)
+    oOperandSetLength(word)
+    oOperandPushMode(mManifest)
+    oOperandSetLength(word)
+    oOperandSetValue(four)
+    oEmitDouble(iAdd)           % 	addl $4, %esp
     oOperandPop
 
     @OperandReturnArgFromStringTrap;
