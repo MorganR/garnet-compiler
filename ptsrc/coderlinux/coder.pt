@@ -965,6 +965,7 @@ program Coder (output, coderSsl, tCode, object, options);
 	    i:	1 .. maxLiteralLength;
 	if (compoundTokenLength > 0) then  { Added in condition to allow for zero length strings }
 	begin
+	begin
 	    Assert ( (compoundToken = tLiteralString), assert26);
 	    write (object, '	.asciz	"');
 
@@ -985,7 +986,8 @@ program Coder (output, coderSsl, tCode, object, options);
 
 	    write (object, '"');
 	    writeln (object);
-	end { EmitX86StringLiteral };
+	end  { EmitX86StringLiteral }
+	end;
 
 
     procedure EmitX86Code (opcode: integer; byte: Boolean);
