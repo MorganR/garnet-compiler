@@ -2253,14 +2253,7 @@ program Coder (output, coderSsl, tCode, object, options);
 			    OperandPush (mManifest, compoundTokenValue,
 				undefined, word)
 			end;
-
-		    oOperandPushChar:
-			begin
-			    Assert ( (compoundToken = tLiteralChar), assert19);
-			    OperandPush (mManifest, compoundTokenValue,
-				undefined, byte)
-			end;
-
+{Removed oOperandPushChar case}
 		    oOperandPushBoolean:
 			begin
 			    Assert ( (compoundToken = tLiteralBoolean), assert20);
