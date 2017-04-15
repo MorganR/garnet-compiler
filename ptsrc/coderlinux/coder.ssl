@@ -3014,7 +3014,15 @@ OperandOrd:
     @OperandForceAddressIntoTemp    %   ... addr(s1)
     oOperandPushMode(mTempIndirect)
     oOperandSetLength(byte)
-    @OperandForceIntoTemp;          % mov (s1),byte
+    oOperandPushMode(mManifest)
+    oOperandSetValue(zero)
+    oOperandSetLength(word)
+    @OperandForceIntoTemp	% 	movl	$0, %T
+    oOperandSetLength(byte)
+    oOperandSwap
+    oEmitDouble(iMov)		% 	movb 	y, %T
+    @OperandPopAndFreeTemp
+    oOperandSetLength(word);
 
 %%%%%% End Garnet Operands
 
@@ -3027,12 +3035,6 @@ OperandChrAssignPopPop:
     oEmitDouble(iMov)		% 	movb	%T, x
     @OperandPopAndFreeTemp
     @OperandPopAndFreeTemp;
-
-OperandChr:
-    % Assume operand's value is in range
-    @OperandForceIntoTemp	
-    oOperandSetLength(byte);	% see comments above
-
 
 OperandOrdAssignPopPop:
     % x := y;  x word, y byte
@@ -3048,20 +3050,6 @@ OperandOrdAssignPopPop:
     oEmitDouble(iMov)  		% 	movl 	%T, x
     @OperandPopAndFreeTemp
     @OperandPopAndFreeTemp;
-
-
-OperandOrd:
-    % Byte operand is on top of operand stack
-    oOperandPushMode(mManifest)
-    oOperandSetValue(zero)
-    oOperandSetLength(word)
-    @OperandForceIntoTemp	% 	movl	$0, %T
-    oOperandSetLength(byte)
-    oOperandSwap
-    oEmitDouble(iMov)		% 	movb 	y, %T
-    @OperandPopAndFreeTemp
-    oOperandSetLength(word);
-
 
 OperandEolnFunction:
     % First save the temp registers, since we are called in an
