@@ -14,7 +14,7 @@
      .sCallStmt
      .sIdentifier
      .sParmEnd
-    .sDoStmt
+    .sDo
      .sBegin
        .sCallStmt
        .sIdentifier
