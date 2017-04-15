@@ -29,6 +29,7 @@ do
   ssltrace "ptc -t1 -o1 -L ${ptLib} $f" "${ptScanDefs}" -e > "${baseName}.res1"
   ssltrace "ptc -t1 -o1 -L ${ptLib} $f" "${ptScanDefs}" > "${baseName}.res1complete"
   ssltrace "ptc -t2 -o2 -L ${ptLib} $f" "${ptParserDefs}" -e > "${baseName}.res2"
+  ssltrace "ptc -t2 -o2 -L ${ptLib} $f" "${ptParserDefs}" > "${baseName}.res2complete"
   ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" -e > "${baseName}.res3"
   
   echo >> TestResults
