@@ -114,24 +114,24 @@
  .pNewLine
   .pIdentifier (screened to pIf)
   .pIdentifier
- .pEqualsEquals
+ .pEquals
   .pInteger
   .pIdentifier (screened to pThen)
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier (screened to pElse)
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier (screened to pEnd)
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
  .pLeftParen
   .pIdentifier
  .pStar
@@ -141,7 +141,7 @@
   .pInteger
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
  .pLeftParen
   .pIdentifier
   .pIdentifier (screened to pMod)
@@ -155,11 +155,11 @@
  .pNewLine
   .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier (screened to pEnd)
@@ -224,7 +224,7 @@
  .pNewLine
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier (screened to pDo)
@@ -233,11 +233,11 @@
  .pLeftBracket
   .pIdentifier
  .pRightBracket
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger
@@ -252,7 +252,7 @@
  .pNewLine
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier (screened to pDo)
@@ -269,7 +269,7 @@
  .pLeftBracket
   .pIdentifier
  .pRightBracket
- .pEqualsEquals
+ .pEquals
   .pInteger
   .pIdentifier (screened to pDo)
  .pNewLine
@@ -287,14 +287,14 @@
  .pLeftBracket
   .pIdentifier
  .pRightBracket
- .pEquals
+ .pAssign
   .pIdentifier
  .pNewLine
   .pIdentifier
  .pLeftBracket
   .pIdentifier
  .pRightBracket
- .pEquals
+ .pAssign
   .pIdentifier
  .pLeftBracket
   .pIdentifier
@@ -304,7 +304,7 @@
  .pNewLine
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger
@@ -319,7 +319,7 @@
  .pNewLine
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier (screened to pEnd)
@@ -336,13 +336,13 @@
  .pRightParen
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pLeftBracket
   .pIdentifier
@@ -362,7 +362,7 @@
  .pRightParen
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pMinus
   .pIdentifier
@@ -421,12 +421,12 @@
  .pNewLine
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pLiteral
  .pNewLine
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier (screened to pWhile)
@@ -436,7 +436,7 @@
   .pIdentifier (screened to pDo)
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pLiteral
@@ -450,7 +450,7 @@
  .pRightBracket
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger
@@ -465,91 +465,91 @@
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
  .pNewLine
   .pIdentifier
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
  .pNewLine
   .pIdentifier
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
  .pNewLine
   .pIdentifier
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
  .pNewLine
   .pIdentifier
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
  .pNewLine
   .pIdentifier
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
  .pNewLine
   .pIdentifier
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
  .pNewLine
   .pIdentifier
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
  .pNewLine
   .pIdentifier
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
  .pNewLine
   .pIdentifier
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
  .pNewLine
   .pIdentifier
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
  .pNewLine
   .pIdentifier
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
  .pNewLine
   .pIdentifier
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
  .pNewLine
   .pIdentifier (screened to pEnd)
@@ -570,15 +570,15 @@
   .pNewLine
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier
@@ -621,12 +621,12 @@
  .pNewLine
   .pIdentifier (screened to pIf)
   .pIdentifier
- .pEqualsEquals
+ .pEquals
   .pLiteral
   .pIdentifier (screened to pThen)
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pNewLine
   .pIdentifier (screened to pElse)
@@ -689,7 +689,7 @@
  .pNewLine
   .pIdentifier (screened to pIf)
   .pIdentifier
- .pEqualsEquals
+ .pEquals
   .pLiteral
   % Output token text 'E.O.Thorp'
   .pIdentifier (screened to pThen)
@@ -782,7 +782,7 @@
  .pNewLine
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pNewLine
   .pIdentifier (screened to pEnd)
@@ -836,13 +836,13 @@
  .pRightParen
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pNewLine
   .pIdentifier (screened to pElse)
@@ -923,7 +923,7 @@
  .pNewLine
   .pIdentifier (screened to pIf)
   .pIdentifier
- .pEqualsEquals
+ .pEquals
   .pLiteral
   % Output token text 'E.O.Thorp'
   .pIdentifier (screened to pThen)
@@ -970,7 +970,7 @@
  .pNewLine
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pNewLine
   .pIdentifier (screened to pEnd)
@@ -986,7 +986,7 @@
  .pNewLine
   .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger
@@ -1011,7 +1011,7 @@
   .pNewLine
   .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger
@@ -1042,19 +1042,19 @@
  .pNewLine
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
  .pNewLine
@@ -1165,16 +1165,16 @@
  .pNewLine
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier (screened to pWhile)
@@ -1212,7 +1212,7 @@
  .pNewLine
   .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pIdentifier
@@ -1226,13 +1226,13 @@
  .pNewLine
   .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger
@@ -1241,7 +1241,7 @@
  .pNewLine
   .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger
@@ -1250,7 +1250,7 @@
  .pNewLine
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger
@@ -1273,13 +1273,13 @@
   .pIdentifier (screened to pDo)
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pMinus
   .pInteger
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pMinus
   .pInteger
@@ -1288,7 +1288,7 @@
  .pNewLine
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pGreater
   .pInteger
@@ -1347,18 +1347,18 @@
  .pRightParen
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger
  .pNewLine
   .pIdentifier (screened to pElsif)
   .pIdentifier
- .pEqualsEquals
+ .pEquals
   .pInteger
   .pIdentifier (screened to pThen)
  .pNewLine
@@ -1373,11 +1373,11 @@
  .pRightParen
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger
@@ -1397,7 +1397,7 @@
   .pIdentifier (screened to pElse)
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pNewLine
   .pIdentifier (screened to pEnd)
@@ -1441,7 +1441,7 @@
  .pRightParen
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger
@@ -1465,7 +1465,7 @@
  .pRightParen
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger
@@ -1541,7 +1541,7 @@
   .pIdentifier (screened to pElse)
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pNewLine
   .pIdentifier (screened to pEnd)
@@ -1567,7 +1567,7 @@
   .pIdentifier
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pLeftBracket
   .pInteger
@@ -1587,7 +1587,7 @@
  .pNewLine
   .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pGreater
   .pInteger
@@ -1596,7 +1596,7 @@
  .pNewLine
   .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pGreater
   .pInteger
@@ -1622,7 +1622,7 @@
  .pNewLine
   .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pGreater
   .pInteger
@@ -1643,7 +1643,7 @@
  .pNewLine
   .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pGreater
   .pInteger
@@ -1652,7 +1652,7 @@
  .pNewLine
   .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pGreater
   .pInteger
@@ -1711,7 +1711,7 @@
  .pNewLine
   .pIdentifier (screened to pIf)
   .pIdentifier
- .pEqualsEquals
+ .pEquals
   .pInteger
   .pIdentifier (screened to pThen)
  .pNewLine
@@ -1728,15 +1728,15 @@
  .pRightParen
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger
@@ -1760,15 +1760,15 @@
  .pRightParen
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger
@@ -1777,7 +1777,7 @@
  .pNewLine
   .pIdentifier (screened to pIf)
   .pIdentifier
- .pEqualsEquals
+ .pEquals
   .pLiteral
   % Output token text 'E.O.Thorp'
   .pIdentifier (screened to pThen)

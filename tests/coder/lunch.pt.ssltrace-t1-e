@@ -42,56 +42,56 @@
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
  .pNewLine
   .pIdentifier
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
  .pNewLine
   .pIdentifier
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
  .pNewLine
   .pIdentifier
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
  .pNewLine
   .pIdentifier
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
  .pNewLine
   .pIdentifier
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
  .pNewLine
   .pIdentifier
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
  .pNewLine
   .pIdentifier
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
  .pNewLine
  .pNewLine
@@ -100,7 +100,7 @@
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
   % Output token text 'I don't know why she swallowed a fly.'
  .pNewLine
@@ -108,7 +108,7 @@
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
   % Output token text 'That wiggled and jiggled and tickled inside her.'
  .pNewLine
@@ -116,7 +116,7 @@
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
   % Output token text 'How absurd, to swallow a bird.'
  .pNewLine
@@ -124,7 +124,7 @@
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
   % Output token text 'Imagine that, she swallowed a cat.'
  .pNewLine
@@ -132,7 +132,7 @@
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
   % Output token text 'What a hog, to swallow a dog.'
  .pNewLine
@@ -140,7 +140,7 @@
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
   % Output token text 'What a dope, to swallow a goat.'
  .pNewLine
@@ -148,7 +148,7 @@
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
   % Output token text 'I don't know how she swallowed that cow.'
  .pNewLine
@@ -156,7 +156,7 @@
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pLiteral
   % Output token text 'She died of course.'
  .pNewLine
@@ -174,7 +174,7 @@
  .pNewLine
   .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
  .pNewLine
@@ -225,7 +225,7 @@
  .pNewLine
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pNewLine
   .pIdentifier (screened to pWhile)
@@ -263,7 +263,7 @@
  .pRightParen
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pMinus
   .pInteger
@@ -312,7 +312,7 @@
  .pNewLine
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger

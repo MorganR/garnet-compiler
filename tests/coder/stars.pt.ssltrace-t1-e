@@ -15,11 +15,11 @@
  .pNewLine
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pLiteral
  .pNewLine
   .pIdentifier (screened to pWhile)
@@ -29,7 +29,7 @@
   .pIdentifier (screened to pDo)
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pLiteral
  .pPlus
   .pIdentifier
@@ -44,7 +44,7 @@
  .pRightParen
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger

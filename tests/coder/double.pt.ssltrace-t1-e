@@ -41,7 +41,7 @@
   .pIdentifier (screened to pBreak)
   .pIdentifier (screened to pIf)
   .pIdentifier
- .pEqualsEquals
+ .pEquals
   .pLiteral
  .pNewLine
   .pIdentifier

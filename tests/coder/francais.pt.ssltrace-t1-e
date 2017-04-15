@@ -41,7 +41,7 @@
  .pNewLine
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pDollar
   .pInteger
@@ -79,7 +79,7 @@
  .pDotDot
  .pHash
   .pIdentifier
- .pEqualsEquals
+ .pEquals
   .pLiteral
   .pIdentifier (screened to pThen)
  .pNewLine
@@ -91,7 +91,7 @@
   .pInteger
  .pDotDot
   .pInteger
- .pEqualsEquals
+ .pEquals
   .pLiteral
  .pRightParen
   .pIdentifier (screened to pOr)
@@ -101,28 +101,7 @@
   .pInteger
  .pDotDot
   .pInteger
- .pEqualsEquals
-  .pLiteral
- .pRightParen
- .pNewLine
-  .pIdentifier (screened to pOr)
- .pLeftParen
-  .pIdentifier
- .pDollar
-  .pInteger
- .pDotDot
-  .pInteger
- .pEqualsEquals
-  .pLiteral
- .pRightParen
-  .pIdentifier (screened to pOr)
- .pLeftParen
-  .pIdentifier
- .pDollar
-  .pInteger
- .pDotDot
-  .pInteger
- .pEqualsEquals
+ .pEquals
   .pLiteral
  .pRightParen
  .pNewLine
@@ -133,7 +112,28 @@
   .pInteger
  .pDotDot
   .pInteger
- .pEqualsEquals
+ .pEquals
+  .pLiteral
+ .pRightParen
+  .pIdentifier (screened to pOr)
+ .pLeftParen
+  .pIdentifier
+ .pDollar
+  .pInteger
+ .pDotDot
+  .pInteger
+ .pEquals
+  .pLiteral
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pOr)
+ .pLeftParen
+  .pIdentifier
+ .pDollar
+  .pInteger
+ .pDotDot
+  .pInteger
+ .pEquals
   .pLiteral
  .pRightParen
   .pIdentifier (screened to pThen)
@@ -205,7 +205,7 @@
  .pDotDot
  .pHash
   .pIdentifier
- .pEqualsEquals
+ .pEquals
   .pLiteral
   .pIdentifier (screened to pThen)
  .pNewLine
@@ -280,7 +280,7 @@
  .pDotDot
  .pHash
   .pIdentifier
- .pEqualsEquals
+ .pEquals
   .pLiteral
   .pIdentifier (screened to pThen)
  .pNewLine
@@ -311,7 +311,7 @@
   .pIdentifier (screened to pBreak)
   .pIdentifier (screened to pIf)
   .pIdentifier
- .pEqualsEquals
+ .pEquals
   .pLiteral
  .pNewLine
  .pNewLine
