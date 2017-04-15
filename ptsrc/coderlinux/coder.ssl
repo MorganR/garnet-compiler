@@ -2953,6 +2953,31 @@ OperandLength:
 
     @OperandReturnArgFromStringTrap;
 
+OperandChr:
+    % Turns the top operand integer into a char.
+    % Puts the char in a temp.
+    @SaveTempRegsToStack        %   pushl %eax .. %edx
+
+    @OperandForceToStack        %   pushl i1
+    @OperandPopAndFreeTemp      % ...
+
+    % Call trap
+    oOperandPushMode(mTrap)
+    oOperandSetValue(trChrString)
+    oOperandSetLength(word)
+    oEmitSingle(iCall)              % 	call trChrString
+
+    % Pop arguments
+    oOperandPushMode(mStackReg)
+    oOperandSetLength(word)
+    oOperandPushMode(mManifest)
+    oOperandSetLength(word)
+    oOperandSetValue(four)
+    oEmitDouble(iAdd)           % 	addl $4, %esp
+    oOperandPop
+
+    @OperandReturnArgFromStringTrap;
+
 %%%%%% End Garnet Operands
 
 OperandChrAssignPopPop:
