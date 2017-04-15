@@ -1,0 +1,2092 @@
+  .pNewLine
+  .pIdentifier (screened to pUsing)
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pNewLine
+ .pNewLine
+  .pNewLine
+  .pNewLine
+ .pNewLine
+  .pNewLine
+ .pNewLine
+  .pNewLine
+  .pIdentifier (screened to pType)
+  .pIdentifier
+ .pColon
+  .pIdentifier (screened to pArray)
+ .pLeftBracket
+  .pInteger
+ .pDotDot
+  .pInteger
+ .pRightBracket
+  .pIdentifier (screened to pOf)
+  .pIdentifier
+ .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+ .pNewLine
+  .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+ .pNewLine
+  .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+ .pNewLine
+  .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+ .pNewLine
+  .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+ .pNewLine
+  .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+ .pNewLine
+ .pNewLine
+  .pNewLine
+  .pIdentifier (screened to pModule)
+  .pIdentifier
+ .pNewLine
+  .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pDef)
+ .pStar
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pIf)
+  .pIdentifier
+ .pEqualsEquals
+  .pInteger
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pElse)
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+  .pIdentifier
+ .pEquals
+ .pLeftParen
+  .pIdentifier
+ .pStar
+  .pIdentifier
+ .pRightParen
+  .pIdentifier (screened to pMod)
+  .pInteger
+ .pNewLine
+  .pIdentifier
+ .pEquals
+ .pLeftParen
+  .pIdentifier
+  .pIdentifier (screened to pMod)
+  .pIdentifier
+ .pRightParen
+ .pPlus
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+  .pNewLine
+  .pIdentifier
+ .pEquals
+  .pInteger
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+ .pNewLine
+  .pNewLine
+  .pIdentifier (screened to pModule)
+  .pIdentifier
+ .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier (screened to pArray)
+ .pLeftBracket
+  .pInteger
+ .pDotDot
+  .pInteger
+ .pRightBracket
+  .pIdentifier (screened to pOf)
+  .pIdentifier
+ .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pDef)
+ .pStar
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pNewLine
+  .pNewLine
+  .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier (screened to pArray)
+ .pLeftBracket
+  .pInteger
+ .pDotDot
+  .pInteger
+ .pRightBracket
+  .pIdentifier (screened to pOf)
+  .pIdentifier
+ .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pDo)
+ .pNewLine
+  .pIdentifier
+ .pLeftBracket
+  .pIdentifier
+ .pRightBracket
+ .pEquals
+  .pInteger
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pPlus
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pBreak)
+  .pIdentifier (screened to pIf)
+  .pIdentifier
+ .pGreater
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pDo)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pComma
+  .pInteger
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pWhile)
+  .pIdentifier
+ .pLeftBracket
+  .pIdentifier
+ .pRightBracket
+ .pEqualsEquals
+  .pInteger
+  .pIdentifier (screened to pDo)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pComma
+  .pInteger
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+  .pIdentifier
+ .pLeftBracket
+  .pIdentifier
+ .pRightBracket
+ .pEquals
+  .pIdentifier
+ .pNewLine
+  .pIdentifier
+ .pLeftBracket
+  .pIdentifier
+ .pRightBracket
+ .pEquals
+  .pIdentifier
+ .pLeftBracket
+  .pIdentifier
+ .pRightBracket
+ .pPlus
+  .pInteger
+ .pNewLine
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pPlus
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pBreak)
+  .pIdentifier (screened to pIf)
+  .pIdentifier
+ .pGreater
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pDef)
+ .pStar
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pPlus
+  .pInteger
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pLeftBracket
+  .pIdentifier
+ .pRightBracket
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pDef)
+ .pStar
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pInteger
+ .pMinus
+  .pIdentifier
+ .pPlus
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pModule)
+  .pIdentifier
+ .pNewLine
+  .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier (screened to pArray)
+ .pLeftBracket
+  .pInteger
+ .pDotDot
+  .pInteger
+ .pRightBracket
+  .pIdentifier (screened to pOf)
+  .pIdentifier
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pDef)
+ .pStar
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pComma
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pComma
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pRightParen
+ .pNewLine
+  .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pLiteral
+ .pNewLine
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pWhile)
+  .pIdentifier
+ .pLessEqual
+  .pIdentifier
+  .pIdentifier (screened to pDo)
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pPlus
+  .pLiteral
+ .pPlus
+  .pIdentifier
+ .pLeftBracket
+  .pIdentifier
+ .pLeftBracket
+  .pIdentifier
+ .pRightBracket
+ .pRightBracket
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pPlus
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+  .pNewLine
+  .pIdentifier
+ .pLeftBracket
+  .pInteger
+ .pRightBracket
+ .pEquals
+  .pLiteral
+ .pNewLine
+  .pIdentifier
+ .pLeftBracket
+  .pInteger
+ .pRightBracket
+ .pEquals
+  .pLiteral
+ .pNewLine
+  .pIdentifier
+ .pLeftBracket
+  .pInteger
+ .pRightBracket
+ .pEquals
+  .pLiteral
+ .pNewLine
+  .pIdentifier
+ .pLeftBracket
+  .pInteger
+ .pRightBracket
+ .pEquals
+  .pLiteral
+ .pNewLine
+  .pIdentifier
+ .pLeftBracket
+  .pInteger
+ .pRightBracket
+ .pEquals
+  .pLiteral
+ .pNewLine
+  .pIdentifier
+ .pLeftBracket
+  .pInteger
+ .pRightBracket
+ .pEquals
+  .pLiteral
+ .pNewLine
+  .pIdentifier
+ .pLeftBracket
+  .pInteger
+ .pRightBracket
+ .pEquals
+  .pLiteral
+ .pNewLine
+  .pIdentifier
+ .pLeftBracket
+  .pInteger
+ .pRightBracket
+ .pEquals
+  .pLiteral
+ .pNewLine
+  .pIdentifier
+ .pLeftBracket
+  .pInteger
+ .pRightBracket
+ .pEquals
+  .pLiteral
+ .pNewLine
+  .pIdentifier
+ .pLeftBracket
+  .pInteger
+ .pRightBracket
+ .pEquals
+  .pLiteral
+ .pNewLine
+  .pIdentifier
+ .pLeftBracket
+  .pInteger
+ .pRightBracket
+ .pEquals
+  .pLiteral
+ .pNewLine
+  .pIdentifier
+ .pLeftBracket
+  .pInteger
+ .pRightBracket
+ .pEquals
+  .pLiteral
+ .pNewLine
+  .pIdentifier
+ .pLeftBracket
+  .pInteger
+ .pRightBracket
+ .pEquals
+  .pLiteral
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pDef)
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pRightParen
+ .pNewLine
+  .pNewLine
+  .pNewLine
+  .pNewLine
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pInteger
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pInteger
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pInteger
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+  % Output token text 'New shuffle.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+  % Output token text 'Enter player name (E.O.Thorp for Thorp, your name for you, q to quit): '
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pIf)
+  .pIdentifier
+ .pEqualsEquals
+  .pLiteral
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pNewLine
+  .pIdentifier (screened to pElse)
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pIf)
+  .pIdentifier
+ .pNotEqual
+  .pLiteral
+  % Output token text 'E.O.Thorp'
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pWhile)
+ .pLeftParen
+  .pIdentifier
+ .pLessEqual
+  .pInteger
+ .pRightParen
+  .pIdentifier (screened to pOr)
+ .pLeftParen
+  .pIdentifier
+ .pGreater
+  .pInteger
+ .pRightParen
+  .pIdentifier (screened to pDo)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+  % Output token text '(1..20): '
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pIf)
+  .pIdentifier
+ .pEqualsEquals
+  .pLiteral
+  % Output token text 'E.O.Thorp'
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+  % Output token text 'E.O.Thorp plays this time.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pElse)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+ .pPlus
+  .pIdentifier
+ .pPlus
+  .pLiteral
+  % Output token text '.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+ .pComma
+  .pIdentifier
+ .pColon
+  .pInteger
+ .pComma
+  .pLiteral
+  % Output token text '.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pIf)
+  .pIdentifier
+ .pLess
+  .pInteger
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pElse)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+ .pPlus
+  .pIdentifier
+ .pPlus
+  .pLiteral
+  % Output token text '.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pDef)
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pRightParen
+ .pNewLine
+  .pNewLine
+  .pNewLine
+  .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pRightParen
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pIf)
+  .pIdentifier
+ .pGreater
+  .pInteger
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+  % Output token text 'New game.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pPlus
+  .pInteger
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pNewLine
+  .pIdentifier (screened to pElse)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+  % Output token text 'Too few cards left for another game.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+ .pComma
+  .pIdentifier
+ .pColon
+  .pInteger
+ .pComma
+  .pLiteral
+ .pComma
+  .pIdentifier
+ .pComma
+ .pNewLine
+  .pLiteral
+ .pComma
+  .pIdentifier
+ .pColon
+  .pInteger
+ .pComma
+  .pLiteral
+ .pComma
+  .pIdentifier
+ .pColon
+  .pInteger
+ .pComma
+  .pLiteral
+  % Output token text '.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pIf)
+  .pIdentifier
+ .pGreater
+  .pIdentifier
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+ .pPlus
+  .pIdentifier
+ .pPlus
+  .pLiteral
+  % Output token text ' this time.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pElsif)
+  .pIdentifier
+ .pGreater
+  .pIdentifier
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier (screened to pIf)
+  .pIdentifier
+ .pEqualsEquals
+  .pLiteral
+  % Output token text 'E.O.Thorp'
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+  % Output token text 'E.O.Thorp does it again.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pElse)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pPlus
+  .pLiteral
+  % Output token text ' must have doctored the shuffle.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+  .pIdentifier (screened to pElse)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+  % Output token text 'Even shuffle.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pDef)
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pPlus
+  .pInteger
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pLeftBracket
+  .pIdentifier
+ .pRightBracket
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pDef)
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pNewLine
+  .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pPlus
+  .pInteger
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pLeftBracket
+  .pIdentifier
+ .pRightBracket
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pDef)
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pNewLine
+  .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pInteger
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pInteger
+ .pNewLine
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+ .pComma
+  .pIdentifier
+ .pComma
+  .pLiteral
+ .pComma
+  .pIdentifier
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+ .pComma
+  .pIdentifier
+ .pComma
+  .pLiteral
+  % Output token text '.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pDef)
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pComma
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pComma
+ .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pComma
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pRightParen
+ .pNewLine
+  .pNewLine
+  .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pInteger
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pInteger
+ .pNewLine
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pWhile)
+  .pIdentifier
+ .pLessEqual
+  .pIdentifier
+  .pIdentifier (screened to pDo)
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pCase)
+  .pIdentifier
+ .pLeftBracket
+  .pIdentifier
+ .pRightBracket
+ .pNewLine
+  .pIdentifier (screened to pWhen)
+  .pInteger
+ .pComma
+  .pInteger
+ .pComma
+  .pInteger
+ .pComma
+  .pInteger
+ .pComma
+  .pInteger
+ .pComma
+  .pInteger
+ .pComma
+  .pInteger
+ .pComma
+  .pInteger
+ .pComma
+  .pInteger
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pPlus
+  .pIdentifier
+ .pLeftBracket
+  .pIdentifier
+ .pRightBracket
+ .pNewLine
+  .pIdentifier (screened to pWhen)
+  .pInteger
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pPlus
+  .pInteger
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pPlus
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pElse)
+ .pNewLine
+  .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pPlus
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pPlus
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pWhile)
+ .pLeftParen
+  .pIdentifier
+ .pGreater
+  .pInteger
+ .pRightParen
+  .pIdentifier (screened to pAnd)
+ .pLeftParen
+  .pIdentifier
+ .pNotEqual
+  .pInteger
+ .pRightParen
+  .pIdentifier (screened to pDo)
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pMinus
+  .pInteger
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pMinus
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pGreater
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pDef)
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pNewLine
+  .pNewLine
+  .pNewLine
+  .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pRightParen
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pIf)
+  .pIdentifier
+ .pGreater
+  .pInteger
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+  % Output token text 'Dealer goes bust.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pPlus
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pElsif)
+  .pIdentifier
+ .pEqualsEquals
+  .pInteger
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+  % Output token text 'Dealer calls blackjack.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pPlus
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pElse)
+ .pNewLine
+  .pIdentifier (screened to pIf)
+  .pIdentifier
+ .pLess
+  .pInteger
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pElse)
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pIf)
+  .pIdentifier
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+ .pComma
+  .pIdentifier
+ .pColon
+  .pInteger
+ .pComma
+  .pLiteral
+  % Output token text '.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pIf)
+  .pIdentifier
+ .pGreater
+  .pIdentifier
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+  % Output token text 'House wins.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pPlus
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pElsif)
+  .pIdentifier
+ .pLess
+  .pIdentifier
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pPlus
+  .pLiteral
+  % Output token text ' wins.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pPlus
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pElse)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+  % Output token text 'Tie game.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+  .pIdentifier (screened to pElse)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+ .pComma
+  .pIdentifier
+ .pComma
+  .pLiteral
+  % Output token text '.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pModule)
+  .pIdentifier
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pDef)
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pIf)
+  .pIdentifier
+ .pLess
+  .pIdentifier
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pElse)
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pDef)
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pRightParen
+ .pNewLine
+  .pNewLine
+  .pNewLine
+  .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pLeftBracket
+  .pInteger
+ .pRightBracket
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pIf)
+  .pIdentifier
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pNewLine
+  .pIdentifier (screened to pIf)
+  .pIdentifier
+ .pGreater
+  .pInteger
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pGreater
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pElse)
+ .pNewLine
+  .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pGreater
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+  .pIdentifier (screened to pElse)
+ .pNewLine
+  .pNewLine
+  .pIdentifier (screened to pIf)
+ .pLeftParen
+  .pIdentifier
+ .pGreater
+  .pInteger
+ .pRightParen
+  .pIdentifier (screened to pAnd)
+ .pLeftParen
+  .pIdentifier
+ .pLess
+  .pInteger
+ .pRightParen
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pGreater
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pElsif)
+ .pLeftParen
+  .pIdentifier
+ .pGreater
+  .pInteger
+ .pRightParen
+  .pIdentifier (screened to pAnd)
+ .pLeftParen
+  .pIdentifier
+ .pLess
+  .pInteger
+ .pRightParen
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pGreater
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pElse)
+ .pNewLine
+  .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pGreater
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pIf)
+ .pNot
+  .pIdentifier
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pDef)
+ .pStar
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pNewLine
+  .pNewLine
+  .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pRightParen
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pIf)
+  .pIdentifier
+ .pEqualsEquals
+  .pInteger
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pPlus
+  .pLiteral
+  % Output token text ' calls blackjack.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pPlus
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pElsif)
+  .pIdentifier
+ .pGreater
+  .pInteger
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pPlus
+  .pLiteral
+  % Output token text ' goes bust.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pNewLine
+  .pIdentifier
+ .pEquals
+  .pIdentifier
+ .pPlus
+  .pInteger
+ .pNewLine
+  .pIdentifier (screened to pElse)
+ .pNewLine
+  .pIdentifier (screened to pIf)
+  .pIdentifier
+ .pEqualsEquals
+  .pLiteral
+  % Output token text 'E.O.Thorp'
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pElse)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pIf)
+  .pIdentifier
+  .pIdentifier (screened to pThen)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pComma
+  .pLiteral
+ .pComma
+  .pIdentifier
+ .pColon
+  .pInteger
+ .pComma
+  .pLiteral
+  % Output token text '.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pElse)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pComma
+  .pIdentifier
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pComma
+  .pLiteral
+ .pComma
+  .pIdentifier
+ .pComma
+  .pLiteral
+  % Output token text '.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+ .pNewLine
+  .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pModule)
+  .pIdentifier
+ .pNewLine
+  .pNewLine
+  .pIdentifier (screened to pVar)
+  .pIdentifier
+ .pColon
+  .pIdentifier
+ .pNewLine
+ .pNewLine
+  .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+  % Output token text 'This program simulates the game of blackjack.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+  % Output token text 'The dealer plays the compulsory strategy of standing on 17 or better.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+  % Output token text '  [2] A simplified version of the strategy described by  E.O.Thorp'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+  % Output token text '      in his book 'Beat the Dealer' (Vintage Books, 1966) pp. 20-21.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+  % Output token text '  and if the player name specified is not 'E.O.Thorp', the count [n]'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+  % Output token text '  on which the player stands.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+  % Output token text 'If the player name specified is 'E.O.Thorp', the player strategy used'
+ .pComma
+  .pLiteral
+  % Output token text ' will be Thorp's.'
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+  % Output token text 'Otherwise, the player will use the standard stop on count > n strategy.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pLiteral
+  % Output token text 'The program will simulate one complete shuffle of play for each player.'
+ .pRightParen
+ .pSemicolon
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+ .pNewLine
+  .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pRightParen
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pWhile)
+  .pIdentifier
+  .pIdentifier (screened to pDo)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pRightParen
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pWhile)
+  .pIdentifier
+  .pIdentifier (screened to pDo)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pWhile)
+ .pNot
+  .pIdentifier
+  .pIdentifier (screened to pDo)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+  .pIdentifier (screened to pWhile)
+ .pNot
+  .pIdentifier
+  .pIdentifier (screened to pDo)
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pNewLine
+  .pIdentifier
+ .pLeftParen
+  .pIdentifier
+ .pRightParen
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+  .pIdentifier (screened to pEnd)
+ .pNewLine
+ .pEndFile
