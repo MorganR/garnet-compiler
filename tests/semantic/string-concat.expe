@@ -3,31 +3,23 @@
    .tLiteralAddress
    oEmitDataAddress
    .tFileDescriptor
-    .tAssignBegin
-    .tLiteralAddress
-    oEmitDataAddress
-    .tLiteralString
-    oEmitValue
-    oEmitString
-    .tAssignString
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
-        .tLiteralInteger
-        oEmitValue
-     .tAssignInteger
-     .tAssignBegin
-      .tLiteralAddress
-      oEmitValue
-       .tLiteralInteger
+       .tLiteralString
        oEmitValue
-     .tAssignInteger
+       oEmitString
+     .tAssignString
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
         .tLiteralAddress
         oEmitValue
         .tFetchString
+       .tLiteralString
+       oEmitValue
+       oEmitString
+       .tConcatenate
      .tAssignString
  .tTrapBegin
  .tTrap

@@ -3,6 +3,9 @@ using output
   var b : integer
   type myInt : integer
   var c : myInt
+  val s = "test"
+  var sVar : string
 
   c = a
   b = 3
+  sVar = s
