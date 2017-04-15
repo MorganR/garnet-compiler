@@ -2814,7 +2814,6 @@ OperandAssignStringPopPop:
     % Call trap
     oOperandPushMode(mTrap)
     oOperandSetValue(trAssignString)
-    oOperandSetLength(word)
     oEmitSingle(iCall)              % 	call 	trAssignString
 
     % Pop arguments
@@ -2827,10 +2826,49 @@ OperandAssignStringPopPop:
     oOperandPop
     oOperandPop
 
-    @RestoreTempRegsFromStack;
+    @RestoreTempRegsFromStack;      % popl %edx .. %eax
+
+OperandPrepToReturnStringArgFromTrap:
+    % Move the string result from %eax onto a temp variable.
+    % Restores temp registers from the stack.
+    
+    % Move result into mScratchReg1
+    oOperandPushMode(mScratchReg1)  % ... %S1
+    oOperandSetLength(word)
+    oOperandPushMode(mResultReg)    % ... %S1, %eax
+    oOperandSetLength(word)
+    oEmitDouble(iMov)               %   movl    %eax, $S1
+    oOperandPop                     % ... %S1
+    
+    @RestoreTempRegsFromStack   % popl %edx .. %eax
+
+    @OperandForceIntoTemp;           % ... %T
 
 OperandConcatenatePop:
     % Concatenate a string with another string
+    @SaveTempRegsToStack            %	pushl %eax .. %edx
+    
+    % Push arguments to run stack
+    @OperandPrepStringArgForTrap    %   pushl addr(s2)
+    @OperandPrepStringArgForTrap    %   pushl addr(s1)
+
+    % Call trap
+    oOperandPushMode(mTrap)
+    oOperandSetValue(trConcatenate)
+    oOperandSetLength(word)
+    oEmitSingle(iCall)              % 	call 	trConcatenate
+
+    % Pop arguments
+    oOperandPushMode(mStackReg)
+    oOperandSetLength(word)
+    oOperandPushMode(mManifest)
+    oOperandSetLength(word)
+    oOperandSetValue(eight)
+    oEmitDouble(iAdd)           % 	addl 	$8, %esp
+    oOperandPop
+    oOperandPop
+
+    @OperandPrepToReturnStringArgFromTrap;
 
 %%%%%% End Garnet Operands
 
