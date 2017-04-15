@@ -2008,12 +2008,15 @@ UnaryOperator :
 	    | sNot:
 			.tNot
 			oTypeStkPush(tpBoolean)
-		| sLength: %Added length operator
-			.tLength
-			oTypeStkPush(tpString)	
-			@CompareRelationalOperandTypes
-			oTypeStkPop
-			oTypeStkPush(tpInteger) %Result type
+		 | sLength: %Added Length Operator
+                .tLength
+                [ oTypeStkChooseKind
+                    | tpString:
+                        oTypeStkSetKind(tpInteger)      % fake for check
+                    | *:
+                        #eTypeMismatch
+                ]
+                oTypeStkPush(tpInteger)
 	    | *:
 			>>		% bypass type check
 	]
