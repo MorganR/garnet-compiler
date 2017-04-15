@@ -63,3 +63,8 @@ String Operations:
  - Changed OperandFoldManifestSubscript to have a case for string and have subscript scale by 1024
  - Removed all references to tStringDescriptor and tSkipString and changed tStringDescriptor to tStringLiteral
  - Removed  oOperandPushChar. Left oOperandPushStringDescriptor the same because of earlier choice
+
+Testing:
+ - Put all the samples tests in tests/coder
+ - Updated expected test output to match our tokens, though some Parser tests still supposedly fail due to differences. Since the semantic stages pass, this seems to be ok.
+ - helloworld.pt runs, but the others are running into various errors.
