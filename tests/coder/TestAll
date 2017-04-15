@@ -42,7 +42,7 @@ do
     echo ".s output FAILED." >> TestResults
     (( failCount += 1 ))
     fi
-  done
+  fi
   if [ -e "${baseName}.pt.ssltrace-t1-e" ]
   then
     if (diff ${baseName}.pt.ssltrace-t1-e ${baseName}.res1 -qw)
