@@ -2887,7 +2887,7 @@ OperandSubstringPopPop:
     oOperandPushMode(mTrap)
     oOperandSetValue(trSubstring)
     oOperandSetLength(word)
-    oEmitSingle(iCall)              % 	call trConcatenate
+    oEmitSingle(iCall)              % 	call trSubstring
 
     % Pop arguments
     oOperandPushMode(mStackReg)
@@ -2915,7 +2915,7 @@ OperandIndexPop:
     oOperandPushMode(mTrap)
     oOperandSetValue(trStringIndex)
     oOperandSetLength(word)
-    oEmitSingle(iCall)              % 	call trConcatenate
+    oEmitSingle(iCall)              % 	call trStringIndex
 
     % Pop arguments
     oOperandPushMode(mStackReg)
@@ -2928,7 +2928,6 @@ OperandIndexPop:
     oOperandPop
 
     @OperandReturnArgFromStringTrap;
-
 OperandStringEqualPop:
  % Finds the location of the top string operand in the
     % second string operand.
@@ -2945,19 +2944,66 @@ OperandStringEqualPop:
     oEmitSingle(iCall)              % 	call trStringEqual
 
     % Pop arguments	
+	oOperandPushMode(mStackReg)
+    oOperandSetLength(word)
+    oOperandPushMode(mManifest)
+    oOperandSetLength(word)
+	oOperandSetValue(eight)
+    oEmitDouble(iAdd)           % 	addl $8, %esp
+    oOperandPop
+    oOperandPop
+	@OperandReturnArgFromStringTrap;
+
+OperandLength:
+    % Finds the length of the top operand string.
+    % Puts the result in a temp.
+
+    @SaveTempRegsToStack        %   pushl %eax .. %edx
+    
+    @OperandPrepStringArgForTrap    %   pushl addr(s2)
+
+    % Call trap
+    oOperandPushMode(mTrap)
+    oOperandSetValue(trLength)
+    oOperandSetLength(word)
+    oEmitSingle(iCall)              % 	call trLength
+
+    % Pop arguments
     oOperandPushMode(mStackReg)
     oOperandSetLength(word)
     oOperandPushMode(mManifest)
     oOperandSetLength(word)
-    oOperandSetValue(eight)
-    oEmitDouble(iAdd)           % 	addl $8, %esp
+    oOperandSetValue(four)
+    oEmitDouble(iAdd)           % 	addl $4, %esp
     oOperandPop
+    @OperandReturnArgFromStringTrap;
+
+%takes two strings s1 and s2 and returns a boolean result in temporary register X
+
+OperandChr:
+    % Turns the top operand integer into a char.
+    % Puts the char in a temp.
+    @SaveTempRegsToStack        %   pushl %eax .. %edx
+
+    @OperandForceToStack        %   pushl i1
+    @OperandPopAndFreeTemp      % ...
+
+    % Call trap
+    oOperandPushMode(mTrap)
+    oOperandSetValue(trChrString)
+    oOperandSetLength(word)
+    oEmitSingle(iCall)              % 	call trChrString
+
+    % Pop arguments
+    oOperandPushMode(mStackReg)
+    oOperandSetLength(word)
+    oOperandPushMode(mManifest)
+    oOperandSetLength(word)
+    oOperandSetValue(four)
+    oEmitDouble(iAdd)           % 	addl $4, %esp
     oOperandPop
 
     @OperandReturnArgFromStringTrap;
-%takes two strings s1 and s2 and returns a boolean result in temporary register X
-
-
 %%%%%% End Garnet Operands
 
 OperandChrAssignPopPop:
