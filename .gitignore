@@ -24,10 +24,14 @@ tests/**/*.s
 tests/**/*.res1
 tests/**/*.res2
 tests/**/*.res3
+test/**/*.res4
 tests/**/*.res1complete
 tests/**/*.res2complete
 tests/**/*.res3complete
+tests/**/*.res4complete
 tests/**/*.out
+
+
 
 # vscode
 .vscode

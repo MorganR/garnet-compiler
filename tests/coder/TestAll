@@ -31,6 +31,9 @@ do
   ssltrace "ptc -t2 -o2 -L ${ptLib} $f" "${ptParserDefs}" -e > "${baseName}.res2"
   ssltrace "ptc -t2 -o2 -L ${ptLib} $f" "${ptParserDefs}" > "${baseName}.res2complete"
   ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" -e > "${baseName}.res3"
+  ssltrace "ptc -t3 -o3 -L ${ptLib} $f" "${ptSemanticDefs}" > "${baseName}.res3complete"
+  ssltrace "ptc -t4 -o4 -L ${ptLib} $f" "${ptCoderDefs}" -e > "${baseName}.res4"
+  ssltrace "ptc -t4 -o4 -L ${ptLib} $f" "${ptCoderDefs}" > "${baseName}.res4complete"
   
   echo >> TestResults
   if [ -e "${baseName}.exps" ]
