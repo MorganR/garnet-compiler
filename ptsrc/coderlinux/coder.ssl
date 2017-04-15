@@ -2956,6 +2956,7 @@ OperandLength:
 OperandChr:
     % Turns the top operand integer into a char.
     % Puts the char in a temp.
+    
     @SaveTempRegsToStack        %   pushl %eax .. %edx
 
     @OperandForceToStack        %   pushl i1
@@ -2977,6 +2978,16 @@ OperandChr:
     oOperandPop
 
     @OperandReturnArgFromStringTrap;
+
+OperandOrd:
+    % Converts the first character of the top operand string
+    % into an integer.
+    % Puts the integer in a temp.
+    
+    @OperandForceAddressIntoTemp    %   ... addr(s1)
+    oOperandPushMode(mTempIndirect)
+    oOperandSetLength(byte)
+    @OperandForceIntoTemp;          % mov (s1),byte
 
 %%%%%% End Garnet Operands
 
