@@ -2330,7 +2330,7 @@ ConstantOperand :
 	    | tpString:
 		.tFetchString
 	    | *:
-	];;
+	];
 
 VariableOperand :
 	% The Variable rule has placed the address of the variable on the
