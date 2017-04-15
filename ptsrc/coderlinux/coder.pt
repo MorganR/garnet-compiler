@@ -61,11 +61,11 @@ program Coder (output, coderSsl, tCode, object, options);
 	oOperandChooseMode = 17; { >>16 }
 	oOperandPushVariable = 18;
 	oOperandPushInteger = 19;
-	oOperandPushChar = 20;
+	oOperandPushChar = 20; {Removed case}
 	oOperandPushBoolean = 21;
 	oOperandPushJumpCondition = 22; { (15) }
 	oOperandChooseJumpCondition = 23; { >>15 }
-	oOperandPushStringDescriptor = 24;
+	oOperandPushStringDescriptor = 24; {left as string descriptor}
 	oOperandPushProcedure = 25;
 	oOperandPushTrap = 26;
 	oOperandPushCaseLow = 27;
@@ -198,7 +198,7 @@ program Coder (output, coderSsl, tCode, object, options);
 	tLiteralBoolean = 59;
 	tLiteralString = 60;
 	tStringDescriptor = 61;
-	tSkipString = 62;
+	tSkipString = 62; {Removed all references to tSkipString}
 	tIfThen = 63;
 	tIfMerge = 64;
 	tCaseSelect = 65;
