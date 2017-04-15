@@ -838,7 +838,7 @@ Routine:
 		    @EmitMove			%	movl	8(%ebp),formal
 		    @OperandPopAndFreeTemp	% ... 8(%ebp), formal
 		    @OperandPopAndFreeTemp	% ... 8(%ebp)
-		|tStoreParmString	
+		| tStoreParmString:	
 			oOperandSwap		% ... formal, 8(%ebp)
 		    oOperandPushCopy		% ... formal, 8(%ebp), 8(%ebp)
 		    oOperandSwapLeftAndDest	% ... 8(%ebp), formal, 8(%ebp)
@@ -1995,7 +1995,7 @@ OperandUncheckedSubscriptNonManifestStringPop:
 	    @OperandForceIntoTemp		% 	movl 	subscript, %T
 	    oOperandPushMode(mManifest)
 	    oOperandSetLength(String)
-	    oOperandSetValue(2)
+	    oOperandSetValue(two)
 	    oEmitDouble(iShl)			% 	shl 	$2, %T
 	    oOperandPop
 	    oOperandSwap			% ... %T, arraydesc
