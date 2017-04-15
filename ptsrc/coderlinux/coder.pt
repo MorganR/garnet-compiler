@@ -238,6 +238,7 @@ program Coder (output, coderSsl, tCode, object, options);
 	eight = 8;
 	ten = 10;
 	twelve = 12;
+    stringSize = 1024;
 	regAX = 1;
 	regBX = 2;
 	regCX = 3;
