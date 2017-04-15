@@ -1995,7 +1995,7 @@ OperandUncheckedSubscriptNonManifestStringPop:
 	    @OperandForceIntoTemp		% 	movl 	subscript, %T
 	    oOperandPushMode(mManifest)
 	    oOperandSetLength(String)
-	    oOperandSetValue(2)
+	    oOperandSetValue(two)
 	    oEmitDouble(iShl)			% 	shl 	$2, %T
 	    oOperandPop
 	    oOperandSwap			% ... %T, arraydesc
