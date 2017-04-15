@@ -33,7 +33,7 @@
  .pNewLine
   .pIdentifier (screened to pIf)
   .pIdentifier
- .pEqualsEquals
+ .pEquals
   .pInteger
   .pIdentifier (screened to pThen)
  .pNewLine
@@ -41,7 +41,7 @@
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pIdentifier
  .pLeftBracket
   .pInteger
@@ -55,7 +55,7 @@
  .pLeftBracket
   .pIdentifier
  .pRightBracket
- .pEquals
+ .pAssign
   .pIdentifier
  .pLeftBracket
   .pIdentifier
@@ -78,11 +78,11 @@
  .pLeftBracket
   .pInteger
  .pRightBracket
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier (screened to pDo)
@@ -91,11 +91,11 @@
  .pLeftBracket
   .pIdentifier
  .pRightBracket
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger
@@ -122,14 +122,14 @@
  .pNewLine
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier (screened to pDo)
  .pNewLine
   .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pNewLine
   .pIdentifier (screened to pWhile)
@@ -144,7 +144,7 @@
  .pRightParen
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pMinus
   .pInteger
@@ -154,7 +154,7 @@
  .pNewLine
   .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier (screened to pWhile)
@@ -174,7 +174,7 @@
  .pRightParen
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger
@@ -187,7 +187,7 @@
  .pNewLine
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger

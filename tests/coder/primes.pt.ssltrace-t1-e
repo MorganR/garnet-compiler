@@ -5,23 +5,23 @@
  .pNewLine
   .pIdentifier (screened to pVal)
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier (screened to pVal)
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
   .pNewLine
  .pNewLine
   .pIdentifier (screened to pVal)
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pNewLine
   .pIdentifier (screened to pVal)
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pNewLine
  .pNewLine
@@ -58,7 +58,7 @@
  .pLeftBracket
   .pIdentifier
  .pRightBracket
- .pEquals
+ .pAssign
   .pIdentifier
  .pNewLine
   .pIdentifier (screened to pEnd)
@@ -79,7 +79,7 @@
  .pRightParen
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pLeftBracket
   .pIdentifier
@@ -95,7 +95,7 @@
   .pIdentifier
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier (screened to pWhile)
@@ -108,11 +108,11 @@
  .pLeftBracket
   .pIdentifier
  .pRightBracket
- .pEquals
+ .pAssign
   .pIdentifier
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger
@@ -143,11 +143,11 @@
  .pNewLine
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
  .pNewLine
@@ -160,7 +160,7 @@
  .pNewLine
   .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pIdentifier
@@ -179,7 +179,7 @@
  .pRightParen
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pIdentifier
@@ -189,7 +189,7 @@
  .pNewLine
   .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger
@@ -215,7 +215,7 @@
   .pIdentifier (screened to pDo)
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger
@@ -230,7 +230,7 @@
   .pIdentifier (screened to pEnd)
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pNewLine
   .pIdentifier (screened to pEnd)
@@ -253,7 +253,7 @@
  .pRightParen
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pInteger
  .pNewLine
   .pIdentifier (screened to pWhile)
@@ -283,7 +283,7 @@
   .pIdentifier (screened to pEnd)
  .pNewLine
   .pIdentifier
- .pEquals
+ .pAssign
   .pIdentifier
  .pPlus
   .pInteger
