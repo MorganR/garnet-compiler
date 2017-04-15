@@ -20,6 +20,13 @@ tests/**/*.resi
 tests/**/*.res
 tests/**/*.resr
 tests/**/*.resm
+tests/**/*.s
+tests/**/*.res1
+tests/**/*.res2
+tests/**/*.res3
+tests/**/*.res1complete
+tests/**/*.res2complete
+tests/**/*.res3complete
 
 # vscode
 .vscode
