@@ -2258,10 +2258,7 @@ OperandPushExpressionAssignPopPop:
 	    @OperandGreaterPop
 	    @OperandNot
 	| tChr:
-	    [
-		| *:
 		    @OperandChr
-	    ]
 	| tOrd:
 	    [
 		| tAssignInteger:
