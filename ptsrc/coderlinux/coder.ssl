@@ -97,15 +97,15 @@ Input:		% corresponds to semantic.ssl output
     tLiteralAddress
     firstCompoundToken = tLiteralAddress
     tLiteralInteger	% removed char
+	tLiteralString
     tLiteralBoolean
-    tLiteralString
     tIfThen
     tIfMerge
+	tWhileTest
+    tWhileEnd
     tCaseSelect
     tCaseMerge
     tCaseEnd
-    tWhileTest
-    tWhileEnd
     tDoTest	% Added t-codes for Do
 	tDoEnd	% and removed for repeat
     tSkipProc
