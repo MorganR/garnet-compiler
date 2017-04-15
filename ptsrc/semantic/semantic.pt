@@ -1767,8 +1767,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 			    i := symbolTblTop;	
 				while i >  symbolTblDisplay[lexicLevelStackTop] do
 					begin
-						if (symbolTblKind[i] <> syPublicProcedure) and
-						   (symbolTblKind[i] <> syPublicFunction) then
+						if (symbolTblKind[i] <> syPublicProcedure) then
 						{ Added check to make sure that public procedure symbols don't have their lexical level decremented }
 						begin
 							link := symbolTblIdentLink[i];
