@@ -2844,6 +2844,7 @@ OperandReturnArgFromStringTrap:
 
     @OperandForceIntoTemp;           % ... %T
 
+
 OperandConcatenatePop:
     % Concatenates the top string onto the end of 
     % the second string.
@@ -2928,6 +2929,31 @@ OperandIndexPop:
 
     @OperandReturnArgFromStringTrap;
 
+OperandStringEqualPop:
+    % Checks the top string operand equals the second string 
+    % operand.
+    @SaveTempRegsToStack        %   pushl %eax .. %edx
+
+    @OperandPrepStringArgForTrap    %   pushl addr(s2)
+    @OperandPrepStringArgForTrap    %   pushl addr(s1)
+
+    % Call trap
+    oOperandPushMode(mTrap)
+    oOperandSetValue(trStringEqual)
+    oOperandSetLength(word)
+    oEmitSingle(iCall)              % 	call trStringEqual
+
+    % Pop arguments	
+	oOperandPushMode(mStackReg)
+    oOperandSetLength(word)
+    oOperandPushMode(mManifest)
+    oOperandSetLength(word)
+	oOperandSetValue(eight)
+    oEmitDouble(iAdd)           % 	addl $8, %esp
+    oOperandPop
+    oOperandPop
+	@OperandReturnArgFromStringTrap;
+
 OperandLength:
     % Finds the length of the top operand string.
     % Puts the result in a temp.
@@ -2950,8 +2976,9 @@ OperandLength:
     oOperandSetValue(four)
     oEmitDouble(iAdd)           % 	addl $4, %esp
     oOperandPop
-
     @OperandReturnArgFromStringTrap;
+
+%takes two strings s1 and s2 and returns a boolean result in temporary register X
 
 OperandChr:
     % Turns the top operand integer into a char.
