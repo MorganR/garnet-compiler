@@ -2829,6 +2829,9 @@ OperandAssignStringPopPop:
 
     @RestoreTempRegsFromStack;
 
+OperandConcatenatePop:
+    % Concatenate a string with another string
+
 %%%%%% End Garnet Operands
 
 OperandChrAssignPopPop:
