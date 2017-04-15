@@ -48,4 +48,6 @@ String Operations:
 
  Coder.pt:
  - Allowed input and output of zero length strings by removing assert5 and changing loop conditions
- - Changed OperandFoldManifestSubscript to have a case for string and scale by 1024
+ - Changed OperandFoldManifestSubscript to have a case for string and have subscript scale by 1024
+ - Removed all references to tStringDescriptor and tSkipString and changed tStringDescriptor to tStringLiteral
+ - Removed  oOperandPushChar. Left oOperandPushStringDescriptor the same because of earlier choice
