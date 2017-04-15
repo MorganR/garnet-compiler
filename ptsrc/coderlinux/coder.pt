@@ -1557,7 +1557,7 @@ program Coder (output, coderSsl, tCode, object, options);
     procedure OperandPushStringDescriptor;
 	{ Push an operand stack entry for the string descriptor }
 	begin
-	    Assert ( (compoundToken = tStringDescriptor), assert28);
+	    Assert ( (compoundToken = tLiteralString), assert28);
 	    OperandPush (mString, compoundTokenValue, undefined, word);
 	end { OperandPushStringDescriptor };
 
@@ -1858,10 +1858,9 @@ program Coder (output, coderSsl, tCode, object, options);
 
 		    case compoundToken of
 			tLiteralAddress, tLiteralInteger, tLiteralChar,
-			tLiteralBoolean, tStringDescriptor, tSkipString,
-			tWhileTest, tWhileEnd, tRepeatTest, tCallEnd,
-			tLineNumber, tTrap, tIfThen, tIfMerge, tSkipProc,
-			tCaseSelect, tCaseMerge:
+			tLiteralBoolean, tWhileTest, tWhileEnd, tRepeatTest, 
+			tCallEnd, tLineNumber, tTrap, tIfThen, tIfMerge, 
+			tSkipProc, tCaseSelect, tCaseMerge:
 			    ;	{ Do nothing }
 			tCaseEnd:
 			    { Read the lowest and highest label values
