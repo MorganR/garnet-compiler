@@ -37,6 +37,15 @@ String Tokens:
  - Added tSubscriptString and tFetchString to OperandPushVariable
  - Removed tFetchChar from OperandPushVariable
  - Added tAssignString to OperandPushExpressionAssignPopPop
+ - Removed tLiteralChar and tStoreParmChar and replaced with tLiteralString and tStoreParmString
+ - Removed tStringDescriptor and tSkipString and replaced tSkipString with tLiteralString
+ - Removed tAssignChar and tSubscriptChar
 
 String Operations:
  - Added OperandStringAssignPopPop to call tpAssignString
+ -  Removed oOperandPushChar operations
+ - Left oOperandPushStringDescriptor as the same and left it untouched in coder.pt as well
+
+ Coder.pt:
+ - Allowed input and output of zero length strings by removing assert5 and changing loop conditions
+ - Changed OperandFoldManifestSubscript to have a case for string and scale by 1024
