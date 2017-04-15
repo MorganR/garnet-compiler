@@ -149,10 +149,10 @@ Output :	% corresponds to coder.ssl input
 	tLiteralAddress
 	firstCompoundOutputToken = tLiteralAddress
 	tLiteralInteger
-	tLiteralString	% Changed to string
+	tLiteralString
 	tLiteralBoolean
-	tStringDescriptor	% Changed to string
-	tSkipString	% Changed to string
+	% tStringDescriptor	deleted as it is unused
+	% tSkipString deleted as it is unused
 	tIfThen
 	tIfMerge
 	tWhileTest
@@ -198,7 +198,7 @@ Error :
 	eTypeIdentifierReqd
 	eIntegerExpnReqd
 	eBooleanExpnReqd
-	eStringExpnReqd
+	eStringExpnReqd	% changed to string
 	eArrayVarReqd
 	eVariableReqd
 	eDuplicateLabel
@@ -208,7 +208,7 @@ Error :
 	eInputNotVisible
 	eOutputNotVisible
 	eFieldWidth
-	eStringFileVarReqd
+	eStringFileVarReqd	% changed to string
 	eWriteExpn
 	eReadVar
 	lastSslErrorCode = eReadVar;
@@ -309,7 +309,7 @@ mechanism SymbolTable :
 	% have not yet been declared.
 
 	oSymbolTblStripScope
-	% Added oSymbolTblStripScope, sets the symbol table reference for each identifier index to the next lexical level
+	% Added oSymbolTblStripScope, sets the symbol table reference for each non-public identifier index to the next lexical level
 
 	oSymbolTblMergeScope;
 	% Added oSymbolTblPopScope, decrements the lexical level
@@ -328,7 +328,7 @@ type SymbolKind :
 	syFunction
 	syExternal
 	syExpression
-	syModule 	% Added symodule and syPublicProcedure
+	syModule 	% Added syModule and syPublicProcedure
 	syPublicProcedure
 	syUndefined;
 
@@ -893,58 +893,58 @@ ConstantValue :		% An identifier token has just been accepted
 		oSymbolStkEnterValue
 		oValuePop
 	    | sIdentifier:
-		oSymbolStkPushIdentifier
-		[ oSymbolStkChooseKind
-		    | syUndefined:
-			#eUndefinedIdentifier
-		    | *:
-		]
-		[ oSymbolStkChooseKind
-		    | syConstant:
-			oValuePushSymbol
-		    | *:
-			#eConstantReqd
-			oSymbolStkPop
-			@SymbolStkPushIntegerConstant
-			oValuePush(one)
-		]
-		oTypeStkPushSymbol
-		[
-		    | sNegate:
-			[ oTypeStkChooseKind
-			    | tpInteger:
-				oValueNegate
-			    | *:
-				#eOperandOperatorTypeMismatch
+			oSymbolStkPushIdentifier
+			[ oSymbolStkChooseKind
+				| syUndefined:
+				#eUndefinedIdentifier
+				| *:
 			]
-		    | *:
-		]
-		oSymbolStkPop	% constant value symbol
-		oSymbolStkEnterTypeReference
-		oTypeStkPop
-		oSymbolStkEnterValue
-		oValuePop
-	    | sLiteral: %Modified sliteral to treat constant declarations as variables
-		oSymbolStkSetKind(syVariable)
-		oSymbolStkLinkToStandardType(stdString)
-		oTypeStkPushSymbol
-		% Allocate an address for the variable
-		oAllocateAlignOnWord    
-		oSymbolStkEnterDataAddress
-		% Emit the variable address
-		.tAssignBegin
-		.tLiteralAddress
-		oEmitDataAddress
-		oAllocateVariable
-		oTypeStkPop
-		% "foo" is the value
-		.tLiteralString
-		oValuePushStringLength
-		oEmitValue
-		oValuePop
-		oEmitString
-		% and assign it
-		.tAssignString
+			[ oSymbolStkChooseKind
+				| syConstant:
+				oValuePushSymbol
+				| *:
+				#eConstantReqd
+				oSymbolStkPop
+				@SymbolStkPushIntegerConstant
+				oValuePush(one)
+			]
+			oTypeStkPushSymbol
+			[
+				| sNegate:
+				[ oTypeStkChooseKind
+					| tpInteger:
+					oValueNegate
+					| *:
+					#eOperandOperatorTypeMismatch
+				]
+				| *:
+			]
+			oSymbolStkPop	% constant value symbol
+			oSymbolStkEnterTypeReference
+			oTypeStkPop
+			oSymbolStkEnterValue
+			oValuePop
+	    | sLiteral: % Modified sliteral to treat constant declarations as 	variables
+			% In Garnet, string constants are like vars, so compiler to a var declaration and assignment
+			.tAssignBegin
+			.tLiteralAddress
+			oSymbolStkLinkToStandardType(stdString)
+			oTypeStkPushSymbol
+			oAllocateAlignOnWord    % Allocate variable
+			oSymbolStkEnterDataAddress
+			oEmitDataAddress
+			oAllocateVariable
+			oTypeStkPop
+			% "foo" is the value
+			.tLiteralString
+			oValuePushStringLength
+			oEmitValue
+			oValuePop
+			oEmitString
+			oSymbolStkSetKind(syVariable)
+			oSymbolStkLinkToStandardType(stdString)
+			% and assign it
+			.tAssignString
 	]
 	oSymbolTblEnter
 	oSymbolStkPop;		% name being defined
@@ -1218,8 +1218,8 @@ SubrangeUpperBound :
 	];
 
 VariableDeclarations :
-	sIdentifier
 	oCountPush(one)
+	sIdentifier
 	@PrepareNewVarDeclaration
 	{[
 		| sVar:
@@ -1554,6 +1554,7 @@ ProcedurePrologue :
 
 ModuleDefinition:	% added to handle modules
 	sIdentifier  oSymbolStkPushLocalIdentifier	% module name
+	oSymbolStkPushLocalIdentifier	% class name, added in phase 4
 	[ oSymbolStkChooseKind
 	    | syUndefined:
 	    | syExternal:
@@ -2318,12 +2319,15 @@ ConstantOperand :
 		.tLiteralString
 	    | tpBoolean:
 		.tLiteralBoolean
-	    | tpPackedArray:	% always a named literal string
-		.tStringDescriptor
 	]
 	oValuePushSymbol
 	oEmitValue
-	oValuePop;
+	oValuePop
+        [ oTypeStkChooseKind
+	    | tpString:
+		.tFetchString
+	    | *:
+	];;
 
 VariableOperand :
 	% The Variable rule has placed the address of the variable on the
@@ -2645,19 +2649,9 @@ WriteProcedure :
 					    .tVarParm
 					    .tParmEnd
 					    @Expression
-					    [ oTypeStkChooseKind
-						| tpArray:
-						    .tSubscriptBegin
-						    .tLiteralInteger
-						    oValuePush(one)
-						    oEmitValue
-						    oValuePop
-						    .tSubscriptString
-						    .tVarParm
-						| *:
-					    ]
+						% deleted tpArray checking
 					    .tParmEnd
-					    @WriteChar
+					    @WriteString	% changed to string
 					    [
 						| sParmEnd:
 						    >
@@ -2678,7 +2672,7 @@ WriteProcedure :
 					    .tParmEnd
 					    @Expression
 					    .tParmEnd
-					    @WriteNonChar
+					    @WriteNonString	% changed to string
 					    [
 						| sParmEnd:
 						    >
@@ -2736,19 +2730,9 @@ WriteProcedure :
 				oTypeStkPushSymbol
 			]
 			@Expression
-			[ oTypeStkChooseKind
-			    | tpArray:
-				.tSubscriptBegin
-				.tLiteralInteger
-				oValuePush(one)
-				oEmitValue
-				oValuePop
-				.tSubscriptString
-				.tVarParm
-			    | *:
-			]
+			% removed tpArray checking
 			.tParmEnd
-			@WriteChar
+			@WriteString	% changed to string
 			@WriteStandardExpnList
 		]
 	    | sParmEnd:
@@ -2778,23 +2762,13 @@ WriteStandardExpnList :
 		.tVarParm
 		.tParmEnd
 		@Expression
-		[ oTypeStkChooseKind
-		    | tpArray:
-			.tSubscriptBegin
-			.tLiteralInteger
-			oValuePush(one)
-			oEmitValue
-			oValuePop
-			.tSubscriptString
-			.tVarParm
-		    | *:
-		]
+		% removed tpArray checking
 		.tParmEnd
-		@WriteChar
+		@WriteString	% changed to string
 	]}
 	oValuePop;
 
-WriteChar :
+WriteString :	% changed to string
 	% Accept an optional field width specification, supplying
 	% a default field width if none is specified.  Verify that
 	% the expression to be written is of legal type.  The
@@ -2819,7 +2793,7 @@ WriteChar :
 		[ oTypeStkChooseKind	% of expression being written
 		    | tpInteger, tpSubrange:
 			oValuePush(ten)
-		    | tpString:
+		    | tpString:	% changed to string
 			oValuePush(one)
 		    | tpPackedArray:	% a literal string
 			oValuePushTypeStkUpperBound
@@ -2832,16 +2806,16 @@ WriteChar :
 		.tParmEnd
 	]
 	[ oTypeStkChooseKind
-	    | tpString:
+	    | tpString:	% changed to string
 		.tTrap
-		oEmitTrapKind(trWriteString)
+		oEmitTrapKind(trWriteString)	% changed to string
 	    | tpInteger, tpSubrange:
 		.tTrap
 		oEmitTrapKind(trWriteInteger)
 	    | tpArray, tpPackedArray:	% must be a char array or literal string
 		oTypeStkPushComponent
 		[ oTypeStkChooseKind
-		    | tpString:
+		    | tpString:	% changed to string
 		    | *:
 			#eWriteExpn
 		]
@@ -2861,7 +2835,7 @@ WriteChar :
 	oSymbolStkPop
 	oTypeStkPop;
 
-WriteNonChar :
+WriteNonString :	% changed to string
 	% Check that the expression to be written matches the file type.
 	% The symbol and type stacks contain entries for the file
 	% variable and the expression to be written (expression on top).
@@ -2949,25 +2923,25 @@ WritelnProcedure :
 						[
 						    | sParmEnd:
 						    | *:
-							#eStringFileVarReqd
+							#eStringFileVarReqd	% changed to string
 							@FlushActuals
 						]
 					    | *:
-						#eStringFileVarReqd
+						#eStringFileVarReqd	% changed to string
 						@FlushActuals
 					]
 				    | *:
-					#eStringFileVarReqd
+					#eStringFileVarReqd	% changed to string
 					@FlushActuals
 				]
 				oValuePop
 				oTypeStkPop
 			    | *:
-				#eStringFileVarReqd
+				#eStringFileVarReqd	% changed to string
 				@FlushActuals
 			]
 		    | *:
-			#eStringFileVarReqd
+			#eStringFileVarReqd	% changed to string
 			@FlushActuals
 		]
 		oTypeStkPop
@@ -2975,7 +2949,7 @@ WritelnProcedure :
 		.tVarParm
 		.tParmEnd
 	    | *:
-		#eStringFileVarReqd
+		#eStringFileVarReqd	% changed to string
 		@FlushActuals
 	];
 
@@ -3011,9 +2985,9 @@ ReadProcedure :
 				oTypeStkPushComponent
 				[ oTypeStkChooseKind
 				    | tpString: %Changed from tpChar
-					@ReadCharParameterList
+					@ReadStringParameterList	% changed to string
 				    | *:
-					@ReadNonCharParameterList
+					@ReadNonStringParameterList	% changed to string
 				]
 				oValuePop
 				oTypeStkPop
@@ -3051,13 +3025,13 @@ ReadProcedure :
 			]
 			.tVarParm
 			.tParmEnd
-			@ReadChar
+			@ReadString	% changed to string
 			% .tPopStack
 			% .tParmEnd
 			[
 			    | sParmEnd:
 			    | *:
-				@ReadCharParameterList
+				@ReadStringParameterList	% changed to string
 			]
 			oValuePop
 		]
@@ -3067,7 +3041,7 @@ ReadProcedure :
 	]
 	.tReadEnd;
 
-ReadCharParameterList :
+ReadStringParameterList :		% changed to string
 	% Accept a list of actual parameter variables to be
 	% read from a file of characters.
 
@@ -3089,7 +3063,7 @@ ReadCharParameterList :
 		]
 		.tVarParm
 		.tParmEnd
-		@ReadChar
+		@ReadString		% changed to string
 		[ oSymbolStkChooseKind	% File symbol kind
 		    | syVarParameter:
 			.tFetchAddress
@@ -3108,7 +3082,7 @@ ReadCharParameterList :
 		>
 	]};
 
-ReadNonCharParameterList :
+ReadNonStringParameterList :		% changed to string
 	% Accept a list of actual parameter variables to be
 	% read from a non-text file.
 
@@ -3130,7 +3104,7 @@ ReadNonCharParameterList :
 		]
 		.tVarParm
 		.tParmEnd
-		@ReadNonChar
+		@ReadNonString	% changed to string
 		[ oSymbolStkChooseKind	% File symbol kind
 		    | syVarParameter:
 			.tFetchAddress
@@ -3149,11 +3123,11 @@ ReadNonCharParameterList :
 		>
 	]};
 
-ReadChar :
+ReadString :	% changed to string
 	[ oTypeStkChooseKind
 	    | tpString: %Changed from tpChar
 		.tTrap
-		oEmitTrapKind(trReadString)
+		oEmitTrapKind(trReadString)		% changed to string
 	    | tpInteger, tpSubrange:
 		.tTrap
 		oEmitTrapKind(trReadInteger)
@@ -3163,7 +3137,7 @@ ReadChar :
 	oSymbolStkPop	% variable being read
 	oTypeStkPop;
 
-ReadNonChar :
+ReadNonString :	% changed to string
 	[ oTypeStkChooseKind
 	    | tpInteger, tpSubrange:
 		oTypeStkPop
@@ -3237,24 +3211,24 @@ ReadlnProcedure :
 						[
 						    | sParmEnd:
 						    | *:
-							#eStringFileVarReqd
+							#eStringFileVarReqd	% changed to string
 							@FlushActuals
 						]
 					    | *:
-						#eStringFileVarReqd
+						#eStringFileVarReqd	% changed to string
 						@FlushActuals
 					]
 				    | *:
-					#eStringFileVarReqd
+					#eStringFileVarReqd	% changed to string
 					@FlushActuals
 				]
 				oTypeStkPop
 			    | *:
-				#eStringFileVarReqd
+				#eStringFileVarReqd	% changed to string
 				@FlushActuals
 			]
 		    | *:
-			#eStringFileVarReqd
+			#eStringFileVarReqd	% changed to string
 			@FlushActuals
 		]
 		oTypeStkPop
@@ -3262,7 +3236,7 @@ ReadlnProcedure :
 		.tVarParm
 		.tParmEnd
 	    | *:
-		#eStringFileVarReqd
+		#eStringFileVarReqd	% changed to string
 		@FlushActuals
 	];
 
@@ -3315,12 +3289,12 @@ SymbolStkPushIntegerConstant :
 	oSymbolStkLinkToStandardType(stdInteger);
 
 
-SymbolStkPushCharConstant :
+SymbolStkPushStringConstant :	% changed to string
 	oSymbolStkPush(syConstant)
 	oValuePush(zero)
 	oSymbolStkEnterValue
 	oValuePop
-	oSymbolStkLinkToStandardType(stdString);
+	oSymbolStkLinkToStandardType(stdString);	% changed to string
 
 
 SymbolStkPushIntegerType :
