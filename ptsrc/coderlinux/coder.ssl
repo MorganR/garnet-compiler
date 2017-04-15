@@ -731,7 +731,6 @@ Block:
 	| tLiteralString: % Changed to tLiteralString for garnet
             % Emit a string constant to the data area
             oEmitNone(iData)                    %       .data
-            tLiteralString
             oEmitString                         % sNN:  .asciz  "SSSSS"
             oEmitNone(iText)                    %       .text
 	| tLiteralInteger:
