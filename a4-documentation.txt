@@ -6,12 +6,12 @@ Phase 3 Fixes:
  - Forced ConstantDefinitions, TypeDefinitions and VariableDefinitions to require an sIdentifier
  - Fixed ConstantValue handling of string literals:
    -- The data address allocated for the string needed to be emitted after .tAssignBegin. Previously the string length was being emitted twice.
- - allowed for syPublicProcedures (in addition to syProcedures) in Call Stmt
- - fixed the output and semantic operations when an else case is reached
- - amended further labels from char to string in semantic.ssl, as well as other changes to match solutions
- - removed some tpArray checks in semantic.ssl
- - removed tStringDescriptor and tSkipString from semantic.ssl (so they are no longer anywhere in the project)
-   -- made and updated .def output into .pt
+ - Allowed for syPublicProcedures (in addition to syProcedures) in Call Stmt
+ - Fixed the output and semantic operations when an else case is reached
+ - Amended further labels from char to string in semantic.ssl, as well as other changes to match solutions
+ - Removed some tpArray checks in semantic.ssl
+ - Removed tStringDescriptor and tSkipString from semantic.ssl (so they are no longer anywhere in the project)
+   -- Made and updated .def output into .pt
 
 Added Garnet string traps
  - Copied new ptruntime.c file from "/cas/course/cisc458/garnet/ptruntimelinux" into ptsrc/ptruntimelinux/
@@ -35,6 +35,9 @@ Do Statements
    -- Statements are allowed before the condition check
    -- The break condition is no longer complemented
    -- Token consumption was changed to match Do statements
+
+Case Statements
+  - handling of the tCaseElse in EmitDefaultCaseAbort
 
 String Tokens:
  - Added tIndex, tConcatenate, tSubstring, tLength, and tStringEqual to the OperandPushExpression options
