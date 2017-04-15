@@ -412,25 +412,29 @@ CallStmt :
     % accept zero or more actual parameters
     [
         | '(':
-        {
-            @Expression
-            .sExpnEnd
-            % allow a field width specification to occur in calls
-            % to the standard procedures write and writeln
             [
-            | ':':
-                .sFieldWidth
-                @Expression
-                .sExpnEnd
-            | *:
+                | ')':
+                | *:
+                    {
+                        @Expression
+                        .sExpnEnd
+                        % allow a field width specification to occur in calls
+                        % to the standard procedures write and writeln
+                        [
+                        | ':':
+                            .sFieldWidth
+                            @Expression
+                            .sExpnEnd
+                        | *:
+                        ]
+                        [
+                        | ',':
+                        | *:
+                            >
+                        ]
+                    }
+                    ')'
             ]
-            [
-            | ',':
-            | *:
-                >
-            ]
-        }
-        ')'
         | *:    % no actual parameters
     ]
     .sParmEnd;
