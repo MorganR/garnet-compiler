@@ -134,6 +134,7 @@ type Integer:
     eight = 8
 	ten = 10
     twelve = 12
+    stringSize = 1024   % garnet
 
     % Temporary registers
     regAX = 1	%eax
