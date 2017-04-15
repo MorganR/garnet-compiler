@@ -2928,10 +2928,10 @@ OperandIndexPop:
     oOperandPop
 
     @OperandReturnArgFromStringTrap;
+
 OperandStringEqualPop:
- % Finds the location of the top string operand in the
-    % second string operand.
-    % Puts the result in a temp.
+    % Checks the top string operand equals the second string 
+    % operand.
     @SaveTempRegsToStack        %   pushl %eax .. %edx
 
     @OperandPrepStringArgForTrap    %   pushl addr(s2)
@@ -2983,6 +2983,7 @@ OperandLength:
 OperandChr:
     % Turns the top operand integer into a char.
     % Puts the char in a temp.
+    
     @SaveTempRegsToStack        %   pushl %eax .. %edx
 
     @OperandForceToStack        %   pushl i1
@@ -3004,6 +3005,17 @@ OperandChr:
     oOperandPop
 
     @OperandReturnArgFromStringTrap;
+
+OperandOrd:
+    % Converts the first character of the top operand string
+    % into an integer.
+    % Puts the integer in a temp.
+    
+    @OperandForceAddressIntoTemp    %   ... addr(s1)
+    oOperandPushMode(mTempIndirect)
+    oOperandSetLength(byte)
+    @OperandForceIntoTemp;          % mov (s1),byte
+
 %%%%%% End Garnet Operands
 
 OperandChrAssignPopPop:
