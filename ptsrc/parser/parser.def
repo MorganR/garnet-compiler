@@ -138,27 +138,27 @@
 	ModuleDefinition = 470;
 	ModuleDeclarations = 93;
 	AssignmentOrCallStmt = 481;
-	IfStmt = 565;
-	UnlessStmt = 601;
-	WhileStmt = 691;
-	CaseStmt = 629;
-	DoStmt = 704;
+	IfStmt = 572;
+	UnlessStmt = 608;
+	WhileStmt = 698;
+	CaseStmt = 636;
+	DoStmt = 711;
 	ConstantValue = 227;
 	UnsignedIntegerConstant = 269;
 	TypeBody = 298;
 	SimpleType = 350;
 	OptionallySignedIntegerConstant = 379;
-	Expression = 723;
+	Expression = 730;
 	CallStmt = 521;
-	CaseAlternative = 671;
-	SimpleExpression = 777;
-	Term = 830;
-	SimpleTerm = 882;
-	Factor = 900;
-	IdentifierExtension = 966;
+	CaseAlternative = 678;
+	SimpleExpression = 784;
+	Term = 837;
+	SimpleTerm = 889;
+	Factor = 907;
+	IdentifierExtension = 973;
 	}
 
 	{ S/SL Table Parameters }
-	sslTblSize = 996;
+	sslTblSize = 1021;
 	minSslTableValue = -32767;
 	maxSslTableValue = 32767;
