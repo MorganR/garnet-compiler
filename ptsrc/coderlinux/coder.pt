@@ -238,6 +238,7 @@ program Coder (output, coderSsl, tCode, object, options);
 	eight = 8;
 	ten = 10;
 	twelve = 12;
+    stringSize = 1024;
 	regAX = 1;
 	regBX = 2;
 	regCX = 3;
@@ -1881,9 +1882,9 @@ program Coder (output, coderSsl, tCode, object, options);
 		    read (tCode, compoundTokenValue);
 		    nextTCodeAddress := nextTCodeAddress + 1;
 
-		    case compoundToken of
-			tLiteralAddress, tLiteralInteger, tLiteralChar,
-			tLiteralBoolean, tWhileTest, tWhileEnd, tRepeatTest, 
+		    case compoundToken of { tLiteralChar and tRepeatTest }
+			tLiteralAddress, tLiteralInteger, tLiteralBoolean, 
+			tWhileTest, tWhileEnd, tDoTest, tDoEnd,	{ added Do tokens }
 			tCallEnd, tLineNumber, tTrap, tIfThen, tIfMerge, 
 			tSkipProc, tCaseSelect, tCaseMerge:
 			    ;	{ Do nothing }
