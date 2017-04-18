@@ -794,7 +794,7 @@ Block:
 	    oFixPopAddress
 	| *:
         >	% End of declarations and statement list
-    };
+    ]};
 
 Routine:
     oEmitProcLabel(mProc)			% pNN:
