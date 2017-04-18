@@ -3618,6 +3618,10 @@ OperandForceToStack:
 		@OperandForceIntoTemp
 		oOperandSetLength(word)
 	| word:
+        % do nothing
+    | string: % NEW FOR GARNET!
+        @OperandForceAddressIntoTemp
+        oOperandSetLength(word)
     ]
     oEmitSingle(iPush)
     @OperandPopAndFreeTemp
