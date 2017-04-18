@@ -2165,6 +2165,12 @@ OperandPushExpressionAssignPopPop:
 	| tLiteralInteger:
 	    oOperandPushInteger
 	| tLiteralString:
+        % Emit string literal to data area
+	    oEmitNone(iData)			%	.data
+	    % Emit the string
+	    oEmitString				% sNNN:	.asciz	"SSSSS"
+	    oEmitNone(iText)			%	.text
+	    % Get the string literal's address
 	    oOperandPushStringDescriptor
 	| tLiteralBoolean:
 	    oOperandPushBoolean
