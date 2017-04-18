@@ -8,7 +8,7 @@
     .sIdentifier
       .sIdentifier
    .sBegin
-    .sDoStmt
+    .sDo
      .sBegin
        .sCallStmt
        .sIdentifier

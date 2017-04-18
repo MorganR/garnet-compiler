@@ -101,7 +101,7 @@
         .sIdentifier
              .sInteger
         .sExpnEnd
-        .sDoStmt
+        .sDo
          .sBegin
            .sCallStmt
            .sIdentifier
@@ -149,7 +149,7 @@
       .sIdentifier
            .sInteger
       .sExpnEnd
-      .sDoStmt
+      .sDo
        .sBegin
         .sAssignmentStmt
         .sIdentifier
