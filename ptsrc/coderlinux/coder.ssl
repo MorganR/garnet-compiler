@@ -2811,6 +2811,7 @@ OperandAssignStringPopPop:
     oOperandPushMode(mTrap)
     oOperandSetValue(trAssignString)
     oEmitSingle(iCall)              % 	call 	trAssignString
+    oOperandPop
 
     % Pop arguments
     oOperandPushMode(mStackReg)
@@ -2855,6 +2856,7 @@ OperandConcatenatePop:
     oOperandSetValue(trConcatenate)
     oOperandSetLength(word)
     oEmitSingle(iCall)              % 	call 	trConcatenate
+    oOperandPop
 
     % Pop arguments
     oOperandPushMode(mStackReg)
@@ -2884,6 +2886,7 @@ OperandSubstringPopPop:
     oOperandSetValue(trSubstring)
     oOperandSetLength(word)
     oEmitSingle(iCall)              % 	call trSubstring
+    oOperandPop
 
     % Pop arguments
     oOperandPushMode(mStackReg)
@@ -2912,6 +2915,7 @@ OperandIndexPop:
     oOperandSetValue(trStringIndex)
     oOperandSetLength(word)
     oEmitSingle(iCall)              % 	call trStringIndex
+    oOperandPop
 
     % Pop arguments
     oOperandPushMode(mStackReg)
@@ -2938,6 +2942,7 @@ OperandStringEqualPop:
     oOperandSetValue(trStringEqual)
     oOperandSetLength(word)
     oEmitSingle(iCall)              % 	call trStringEqual
+    oOperandPop
 
     % Pop arguments	
 	oOperandPushMode(mStackReg)
@@ -2963,6 +2968,7 @@ OperandLength:
     oOperandSetValue(trLength)
     oOperandSetLength(word)
     oEmitSingle(iCall)              % 	call trLength
+    oOperandPop
 
     % Pop arguments
     oOperandPushMode(mStackReg)
@@ -2990,6 +2996,7 @@ OperandChr:
     oOperandSetValue(trChrString)
     oOperandSetLength(word)
     oEmitSingle(iCall)              % 	call trChrString
+    oOperandPop
 
     % Pop arguments
     oOperandPushMode(mStackReg)
