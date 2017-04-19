@@ -1553,7 +1553,7 @@ ProcedurePrologue :
 	oCountPop;
 
 ModuleDefinition:	% added to handle modules
-	sIdentifier  oSymbolStkPushLocalIdentifier	% module name
+	sIdentifier	% module name
 	oSymbolStkPushLocalIdentifier	% class name, added in phase 4
 	[ oSymbolStkChooseKind
 	    | syUndefined:
