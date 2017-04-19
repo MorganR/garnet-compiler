@@ -2,4 +2,4 @@ using output
 
 var val1 : integer
 
-val1 = "String" $ (3-2*1)..#"Str" ? "S"
+val1 = "String" $ (3-2*1)..#"Strin" ? "S"

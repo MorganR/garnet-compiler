@@ -6,5 +6,5 @@ using output
         end
     end
 
-    f0
+    f0()
     

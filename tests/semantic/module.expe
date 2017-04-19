@@ -23,6 +23,9 @@
            oEmitValue
          .tAssignInteger
      .tProcedureEnd
+     .tCallBegin
+     .tCallEnd
+     oEmitValue
  .tTrapBegin
  .tTrap
  oEmitTrapKind(trHalt)

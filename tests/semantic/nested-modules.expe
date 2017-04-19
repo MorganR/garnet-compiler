@@ -16,7 +16,13 @@
      .tSkipProc
      oEmitNullAddress
        .tParmEnd
+         .tCallBegin
+         .tCallEnd
+         oEmitValue
      .tProcedureEnd
+     .tCallBegin
+     .tCallEnd
+     oEmitValue
  .tTrapBegin
  .tTrap
  oEmitTrapKind(trHalt)

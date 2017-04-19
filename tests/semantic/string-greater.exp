@@ -50,8 +50,8 @@
   [ (sVar)
   | sVar:
   @VariableDeclarations
-   ?sIdentifier (sIdentifier)
    oCountPush(one)
+   ?sIdentifier (sIdentifier)
    @PrepareNewVarDeclaration
     oSymbolStkPushLocalIdentifier
     [ oSymbolStkChooseKind (syUndefined)

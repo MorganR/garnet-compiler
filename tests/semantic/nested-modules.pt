@@ -7,8 +7,8 @@ using output
             end
         end
         def * f1()
-            f0
+            f0()
         end
     end
 
-    f1
+    f1()

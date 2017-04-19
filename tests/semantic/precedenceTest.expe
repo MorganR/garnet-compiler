@@ -26,3 +26,7 @@
        oEmitValue
        oEmitString
        .tIndex
+     .tAssignInteger
+ .tTrapBegin
+ .tTrap
+ oEmitTrapKind(trHalt)

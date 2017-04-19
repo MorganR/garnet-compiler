@@ -66,8 +66,8 @@
     [ (sVar)
     | sVar:
     @VariableDeclarations
-     ?sIdentifier (sIdentifier)
      oCountPush(one)
+     ?sIdentifier (sIdentifier)
      @PrepareNewVarDeclaration
       oSymbolStkPushLocalIdentifier
       [ oSymbolStkChooseKind (syUndefined)
@@ -345,12 +345,12 @@
      [ oSymbolStkChooseKind (syUndefined)
      | syUndefined:
      #eUndefinedIdentifier
-     line 10: identifier not declared
+     line 9: identifier not declared
      ] or >
      [ oSymbolStkChooseKind (syUndefined)
      | *:
      #eProcedureReqd
-     line 10: procedure name required
+     line 9: procedure name required
      @FlushActuals
       [ (sParmEnd)
       | sParmEnd:

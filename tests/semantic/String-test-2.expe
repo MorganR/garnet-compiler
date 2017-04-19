@@ -10,3 +10,7 @@
        oEmitValue
        oEmitString
        .tLength
+     .tAssignInteger
+ .tTrapBegin
+ .tTrap
+ oEmitTrapKind(trHalt)
