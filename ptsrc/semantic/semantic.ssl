@@ -2123,8 +2123,31 @@ BinaryOperator :
 	% Added choice of ternary operators (substring)
 	[
 		| sSubstring:
+            % end index
+            [ oTypeStkChooseKind
+                | tpInteger:
+                | *:
+                    #eTypeMismatch
+            ]
+            oTypeStkPop
+            oSymbolStkPop
+            % start index
+            [ oTypeStkChooseKind
+                | tpInteger:
+                | *:
+                    #eTypeMismatch
+            ]
+            oTypeStkPop
+            oSymbolStkPop
+            % string
+            [ oTypeStkChooseKind
+                | tpString:
+                | *:
+                    #eTypeMismatch
+            ]
+            oTypeStkPop
+            oTypeStkPush(tpString)
 			.tSubstring
-			@CompareOperandsForSubstring
 		| *:
 	];
 
@@ -2189,20 +2212,6 @@ CompareOperandAndResultTypes :	% should be called CompareOperandsAndResultTypes
 	@CompareAndSwapTypes
 	oTypeStkPop		% only result type remains
 	oSymbolStkPop
-	oSymbolStkSetKind(syExpression);
-
-CompareOperandsForSubstring :
-	% Ensures the 3rd and 2nd operands in a substring are integers, 
-	% then checks that the 1st operand was a string
-	oTypeStkPush(tpInteger)
-	@CompareAndSwapTypes
-	oTypeStkPop
-	@CompareAndSwapTypes
-	oTypeStkPop
-	oTypeStkPop
-	oTypeStkPush(tpString)
-	@CompareAndSwapTypes
-	oTypeStkPop
 	oSymbolStkSetKind(syExpression);
 
 CompareRelationalOperandTypes :
